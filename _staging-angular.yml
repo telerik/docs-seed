@@ -1,0 +1,5 @@
+environment: 'develop'
+baseurl: /kendo-angular-ui-develop
+register_form_url: 'https://www.telerik.com/registration-login/ui-for-angular-registration'
+gsa_collection: 'telerik_kendo_angular_ui'
+trackjs: false

@@ -1,0 +1,115 @@
+---
+layout: default
+hidden: true
+---
+<link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.0.1.css">
+<div id="qunit"></div>
+<div id="qunit-fixture"></div>
+<script src="https://code.jquery.com/qunit/qunit-2.0.1.js"></script>
+<script>
+    QUnit.module( "runner :: analyzeDirectives" );
+
+    QUnit.test( "does not find directives when there are none", function( assert ) {
+        var code = "<button>Foo</button>";
+        var directives = analyzeDirectives( code );
+        assert.equal( directives.length, 0 );
+    });
+
+    QUnit.test( "finds single directive", function( assert ) {
+        var code = "<button kendoButton>Foo</button>";
+        var directives = analyzeDirectives( code );
+        assert.equal( directives.length, 1 );
+        assert.equal( directives[0].directive, 'KendoButton' );
+        assert.equal( directives[0].module, '@telerik/kendo-angular-buttons' );
+    });
+
+    QUnit.test( "finds multiple directives", function( assert ) {
+        var code = `
+            <kendo-slider />
+            <button kendoButton>Foo</button>
+        `;
+
+        var directives = analyzeDirectives( code );
+
+        assert.equal( directives.length, 2 );
+
+        assert.equal( directives[0].directive, 'KendoButton' );
+        assert.equal( directives[0].module, '@telerik/kendo-angular-buttons' );
+
+        assert.equal( directives[1].directive, 'KendoSlider' );
+        assert.equal( directives[1].module, '@telerik/kendo-angular-inputs' );
+    });
+
+    QUnit.test( "uses directive objects", function( assert ) {
+        var code = `
+            <kendo-grid />
+        `;
+        var directives = analyzeDirectives( code );
+
+        assert.equal( directives.length, 1 );
+
+        assert.equal( directives[0].directive, 'GRID_DIRECTIVES' );
+        assert.equal( directives[0].module, '@telerik/kendo-angular-grid' );
+    });
+
+    QUnit.module( "runner :: missingImports" );
+
+    QUnit.test( "detects missing @Component import", function( assert ) {
+        var code = `
+            @Component({})
+            class Foo {}
+        `;
+        var imports = missingImports(code, [
+            { directive: "Component", module: '@angular/core' }
+        ]);
+
+        assert.equal( imports.length, 1 );
+
+        assert.equal( imports[0], "import { Component } from '@angular/core';" );
+    });
+
+    QUnit.test( "detects missing kendoButton import", function( assert ) {
+        var code = `
+            @Component({
+                template: "<button kendoButton>Foo</button>"
+            })
+            class Foo {}
+        `;
+        var imports = missingImports(code, [
+            { directive: "KendoButton", module: '@telerik/kendo-angular-buttons' }
+        ]);
+
+        assert.equal( imports.length, 1 );
+
+        assert.equal( imports[0], "import { KendoButton } from '@telerik/kendo-angular-buttons';" );
+    });
+
+    QUnit.test( "does not import the same directive twice", function( assert ) {
+        var code = `
+            import { Component } from '@angular/core';
+            @Component({
+            })
+            class Foo {}
+        `;
+        var imports = missingImports(code, [
+            { directive: "Component", module: '@angular/core' }
+        ]);
+
+        assert.equal( imports.length, 0 );
+    });
+
+    QUnit.test( "imports multiple missing directives", function( assert ) {
+        var code = `
+            @Component({
+                template: "<button kendoButton>Foo</button>"
+            })
+            class Foo {}
+        `;
+        var imports = missingImports(code, [
+            { directive: "Component", module: '@angular/core' },
+            { directive: "KendoButton", module: '@telerik/kendo-angular-buttons' }
+        ]);
+
+        assert.equal( imports.length, 2 );
+    });
+</script>

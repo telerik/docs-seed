@@ -1,0 +1,391 @@
+# override this for production
+environment: 'localhost'
+register_trial_url: 'https://www.telerik.com/download-trial-file/v2/kendo-angular-ui'
+search_appliance_url: 'https://www.telerik.com/kendo-angular-ui-search'
+gsa_collection: "kendo-angular-ui"
+
+product: "Kendo UI for Angular"
+permalink: pretty
+shortname: "UI for Angular"
+platform: "angular"
+structure: "packages"
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - "*.sh"
+  - release*.rb
+  - "npm/**/build"
+  - "npm/**/docs"
+  - "npm/**/test"
+  - "_templates/*"
+  - "components/kendo-react-*"
+keep_files:
+  - "npm/*"
+  - "components/*/auto-imports.js"
+homepage_content_selector: '.get-page-content'
+defaults:
+  -
+    scope:
+      path: ""
+    values:
+      layout: "default"
+  -
+    scope:
+      path: "components"
+    values:
+      layout: "components"
+      use_runner: true
+      brand: "component"
+  -
+    scope:
+      path: "components/dropdowns"
+    values:
+      package: "DropDowns"
+  -
+    scope:
+      path: "components/scrollview"
+    values:
+      package: "ScrollView"
+  -
+    scope:
+      path: "components/filesaver"
+    values:
+      package: "File Saver"
+  -
+    scope:
+      path: "components/pdfexport"
+    values:
+      package: "PDF Export"
+
+# override slugs for missing pages until updated docs are pushed to master
+slug_overrides:
+  rtl_l10n: '/components/localization/#toc-rtl-support'
+
+host: 0.0.0.0
+highlighter: none
+markdown: MarkdownProcessor
+kramdown:
+  input: GFM
+  auto_ids: true
+umbrella_repo: "telerik/kendo-angular2"
+common_repos: "_common-repos.yml"
+host_npm: true
+repos: # used for the components section
+  -
+    name: "Buttons"
+    available: true
+    type: "component"
+    id: "telerik/kendo-angular-buttons"
+    module: "@progress/kendo-angular-buttons"
+    icon: "icons/components/button.svg"
+    auto_imports: true
+    description: "The button package includes the Button and the ButtonGroup components."
+    components:
+        -
+          name: "Button"
+          available: true
+        -
+          name: "ButtonGroup"
+          available: true
+        -
+          name: "DropDownButton"
+          available: true
+        -
+          name: "SplitButton"
+          available: true
+  -
+    name: "Charts"
+    highlight: true
+    available: true
+    type: "component"
+    id: "telerik/kendo-angular-charts"
+    module: "@progress/kendo-angular-charts"
+    icon: "icons/components/linecharts.svg"
+    auto_imports: true
+    description: "The Charts allow users to visualize and output graphical representations of data."
+    components:
+        -
+          name: "Chart"
+          available: true
+        -
+          name: "Sparkline"
+          available: true
+        -
+          name: "Stock-Chart"
+          available: true
+  -
+    name: "DateInputs"
+    available: true
+    type: "component"
+    id: "telerik/kendo-angular-date-inputs"
+    module: "@progress/kendo-angular-dateinputs"
+    icon: "icons/components/calendar.svg"
+    auto_imports: true
+    description: "The DateInputs enable users to select dates and times for scheduling appointments."
+    components:
+        -
+          name: "Calendar"
+          available: true
+        -
+          name: "DateInput"
+          available: true
+        -
+          name: "DatePicker"
+          available: true
+        -
+          name: "TimePicker"
+          available: true
+  -
+    name: "Dialogs"
+    available: true
+    type: "component"
+    id: "telerik/kendo-angular-dialog"
+    module: "@progress/kendo-angular-dialog"
+    icon: "icons/components/window.svg"
+    auto_imports: true
+    description: "The Dialog communicates information to users and prompt them to take actions."
+    components:
+        -
+          name: "Dialog"
+          available: true
+        -
+          name: "Window"
+          available: true
+  -
+    name: "DropDowns"
+    available: true
+    type: "component"
+    id: "telerik/kendo-angular-dropdowns"
+    module: "@progress/kendo-angular-dropdowns"
+    icon: "icons/components/dropdownlist.svg"
+    auto_imports: true
+    description: "The DropDowns allow users to select single or multiple predefined and custom values."
+    components:
+        -
+          name: "AutoComplete"
+          available: true
+        -
+          name: "ComboBox"
+          available: true
+        -
+          name: "DropDownList"
+          available: true
+        -
+          name: "MultiSelect"
+          available: true
+  -
+    name: "Gauges"
+    highlight: true
+    available: true
+    type: "component"
+    id: "telerik/kendo-angular-gauges"
+    module: "@progress/kendo-angular-gauges"
+    icon: "icons/components/gauges.svg"
+    auto_imports: true
+    description: "The Gauges components allow users to visualize numerical value(s) in an easy to read graphical form."
+    components:
+        -
+          name: "ArcGauge"
+          available: true
+        -
+          name: "LinearGauge"
+          available: true
+        -
+          name: "RadialGauge"
+          available: true
+  -
+    name: "Grid"
+    highlight: true
+    available: true
+    type: "component"
+    id: "telerik/kendo-angular-grid"
+    module: "@progress/kendo-angular-grid"
+    icon: "icons/components/grid.svg"
+    auto_imports: true
+    description: "The Grid allows users to browse, edit, filter, group, sort, select, and export tabular data."
+    components:
+        -
+          name: "Grid"
+          available: true
+  -
+    name: "Inputs"
+    available: true
+    type: "component"
+    id: "telerik/kendo-angular-inputs"
+    module: "@progress/kendo-angular-inputs"
+    icon: "icons/components/numerictextbox.svg"
+    auto_imports: true
+    description: "The Inputs allow users to enter numeric, Boolean, and formatted values and data."
+    components:
+        -
+          name: "MaskedTextBox"
+          available: true
+        -
+          name: "NumericTextBox"
+          available: true
+        -
+          name: "Slider"
+          available: true
+        -
+          name: "Switch"
+          available: true
+        -
+          name: "TextBox"
+          available: true
+  -
+    name: "Label"
+    available: true
+    type: "component"
+    id: "telerik/kendo-angular-label"
+    module: "@progress/kendo-angular-label"
+    icon: "icons/components/button.svg"
+    auto_imports: true
+    description: "The Label directive associates focusable Angular components or HTML elements with the label HTML element."
+    components:
+        -
+          name: "Label"
+          available: true
+  -
+    name: "Layout"
+    available: true
+    type: "component"
+    id: "telerik/kendo-angular-layout"
+    module: "@progress/kendo-angular-layout"
+    icon: "icons/components/tabstrip.svg"
+    auto_imports: true
+    description: "The Layout package provides components for content grouping and UI segmentation."
+    components:
+        -
+          name: "PanelBar"
+          available: true
+        -
+          name: "Splitter"
+          available: true
+        -
+          name: "TabStrip"
+          available: true
+  -
+    name: "Popup"
+    available: true
+    type: "component"
+    id: "telerik/kendo-angular-popup"
+    module: "@progress/kendo-angular-popup"
+    icon: "icons/components/popover.svg"
+    auto_imports: false
+    description: "The Popup positions content next to predefined anchor elements."
+    components:
+        -
+          name: "Popup"
+          available: true
+  -
+    name: "Ripple"
+    available: true
+    type: "component"
+    id: "telerik/kendo-angular-ripple"
+    module: "@progress/kendo-angular-ripple"
+    icon: "icons/components/ripple.svg"
+    auto_imports: false
+    description: "The Ripple shows ink blobs to indicate user interaction."
+  -
+    name: "ScrollView"
+    available: true
+    type: "component"
+    id: "telerik/kendo-angular-scrollview"
+    module: "@progress/kendo-angular-scrollview"
+    icon: "icons/components/scrollview.svg"
+    auto_imports: false
+    description: "The ScrollView horizontally scrolls content, grouped in pages."
+    components:
+        -
+          name: "ScrollView"
+          available: true
+  -
+    name: "Sortable"
+    available: true
+    type: "component"
+    id: "telerik/kendo-angular-sortable"
+    module: "@progress/kendo-angular-sortable"
+    icon: "icons/components/sortable.svg"
+    auto_imports: false
+    description: "The Sortable allows reordering of items through dragging and dropping."
+    components:
+        -
+          name: "Sortable"
+          available: true
+  -
+    name: "TreeView"
+    available: true
+    type: "component"
+    id: "telerik/kendo-angular-treeview"
+    module: "@progress/kendo-angular-treeview"
+    icon: "icons/components/treeview.svg"
+    auto_imports: true
+    description: "The TreeView allows users to browse and select hierarchical data."
+    components:
+        -
+          name: "TreeView"
+          available: true
+  -
+    name: "Upload"
+    available: true
+    type: "component"
+    id: "telerik/kendo-angular-upload"
+    module: "@progress/kendo-angular-upload"
+    icon: "icons/components/upload.svg"
+    auto_imports: true
+    description: "The Upload allows users to upload files from their file systems."
+    components:
+        -
+          name: "Upload"
+          available: true
+  -
+    name: "ExcelExport"
+    available: true
+    type: "common"
+    id: "telerik/kendo-angular-excel-export"
+    module: "@progress/kendo-angular-excel-export"
+    icon: "icons/components/excelexport.svg"
+    description: "The Excel Export allows users to export data to Excel files."
+  -
+    name: "PDFExport"
+    available: true
+    type: "common"
+    id: "telerik/kendo-angular-pdf-export"
+    module: "@progress/kendo-angular-pdf-export"
+    icon: "icons/components/pdfexport.svg"
+    description: "The PDF Export allows users to export page content to PDF files."
+  -
+    name: "Internationalization"
+    available: true
+    type: "common"
+    id: "telerik/kendo-angular-intl"
+    module: "@progress/kendo-angular-intl"
+    icon: "icons/components/globalization.svg"
+    description: "The Internationalization provides services for formatting and parsing dates and numbers."
+  -
+    name: "Localization"
+    available: true
+    type: "common"
+    id: "telerik/kendo-angular-l10n"
+    module: "@progress/kendo-angular-l10n"
+    icon: "icons/components/localization.svg"
+    description: "The Localization provides services for translating component messages."
+
+trackjs: false
+gems:
+  - "jekyll-assets"
+  - "bootstrap-sass"
+assets:
+  autoprefixer:
+    browsers:
+      - "last 2 versions"
+      - "IE > 9"
+  assets:
+    - "*.svg"
+    - "*.png"
+  # include demo runner from kendo-common-tasks
+  sources:
+    - _src/docs-public
+webrick:
+  headers:
+    Access-Control-Allow-Origin: http://run.plnkr.co

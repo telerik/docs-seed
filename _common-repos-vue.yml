@@ -1,0 +1,22 @@
+# common framework-agnostic packages used in the Vue Wrappers suite
+  -
+    name: "theme-default"
+    title: "Default Theme"
+    available: true
+    type: "theme"
+    id: "telerik/kendo-theme-default"
+    module: "@progress/kendo-theme-default"
+  -
+    name: "theme-bootstrap"
+    title: "Bootstrap Theme"
+    available: true
+    type: "theme"
+    id: "telerik/kendo-theme-bootstrap"
+    module: "@progress/kendo-theme-bootstrap"
+  -
+    name: "theme-material"
+    title: "Material Theme"
+    available: false
+    type: "theme"
+    id: "telerik/kendo-theme-material"
+    module: "@progress/kendo-theme-material"

@@ -1,0 +1,152 @@
+---
+layout: default
+---
+{% assign package = page.path | remove:'components/' | split:'/' | first %}
+{% assign current_version = site.data.components[package][0] %}
+
+<script>
+  var cdnVersion = '{{current_version}}' ? '@{{current_version}}' : '';
+
+  var scriptSrc = 'https://npmcdn.com/@telerik/{{package}}' + cdnVersion + '/dist/cdn/js/{{package}}.js';
+  var styleSrc = 'https://npmcdn.com/@telerik/{{package}}' + cdnVersion + '/dist/cdn/css/{{package}}.css';
+</script>
+
+<div class="container-fluid">
+  <div class="row">
+  <a class="button all-components" ><span class="item-expanded"></span>All Components</a>
+  <div class="side-nav col-sm-3 col-lg-2">
+    <div class="side-title">Components</div>
+    {% render_side_nav %}
+  </div>
+  <div class="content-wrapper col-sm-8 col-sm-offset-4 col-md-offset-3 col-lg-8 col-lg-offset-2">
+    <div class="row" style="overflow: hidden;">
+      <div class="col-md-10 col-md-offset-1">
+
+        <p class="breadcrumbs">
+            <a href="{{site.baseurl}}/components/">Components</a> /
+          {% if site.nested_bread_crumbs %}
+            <a href="{{site.baseurl}}/components/#{{site.nested_bread_crumbs.toc}}">{{site.nested_bread_crumbs.title}}</a> /
+          {% endif %}
+          {% render_bread_crumbs %}
+        </p>
+
+        {% if site.wrappers_build %}
+        {% include react/wrappers-alert.html %}
+        {% endif %}
+
+        {% if page.api_reference == true and page.position != 1 %}
+        <article class="api-reference">
+        {% else %}
+        <article>
+        {% endif %}
+          {{ content }}
+        </article>
+
+        {% if page.node.prev != null or page.node.next != null %}
+
+        <div class="row prev-next mb-40">
+          <div class="col-xs-6 previous">
+            {% if page.node.prev != null %}
+            {% assign prev_url = page.node.prev.url %}
+            {% if site.wrappers_build %}
+            <a href="{{site.baseurl}}{{prev_url | replace_first: 'components', 'wrappers'}}" class="pt-40 pb-40">
+            {% else %}
+            <a href="{{site.baseurl}}{{prev_url}}" class="pt-40 pb-40">
+            {% endif %}
+                {% include icons/arrow-left.svg %}
+                Previous
+                <span>
+                    {% if page.node.prev.parent != null %}
+                        {{page.node.prev.parent.title}} /
+                    {% endif %}
+                    {{page.node.prev.title}}
+                </span>
+              </a>
+            {% endif %}
+          </div>
+          <div class="col-xs-6 next">
+            {% if page.node.next != null %}
+            {% assign next_url = page.node.next.url %}
+            {% if site.wrappers_build %}
+            <a href="{{site.baseurl}}{{next_url | replace_first: 'components', 'wrappers'}}" class="pt-40 pb-40">
+            {% else %}
+            <a href="{{site.baseurl}}{{next_url}}" class="pt-40 pb-40">
+            {% endif %}
+                Next
+                {% include icons/arrow-right.svg %}
+                <span>
+                    {% if page.node.next.parent != null %}
+                        {{page.node.next.parent.title}} /
+                    {% endif %}
+                    {{page.node.next.title}}
+                </span>
+              </a>
+            {% endif %}
+          </div>
+        </div>
+
+        {% endif %}
+
+      </div>
+    </div><!-- /row right content -->
+  </div>
+
+  {% if page.toc != false %}
+      {% include article-toc.html %}
+  {% endif %}
+  </div>
+</div>
+
+{% if page.api_reference != true or page.position != 1 %}
+{% include feedback.html %}
+{% endif %}
+
+<script>
+  var currentVersion = '{{current_version}}'
+  var packageName = '{{package}}'
+
+  function switchToVersion(version) {
+    if (version == currentVersion) {
+      location.href = '/components/{{package}}/';
+    } else {
+      location.href = '/components/{{package}}/' + version + '/';
+    }
+  }
+
+  var urlVersion = location.href.match(/v\d+\.\d+\.\d+/)
+
+  var version = urlVersion ? urlVersion[0] : currentVersion;
+
+  var versionSelector = document.getElementById('version')
+  if (versionSelector) {
+    versionSelector.value = version;
+  }
+</script>
+
+<script>
+    $(".read-prev").hover(function() {
+        $(".title-prev").show();
+    }, function() {
+        $(".title-prev").hide();
+    });
+
+    $(".read-next").hover(function() {
+        $(".title-next").show();
+    }, function() {
+        $(".title-next").hide();
+    });
+
+    $(".all-components").click(function() {
+        $(".all-components").toggleClass("show-components");
+        $(".side-nav").toggleClass("show-components");
+    });
+
+    $(".api-index").toggleClass(function() {
+      return $.grep(
+        $(this).find("ul"),
+        function(ul) { return $(ul).children().length > 20; }
+      ).length > 0 ? "api-columns" : "";
+    });
+
+    $(".api-columns > div").addClass("components pb-20 mb-20");
+</script>

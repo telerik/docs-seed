@@ -1,0 +1,3 @@
+environment: 'production'
+baseurl: /kendo-vue-ui
+trackjs: true

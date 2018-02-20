@@ -1,0 +1,23 @@
+  <div class="article-toc col-md-2 visible-lg" data-turbolinks="false">
+
+    <div class="side-title">In this article</div>
+
+    <ul class="nav list-unstyled" id="toc"></ul>
+
+    {% unless page.path contains "changelog.html" %}
+    {% if current_version != nil %}
+    <hr />
+
+    <p class="version-picker">
+      Package Version:
+      <select id="version" onchange="switchToVersion(this.value)">
+        {% for version in site.data.components[package] %}
+          <option value="{{ version }}">{{ version }}</option>
+        {% endfor %}
+      </select>
+    </p>
+    {% endif %}
+    {% endunless %}
+
+  </div><!-- /cols right content -->
+

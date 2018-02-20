@@ -1,0 +1,221 @@
+# The public documentation URL, used for sitemap.xml
+url: "https://docs.telerik.com/devtools/document-processing"
+site_name: DocumentProcessing
+# Exclude files which should not be in the output
+exclude: [README.md,Gemfile,Gemfile.lock,_assetsApi]
+
+navigation:
+## Common Start
+
+## List your directory names and order here, like this:
+    api:
+        title: API Reference
+        position: 100
+    installation-and-deployment:
+        title: Installation and Deployment
+        position: 4
+    libraries:
+        title: Libraries
+        position: 6
+    licensing:
+        title: Licensing
+        position: 5		
+    for-more-help:
+        title: For More Help
+        position: 100
+    "*overview":
+        title: Overview
+        position: 1
+    "*getting-started":
+        title: Getting Started
+        position: 2
+    "*general-information":
+        title: General Information
+        position: 2
+    "*changes-and-backward-compatibility":
+        title: Changes and Backward Compatibility
+        position: 3
+    "*changes-and-backwards-compatibility":
+        title: Changes and Backward Compatibility
+        position: 3
+    "*howto":
+        title: How To
+        position: 100
+  
+## RadWordsProcessing Start
+    "*radwordsprocessing":
+        title: RadWordsProcessing
+    libraries/radwordsprocessing/model:
+        title: Model
+        position: 4
+    libraries/radwordsprocessing/formats-and-conversion:
+        title: Formats and Conversion
+        position: 7
+    libraries/radwordsprocessing/editing:
+        title: Features
+        position: 5
+    libraries/radwordsprocessing/concepts:
+        title: Concepts
+        position: 6
+    libraries/radwordsprocessing/formats-and-conversion/docx:
+        title: Docx
+        position: 1
+    libraries/radwordsprocessing/formats-and-conversion/rtf:
+        title: Rtf
+        position: 2
+    libraries/radwordsprocessing/formats-and-conversion/html:
+        title: Html
+        position: 3
+    libraries/radwordsprocessing/formats-and-conversion/pdf:
+        title: Pdf
+        position: 4	
+    libraries/radwordsprocessing/formats-and-conversion/plain-text:
+        title: Plain text
+        position: 5
+    libraries/radwordsprocessing/concepts/fields:
+        title: Fields
+        position: 0		
+## RadSpreadStreamProcessing Start
+    "*radspreadstreamprocessing":
+        title: RadSpreadStreamProcessing
+    libraries/radspreadstreamprocessing/model:
+        title: Model
+        position: 3
+    libraries/radspreadstreamprocessing/features:   
+        title: Features
+        position: 4
+    libraries/radspreadstreamprocessing/features/styling:
+        title: Styling
+        position: 0
+## RadSpreadProcessing Start
+    "*radspreadprocessing":
+        title: RadSpreadProcessing
+    libraries/radspreadprocessing/working-with-workbooks:
+        title: Workbooks
+        position: 3
+    libraries/radspreadprocessing/working-with-worksheets:
+        title: Worksheets
+        position: 4
+    libraries/radspreadprocessing/working-with-rows-and-columns:
+        title: Rows and Columns
+        position: 5
+    libraries/radspreadprocessing/working-with-cells:
+        title: Cells
+        position: 6
+    libraries/radspreadprocessing/formats-and-conversion:
+        title: Formats and Conversion
+        position: 8
+    libraries/radspreadprocessing/features:
+        title: Features
+        position: 7
+    libraries/radspreadprocessing/formats-and-conversion/xlsx:
+        title: Xlsx
+        position: 2
+    libraries/radspreadprocessing/formats-and-conversion/pdf:
+        title: Pdf
+        position: 3
+    libraries/radspreadprocessing/formats-and-conversion/csv:
+        title: Csv
+        position: 4
+    libraries/radspreadprocessing/formats-and-conversion/txt:
+        title: Txt
+        position: 5
+    libraries/radspreadprocessing/features/fill-data-automatically:
+        title: Fill Data Automatically
+        position: 0
+    libraries/radspreadprocessing/features/formulas:
+        title: Formulas
+        position: 1
+    libraries/radspreadprocessing/features/protection:
+        title: Protection
+        position: 2
+    libraries/radspreadprocessing/features/styling:
+        title: Styling
+        position: 3
+## RadPdfProcessing Start
+    "*radpdfprocessing":
+        title: RadPdfProcessing   
+    libraries/radpdfprocessing/model:
+        title: Model
+        position: 4
+    libraries/radpdfprocessing/features:
+        title: Features
+        position: 6
+    libraries/radpdfprocessing/model/interactive-forms:
+        title: Interactive Forms
+    libraries/radpdfprocessing/model/interactive-forms/form-fields	:
+        title: Form Fields
+    libraries/radpdfprocessing/formats-and-conversion:
+        title: Formats and Conversion
+        position: 7
+    libraries/radpdfprocessing/formats-and-conversion/pdf:
+        title: Pdf
+        position: 0
+    libraries/radpdfprocessing/formats-and-conversion/pdf/pdfformatprovider:
+        title: Pdf Format Provider
+        position: 1
+    libraries/radpdfprocessing/formats-and-conversion/pdf/pdfstreamwriter:
+        title: Pdf Stream Writer
+        position: 2
+    libraries/radpdfprocessing/formats-and-conversion/plain-text:
+        title: Plain text
+        position: 0
+    libraries/radpdfprocessing/editing:
+        title: Editing
+        position: 9
+    libraries/radpdfprocessing/concepts:
+        title: Concepts
+        position: 5		
+## RadZipLibrary Start
+    "*radziplibrary":
+        title: RadZipLibrary
+    libraries/radziplibrary/features:
+        title: Features
+        position: 5
+## The application virtual path
+baseurl: "/devtools/document-processing"
+
+## Assign layout and category per different paths
+defaults:
+  -
+    scope:
+        path: ""
+    values:
+        layout: "page"
+        category: "default"
+  -
+    scope:
+      path: "components"
+    values:
+      layout: "components"
+      use_runner: true
+      brand: "component"
+# Aliases available in the markdown template. The below will expand {{site.foo}} to Bar in the output
+# "foo": "Bar"
+
+# Feedback Form Google Sheet ID
+ff-sheet-id: 1HHlD_amgJPEh0GFobTkhTb9WBL9YbcKaYmlq-fCJb14
+
+# The google services configuration
+google_tag_manager: GTM-6X92
+google_analytics: UA-111455-1
+google_custom_search: '001595215763381649090:dzdv3_di-fm'
+
+# Available for names: 
+platforms: ["UI for ASP.NET AJAX", "UI for ASP.NET MVC", "UI for WPF", "UI for WinForms", "UI for Silverlight", "UI for Xamarin"]
+# in articles use as shown below: 
+# platforms: ajax, mvc, wpf, winforms, silverlight, xamarin
+
+# Folders not supporting Silverlight:
+non-sl-folders: ["radwordsprocessing", "radspreadstreamprocessing"]
+
+# Folders not supporting Xamarin:
+non-xamarin-folders: ["radwordsprocessing", "radspreadprocessing", "radpdfprocessing"]
+
+## Do not edit below this line
+safe: false
+markdown: MarkdownProcessor
+kramdown:
+    toc_levels: 2..3
+    smart_quotes: ["quot", "quot", "quot", "quot"]
+    input: GFM

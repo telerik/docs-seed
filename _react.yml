@@ -1,0 +1,544 @@
+# override this for production
+environment: 'localhost'
+search_appliance_url: 'https://www.telerik.com/kendo-react-ui-search'
+gsa_collection: "kendo-react-ui"
+
+nested_bread_crumbs:
+  title: "React"
+  toc: 'react-components'
+product: "Kendo UI for React"
+permalink: pretty
+shortname: "UI for React"
+platform: "react"
+structure: "monorepo"
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - "*.sh"
+  - release*.rb
+  - "npm/**/build"
+  - "npm/**/docs"
+  - "npm/**/test"
+  - "npm/**/node_modules/@telerik/kendo-common-tasks" #due to local bootstrap
+  - "npm/**/node_modules/@progress/kendo-typescript-tasks" #due to local bootstrap
+  - "npm/**/node_modules/@telerik/kendo-react-tasks" #due to local bootstrap
+  - "_templates/*"
+  - "components/kendo-angular-*"
+keep_files:
+  - "npm/*"
+  - "components/*/auto-imports.js"
+homepage_content_selector: '.get-page-content'
+defaults:
+  -
+    scope:
+      path: ""
+    values:
+      layout: "default"
+  -
+    scope:
+      path: "components"
+    values:
+      layout: "components"
+      use_runner: true
+      brand: "component"
+host: 0.0.0.0
+highlighter: none
+markdown: MarkdownProcessor
+kramdown:
+  input: GFM
+  auto_ids: true
+mono_repo: "telerik/kendo-react-private"
+common_repos: "_common-repos.yml"
+host_npm: true
+repos:
+  -
+    name: "Animation"
+    highlight: true
+    available: true
+    type: "component"
+    id: "animation"
+    module: "@progress/kendo-react-animation"
+    icon: "icons/components/effects.svg"
+    auto_imports: true
+    description: "The package includes animation APIs."
+    components:
+        -
+          name: "Expand"
+          available: true
+          url: "api/ExpandProps"
+        -
+          name: "Fade"
+          available: true
+          url: "api/FadeProps"
+        -
+          name: "Push"
+          available: true
+          url: "api/PushProps"
+        -
+          name: "Reveal"
+          available: true
+          url: "api/RevealProps"
+        -
+          name: "Slide"
+          available: true
+          url: "api/SlideProps"
+        -
+          name: "Zoom"
+          available: true
+          url: "api/ZoomProps"
+  -
+    name: "Buttons"
+    highlight: true
+    available: true
+    type: "component"
+    id: "buttons"
+    module: "@progress/kendo-react-buttons"
+    icon: "icons/components/button.svg"
+    auto_imports: true
+    description: "The package includes button components."
+    components:
+        -
+          name: "Button"
+          available: true
+        -
+          name: "ButtonGroup"
+          available: true
+  -
+    name: "DateInputs"
+    highlight: true
+    available: true
+    type: "component"
+    id: "dateinputs"
+    module: "@progress/kendo-react-dateinputs"
+    icon: "icons/components/calendar.svg"
+    auto_imports: true
+    description: "The DateInputs enable users to select dates and times for scheduling appointments."
+    components:
+        -
+          name: "Calendar"
+          available: true
+        -
+          name: "DateInput"
+          available: true
+        -
+          name: "DatePicker"
+          available: false
+  -
+    name: "DropDowns"
+    highlight: true
+    available: true
+    type: "component"
+    id: "dropdowns"
+    module: "@progress/kendo-react-dropdowns"
+    icon: "icons/components/dropdownlist.svg"
+    auto_imports: true
+    description: "The DropDowns allow users to select single or multiple predefined and custom values."
+    components:
+        -
+          name: "ComboBox"
+          available: false
+        -
+          name: "DropDownList"
+          available: true
+  -
+    name: "Inputs"
+    highlight: true
+    available: true
+    type: "component"
+    id: "inputs"
+    module: "@progress/kendo-react-inputs"
+    icon: "icons/components/numerictextbox.svg"
+    auto_imports: true
+    description: "The Inputs allow users to enter numeric, Boolean, and formatted values and data."
+    components:
+        -
+          name: "NumericTextBox"
+          available: true
+  -
+    name: "Grid"
+    highlight: true
+    available: true
+    type: "component"
+    id: "grid"
+    module: "@progress/kendo-react-grid"
+    icon: "icons/components/grid.svg"
+    auto_imports: true
+    description: "The Grid allows users to browse, edit, filter, group, sort, select, and export tabular data."
+    components:
+        -
+          name: "Grid"
+          available: true
+  -
+    name: "Layout"
+    highlight: true
+    available: true
+    type: "component"
+    id: "layout"
+    module: "@progress/kendo-react-layout"
+    icon: "icons/components/tabstrip.svg"
+    auto_imports: true
+    description: "The Layout components are suitable for content grouping and UI segmentation."
+    components:
+        -
+          name: "PanelBar"
+          available: true
+        -
+          name: "TabStrip"
+          available: true
+  -
+    name: "Popup"
+    available: true
+    type: "component"
+    id: "popup"
+    module: "@progress/kendo-react-popup"
+    icon: "icons/components/popover.svg"
+    auto_imports: true
+    description: "The Popup positions content next to predefined anchor elements."
+    components:
+        -
+          name: "Popup"
+          available: true
+  -
+    name: "Ripple"
+    available: true
+    type: "component"
+    id: "ripple"
+    module: "@progress/kendo-react-ripple"
+    icon: "icons/components/ripple.svg"
+    auto_imports: true
+    description: "The Ripple shows ink blobs to indicate user interaction."
+  -
+    name: "Internationalization"
+    available: true
+    type: "common"
+    id: "intl"
+    module: "@progress/kendo-react-intl"
+    icon: "icons/components/globalization.svg"
+    description: "The Internationalization provides services for formatting and parsing dates and numbers."
+wrappers:
+  -
+    name: "Barcodes"
+    available: true
+    type: "component"
+    id: "kendo-barcodes-react-wrapper"
+    module: "@progress/kendo-barcodes-react-wrapper"
+    icon: "icons/components/barcode.svg"
+    auto_imports: true
+    description: "The package includes barcode components."
+    components:
+        -
+          name: "Barcode"
+          available: true
+        -
+          name: "QRCode"
+          available: true
+  -
+    name: "Buttons"
+    available: true
+    type: "component"
+    id: "kendo-buttons-react-wrapper"
+    module: "@progress/kendo-buttons-react-wrapper"
+    icon: "icons/components/button.svg"
+    auto_imports: true
+    description: "The package includes button components."
+    components:
+        -
+          name: "Button"
+          available: true
+        -
+          name: "ButtonGroup"
+          available: true
+        -
+          name: "ToolBar"
+          available: true
+  -
+    name: "Charts"
+    highlight: true
+    available: true
+    type: "component"
+    id: "kendo-charts-react-wrapper"
+    module: "@progress/kendo-charts-react-wrapper"
+    icon: "icons/components/linecharts.svg"
+    auto_imports: true
+    description: "The Charts allow users to visualize and output graphical representations of data."
+    components:
+        -
+          name: "Chart"
+          available: true
+        -
+          name: "Sparkline"
+          available: true
+        -
+          name: "Stock-Chart"
+          available: true
+  -
+    name: "DateInputs"
+    available: true
+    type: "component"
+    id: "kendo-dateinputs-react-wrapper"
+    module: "@progress/kendo-dateinputs-react-wrapper"
+    icon: "icons/components/calendar.svg"
+    auto_imports: true
+    description: "The DateInputs enable users to select dates and times for scheduling appointments."
+    components:
+        -
+          name: "Calendar"
+          available: true
+        -
+          name: "DateInput"
+          available: true
+        -
+          name: "DatePicker"
+          available: true
+        -
+          name: "DateTimePicker"
+          available: true
+        -
+          name: "TimePicker"
+          available: true
+  -
+    name: "Dialog"
+    available: true
+    type: "component"
+    id: "kendo-dialog-react-wrapper"
+    module: "@progress/kendo-dialog-react-wrapper"
+    icon: "icons/components/dialog.svg"
+    auto_imports: true
+    description: "The Dialog communicates information to users and prompt them to take actions."
+    components:
+        -
+          name: "Dialog"
+          available: true
+  -
+    name: "DropDowns"
+    available: true
+    type: "component"
+    id: "kendo-dropdowns-react-wrapper"
+    module: "@progress/kendo-dropdowns-react-wrapper"
+    icon: "icons/components/dropdownlist.svg"
+    auto_imports: true
+    description: "The DropDowns allow users to select single or multiple predefined and custom values."
+    components:
+        -
+          name: "AutoComplete"
+          available: true
+        -
+          name: "ComboBox"
+          available: true
+        -
+          name: "DropDownList"
+          available: true
+        -
+          name: "MultiSelect"
+          available: true
+  -
+    name: "Editor"
+    available: true
+    type: "component"
+    id: "kendo-editor-react-wrapper"
+    module: "@progress/kendo-editor-react-wrapper"
+    icon: "icons/components/editor.svg"
+    auto_imports: true
+    description: "The Editor allows you to create rich textual content through a What-You-See-Is-What-You-Get interface."
+    components:
+        -
+          name: "Editor"
+          available: true
+  -
+    name: "Gantt"
+    available: true
+    type: "component"
+    id: "kendo-gantt-react-wrapper"
+    module: "@progress/kendo-gantt-react-wrapper"
+    icon: "icons/components/gantt.svg"
+    auto_imports: true
+    description: "The Gantt displays a set of tasks and dependencies, which are used to visualize project planning data."
+    components:
+        -
+          name: "Gantt"
+          available: true
+  -
+    name: "Gauges"
+    available: true
+    type: "component"
+    id: "kendo-gauges-react-wrapper"
+    module: "@progress/kendo-gauges-react-wrapper"
+    icon: "icons/components/radialgauge.svg"
+    auto_imports: true
+    description: "The package includes Gauges components."
+    components:
+        -
+          name: "LinearGauge"
+          available: true
+        -
+          name: "RadialGauge"
+          available: true
+  -
+    name: "Grid"
+    available: true
+    type: "component"
+    id: "kendo-grid-react-wrapper"
+    module: "@progress/kendo-grid-react-wrapper"
+    icon: "icons/components/grid.svg"
+    auto_imports: true
+    description: "The Grid displays data in a tabular format and provides a full spectrum of configuration options."
+    components:
+        -
+          name: "Grid"
+          available: true
+  -
+    name: "Inputs"
+    available: true
+    type: "component"
+    id: "kendo-inputs-react-wrapper"
+    module: "@progress/kendo-inputs-react-wrapper"
+    icon: "icons/components/numerictextbox.svg"
+    auto_imports: true
+    description: "The Inputs allow users to enter numeric, boolean, and formatted values and color data."
+    components:
+        -
+          name: "ColorPicker"
+          available: true
+        -
+          name: "NumericTextBox"
+          available: true
+        -
+          name: "MaskedTextBox"
+          available: true
+        -
+          name: "Slider"
+          available: true
+        -
+          name: "Switch"
+          available: true
+  -
+    name: "Layout"
+    available: true
+    type: "component"
+    id: "kendo-layout-react-wrapper"
+    module: "@progress/kendo-layout-react-wrapper"
+    icon: "icons/components/tabstrip.svg"
+    auto_imports: true
+    description: "The Layout package provides components for content grouping and UI segmentation."
+    components:
+        -
+          name: "Menu"
+          available: true
+        -
+          name: "PanelBar"
+          available: true
+        -
+          name: "TabStrip"
+          available: true
+  -
+    name: "Popups"
+    available: true
+    type: "component"
+    id: "kendo-popups-react-wrapper"
+    module: "@progress/kendo-popups-react-wrapper"
+    icon: "icons/components/popover.svg"
+    auto_imports: true
+    description: "The Popups positions content next to predefined anchor elements or on a specified place on the page."
+    components:
+        -
+          name: "Notification"
+          available: true
+        -
+          name: "Tooltip"
+          available: true
+  -
+    name: "Scheduler"
+    available: true
+    type: "component"
+    id: "kendo-scheduler-react-wrapper"
+    module: "@progress/kendo-scheduler-react-wrapper"
+    icon: "icons/components/scheduler.svg"
+    auto_imports: true
+    description: "The package includes the Scheduler component."
+    components:
+        -
+          name: "Scheduler"
+          available: true
+  -
+    name: "TreeList"
+    available: true
+    type: "component"
+    id: "kendo-treelist-react-wrapper"
+    module: "@progress/kendo-treelist-react-wrapper"
+    icon: "icons/components/treelist.svg"
+    auto_imports: true
+    description: "The TreeList package provides a component that displays hierarchical data in table-like tree structure."
+    components:
+        -
+          name: "TreeList"
+          available: true
+  -
+    name: "TreeView"
+    available: true
+    type: "component"
+    id: "kendo-treeview-react-wrapper"
+    module: "@progress/kendo-treeview-react-wrapper"
+    icon: "icons/components/treeview.svg"
+    auto_imports: true
+    description: "The TreeView package provides a component that displays hierarchical data in a traditional tree structure."
+    components:
+        -
+          name: "TreeView"
+          available: true
+  -
+    name: "Upload"
+    available: true
+    type: "component"
+    id: "kendo-upload-react-wrapper"
+    module: "@progress/kendo-upload-react-wrapper"
+    icon: "icons/components/upload.svg"
+    auto_imports: true
+    description: "The Upload helps users send files from their file systems to dedicated server handlers."
+    components:
+        -
+          name: "Upload"
+          available: true
+  -
+    name: "Validator"
+    available: true
+    type: "component"
+    id: "kendo-validator-react-wrapper"
+    module: "@progress/kendo-validator-react-wrapper"
+    icon: "icons/components/validator.svg"
+    auto_imports: true
+    description: "The package includes the Validator component."
+    components:
+        -
+          name: "Validator"
+          available: true
+  -
+    name: "Window"
+    available: true
+    type: "component"
+    id: "kendo-window-react-wrapper"
+    module: "@progress/kendo-window-react-wrapper"
+    icon: "icons/components/window.svg"
+    auto_imports: true
+    description: "The Window displays content in a modal or non-modal HTML window."
+    components:
+        -
+          name: "Window"
+          available: true
+trackjs: false
+gems:
+  - "jekyll-assets"
+  - "bootstrap-sass"
+assets:
+  autoprefixer:
+    browsers:
+      - "last 2 versions"
+      - "IE > 9"
+  assets:
+    - "*.svg"
+    - "*.png"
+  # include demo runner from kendo-common-tasks
+  sources:
+    - _src/docs-public
+webrick:
+  headers:
+    Access-Control-Allow-Origin: http://run.plnkr.co

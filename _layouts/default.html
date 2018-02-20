@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html class="no-js">
+    <head>
+        <meta charset="UTF-8">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="turbolinks-root" content="{{site.baseurl}}/">
+
+        {% capture generated_title %}
+            {% if page.is_index %}{{ page.component | default: page.package }}{% endif %}
+            {{ page.title }}
+            {% if page.api_reference %}
+            - {{ page.package }} API
+            {% elsif page.is_index %}
+            - Components
+            {% elsif page.package %}
+            - {{ page.component | default: page.package }}
+            {{ page.subsection }}
+            {% endif  %}
+            - {{ site.product }}
+        {% endcapture %}
+        <title>{{ page.page_title | default: generated_title }}</title>
+        <meta name="description" content="{{ page.description }}" />
+
+        <link rel="shortcut icon" href="{{site.baseurl}}/favicon.ico"/>
+
+        {% if page.needs_canonical %}
+        <link rel="canonical" href="{{ site.url  }}{{ page.canonical_url }}">
+        {% endif %}
+
+        {% if page.brand == "homepage" %}
+        <link rel="stylesheet" href="https://telerik-media.s3.amazonaws.com/kendo/kendo-angular-ui.css" />
+        {% stylesheet "homepage" %}
+        {% endif %}
+
+        <link rel="stylesheet" href="https://d6vtbcy3ong79.cloudfront.net/telerik-navigation/1.0.28/css/index.min.css" />
+        <link rel="stylesheet" href="https://d6vtbcy3ong79.cloudfront.net/fonts/1.1.5/css/metric.min.css" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono|Roboto:300,400,500,700" />
+        {% stylesheet "bundle" %}
+
+        <!-- Google Tag Manager -->
+        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-6X92');</script>
+        <!-- End Google Tag Manager -->
+
+        <script>
+            var platform = '{{ site.platform }}';
+            var npmUrl = '{{ site.baseurl }}/npm/node_modules';
+            var plunkerBluePrintPath = '{{ site.baseurl }}/npm/plunker/';
+            {% if site.environment != 'localhost' %}
+            var runnerScript = '{{ site.baseurl }}/assets/{{ assets["systemjs-config-runner.js"].digest_path }}';
+            {% else %}
+            var runnerScript = '{{ site.baseurl }}/assets/systemjs-config-runner.js';
+            {% endif %}
+            var e = document.documentElement;
+            e.className = e.className.replace(/(^|\s)no-js(\s|$)/i, "$2");
+        </script>
+        {% if site.trackjs %}
+        <script src="https://cdn.ravenjs.com/3.16.1/raven.min.js" crossorigin="anonymous"></script>
+        <script type="text/javascript">
+            Raven.config('https://e7cc5054385e4b4cb97bd7ea376c6174@sentry.io/112659', {
+              autoBreadcrumbs: {
+                xhr: false
+              },
+              release: '{{site.time | sha256 }}',
+              ignoreUrls: [
+                /\/ki.js\//i,
+                /\/gtm.js\//i
+              ]
+            }).install();
+            var trackjs = {{site.trackjs}};
+        </script>
+        {% endif %}
+
+        {% javascript "main" %}
+
+        <script src="//cdn.optimizely.com/js/2380340583.js"></script>
+    </head>
+
+{% if site.environment != 'production' %}
+  {% capture environment_class %}environment-{{ site.environment }}{% endcapture %}
+{% endif %}
+{% if page.brand %}
+<body role="document" class="layout-{{ page.layout }} brand brand-{{ page.brand }} {{ environment_class }}">
+{% else %}
+<body role="document" class="layout-{{ page.layout }} brand {{ environment_class }}">
+{% endif %}
+
+    <!-- Google Tag Manager -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-6X92"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager -->
+
+    <!-- Qualaroo for telerik.com -->
+    <script> var _kiq = _kiq || []; </script>
+    <script>
+      window.setTimeout(function() {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://s3.amazonaws.com/ki.js/24100/4Nr.js';
+        document.body.appendChild(s);
+      });
+    </script>
+
+{% include nav.html %}
+
+<div id="content">
+
+  {{ content }}
+
+  <div id="push" class="pt-60 pb-40"></div> <!-- Sticky Footer -->
+
+</div>
+
+{% include footer.html %}
+{% if page.use_runner %}
+{% javascript "systemjs-config-runner" %}
+{% javascript "runner" %}
+{% endif %}
+
+{% if site.environment != 'production' %}
+  <div class="environment-ribbon" data-text="{{ site.environment }}"></div>
+{% endif %}
+</body>
+</html>
