@@ -401,10 +401,10 @@ module Jekyll
 
         def render_menu_items(items, baseurl, wrappers_build = false)
             out = "<ul>"
-            puts(items)
             items.each do |item|
                 expanded = item.has_children
 
+                # puts(item)
                 css_class = item.tags.map { |t| "tag-#{t.strip}" }
                 css_class = css_class.concat(["expanded"]) if expanded
                 out << "<li class='#{css_class.join(' ')}'>"
