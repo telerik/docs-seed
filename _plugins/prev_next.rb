@@ -12,13 +12,22 @@ class TreeNode < Liquid::Drop
         @tags = []
 
         meta_file = File.join('./', path, '_meta.yml')
-
+    
         if File.exists?(meta_file)
             meta = YAML.load(File.read(meta_file))
-            @title = meta["title"]
-            @position = meta["position"]
-            @tags = (meta["tags"] || "").split(",")
+        elsif File.exists?('_config.yml')
+          # TODO: Here we get the "libraries" from the config (it might be controls or else)
+            new_path = path.sub("/components/", "controls/")
+            meta = YAML.load(File.read('_config.yml'))['navigation'];
+            meta = Hash[(meta || {}).map { |key, value| [key.gsub(/\*(.*?)/, new_path), value] }][new_path]
         end
+
+        if meta
+          puts(meta)
+          @title = meta["title"]
+          @position = meta["position"]
+          @tags = (meta["tags"] || "").split(",")
+        end 
     end
 
     def <=>(other)
@@ -404,7 +413,6 @@ module Jekyll
             items.each do |item|
                 expanded = item.has_children
 
-                # puts(item)
                 css_class = item.tags.map { |t| "tag-#{t.strip}" }
                 css_class = css_class.concat(["expanded"]) if expanded
                 out << "<li class='#{css_class.join(' ')}'>"
