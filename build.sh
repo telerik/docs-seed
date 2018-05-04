@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Use that file in documentation builds 
+
 function copy {
   echo "copying ..."
   rsync -r $1 $2
