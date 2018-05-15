@@ -36,7 +36,8 @@ window.initFeedbackForm = function (options) {
       outdatedSample: false,
       inaccurateOutdatedCodeSamplesText: "",
       otherFeedback: false,
-      textFeedback: ""
+      textFeedback: "",
+      acceptFeedbackContact: false
     };
     var feedbackForm = $('#feedback-form');
     var formModel = kendo.observable(defaultFormValues);
@@ -206,12 +207,18 @@ window.initFeedbackForm = function (options) {
                 formModel.uuid = getCookieByName("uuid");
                 formModel.path = window.location.href;
                 formModel.hasPreviousFeedback = getCookieByName("feedbackSubmitted") || "false";
-                formModel.sheetId = sheetIds[platform];
-        
+                formModel.sheetId = $("#hidden-sheet-id").val();
+                formModel.email = formModel.acceptFeedbackContact ? formModel.email : '';
                 $.ajax({
-                method: "post",
-                url: "https://api.everlive.com/v1/lzrla9wpuk636rdd/functions/saveFeedback",
-                data: formModel.toJSON(),
+                    url: "https://baas.kinvey.com/rpc/kid_Hk57KwIFf/custom/saveFeedback",
+                    method: "POST",
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify(formModel),
+                    crossDomain: true,
+                    beforeSend: function (xhr) {
+                        xhr.setRequestHeader("Authorization", "Basic " + btoa("feedback:feedback"));
+                    },
                 success: function () {
                     vote();
                     formIsProcessing = false;

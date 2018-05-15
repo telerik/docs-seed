@@ -1370,12 +1370,14 @@ $border-color: #d9d9d9;
     font-size: 12px;
     padding: 0 0 6px !important;
   }
-
 }
 
 #feedback-checkbox-area {
   label {
-    display: block;
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
     margin: 5px 0 0;
     padding: 5px 0 0;
   }

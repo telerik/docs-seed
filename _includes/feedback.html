@@ -30,7 +30,7 @@
             <span id="feedback-form-popup-container"></span>
             <form id="feedback-form">
                 <div id="feedback-checkbox-area">
-                <input id="hidden-sheet-id" type="hidden" value="">
+                <input id="hidden-sheet-id" type="hidden" value="{{site.ff-sheet-id}}">
                 <label>
                     <input type="checkbox" data-bind="checked: outdatedSample" /> Code samples are inaccurate / outdated.
                 </label>
@@ -68,6 +68,9 @@
                 </textarea>
                 <input id="feedback-email-input" type="email" placeholder="email (optional)" data-email-msg="Email format is not valid."
                     class="feedback-extw__input input" data-bind="value: email" />
+                  <label>
+                    <input type="checkbox" data-bind="checked: acceptFeedbackContact" /> By checking this box you consent to Progress contacting you by email about your response on this page.
+                  </label>
                 </div>
             </form>
             <div class="feedback-extw__foot">
