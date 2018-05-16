@@ -23,7 +23,7 @@ module Jekyll
 
         def render(context)
             url = context["page"]["url"]
-            path = File.dirname(context["page"]["path"]).match('components/[^/]+')[0]
+            path = File.dirname(context["page"]["path"]).match('documentation/[^/]+')[0]
             filepath = File.join(Dir.pwd, path, "examples", @path)
             result = []
 

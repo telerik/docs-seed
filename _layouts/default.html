@@ -13,7 +13,7 @@
             {% if page.api_reference %}
             - {{ page.package }} API
             {% elsif page.is_index %}
-            - Components
+            - Documentation
             {% elsif page.package %}
             - {{ page.component | default: page.package }}
             {{ page.subsection }}

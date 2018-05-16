@@ -3144,9 +3144,9 @@ defaults:
         layout: "page"
         category: "default"
     scope:
-      path: "components"
+      path: "documentation"
     values:
-      layout: "components"
+      layout: "documentation"
 
 # Aliases available in the markdown template. The below will expand {{site.foo}} to Bar in the output
 # "foo": "Bar"

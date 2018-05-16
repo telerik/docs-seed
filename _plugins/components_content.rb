@@ -52,7 +52,7 @@ module Jekyll
                 c.access_token =  "ab7cecc74eac90ba78c28e6df7b3bbcb1e6b6ca1"
             end
 
-            components = [  ]
+            documentation = [  ]
             structure = site.config['structure']
 
             if structure == 'packages'
@@ -66,7 +66,7 @@ module Jekyll
                 # self.generate_release(site, id, id, '')
             end
 
-            site.data["components_roadmap"] = components
+            site.data["components_roadmap"] = documentation
         end
 
         def generate_release(site, repo_id, repo_name, repo_type)
@@ -87,8 +87,8 @@ module Jekyll
                 }
             end
 
-            path = "components"
-            path = "components/styling" if repo_type == "theme"
+            path = "documentation"
+            path = "documentation/styling" if repo_type == "theme"
 
             site.pages << ChangelogPage.new(site, "#{path}/#{repo_name.downcase}", releases, repo_name, repo_id)
         end

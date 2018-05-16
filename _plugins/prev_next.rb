@@ -17,7 +17,7 @@ class TreeNode < Liquid::Drop
             meta = YAML.load(File.read(meta_file))
         elsif File.exists?('_config.yml')
           # TODO: Here we get the "libraries" from the config (it might be controls or else)
-            new_path = path.sub("/components/", "controls/")
+            new_path = path # path.sub("/documentation/", "controls/")
             meta = YAML.load(File.read('_config.yml'))['navigation'];
             meta = Hash[(meta || {}).map { |key, value| [key.gsub(/\*(.*?)/, new_path), value] }][new_path]
         end
@@ -270,9 +270,9 @@ class PageNode < TreeNode
     end
 
     def add_package_info
-        @page.data['is_index'] = @page.path =~ /^components\/[^\/]+\/index.md/
+        @page.data['is_index'] = @page.path =~ /^documentation\/[^\/]+\/index.md/
 
-        match = /^components\/(.*?)\//.match(@page.path)
+        match = /^documentation\/(.*?)\//.match(@page.path)
         @page.data['package'] ||= match[1].capitalize if match and match[1]
         if @parent.tags.include?('component')
             @page.data['component'] ||= @parent.title
