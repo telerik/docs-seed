@@ -1,7 +1,7 @@
 ---
 layout: default
 ---
-{% assign package = page.path | remove:'components/' | split:'/' | first %}
+{% assign package = page.path | remove:'documentation/' | split:'/' | first %}
 {% assign current_version = site.data.components[package][0] %}
 
 <script>
@@ -15,7 +15,7 @@ layout: default
   <div class="row">
   <a class="button all-components" ><span class="item-expanded"></span>All Components</a>
   <div class="side-nav col-sm-3 col-lg-2">
-    <div class="side-title">Components</div>
+    <div class="side-title">Documentation</div>
     {% render_side_nav %}
   </div>
   <div class="content-wrapper col-sm-8 col-sm-offset-4 col-md-offset-3 col-lg-8 col-lg-offset-2">
@@ -23,9 +23,9 @@ layout: default
       <div class="col-md-10 col-md-offset-1">
 
         <p class="breadcrumbs">
-            <a href="{{site.baseurl}}/components/">Components</a> /
+            <a href="{{site.baseurl}}/documentation/">Documentation</a> /
           {% if site.nested_bread_crumbs %}
-            <a href="{{site.baseurl}}/components/#{{site.nested_bread_crumbs.toc}}">{{site.nested_bread_crumbs.title}}</a> /
+            <a href="{{site.baseurl}}/documentation/#{{site.nested_bread_crumbs.toc}}">{{site.nested_bread_crumbs.title}}</a> /
           {% endif %}
           {% render_bread_crumbs %}
         </p>
