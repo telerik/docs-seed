@@ -8,7 +8,7 @@ module Jekyll
 
         def call()
 
-            doc.css('h1, h2, h3, h4').each do |heading|
+            doc.css('h1, h2, h3').each do |heading|
 
                 desc_node = heading.children.first()
                 if desc_node

@@ -1,7 +1,6 @@
 require 'yaml'
 
 Jekyll::Hooks.register :site, :after_reset do |site|
-  puts('Installing npm packages...')
   channel = "latest";
   npm_modules_dir = File.join(Dir.pwd, "./npm/")
   npm_modules = [

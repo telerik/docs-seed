@@ -1,5 +1,6 @@
 //= require jquery.min
 //= require bootstrap.min
+//= require prettify
 
 //= require kendo/kendo.core.min
 //= require kendo/kendo.data.min
@@ -14,3 +15,4 @@
 //= require top-menu
 //= require toc
 //= require feedback
+//= require sdk-browser
