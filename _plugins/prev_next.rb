@@ -16,14 +16,12 @@ class TreeNode < Liquid::Drop
         if File.exists?(meta_file)
             meta = YAML.load(File.read(meta_file))
         elsif File.exists?('_config.yml')
-          # TODO: Here we get the "libraries" from the config (it might be controls or else)
-            new_path = path # path.sub("/documentation/", "controls/")
+            new_path = path.sub("/documentation/", "")
             meta = YAML.load(File.read('_config.yml'))['navigation'];
             meta = Hash[(meta || {}).map { |key, value| [key.gsub(/\*(.*?)/, new_path), value] }][new_path]
         end
 
         if meta
-          puts(meta)
           @title = meta["title"]
           @position = meta["position"]
           @tags = (meta["tags"] || "").split(",")
@@ -190,7 +188,7 @@ class TreeNode < Liquid::Drop
         false
     end
 
-    def bread_crumb(baseurl, so_far = nil, wrappers_build = false)
+    def bread_crumb(baseurl, so_far = nil)
         if so_far && level > 1
             so_far = " / #{so_far}"
         end
@@ -201,19 +199,10 @@ class TreeNode < Liquid::Drop
             )
         else
             if level > 1
-                if wrappers_build
-                    wrappers_url = url.sub('components', 'wrappers')
-                    @parent.bread_crumb(
-                        baseurl,
-                        "<a href='#{baseurl}#{wrappers_url}'>#{title}</a>#{so_far}",
-                        wrappers_build
-                    )
-                else
-                    @parent.bread_crumb(
-                        baseurl,
-                        "<a href='#{baseurl}#{url}'>#{title}</a>#{so_far}"
-                    )
-                end
+                @parent.bread_crumb(
+                    baseurl,
+                    "<a href='#{baseurl}#{url}'>#{title}</a>#{so_far}"
+                )
             else
                 so_far
             end
@@ -274,19 +263,19 @@ class PageNode < TreeNode
 
         match = /^documentation\/(.*?)\//.match(@page.path)
         @page.data['package'] ||= match[1].capitalize if match and match[1]
-        if @parent.tags.include?('component')
+        # if @parent.tags.include?('component')
             @page.data['component'] ||= @parent.title
-        else
-            @page.data['subsection'] ||= @parent.title
-        end
+        # else
+        #     @page.data['subsection'] ||= @parent.title
+        # end
     end
 
     def inspect
         @page.path
     end
 
-    def bread_crumb(baseurl, wrappers_build)
-        @parent.bread_crumb(baseurl, nil, wrappers_build)
+    def bread_crumb(baseurl)
+        @parent.bread_crumb(baseurl, nil)
     end
 
     def section_menu
@@ -367,14 +356,6 @@ class MenuItem
         "<a #{active(current) ? 'class="active"' : ''} href='#{File.join(base, url)}'>#{title}</a>"
     end
 
-    def wrapper_link(base, current)
-        # Only for the special case when we are showing "wrapper" component, alter the actual url
-        # so that we could reverse proxy it from nginx to the physical address but keep the "wrappers"
-        # part in the url.
-        href = File.join(base, url).sub('components', 'wrappers')
-        "<a #{active(current) ? 'class="active"' : ''} href='#{href}'>#{title}</a>"
-    end
-
     def active(current)
         (@page && @url == current) || (collapsed && current.start_with?(@url))
     end
@@ -408,21 +389,16 @@ module Jekyll
             super
         end
 
-        def render_menu_items(items, baseurl, wrappers_build = false)
+        def render_menu_items(items, baseurl)
             out = "<ul>"
             items.each do |item|
                 expanded = item.has_children
-
                 css_class = item.tags.map { |t| "tag-#{t.strip}" }
                 css_class = css_class.concat(["expanded"]) if expanded
                 out << "<li class='#{css_class.join(' ')}'>"
-                if wrappers_build
-                    out << item.wrapper_link(baseurl, @current)
-                else
-                    out << item.link(baseurl, @current)
-                end
+                out << item.link(baseurl, @current)
                 if expanded
-                    out << render_menu_items(item.children, baseurl, wrappers_build)
+                    out << render_menu_items(item.children, baseurl)
                 end
                 out << "</li>"
             end
@@ -434,7 +410,7 @@ module Jekyll
             @current = context['page']['url']
             site = context['site']
             if context['page']['node']
-                render_menu_items(context['page']['node'].section_menu, site['baseurl'], site['wrappers_build'])
+                render_menu_items(context['page']['node'].section_menu, site['baseurl'])
             else
                 p context['page'], "missing node"
             end
@@ -444,7 +420,7 @@ module Jekyll
     class BreadCrumbTag < Liquid::Tag
         def render(context)
             site = context['site']
-            context['page']['node'].bread_crumb(site['baseurl'], site['wrappers_build'])
+            context['page']['node'].bread_crumb(site['baseurl'])
         end
     end
 end
