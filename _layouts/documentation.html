@@ -23,16 +23,12 @@ layout: default
       <div class="col-md-10 col-md-offset-1">
 
         <p class="breadcrumbs">
-            <a href="{{site.baseurl}}/documentation/">Documentation</a> /
+            <a href="{{site.baseurl}}/">Documentation</a> /
           {% if site.nested_bread_crumbs %}
-            <a href="{{site.baseurl}}/documentation/#{{site.nested_bread_crumbs.toc}}">{{site.nested_bread_crumbs.title}}</a> /
+            <a href="{{site.baseurl}}/#{{site.nested_bread_crumbs.toc}}">{{site.nested_bread_crumbs.title}}</a> /
           {% endif %}
           {% render_bread_crumbs %}
         </p>
-
-        {% if site.wrappers_build %}
-        {% include react/wrappers-alert.html %}
-        {% endif %}
 
         {% if page.api_reference == true and page.position != 1 %}
         <article class="api-reference">
@@ -48,11 +44,7 @@ layout: default
           <div class="col-xs-6 previous">
             {% if page.node.prev != null %}
             {% assign prev_url = page.node.prev.url %}
-            {% if site.wrappers_build %}
-            <a href="{{site.baseurl}}{{prev_url | replace_first: 'components', 'wrappers'}}" class="pt-40 pb-40">
-            {% else %}
             <a href="{{site.baseurl}}{{prev_url}}" class="pt-40 pb-40">
-            {% endif %}
                 {% include icons/arrow-left.svg %}
                 Previous
                 <span>
@@ -67,11 +59,7 @@ layout: default
           <div class="col-xs-6 next">
             {% if page.node.next != null %}
             {% assign next_url = page.node.next.url %}
-            {% if site.wrappers_build %}
-            <a href="{{site.baseurl}}{{next_url | replace_first: 'components', 'wrappers'}}" class="pt-40 pb-40">
-            {% else %}
             <a href="{{site.baseurl}}{{next_url}}" class="pt-40 pb-40">
-            {% endif %}
                 Next
                 {% include icons/arrow-right.svg %}
                 <span>

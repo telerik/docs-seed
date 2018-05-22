@@ -16,7 +16,8 @@ class TreeNode < Liquid::Drop
         if File.exists?(meta_file)
             meta = YAML.load(File.read(meta_file))
         elsif File.exists?('_config.yml')
-            new_path = path.sub("/documentation/", "")
+            new_path = path 
+            new_path = new_path.slice(1..-1) unless new_path.length < 1
             meta = YAML.load(File.read('_config.yml'))['navigation'];
             meta = Hash[(meta || {}).map { |key, value| [key.gsub(/\*(.*?)/, new_path), value] }][new_path]
         end
@@ -67,7 +68,7 @@ class TreeNode < Liquid::Drop
     end
 
     def url
-        non_versioned[0].url
+      non_versioned[0] != nil ? non_versioned[0].url : ''
     end
 
     def page?
@@ -170,18 +171,18 @@ class TreeNode < Liquid::Drop
         if child.version_node? # transclude the versioned contents as your own
             my_menu = child_menu
         else
-            if level == 1
-                items = non_versioned[1..-1]
-            else
-                items = non_versioned
-            end
+            items = non_versioned
             my_menu = items.map do |node|
                 children = node == child ? child_menu : []
-                MenuItem.new(node, children)
+                  MenuItem.new(node, children)
             end
         end
 
-        @parent.section_menu(self, my_menu)
+        if @parent != nil 
+          @parent.section_menu(self, my_menu)
+        else 
+          my_menu
+        end
     end
 
     def root
@@ -211,10 +212,6 @@ class TreeNode < Liquid::Drop
 end
 
 class RootNode < TreeNode
-    def section_menu(child, child_menu)
-        child_menu
-    end
-
     def root
         true
     end
@@ -326,11 +323,11 @@ class MenuItem
     attr_reader :children, :url, :page, :tags
 
     def initialize(node, children)
-        @title = node.title || ""
-        @url = node.url
-        @page = node.page?
-        @children = children
-        @tags = node.tags || []
+      @title = node.title || ""
+      @url = node.url
+      @page = node.page?
+      @children = children
+      @tags = node.tags || []
     end
 
     def prefix
@@ -410,7 +407,7 @@ module Jekyll
             @current = context['page']['url']
             site = context['site']
             if context['page']['node']
-                render_menu_items(context['page']['node'].section_menu, site['baseurl'])
+              render_menu_items(context['page']['node'].section_menu, site['baseurl'])
             else
                 p context['page'], "missing node"
             end
