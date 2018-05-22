@@ -1,10 +1,10 @@
 /* Base Vars */
 
 $accent: #ff6358; /*#ee5247*/
+$accent-solid: #3f5366;
 
 $link-color: #2489d8; /*#2f8eb8*/
 $link-hover-color: #ff6358; /*006a88*/
-
 
 $font-heading: 'Metric', Helvetica, Arial, sans-serif;
 $font-regular: 'Roboto', Helvetica, Arial, sans-serif;
@@ -528,16 +528,27 @@ $hover-text: darken($text-color, 10%);
         }
     }
 
+    .nav-button a {
+      background-color: $accent-solid;
+
+      &:hover,
+      &:active {
+          background-color: darken($accent-solid, 10%);
+      }
+    }
     .primary-cta a {
-        background-color: $accent;
+      background-color: $accent;
+      &:hover,
+      &:active {
+          background-color: darken($accent, 10%);
+      }
+
+    }
+
+    .primary-cta a, .nav-button a {
         color: #fff;
         padding: 2px 20px 2px;
         margin-left: 12px;
-
-        &:hover,
-        &:active {
-            background-color: darken($accent, 10%);
-        }
 
         &::after {
             display: none;
@@ -556,7 +567,7 @@ $hover-text: darken($text-color, 10%);
         right: 0;
     }
 
-    .primary-cta {
+    .primary-cta, .nav-button {
         display: none;
     }
 
@@ -571,7 +582,7 @@ $hover-text: darken($text-color, 10%);
             right: 90px;
         }
 
-        .primary-cta {
+        .primary-cta, .nav-button {
             display: block;
         }
     }
@@ -679,6 +690,7 @@ $hover-text: darken($text-color, 10%);
       &::before,
       &::after {
         left: 15px;
+        background: red;
       }
     }
 
@@ -3195,3 +3207,55 @@ code {
     }
   }
 }
+
+/* START TabStrip styles */
+.k-tabstrip-wrapper {
+	background-color: #ffffff;
+}
+
+.k-tabstrip {
+    border: 1px solid #ebecee;
+}
+
+.k-tabstrip .k-item,
+.k-tabstrip .k-link,
+.k-tabstrip .k-content,
+.k-tabstrip .k-content pre,
+.k-tabstrip .k-loading {
+    border: 0;
+}
+
+.k-tabstrip .k-tabstrip-items {
+    background: #f5f7f8;
+}
+
+.k-tabstrip .k-tabstrip-items .k-state-active .k-link {
+    font-weight: bold;
+    color: #000;
+}
+
+.k-tabstrip .k-content {
+    background: #ffffff;
+	max-height: 40vh;
+}
+
+.k-tabstrip .k-tabstrip-items .k-state-active {
+	background: white;
+}
+
+.k-tabstrip .k-tabstrip-items .k-item {
+	font-weight: bold;
+}
+
+.k-tabstrip .prettyprint {
+    padding: 0;
+}
+
+.prettyprint {
+    border-color: #ebecee;
+}
+
+.prettyprint code {
+    line-height: 1.4;
+}
+/* END TabStrip styles */

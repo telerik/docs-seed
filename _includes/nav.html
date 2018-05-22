@@ -86,7 +86,6 @@
                   <li><a href="{{site.baseurl}}{{item[0]}}">{{item[1]}}</a></li>
                 {% endif %}
               {% endfor %}
-              <li><a href="http://www.telerik.com/purchase/kendo-ui">Pricing</a></li>
               <li class="hidden-xs">
                 <a class="search-icon">
                     {% include icons/search.svg %}
@@ -98,7 +97,7 @@
                   <input name="q" />
                 </form>
               </li>
-              <li class="primary-cta"><a href="{{site.baseurl}}/getting-started/">Get started</a></li>
+              {% include nav-buttons.html %}
             </ul>
           </div>
 

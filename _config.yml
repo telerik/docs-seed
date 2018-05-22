@@ -3173,6 +3173,12 @@ non-sl-folders: ["radwordsprocessing", "radspreadstreamprocessing"]
 # Folders not supporting Xamarin:
 non-xamarin-folders: ["radwordsprocessing", "radspreadprocessing", "radpdfprocessing"]
 
+links:
+  demos: https://demos.telerik.com/wpf/
+  about: http://www.telerik.com/products/wpf/overview.aspx 
+  pricing: http://www.telerik.com/purchase/individual/wpf.aspx
+  download: http://www.telerik.com/products/wpf/download.aspx 
+
 ## Do not edit below this line
 safe: false
 markdown: MarkdownProcessor
