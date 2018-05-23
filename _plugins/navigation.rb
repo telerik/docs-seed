@@ -4,12 +4,13 @@ VERSION_REGEXP = /\bv?(?:0|[1-9][0-9]*)\.(?:0|[1-9][0-9]*)\.(?:X|0|[1-9][0-9]*)(
 
 class TreeNode < Liquid::Drop
     include Comparable
-    attr_reader :position, :children, :parent, :tags
+    attr_reader :position, :children, :parent, :tags, :include_in_navigation
     def initialize(segment = '', parent = nil)
         @children = []
         @segment = segment
         @parent = parent
         @tags = []
+        @include_in_navigation = true
 
         meta_file = File.join('./', path, '_meta.yml')
     
@@ -171,7 +172,7 @@ class TreeNode < Liquid::Drop
         if child.version_node? # transclude the versioned contents as your own
             my_menu = child_menu
         else
-            items = non_versioned
+            items = non_versioned.reject { |n| !n.include_in_navigation}
             my_menu = items.map do |node|
                 children = node == child ? child_menu : []
                   MenuItem.new(node, children)
@@ -277,6 +278,10 @@ class PageNode < TreeNode
 
     def section_menu
         @parent.section_menu(self, [])
+    end
+
+    def include_in_navigation
+      @page.data['include_in_navigation'] != false
     end
 
     def page?
