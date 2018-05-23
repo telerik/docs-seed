@@ -425,16 +425,10 @@ $hover-text: darken($text-color, 10%);
         max-width: 45%;
         margin-top: -3px;
 
-        &.brand-platform-angular {
-          background: transparent url(image_path('logo.svg')) no-repeat 0 50%;
+        &.brand-platform-wpf {
+          background: transparent url(image_path('logo-wpf.svg')) no-repeat 0 50%;
         }
-        &.brand-platform-react {
-          background: transparent url(image_path('logo-react.svg')) no-repeat 0 50%;
-        }
-        &.brand-platform-vue {
-          background: transparent url(image_path('logo-vue.svg')) no-repeat 0 50%;
-        }
-
+        
         &::before {
          // preload scroll logo
          content: " ";
@@ -442,14 +436,8 @@ $hover-text: darken($text-color, 10%);
          top: -100px;
          visibility: hidden;
 
-         &.brand-platform-angular {
-          background-image: url(image_path('logo-scroll.svg'))
-         }
-         &.brand-platform-react {
-          background-image: url(image_path('logo-scroll-react.svg'))
-         }
-         &.brand-platform-vue {
-          background: transparent url(image_path('logo-scroll-vue.svg')) no-repeat 0 50%;
+         &.brand-platform-wpf {
+          background-image: url(image_path('logo-scroll-wpf.svg'))
          }
         }
 
@@ -457,14 +445,8 @@ $hover-text: darken($text-color, 10%);
             margin-top: 0;
             height: 36px;
 
-            &.brand-platform-angular {
-              background: transparent url(image_path('logo-scroll.svg')) no-repeat 0 8px;
-            }
-            &.brand-platform-react {
-              background: transparent url(image_path('logo-scroll-react.svg')) no-repeat 0 8px;
-            }
-            &.brand-platform-vue {
-              background: transparent url(image_path('logo-scroll-vue.svg')) no-repeat 0 50%;
+            &.brand-platform-wpf {
+              background: transparent url(image_path('logo-scroll-wpf.svg')) no-repeat 0 8px;
             }
         }
 
@@ -668,6 +650,13 @@ $hover-text: darken($text-color, 10%);
       padding-left: 30px;
       padding-bottom: 10px;
   }
+  
+  > ul li.folder-item > a {
+    text-transform: uppercase;
+    color: #516172 !important;
+    font-weight: normal;
+    font-family: $font-light;
+  }
 
   &.show-components {
     display: block;
@@ -730,7 +719,7 @@ $hover-text: darken($text-color, 10%);
   }
 
   > ul > li > a {
-    font-weight: bold;
+    font-weight: 500;
     line-height: 1.4em;
   }
 

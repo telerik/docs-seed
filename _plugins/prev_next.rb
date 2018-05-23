@@ -320,7 +320,7 @@ class PageNode < TreeNode
 end
 
 class MenuItem
-    attr_reader :children, :url, :page, :tags
+    attr_reader :children, :url, :page, :tags, :is_folder
 
     def initialize(node, children)
       @title = node.title || ""
@@ -328,6 +328,7 @@ class MenuItem
       @page = node.page?
       @children = children
       @tags = node.tags || []
+      @is_folder = node.children != nil && node.children.length > 0
     end
 
     def prefix
@@ -392,6 +393,7 @@ module Jekyll
                 expanded = item.has_children
                 css_class = item.tags.map { |t| "tag-#{t.strip}" }
                 css_class = css_class.concat(["expanded"]) if expanded
+                css_class = css_class.concat(["folder-item"]) if item.is_folder
                 out << "<li class='#{css_class.join(' ')}'>"
                 out << item.link(baseurl, @current)
                 if expanded

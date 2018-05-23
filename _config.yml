@@ -3173,6 +3173,8 @@ non-sl-folders: ["radwordsprocessing", "radspreadstreamprocessing"]
 # Folders not supporting Xamarin:
 non-xamarin-folders: ["radwordsprocessing", "radspreadprocessing", "radpdfprocessing"]
 
+product: "Telerik UI for WPF"
+platform: wpf
 links:
   demos: https://demos.telerik.com/wpf/
   about: http://www.telerik.com/products/wpf/overview.aspx 
