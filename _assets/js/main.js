@@ -13,6 +13,7 @@
 //= require kendo/kendo.validator.min
 
 //= require top-menu
+//= require related-articles
 //= require toc
 //= require feedback
 //= require sdk-browser

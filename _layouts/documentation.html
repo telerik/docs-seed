@@ -81,7 +81,9 @@ layout: default
   {% if page.toc != false %}
       {% include article-toc.html %}
   {% endif %}
-  </div>
+
+  {% include related-articles.html %}
+</div>
 </div>
 
 {% if page.api_reference != true or page.position != 1 %}

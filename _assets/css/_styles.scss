@@ -1058,6 +1058,37 @@ blockquote {
   }
 }
 
+/* Related Articles */
+.related-articles {
+  right: 0;
+  top: 450px;
+  font-size: 14px;
+  position: fixed;
+
+  ul {
+    margin: 10px 0 10px -15px;
+    list-style: none;
+    padding-left: 15px;
+
+    li > a {
+      display: block;
+      font-weight: 500;
+      margin: 14px 0 5px;
+      border-left: 2px solid transparent;
+      line-height: 1em;
+      padding: 2px 0 2px 0;
+      text-decoration: none;
+      transition: color .1s, border-color .1s;
+
+      &:hover,
+      &:active,
+      &:focus {
+          background-color: transparent;
+          color: $accent;
+      }
+    }
+  }
+}
 
 /* Article TOC */
 
