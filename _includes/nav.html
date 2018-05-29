@@ -74,18 +74,10 @@
             </select>
 
             <ul class="nav navbar-nav main-menu">
-              {% if page.url == "/" %}
-              <li class="active"><a href="{{site.baseurl}}/">Overview</a></li>
-              {% else %}
-              <li><a href="{{site.nav_base_url | default: site.baseurl}}/">Overview</a></li>
-              {% endif %}
-              {% for item in site.data.nav %}
-                {% if page.url contains item[0] %}
-                <li class="active"><a href="{{site.baseurl}}{{item[0]}}">{{item[1]}}</a></li>
-                {% else %}
-                  <li><a href="{{site.baseurl}}{{item[0]}}">{{item[1]}}</a></li>
-                {% endif %}
+              {% for item in site.nav %}
+                <li><a href="{{ item[1] }}">{{ item[0] }}</a></li>
               {% endfor %}
+
               <li class="hidden-xs">
                 <a class="search-icon">
                     {% include icons/search.svg %}
@@ -97,7 +89,9 @@
                   <input name="q" />
                 </form>
               </li>
-              {% include nav-buttons.html %}
+              {% if site.download %}
+                <li class="primary-cta"><a href="{{site.download}}" target="_blank">Try now</a></li>
+              {% endif %}
             </ul>
           </div>
 

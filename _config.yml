@@ -3175,11 +3175,12 @@ non-xamarin-folders: ["radwordsprocessing", "radspreadprocessing", "radpdfproces
 
 product: "Telerik UI for WPF"
 platform: wpf
-links:
-  demos: https://demos.telerik.com/wpf/
-  about: http://www.telerik.com/products/wpf/overview.aspx 
-  pricing: http://www.telerik.com/purchase/individual/wpf.aspx
-  download: http://www.telerik.com/products/wpf/download.aspx 
+download: http://www.telerik.com/products/wpf/download.aspx 
+nav:
+  "Demos": https://demos.telerik.com/wpf/
+  "About": http://www.telerik.com/products/wpf/overview.aspx 
+  "Pricing": http://www.telerik.com/purchase/individual/wpf.aspx
+
 
 ## Do not edit below this line
 safe: false
