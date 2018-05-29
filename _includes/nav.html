@@ -64,18 +64,9 @@
           <div id="navbar" class="nav navbar-collapse">
             <a class="navbar-brand brand-platform-{{site.platform}}" href="{{site.nav_base_url | default: site.baseurl}}/"><span class="sr-only">{{ site.product }}</span></a>
 
-            <select id="nav-dropdown">
-              <option selected>Navigate to...</option>
-              <option value="{{site.nav_base_url | default: site.baseurl}}/">Overview</option>
-              <option value="{{site.baseurl}}/getting-started/">Get started</option>
-              {% for item in site.data.nav %}
-                <option value="{{site.baseurl}}{{item[0]}}">{{item[1]}}</option>
-              {% endfor %}
-            </select>
-
             <ul class="nav navbar-nav main-menu">
               {% for item in site.nav %}
-                <li><a href="{{ item[1] }}">{{ item[0] }}</a></li>
+                <li><a href="{{ item[1] }}" target="_blank">{{ item[0] }}</a></li>
               {% endfor %}
 
               <li class="hidden-xs">
@@ -126,9 +117,6 @@
     }
 
       $(document)
-        .off("change", "#nav-dropdown")
-        .on("change", "#nav-dropdown", navigate)
-
         .off("click", ".search-icon")
         .on("click", ".search-icon", showSearch);
   </script>

@@ -23,7 +23,6 @@ layout: default
 
         <p class="breadcrumbs">
           {% if site.nested_bread_crumbs %}
-            <a href="{{site.baseurl}}/">Documentation</a> /
             <a href="{{site.baseurl}}/#{{site.nested_bread_crumbs.toc}}">{{site.nested_bread_crumbs.title}}</a> /
           {% endif %}
           {% render_bread_crumbs %}
