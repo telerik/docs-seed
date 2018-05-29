@@ -191,7 +191,7 @@ class TreeNode < Liquid::Drop
     end
 
     def bread_crumb(baseurl, so_far = nil)
-        if so_far && level > 1
+        if so_far && level > 0
             so_far = " / #{so_far}"
         end
         if version_node?
@@ -200,7 +200,7 @@ class TreeNode < Liquid::Drop
                 "<a href='#{baseurl}#{@parent.url}#{@segment}/'>#{@parent.title}</a>#{so_far}"
             )
         else
-            if level > 1
+            if level > 0
                 @parent.bread_crumb(
                     baseurl,
                     "<a href='#{baseurl}#{url}'>#{title}</a>#{so_far}"
@@ -253,19 +253,6 @@ class PageNode < TreeNode
         @page = page
         @page.data['node'] = self
         @parent = parent
-        add_package_info
-    end
-
-    def add_package_info
-        @page.data['is_index'] = @page.path =~ /^documentation\/[^\/]+\/index.md/
-
-        match = /^documentation\/(.*?)\//.match(@page.path)
-        @page.data['package'] ||= match[1].capitalize if match and match[1]
-        # if @parent.tags.include?('component')
-            @page.data['component'] ||= @parent.title
-        # else
-        #     @page.data['subsection'] ||= @parent.title
-        # end
     end
 
     def inspect
