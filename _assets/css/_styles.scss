@@ -740,7 +740,7 @@ $hover-text: darken($text-color, 10%);
   }
 
   a.active {
-    color: $accent;
+    color: $accent !important;
     font-family: $font-medium;
   }
 
