@@ -651,11 +651,37 @@ $hover-text: darken($text-color, 10%);
       padding-bottom: 10px;
   }
   
-  > ul li.folder-item > a {
+  > ul > li > a {
     text-transform: uppercase;
-    color: #516172 !important;
+    color: #4B5C6D !important;
     font-weight: normal;
     font-family: $font-light;
+  }
+
+  > ul > li.folder-item {
+    &::before {
+      content: "+";
+      display: block;
+      position: absolute;
+      font-size: 24px;
+      font-weight: 300;
+      color: #979797;
+      padding-top: 6px;
+      padding-left: 8px; 
+    }
+
+    &.expanded {
+      &::before {
+        content: "_";
+        display: block;
+        position: absolute;
+        color: #979797;
+        font-size: 24px;
+        font-weight: 300;
+        padding-top: 4px;
+        padding-left: 8px; 
+      }
+    }
   }
 
   &.show-components {
@@ -2498,7 +2524,7 @@ ul.labels {
     padding-bottom: 40px;
     position: absolute;
     left: 1%;
-    box-shadow: 0 5px 8px #dcdcdc;
+    box-shadow: 0 5px 8px rgba(0,0,0,0.2);
 
     &.affix {
       position: fixed;
