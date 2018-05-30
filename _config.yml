@@ -5,7 +5,7 @@ site_name: WPF
 exclude: [_assetsApi, README.md,Gemfile,Gemfile.lock,
 common-routed-events-support.md,
 common-command-support.md,
-common/upgrade-api-analyzer-sl.md,
+upgrade/upgrade-api-analyzer-sl.md,
 installation-and-deployment/installation-system-requirements.md,
 installation-and-deployment/download-product-files.md,
 installation-and-deployment/installing-telerik-ui-on-your-computer/installation-installing-from-MSI.md,
@@ -945,6 +945,27 @@ navigation:
 ## X1 Controls End
 
 ## Common Start
+    getting-started:
+      title: Getting Started
+      position: 21
+    styles-and-appearance:
+      title: Styles and Appearance
+      position: 23  
+    distribution-and-licensing:
+      title: Distribution and Licensing
+      position: 24   
+    upgrade:
+      title: Upgrade
+      position: 25
+    common:
+      title: Common
+      position: 26         
+    integration:
+      title: Integration
+      position: 27
+    troubleshooting:
+      title: Troubleshooting
+      position: 28
     controls:
         title: Controls
         position: 22
@@ -3178,6 +3199,7 @@ platform: wpf
 download: http://www.telerik.com/products/wpf/download.aspx 
 nav:
   "Demos": https://demos.telerik.com/wpf/
+  "Release History": https://www.telerik.com/support/whats-new/wpf/release-history
   "About": http://www.telerik.com/products/wpf/overview.aspx 
   "Pricing": http://www.telerik.com/purchase/individual/wpf.aspx
 
