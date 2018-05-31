@@ -1096,7 +1096,7 @@ blockquote {
     list-style: none;
     padding-left: 15px;
 
-    li > a {
+    li > p > a {
       display: block;
       font-weight: 500;
       margin: 14px 0 5px;
@@ -1105,6 +1105,8 @@ blockquote {
       padding: 2px 0 2px 0;
       text-decoration: none;
       transition: color .1s, border-color .1s;
+      font-family: "Roboto", Helvetica, Arial, sans-serif;
+      font-size: 15px; 
 
       &:hover,
       &:active,
@@ -1173,7 +1175,7 @@ $border-color: #d9d9d9;
   }
 
   .anchor-h2 {
-      font-weight: 600;
+      font-weight: 500;
       font-size: 15px;
   }
 
