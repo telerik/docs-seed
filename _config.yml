@@ -3159,15 +3159,11 @@ baseurl: "/devtools/wpf"
 ## Assign layout and category per different paths
 defaults:
 -
-    # scope:
-    #     path: ""
-    # values:
-    #     layout: "page"
-    #     category: "default"
     scope:
       path: ""
     values:
       layout: "documentation"
+      category: "default"
 
 # Aliases available in the markdown template. The below will expand {{site.foo}} to Bar in the output
 # "foo": "Bar"

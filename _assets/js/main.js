@@ -11,9 +11,11 @@
 //= require kendo/kendo.window.min
 //= require kendo/kendo.binder.min
 //= require kendo/kendo.validator.min
+//= require kendo/kendo.ui.core.min
 
 //= require top-menu
 //= require related-articles
 //= require toc
 //= require feedback
 //= require sdk-browser
+//= require side-nav

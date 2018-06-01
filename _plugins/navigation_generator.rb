@@ -1,81 +1,85 @@
 module Jekyll
 
-    class NavigationGenerator < Generator
-        def initialize(config)
-            @navigation = Hash[(config['navigation'] || {}).map { |key, value| [/^#{key.gsub('*', '.*?')}$/, value] }]
-        end
+  class NavigationGenerator < Generator
+      def initialize(config)
+          @navigation = Hash[(config['navigation'] || {}).map { |key, value| [/^#{key.gsub('*', '.*?')}$/, value] }]
+      end
 
-        def categories(site)
-            categories = {}
+      def categories(site)
+          categories = {}
 
-            site.pages.each do |page|
-                category = page.data['category']
+          site.pages.each do |page|
+              category = page.data['category']
 
-                next if page.data['publish'] == false
-                next unless category
+              next if page.data['publish'] == false || page.data['include_in_navigation'] == false
+              next unless category
 
-                node = categories[category]
+              node = categories[category]
 
-                unless node
-                    categories[category] = node = []
-                end
+              unless node
+                  categories[category] = node = []
+              end
 
-                url = page.url.sub('/', '')
+              url = page.url.sub('/', '')
 
-                segments = url.split('/')
+              next if url.include? "knowledge-base/"
 
-                segments.each_with_index do |segment, index|
-                    item = node.find { |n| n['path'] == segment }
+              segments = url.split('/')
 
-                    unless item
+              segments.each_with_index do |segment, index|
+                  item = node.find { |n| n['path'] == segment }
 
-                        item = { 'path' => segment }
+                  unless item
 
-                        if index == segments.size - 1
-                            item['position'] = page.data['position'] if page.data['position']
-                            item['text'] = page.data['title']
-                            item['spriteCssClass'] = 'article'
-                        else
-                            path = segments[0..index].join('/')
-                            navigation_entry =  @navigation.find { |key, value| path =~ key }
-                            mapping = navigation_entry ? navigation_entry[1] : {}
-                            item['text'] = mapping['title'] || segment
-                            item['items'] = []
-                            item['position'] = mapping['position'] if mapping.has_key?('position')
-                        end
+                      item = { 'path' => segment }
 
-                        node << item
-                    end
+                      if index == segments.size - 1
+                          item['position'] = page.data['position'] if page.data['position']
+                          item['text'] = page.data['title']
+                          item['spriteCssClass'] = 'article'
+                          item['isNew'] = page.data['isNew'] if page.data['isNew']
+                      else
+                          path = segments[0..index].join('/')
+                          navigation_entry =  @navigation.find { |key, value| path =~ key }
+                          mapping = navigation_entry ? navigation_entry[1] : {}
+                          item['text'] = mapping['title'] || segment
+                          item['items'] = []
+                          item['isNew'] = mapping['isNew'] if mapping.has_key?('isNew')
+                          item['position'] = mapping['position'] if mapping.has_key?('position')
+                      end
 
-                    node = item['items']
+                      node << item
+                  end
 
-                end
-            end
+                  node = item['items']
 
-            categories.each {  |key, value| sort!(value) }
+              end
+          end
 
-            categories
-        end
+          categories.each {  |key, value| sort!(value) }
 
-        def generate(site)
-            categories(site).each do |key, value|
-                filename = "#{key}.json"
+          categories
+      end
 
-                FileUtils.mkdir_p(site.dest) unless File.exist?(site.dest)
+      def generate(site)
+          categories(site).each do |key, value|
+              filename = "#{key}.json"
 
-                File.write(File.join(site.dest, filename), value.to_json)
+              FileUtils.mkdir_p(site.dest) unless File.exist?(site.dest)
 
-                # Keep the file from being cleaned by Jekyll
-                site.keep_files << filename
-            end
-        end
+              File.write(File.join(site.dest, filename), value.to_json)
 
-        def sort!(items)
-            items.each {|item| sort!(item['items']) if item['items'] }
+              # Keep the file from being cleaned by Jekyll
+              site.keep_files << filename
+          end
+      end
 
-            # sorty by position, directory or file and then title (ignoring case)
-            items.sort_by! {|a| [a['position'] || 1000000, a.has_key?('items') ? -1 : 1, a['text'] ?  a['text'].downcase : '']}
-        end
+      def sort!(items)
+          items.each {|item| sort!(item['items']) if item['items'] }
 
-    end
+          # sorty by position, directory or file and then title (ignoring case)
+          items.sort_by! {|a| [a['position'] || 1000000, a.has_key?('items') ? -1 : 1,  a['text'].nil? ? a['path'] : a["text"].downcase]}
+      end
+
+  end
 end
