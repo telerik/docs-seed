@@ -30,10 +30,10 @@ function expandNavigation(url) {
         }
 
         var li = this.element.find("li[data-uid='" + node.uid + "']");
-
         scrollNodeIntoView(li);
-
         this.select(li);
+
+        $('.side-nav > #page-tree > .k-group > .k-item > div > span.k-i-collapse').closest('li').addClass('expanded');
 
         this.unbind("dataBound", expand);
     };
