@@ -35,10 +35,6 @@ function expandNavigation(url) {
 
         this.select(li);
 
-        if (location.pathname.indexOf("/api/") < 0) {
-            li.addClass("current-topic");
-        }
-
         this.unbind("dataBound", expand);
     };
 }
