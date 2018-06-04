@@ -57,32 +57,6 @@ body {
     background-color: $accent;
 }
 
-.brand {
-    background-image: url(image_path('big-brand.png'));
-    background-repeat: repeat-x;
-    background-position: 50% -600px;
-}
-
-.brand-homepage {
-    background-image: none;
-}
-
-.brand-components {
-    background-position: -270px -450px;
-}
-
-.brand-component {
-    background-image: none;
-}
-
-.brand-support {
-    background-position: 50% 0px;
-}
-
-.brand-getting-started {
-    background-position: -270px -450px;
-}
-
 label {
   font-weight: normal;
   margin-bottom: 0;
@@ -1228,53 +1202,79 @@ blockquote {
   }
 }
 
-/* Related Articles */
-.related-articles {
-  right: 0;
-  top: 450px;
-  font-size: 14px;
-  position: fixed;
-
-  ul {
-    margin: 10px 0 10px -15px;
-    list-style: none;
-    padding-left: 15px;
-
-    li > p > a {
-      display: block;
-      font-weight: 500;
-      margin: 14px 0 5px;
-      border-left: 2px solid transparent;
-      line-height: 1em;
-      padding: 2px 0 2px 0;
-      text-decoration: none;
-      transition: color .1s, border-color .1s;
-      font-family: "Roboto", Helvetica, Arial, sans-serif;
-      font-size: 15px; 
-
-      &:hover,
-      &:active,
-      &:focus {
-          background-color: transparent;
-          color: $accent;
-      }
-    }
-  }
-}
-
-/* Article TOC */
+/* Article TOC & Related Articles */
+$border-color: #d9d9d9;
 
 #stick-marker {
   margin-top: 6px;
 }
 
-$border-color: #d9d9d9;
-
-.article-toc {
-  right: 0;
-  font-size: 14px;
+.additional-content-column {
   position: absolute;
+  right: 0;
   border-left: 1px solid $border-color;
+  top: 100px;
+
+  .btn-action {
+    color: $link-color;
+    background-color: transparent;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    margin: 10px 0;
+    border: 1px solid $link-color;
+    border-radius: 0;
+    font-size: 14px;
+    font-weight: 500;
+  
+    &:hover,
+    &:focus,
+    &:active {
+      color: #f1f1f1;
+      background-color: $link-color;
+    }
+  }
+
+  .btn-edit-article {
+    font-size: 14px;
+    position: relative;
+    padding-left: 20px;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: -2px;
+      left: -3px;
+      width: 20px;
+      height: 20px;
+      background: url(image_path('edit.svg')) no-repeat 50% 50%; 
+    }
+  } 
+
+  .additional-info-content {
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  &.affix {
+    margin-top: 70px;
+    position: fixed;
+    top: 0;
+    z-index: 1015;
+  }
+
+  &.empty {
+    display: none !important;
+  }
+}
+.related-articles {
+  > ul > li > a {
+    font-weight: 500;
+  }
+}
+
+.article-toc, .related-articles {
+  font-size: 14px;
+  margin-bottom: 30px;
 
   .side-title {
       padding-top: 10px;
@@ -1283,13 +1283,6 @@ $border-color: #d9d9d9;
   .layout-components &.affix-top {
       position: relative;
       top: 160px;
-  }
-
-  &.affix {
-    margin-top: 70px;
-    position: fixed;
-    top: 0;
-    z-index: 1015;
   }
 
   .no-js &,

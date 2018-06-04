@@ -947,7 +947,7 @@ navigation:
 ## Common Start
     getting-started:
       title: Getting Started
-      position: 21
+      position: 20
     styles-and-appearance:
       title: Styles and Appearance
       position: 23  
@@ -3190,6 +3190,7 @@ non-sl-folders: ["radwordsprocessing", "radspreadstreamprocessing"]
 # Folders not supporting Xamarin:
 non-xamarin-folders: ["radwordsprocessing", "radspreadprocessing", "radpdfprocessing"]
 
+edit_repo_url: https://github.com/telerik/xaml-docs/edit/master
 product: "Telerik UI for WPF"
 platform: wpf
 download: http://www.telerik.com/products/wpf/download.aspx 

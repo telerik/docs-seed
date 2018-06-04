@@ -68,11 +68,21 @@ layout: default
     </div><!-- /row right content -->
   </div>
 
-  {% if page.toc != false %}
-      {% include article-toc.html %}
-  {% endif %}
+  <div class="additional-content-column col-md-2 visible-lg">
+    {% if page.toc != false %}
+    {% include article-toc.html %}
+    {% endif %}
+    
+    {% include related-articles.html %}
 
-  {% include related-articles.html %}
+    <div>
+      <span class="additional-info-content">Not finding the help you need?</span>
+      <div>
+        <a class="btn btn-action" href='https://www.telerik.com/account/support-tickets?pid={{ site.data.support_products[site.product] }}' target="_blank">Contact support</a>
+      </div>
+      <a class="btn-edit-article" href="{{ site.edit_repo_url }}{{ page.url | replace: '.html','' }}.md" target="_blank">Improve this article</a>
+    </div>
+  </div>
 </div>
 </div>
 

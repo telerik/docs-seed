@@ -73,3 +73,22 @@ function preventParentSelection(e) {
         this.toggle(e.node);
     }
 }
+
+$(function(){
+    // .side-nav affix
+    var sideNavigation = $(".side-nav");
+    if (sideNavigation.outerHeight(true) > windowHeight) {
+        sideNavigation.addClass("affix-top");
+    } else {
+        sideNavigation.affix({
+            offset: {
+                top: 0,
+                bottom: function() {
+                    var verticalPadding = sideNavigation.innerHeight() - sideNavigation.height();
+                    var footerHeight = $('#footer').outerHeight(true);
+                    return (this.bottom = footerHeight + verticalPadding + FOOTER_DISTANCE);
+                }
+            }
+        });
+    }
+})

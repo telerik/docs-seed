@@ -7,6 +7,6 @@ $(function () {
         relatedArticlesMarker.remove();
         relatedArticlesList.remove();
     } else {
-        $('.related-articles').empty();
+        $('.related-articles').toggleClass('empty', true);
     }
 });

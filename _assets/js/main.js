@@ -19,3 +19,4 @@
 //= require feedback
 //= require sdk-browser
 //= require side-nav
+//= require additional-content
