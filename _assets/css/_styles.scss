@@ -69,7 +69,6 @@ label {
   user-drag: none;
 }
 
-
 /* Sticky Footer Styles */
 
 #content {
@@ -679,10 +678,9 @@ $nav-icon-color: #979797;
     top: 6px;
     width: 16px;
     height: 16px;
-    background: url(image_path('file.png'));
+    background: url(image_path('article.svg')) no-repeat 50% 50%;
   }
   #page-tree > .k-group > .k-item {
-
     &.expanded {
       &::before,
       &::after {
@@ -765,10 +763,23 @@ $nav-icon-color: #979797;
   }
 
   .k-group .k-group {
+    .k-item {
+      .k-icon {
+        &.k-i-collapse,
+        &.k-i-expand{
+          top: 8px;
+          width: 18px;
+          height: 18px;
+          position: absolute;
+          background: url(image_path("arrow.svg")) no-repeat 50% 50%;
+        }
+      }
+    }
+
     .k-in {
-      padding-left: 18px;
+      padding-left: 38px;
       a {
-        padding-left: 18px;
+        padding-left: 0;
         padding-top: 0;
         padding-bottom: 0;
       }
@@ -779,21 +790,21 @@ $nav-icon-color: #979797;
 
     .k-group {
       .k-in {
-        padding-left: 20px;
+        padding-left: 46px;
         a {
-          padding-left: 20px;
+          padding-left: 0;
           padding-top: 0;
           padding-bottom: 0;
         }
       }
       .k-icon, .article {
-        left: 17px;
+        left: 25px;
       }
     .k-group {
       .k-in {
-        padding-left: 25px;
+        padding-left: 54px;
         a {
-          padding-left: 20px;
+          padding-left: 0;
         }
       }
       .k-icon, .article {
@@ -801,9 +812,9 @@ $nav-icon-color: #979797;
       }
       .k-group {
         .k-in {
-          padding-left: 35px;
+          padding-left: 62px;
           a {
-            padding-left: 8px;
+            padding-left: 0;
           }
         }
         .k-icon, .article {
@@ -811,9 +822,9 @@ $nav-icon-color: #979797;
         }
         .k-group {
           .k-in {
-            padding-left: 45px;
+            padding-left: 70px;
             a {
-              padding-left: 5px;
+              padding-left: 0;
             }
           }
           .k-icon, .article {
