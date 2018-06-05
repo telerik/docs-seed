@@ -85,8 +85,7 @@ $(function(){
                 top: 0,
                 bottom: function() {
                     var verticalPadding = sideNavigation.innerHeight() - sideNavigation.height();
-                    var footerHeight = $('#footer').outerHeight(true);
-                    return (this.bottom = footerHeight + verticalPadding + FOOTER_DISTANCE);
+                    return (this.bottom = $('#footer').outerHeight(true) + verticalPadding + FOOTER_DISTANCE);
                 }
             }
         });
