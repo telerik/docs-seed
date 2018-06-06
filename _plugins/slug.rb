@@ -25,7 +25,7 @@ class SlugTag < Liquid::Tag
         end
 
         if duplicates
-            raise "Duplicate slugs found. Aborting"
+            # raise "Duplicate slugs found. Aborting"
         else
             Jekyll.logger.info "      Done. Found #{@@page_by_slug.length} unique slugs."
         end
@@ -45,11 +45,7 @@ class SlugTag < Liquid::Tag
         end
 
         if page
-            if site.config['wrappers_build']
-                return site.baseurl + page.url.sub('components', 'wrappers').sub('.html', '')
-            else
-                return site.baseurl + page.url.sub('.html', '')
-            end
+            return site.baseurl + page.url.sub('.html', '')
         elsif slug_overrides.has_key? @text
             return site.baseurl + slug_overrides[@text]
         else
