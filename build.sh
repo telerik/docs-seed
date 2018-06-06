@@ -11,6 +11,8 @@ git clone -b $branch $repository $clone_path
 
 cp -r $clone_path/* "./"
 
+#echo "Installing ruby gems.."
+#bundle --without development --path ~/gems
+
 echo "Start building..."
-bundle --without development --path ~/gems
 bundle exec jekyll build --config _config.yml
