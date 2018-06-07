@@ -1,9 +1,10 @@
 #!/bin/bash
 
-config_file = "_config.yml"
+config_file="_config.yml"
 if [ ! -z "$1" ]
   then 
-    config_file = $1
+    echo "Using configuration file: $1"
+    config_file=$1
 fi
 
 echo "Start building..."

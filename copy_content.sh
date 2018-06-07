@@ -1,13 +1,14 @@
 #!/bin/bash
 
-clone_path = ".tmp/"
+dir=".tmp"
 if [ ! -z "$1" ]
   then 
-    clone_path = $1
+    echo "Copying to $1"
+    dir=$1
 fi
 
 echo "Start copying..."
 
-cp -r $clone_path/* "./"
+cp -r $dir/* "./"
 
 echo "Copying finished."
