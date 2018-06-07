@@ -1,7 +1,13 @@
 #!/bin/bash
 
-echo 'Clear documentation folder...'
-rm -rf 'documentation'
+clone_path = ".tmp/"
+if [ ! -z "$1" ]
+  then 
+    clone_path = $1
+fi
 
-echo "Create documentation folder and copy content...";
-cp -r $1 $2
+echo "Start copying..."
+
+cp -r $clone_path/* "./"
+
+echo "Copying finished."
