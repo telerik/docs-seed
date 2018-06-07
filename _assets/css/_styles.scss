@@ -5,6 +5,7 @@ $accent-solid: #3f5366;
 
 $link-color: #2489d8; /*#2f8eb8*/
 $link-hover-color: #ff6358; /*006a88*/
+$navigation-link-color: #696b6e;
 
 $font-heading: 'Metric', Helvetica, Arial, sans-serif;
 $font-regular: 'Roboto', Helvetica, Arial, sans-serif;
@@ -645,7 +646,7 @@ $nav-icon-color: #979797;
     padding-left: 30px;
     padding-top: 8px;
     padding-bottom: 8px;
-    color: #2489d8;
+    color: $navigation-link-color;
     text-decoration: none;
   }
   .k-in:hover {
@@ -678,7 +679,6 @@ $nav-icon-color: #979797;
     top: 6px;
     width: 16px;
     height: 16px;
-    background: url(image_path('article.svg')) no-repeat 50% 50%;
   }
   #page-tree > .k-group > .k-item {
     &.expanded {
@@ -882,6 +882,7 @@ $nav-icon-color: #979797;
     transition: background-color .2s;
     overflow: hidden;
     text-overflow: ellipsis;
+    color: $navigation-link-color;
   }
 
   a.active {
@@ -1312,6 +1313,7 @@ $border-color: #d9d9d9;
       padding: 2px 0 2px 14px;
       text-decoration: none;
       transition: color .1s, border-color .1s;
+      color: $navigation-link-color;
 
       &:hover,
       &:active,
