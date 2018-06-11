@@ -47,18 +47,6 @@
         })(window,document,'script','dataLayer','GTM-6X92');</script>
         <!-- End Google Tag Manager -->
 
-        <script>
-            var platform = '{{ site.platform }}';
-            var npmUrl = '{{ site.baseurl }}/npm/node_modules';
-            var plunkerBluePrintPath = '{{ site.baseurl }}/npm/plunker/';
-            {% if site.environment != 'localhost' %}
-            var runnerScript = '{{ site.baseurl }}/assets/{{ assets["systemjs-config-runner.js"].digest_path }}';
-            {% else %}
-            var runnerScript = '{{ site.baseurl }}/assets/systemjs-config-runner.js';
-            {% endif %}
-            var e = document.documentElement;
-            e.className = e.className.replace(/(^|\s)no-js(\s|$)/i, "$2");
-        </script>
         {% if site.trackjs %}
         <script src="https://cdn.ravenjs.com/3.16.1/raven.min.js" crossorigin="anonymous"></script>
         <script type="text/javascript">
