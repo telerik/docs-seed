@@ -42,7 +42,7 @@ $(function() {
             .find("a")
             .text(this.firstElementChild.textContent.trim())
             .attr("href", "#" + this.id )
-            .addClass("anchor-" + this.tagName.toLowerCase())
+            .addClass("anchor-" + this.tagName.toLowerCase());
     });
 
     $("body").scrollspy({ target: ".article-toc", offset: NAVBAR_HEIGHT });

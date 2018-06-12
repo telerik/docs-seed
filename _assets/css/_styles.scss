@@ -7,7 +7,7 @@ $link-color: #2489d8; /*#2f8eb8*/
 $link-hover-color: #ff6358; /*006a88*/
 $navigation-link-color: #696b6e;
 
-$font-heading: 'Metric', Helvetica, Arial, sans-serif;
+$font-heading: 'Roboto', Helvetica, Arial, sans-serif;
 $font-regular: 'Roboto', Helvetica, Arial, sans-serif;
 $font-light: $font-regular;
 $font-medium: $font-regular;
@@ -626,6 +626,10 @@ $nav-icon-color: #979797;
   padding-top: 25px;
   padding-left: 0;
   padding-right: 0;
+  top: 0;
+  left: 0;
+  overflow: auto;
+  position: fixed;
   display: none;
   background-color: #fff;
   border: 1px solid #ececec;
@@ -657,7 +661,12 @@ $nav-icon-color: #979797;
     a {
       color: $accent;
       &:hover {
-        color: $link-hover-color
+        color: $link-hover-color;
+      }
+      &:active,
+      &:focus {
+          background-color: transparent;
+          color: $accent;
       }
     }
   }
@@ -679,6 +688,7 @@ $nav-icon-color: #979797;
     top: 6px;
     width: 16px;
     height: 16px;
+    background: url(image_path('article.svg')) no-repeat 50% 50%;
   }
   #page-tree > .k-group > .k-item {
     &.expanded {
@@ -771,13 +781,13 @@ $nav-icon-color: #979797;
           width: 18px;
           height: 18px;
           position: absolute;
-          background: url(image_path("arrow.svg")) no-repeat 50% 50%;
         }
       }
     }
 
     .k-in {
       padding-left: 38px;
+      font-weight: 500;
       a {
         padding-left: 0;
         padding-top: 0;
@@ -791,6 +801,7 @@ $nav-icon-color: #979797;
     .k-group {
       .k-in {
         padding-left: 46px;
+        font-weight: 400;
         a {
           padding-left: 0;
           padding-top: 0;
@@ -2627,9 +2638,8 @@ ul.labels {
   .side-nav {
     display: block;
     padding-bottom: 40px;
-    position: absolute;
-    left: 1%;
-    box-shadow: 0 5px 8px rgba(0,0,0,0.2);
+    position: fixed;
+    box-shadow: 6px 2px 8px -6px rgba(0, 0, 0, 0.2);
 
     &.affix {
       position: fixed;
