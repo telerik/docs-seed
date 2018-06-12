@@ -89,7 +89,7 @@ $(function () {
         var feedbackOffsetTop = document.body.scrollHeight - footerHeight;
 
         if (!window.matchMedia('(max-width: 1200px)').matches) {
-            bottom = Math.min(footerHeight, scrollFold - feedbackOffsetTop);
+            bottom = Math.max(0, Math.min(footerHeight, scrollFold - feedbackOffsetTop));
         }
 
         sideNavigation.css('top', top);

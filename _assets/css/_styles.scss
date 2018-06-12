@@ -2,9 +2,11 @@
 
 $accent: #ff6358; /*#ee5247*/
 $accent-solid: #3f5366;
+$text-active-color: #4b4e52;
 
 $link-color: #2489d8; /*#2f8eb8*/
 $link-hover-color: #ff6358; /*006a88*/
+$link-background-color: #f2f8ff;
 $navigation-link-color: #696b6e;
 
 $font-heading: 'Roboto', Helvetica, Arial, sans-serif;
@@ -653,18 +655,18 @@ $nav-icon-color: #979797;
     color: $navigation-link-color;
     text-decoration: none;
   }
-  .k-in:hover {
-    color: $accent;
+  .k-state-hover {
+    background-color: $link-background-color;
   }
   .k-state-selected {
     color: $accent;
     a {
       color: $accent;
+      font-weight: 500;
       &:hover {
-        color: $link-hover-color;
+        background-color: $link-background-color;
       }
-      &:active,
-      &:focus {
+      &:active{
           background-color: transparent;
           color: $accent;
       }
@@ -685,78 +687,45 @@ $nav-icon-color: #979797;
     display: none;
   }
   .article {
-    top: 6px;
+    top: 8px;
     width: 16px;
-    height: 16px;
+    height: 14px;
     background: url(image_path('article.svg')) no-repeat 50% 50%;
   }
   #page-tree > .k-group > .k-item {
-    &.expanded {
-      &::before,
-      &::after {
-          content: "";
-          display: block;
-          position: absolute;
-          border-top: 1px solid #e8e8e8;
-          left: 0;
-          right: 0;
-      }
-    }
-
-    &.expanded > a {
-      padding-top: 15px;
-    }
-
-    &.expanded {
-      background: #fafafa;
-      margin: 10px 0;
-    }
-
     div {
       position: relative;
-    }
-    > div {
       > .k-icon {
-        &.k-i-expand::before {
-          content: "+";
-          display: block;
-          position: absolute;
-          color: $nav-icon-color;
-          font-size: 24px;
-          font-weight: 300;
-          padding-top: 4px;
-          padding-left: 8px; 
-          left: 12px;
-        }
-        &.k-i-collapse::before {
-          content: "_";
-          display: block;
-          position: absolute;
-          color: $nav-icon-color;
-          font-size: 24px;
-          font-weight: 300;
-          padding-top: 0;
-          top: -4px;
-          left: 22px;
+        position: absolute;
+        width: 36px;
+        height: 16px;
+        top: 25%;
+      &.k-i-expand {
+        background: url(image_path('group-expand-collapse.svg')) no-repeat 50% 50%;
+        -ms-transform: rotate(-90deg);
+        -webkit-transform: rotate(-90deg);
+        transform: rotate(-90deg);
+        color: $nav-icon-color;
+      }
+      &.k-i-collapse {
+        background: url(image_path('group-expand-collapse.svg')) no-repeat 50% 50%;
         }
       }
+    }
 
+    > div {
       .k-in, span > a {
         text-transform: uppercase;
         transition: background-color .1s, padding .1s, font-weight .1s;
         font-weight: 500;
-        color: #4b5c6d !important;
-        font-size: 14px;
+        color: $text-active-color !important;
+        font-size: 15px;
         font-family:  $font-light;
         line-height: 1.4em;
       }
       .k-icon {
-        right: 15px;
-        top: 50%;
+        top: 25%;
         left: auto;
-        -ms-transform: translateY(-50%);
-        -webkit-transform: translateY(-50%);
-        transform: translateY(-50%);
       }
       .k-in .article {
         right: 15px;
@@ -766,8 +735,6 @@ $nav-icon-color: #979797;
         -webkit-transform: translateY(-50%);
         transform: translateY(-50%);
         display: none;
-        /*    right: auto;
-          left: 20px;*/
       }
     }
   }
@@ -776,10 +743,11 @@ $nav-icon-color: #979797;
     .k-item {
       .k-icon {
         &.k-i-collapse,
-        &.k-i-expand{
-          top: 8px;
-          width: 18px;
-          height: 18px;
+        &.k-i-expand {
+          top: 11px !important;
+          width: 16px !important;
+          height: 14px !important;
+          opacity: 0.6;
           position: absolute;
         }
       }
@@ -1235,7 +1203,6 @@ $border-color: #d9d9d9;
 .additional-content-column {
   position: absolute;
   right: 0;
-  border-left: 1px solid $border-color;
   top: 100px;
 
   .btn-action {
@@ -1274,8 +1241,10 @@ $border-color: #d9d9d9;
   } 
 
   .additional-info-content {
-    font-size: 14px;
+    padding-top: 10px;
+    font-size: 17px;
     font-weight: 500;
+    color: $text-active-color;
   }
 
   &.affix {
@@ -1300,7 +1269,10 @@ $border-color: #d9d9d9;
   margin-bottom: 30px;
 
   .side-title {
-      padding-top: 10px;
+    padding-top: 10px;
+    font-size: 17px;
+    font-weight: 500;
+    color: $text-active-color;
   }
 
   .layout-components &.affix-top {
@@ -1336,7 +1308,6 @@ $border-color: #d9d9d9;
   }
 
   .anchor-h2 {
-      font-weight: 500;
       font-size: 15px;
   }
 
@@ -1347,8 +1318,9 @@ $border-color: #d9d9d9;
   }
 
   .active a {
-    color: $accent;
+    color: $text-active-color;
     border-color: $accent;
+    font-weight: 500;
   }
 
   a:active {
