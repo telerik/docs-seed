@@ -6,20 +6,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="turbolinks-root" content="{{site.baseurl}}/">
-
-        {% capture generated_title %}
-            {% if page.is_index %}{{ page.component | default: page.package }}{% endif %}
-            {{ page.title }}
-            {% if page.api_reference %}
-            - {{ page.package }} API
-            {% elsif page.is_index %}
-            - Documentation
-            {% elsif page.package %}
-            - {{ page.component | default: page.package }}
-            {{ page.subsection }}
-            {% endif  %}
-            - {{ site.product }}
-        {% endcapture %}
         <title>{{ page.page_title | default: generated_title }}</title>
         <meta name="description" content="{{ page.description }}" />
 
@@ -27,11 +13,6 @@
 
         {% if page.needs_canonical %}
         <link rel="canonical" href="{{ site.url  }}{{ page.canonical_url }}">
-        {% endif %}
-
-        {% if page.brand == "homepage" %}
-        <link rel="stylesheet" href="https://telerik-media.s3.amazonaws.com/kendo/kendo-angular-ui.css" />
-        {% stylesheet "homepage" %}
         {% endif %}
 
         <link rel="stylesheet" href="https://d6vtbcy3ong79.cloudfront.net/telerik-navigation/1.0.28/css/index.min.css" />
@@ -108,10 +89,6 @@
 </div>
 
 {% include footer.html %}
-{% if page.use_runner %}
-{% javascript "systemjs-config-runner" %}
-{% javascript "runner" %}
-{% endif %}
 
 <script src="https://da189i1jfloii.cloudfront.net/js/kinvey-html5-sdk-3.10.1.min.js"></script>
 </body>
