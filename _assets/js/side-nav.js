@@ -23,19 +23,26 @@ function expandNavigation(url) {
         var dataSource = this.dataSource;
         var node;
 
-        for (var idx = 0; idx < segments.length; idx++) {
-            node = dataSource.get(segments[idx]);
+        var isInNavigation = true;
+        for (var i = 0; i < segments.length; i++) {
+            node = dataSource.get(segments[i]);
+            if (!node) {
+                isInNavigation = false;
+                break;
+            }
             node.set("expanded", true);
             dataSource = node.children;
         }
 
-        var li = this.element.find("li[data-uid='" + node.uid + "']");
-        scrollNodeIntoView(li);
-        this.select(li);
+        if (isInNavigation) {
+            var li = this.element.find("li[data-uid='" + node.uid + "']");
+            scrollNodeIntoView(li);
+            this.select(li);
 
-        $('.side-nav > #page-tree > .k-group > .k-item > div > span.k-i-collapse').closest('li').addClass('expanded');
+            $('.side-nav > #page-tree > .k-group > .k-item > div > span.k-i-collapse').closest('li').addClass('expanded');
 
-        this.unbind("dataBound", expand);
+            this.unbind("dataBound", expand);
+        }
     };
 }
 
@@ -82,8 +89,8 @@ $(function () {
         var scrollFold = $window.scrollTop() + windowHeight;
 
         var sideNavigation = $(".side-nav");
-        var top= $('aside.TK-Hat').height();
-         
+        var top = $('aside.TK-Hat').height();
+
         var bottom = 0;
         var footerHeight = $('#footer').outerHeight(true) + $('.feedback-row').outerHeight(true);
         var feedbackOffsetTop = document.body.scrollHeight - footerHeight;
