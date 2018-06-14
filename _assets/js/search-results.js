@@ -1,5 +1,8 @@
 var PAGE_FILTER = " more:pagemap:metatags-restype:";
 var GCSE_ELEMENT_NAME = "google-search";
+var observer = new MutationObserver(observeCallback);
+var searchTerms = "";
+var isObserving = false;
 
 var searchViewModel = kendo.observable({
     kb: false,
@@ -48,9 +51,41 @@ var searchViewModel = kendo.observable({
     }
 });
 
-var searchTerms = "";
+function startObserving() {
+    if (isObserving) {
+        return;
+    }
+    var gcseResults = $("div.gsc-results");
+    if (gcseResults.length) {
+        var target = gcseResults.get(0);
+        var observerConfiguration = { childList: true };
+        observer.observe(target, observerConfiguration);
+    }
 
-function search_loaded() {
+    isObserving = true;
+}
+
+function stopObserving() {
+    if (!isObserving) {
+        return;
+    }
+    
+    observer.disconnect();
+    isObserving = false;
+}
+
+function gcse_callback() {
+    if (document.readyState == 'complete') {
+        checkResults();
+    } else {
+        google.setOnLoadCallback(function () {
+            loadSearch();
+            startObserving();
+        }, true);
+    }
+}
+
+function loadSearch() {
     $("#page-search table.gsc-search-box > tbody > tr")
         .append($("<td id='refine-search-container'><div id='refine-search-button' class='unselectable'><span id='refine-search-label' data-bind='text: label'></span><span class='k-icon k-i-arrow-chevron-down'></span></div></td>"));
 
@@ -76,14 +111,12 @@ function search_loaded() {
     });
 
     attachToEvents();
-    searchInternal();
+    onSearchLoaded();
 }
 
-function searchInternal() { }
-
-function onSearchInternal() { }
-
 function search() {
+    onBeforeSearch();
+
     var element = google.search.cse.element.getElement(GCSE_ELEMENT_NAME);
     if (element) {
         searchTerms = $(".gsc-input-box .gsc-input").val();
@@ -95,12 +128,41 @@ function search() {
         $(".gsc-input-box .gsc-input").val(searchTerms);
     }
 
-    onSearchInternal();
+    onAfterSearch();
+}
+
+function onSearchLoaded() {
+    checkResults();
+    onSearchLoadedInternal();
+}
+
+function onSearchLoadedInternal() { }
+
+function onBeforeSearch() {
+    startObserving();
+    $('#no-results').hide();
+}
+
+function onAfterSearch() {
+    onAfterSearchInternal();
+}
+
+function onAfterSearchInternal() { }
+
+function checkResults() {
+    if ($('div.gs-no-results-result div.gs-snippet').length) {
+        $('#no-results').show();
+    }
 }
 
 function closePopup() {
     var popup = $("#refine-search-popup").data("kendoPopup");
     popup.close();
+}
+
+function searhInternal() {
+    closePopup();
+    search();
 }
 
 function attachToEvents() {
@@ -109,9 +171,7 @@ function attachToEvents() {
     oldInput.replaceWith(newInput);
     newInput.keydown(function (e) {
         if (e.keyCode == 13) { // Enter
-            closePopup();
-            search();
-
+            searhInternal();
             return false;
         }
     });
@@ -120,9 +180,7 @@ function attachToEvents() {
     var newSearchButton = oldSearchButton.clone();
     oldSearchButton.replaceWith(newSearchButton);
     newSearchButton.click(function (e) {
-        closePopup();
-        search();
-
+        searhInternal();
         return false;
     });
 
@@ -148,20 +206,27 @@ function trackItem(category, action, label) {
     });
 }
 
-$(function () {
+function observeCallback(mutations) {
+    mutations.forEach(function (mutation) {
+        if (mutation.type == 'childList') {
+            checkResults();
+            stopObserving();
+        }
+    });
+}
 
+$(function () {
     function toKV(n) {
         n = n.split("=");
         this[n[0]] = n[1];
         return this;
     }
 
-    var params = location.search.replace(/(^\?)/,'').split("&").map(toKV.bind({}))[0];
-
+    var params = location.search.replace(/(^\?)/, '').split("&").map(toKV.bind({}))[0];
     searchTerms = params.q;
     $("[name=q]").val(searchTerms);
-    
+
     window.__gcse = {
-        callback: search_loaded
+        callback: gcse_callback
     };
 });

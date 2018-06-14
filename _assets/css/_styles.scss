@@ -1392,10 +1392,21 @@ $border-color: #d9d9d9;
   height: 175px;
 }
 
-
 /* Search */
 
-/* Search results */
+/* results */
+
+div.gs-spelling {
+  display: none;  
+  &.gs-result {
+    display: none;
+  }  
+}
+
+div.gs-no-results-result div.gs-snippet {
+  display: none;
+}
+
 .gs-result {
   .gs-snippet {
     margin: 0;
@@ -1435,34 +1446,35 @@ article table tr {
 }
 
 /* paging */
+div.gsc-results div.gsc-cursor-box {
+  margin: 10px 0;
 
-.gsc-results .gsc-cursor-box .gsc-cursor-page,
-.gsc-results .gsc-cursor-box .gsc-cursor-current-page {
-    display: block;
+  div.gsc-cursor-page,
+  div.gsc-cursor-current-page {
     min-width: 50px;
     height: 50px;
     line-height: 50px;
     margin-top: 10px;
     margin-bottom: 10px;
-    padding-left: 20px !important;
-    padding-right: 20px !important;
+    padding: 10px 20px;
     vertical-align: middle;
-    color: #a2a2a4 !important;
+    color: #a2a2a4;
     outline: none;
-    border: 1px solid transparent !important;
-    &.gsc-cursor-page {
-      &:hover,
-      &:focus {
-          background-color: #eaebec;
-          color: #36393f;
-        }
-    }
-    &.gsc-cursor-current-page {
-      border-color: #cacacb !important;
-      color: #36393f;
-    }
+    font-family: $font-regular;
+    font-size: 15px;
+    &:hover,
+    &:focus {
+        background-color: #eaebec !important;
+        text-decoration: none !important;
+        color: #36393f !important;
+      }
   }
-
+  div.gsc-cursor-current-page {
+    border-color: #cacacb;
+    cursor: pointer;
+    color: #36393f;
+  }
+}
 
 /* popup */
 
@@ -2610,34 +2622,6 @@ $callout-bg: #d7dfe3;
   a.k-pager-nav:focus {
     background-color: #eaebec;
     color: #36393f;
-  }
-}
-
-/* Search Results */
-
-#results {
-  border-top: 1px solid #e4e4e4;
-
-  > div {
-    padding: 20px 0 0;
-    line-height: 1.3em;
-  }
-
-  h2 {
-    margin-top: 0;
-    margin-bottom: 2px;
-    font-size: 24px;
-    font-weight: 400;
-  }
-
-  p {
-    margin: 0;
-    font-size: 13px;
-    color: #7d8a98;
-
-    a {
-      font-size: 13px;
-    }
   }
 }
 
