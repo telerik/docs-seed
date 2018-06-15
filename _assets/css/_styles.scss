@@ -314,6 +314,7 @@ strong {
 }
 
 .navbar-collapse {
+    width: 100%;
     padding-left: 0;
     padding-right: 0;
 }
@@ -397,6 +398,7 @@ $hover-text: darken($text-color, 10%);
         height: 39px;
         max-width: 45%;
         margin-top: -3px;
+        display: none;
 
         &.brand-platform-wpf {
             background: transparent url(image_path("logo-wpf.svg")) no-repeat 0 50%;
@@ -417,6 +419,7 @@ $hover-text: darken($text-color, 10%);
         .scroll & {
             margin-top: 0;
             height: 36px;
+            display: block;
 
             &.brand-platform-wpf {
                 background: transparent url(image_path("logo-scroll-wpf.svg")) no-repeat 0 8px;
@@ -852,13 +855,10 @@ $nav-icon-color: #979797;
         border-bottom: 1px solid #e4e4e4;
         border-left-width: 0;
         border-right-width: 0;
+        top: 0px !important;
         position: relative; // override affix positioning
 
         .side-title {
-            padding-left: 15px;
-        }
-
-        a {
             padding-left: 15px;
         }
 
@@ -2690,7 +2690,7 @@ $callout-bg: #d7dfe3;
 }
 
 .all-components {
-    display: block;
+    display: inline-block;
     position: relative;
     cursor: pointer;
     font-size: 16px;
@@ -2698,16 +2698,24 @@ $callout-bg: #d7dfe3;
     text-align: left;
     color: #333;
     padding-left: 15px;
-    border-top: 1px solid #e4e4e4;
-    border-bottom: 1px solid #e4e4e4;
+    margin-left: 15px;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.08), 0 3px 15px rgba(0, 0, 0, 0.04), 0 10px 30px rgba(0, 0, 0, 0.04);
     background-color: #fff;
-    background-image: url(image_path("arrowhead-s.svg"));
+    background-image: url(image_path("hamburger.svg"));
     background-repeat: no-repeat;
-    background-position: right 11px top 50%;
+    background-position: left 11px top 50%;
+    &.button {
+      min-width: 50px;
+    }
 
-    &.show-components {
-        border-bottom: 0;
-        background-image: url(image_path("arrowhead-n.svg"));
+    &::after{
+      content: " ";
+      width: 150px;
+      height: 30px;
+      left: 56px;
+      position: absolute;
+      top:8px;
+      background: transparent url(image_path("logo-wpf.svg")) no-repeat 0 50%;      
     }
 
     &:hover,
@@ -2925,7 +2933,7 @@ $callout-bg: #d7dfe3;
     }
 
     .side-nav {
-        display: block;
+        // display: block;
         padding-bottom: 40px;
         position: fixed;
         box-shadow: 6px 2px 8px -6px rgba(0, 0, 0, 0.2);
@@ -2937,12 +2945,9 @@ $callout-bg: #d7dfe3;
         &.show-components {
             border-left-width: 1px;
             border-right-width: 1px;
+            top: 0px !important;
 
             .side-title {
-                padding-left: 30px;
-            }
-
-            a {
                 padding-left: 30px;
             }
 
@@ -2976,10 +2981,6 @@ $callout-bg: #d7dfe3;
         float: right;
         text-align: right;
         margin-top: -21px !important;
-    }
-
-    .all-components {
-        display: none;
     }
 
     .copyright {
@@ -3045,6 +3046,11 @@ $callout-bg: #d7dfe3;
 }
 
 /* ####################################################################################################### */
+@media (max-width: 1024px) {
+  div.content-wrapper {
+    margin-left: 0;
+  }
+}
 
 @media (min-width: 1025px) { /* Styles for width > 1024px */
     body,
@@ -3056,6 +3062,14 @@ $callout-bg: #d7dfe3;
         font-size: 15px;
     }
 
+    .all-components {
+      display: none;
+    }
+
+    .side-nav {
+      display: block;
+    }
+
     #navbar {
         a {
             font-size: 15px;
@@ -3063,7 +3077,7 @@ $callout-bg: #d7dfe3;
         }
 
         .navbar-brand {
-            width: 220px;
+            display: block;
 
             .scroll & {
                 width: 230px;
@@ -3137,6 +3151,12 @@ $callout-bg: #d7dfe3;
             vertical-align: bottom;
         }
     }
+
+    #navbar {
+      .navbar-brand {
+        width: 220px;
+      }
+    }
 }
 
 /* ####################################################################################################### */
@@ -3208,6 +3228,10 @@ $callout-bg: #d7dfe3;
 
     .global-search {
         right: 90px;
+    }
+
+    .col-xl-offset-0 {
+      margin-left: 0;
     }
 
     .col-xl-offset-1 {
