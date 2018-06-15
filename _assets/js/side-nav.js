@@ -102,6 +102,7 @@ function setSideNavPosition() {
 }
 
 $(function () {
-    $(window).scroll(setSideNavPosition);
+    $(window).scroll(setSideNavPosition)
+             .resize(setSideNavPosition);
     setSideNavPosition();
 });

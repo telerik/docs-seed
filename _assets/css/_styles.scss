@@ -1266,6 +1266,10 @@ $border-color: #d9d9d9;
         }
     }
 
+    .support-info-area {
+      margin-bottom: 50px;
+    }
+
     .additional-info-content {
         padding-top: 10px;
         font-size: 17px;
@@ -1274,7 +1278,7 @@ $border-color: #d9d9d9;
     }
 
     &.affix {
-        margin-top: 70px;
+        margin-top: 90px;
         position: fixed;
         top: 0;
         z-index: 1015;
