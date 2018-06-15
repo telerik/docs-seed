@@ -81,28 +81,27 @@ function preventParentSelection(e) {
     }
 }
 
-$(function () {
+function setSideNavPosition() {
     var $window = $(window);
     var windowHeight = $window.height();
+    var scrollFold = $window.scrollTop() + windowHeight;
 
-    function setSideNavPosition() {
-        var scrollFold = $window.scrollTop() + windowHeight;
+    var sideNavigation = $(".side-nav");
+    var top = $('aside.TK-Hat').height();
 
-        var sideNavigation = $(".side-nav");
-        var top = $('aside.TK-Hat').height();
+    var bottom = 0;
+    var footerHeight = $('#footer').outerHeight(true) + $('.feedback-row').outerHeight(true);
+    var feedbackOffsetTop = document.body.scrollHeight - footerHeight;
 
-        var bottom = 0;
-        var footerHeight = $('#footer').outerHeight(true) + $('.feedback-row').outerHeight(true);
-        var feedbackOffsetTop = document.body.scrollHeight - footerHeight;
-
-        if (!window.matchMedia('(max-width: 1200px)').matches) {
-            bottom = Math.max(0, Math.min(footerHeight, scrollFold - feedbackOffsetTop));
-        }
-
-        sideNavigation.css('top', top);
-        sideNavigation.css('bottom', bottom);
+    if (!window.matchMedia('(max-width: 1200px)').matches) {
+        bottom = Math.max(0, Math.min(footerHeight, scrollFold - feedbackOffsetTop));
     }
 
-    $window.scroll(setSideNavPosition);
+    sideNavigation.css('top', top);
+    sideNavigation.css('bottom', bottom);
+}
+
+$(function () {
+    $(window).scroll(setSideNavPosition);
     setSideNavPosition();
 });

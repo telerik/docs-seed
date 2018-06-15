@@ -76,7 +76,7 @@ function stopObserving() {
 
 function gcse_callback() {
     if (document.readyState == 'complete') {
-        checkResults();
+        updateLayout();
     } else {
         google.setOnLoadCallback(function () {
             loadSearch();
@@ -132,7 +132,7 @@ function search() {
 }
 
 function onSearchLoaded() {
-    checkResults();
+    updateLayout();
     onSearchLoadedInternal();
 }
 
@@ -149,10 +149,15 @@ function onAfterSearch() {
 
 function onAfterSearchInternal() { }
 
-function checkResults() {
+function arrangeResults() {
     if ($('div.gs-no-results-result div.gs-snippet').length) {
         $('#no-results').show();
     }
+}
+
+function updateLayout() {
+    arrangeResults();
+    setSideNavPosition();
 }
 
 function closePopup() {
@@ -209,7 +214,7 @@ function trackItem(category, action, label) {
 function observeCallback(mutations) {
     mutations.forEach(function (mutation) {
         if (mutation.type == 'childList') {
-            checkResults();
+            updateLayout();
             stopObserving();
         }
     });
