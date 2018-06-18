@@ -86,23 +86,25 @@ function setSideNavPosition() {
     var windowHeight = $window.height();
     var scrollFold = $window.scrollTop() + windowHeight;
 
-    var sideNavigation = $(".side-nav");
-    var top = $('aside.TK-Hat').height();
-
-    var bottom = 0;
+    var top = Math.min($('.navbar').height(), $('aside.TK-Hat').height());
     var footerHeight = $('#footer').outerHeight(true) + $('.feedback-row').outerHeight(true);
     var feedbackOffsetTop = document.body.scrollHeight - footerHeight;
+    var bottom = Math.max(0, Math.min(footerHeight, scrollFold - feedbackOffsetTop));
 
-    if (!window.matchMedia('(max-width: 1200px)').matches) {
-        bottom = Math.max(0, Math.min(footerHeight, scrollFold - feedbackOffsetTop));
+    if (window.screen.availWidth < 768) {
+        bottom = 0;
+        if (!$('body.scroll').length) {
+            top = HEADER_HEIGHT;
+        }
     }
 
+    var sideNavigation = $(".side-nav");
     sideNavigation.css('top', top);
     sideNavigation.css('bottom', bottom);
 }
 
 $(function () {
     $(window).scroll(setSideNavPosition)
-             .resize(setSideNavPosition);
+        .resize(setSideNavPosition);
     setSideNavPosition();
 });

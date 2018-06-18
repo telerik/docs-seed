@@ -60,9 +60,17 @@
       <div class="row">
       <div class="col-xl-8 col-xl-offset-2">
         <div class="row">
-        <div class="col-md-8 col-md-offset-4 col-lg-8 col-lg-offset-2 col-xl-10 col-xl-offset-1">
+        <div class="col-md-12 col-lg-8 col-lg-offset-2 col-xl-10 col-xl-offset-1">
           <div id="navbar" class="col-md-10 col-lg-offset-1 col-xl-offset-0 nav navbar-collapse">
+            <a class="button all-components" ><span class="item-expanded"></span></a>
             <a class="navbar-brand brand-platform-{{site.platform}}" href="{{site.nav_base_url | default: site.baseurl}}/"><span class="sr-only">{{ site.product }}</span></a>
+            
+            <select id="nav-dropdown">
+                <option selected>Navigate to...</option>
+                {% for item in site.nav %}
+                  <option value="{{item[1]}}">{{item[0]}}</option>
+                {% endfor %}
+              </select>
 
             <ul class="nav navbar-nav main-menu">
               {% for item in site.nav %}
@@ -115,8 +123,11 @@
     function navigate(e) {
         window.location.href = e.target.value;
     }
-
+    
       $(document)
+        .off("change", "#nav-dropdown")
+        .on("change", "#nav-dropdown", navigate)
+        
         .off("click", ".search-icon")
         .on("click", ".search-icon", showSearch);
   </script>

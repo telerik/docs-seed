@@ -326,10 +326,6 @@ strong {
     width: 100%;
     z-index: 1050;
     transition: transform .1s;
-
-    .scroll & {
-        transform: translateY(-100%);
-    }
 }
 
 .TK-Hat-Brand {
@@ -353,11 +349,7 @@ $hover-text: darken($text-color, 10%);
     padding-top: 50px;
 
     .scroll & {
-        padding-top: 0;
-
-        /*a {
-            line-height: 46px;
-        }*/
+      padding-top: 0;
     }
 
     a {
@@ -396,9 +388,9 @@ $hover-text: darken($text-color, 10%);
         padding: 0;
         width: 220px;
         height: 39px;
-        max-width: 45%;
+        max-width: 20%;
         margin-top: -3px;
-        display: none;
+        display: block;
 
         &.brand-platform-wpf {
             background: transparent url(image_path("logo-wpf.svg")) no-repeat 0 50%;
@@ -420,6 +412,7 @@ $hover-text: darken($text-color, 10%);
             margin-top: 0;
             height: 36px;
             display: block;
+            max-width: 40%;
 
             &.brand-platform-wpf {
                 background: transparent url(image_path("logo-scroll-wpf.svg")) no-repeat 0 8px;
@@ -444,12 +437,14 @@ $hover-text: darken($text-color, 10%);
         max-width: 45%;
         padding: 3px 10px 4px;
         border: 1px solid #f1f1f1;
+        background: #ffffff;
         box-shadow: 0 1px 1px 0 transparent;
         font-family: inherit;
         font-size: inherit;
+        outline: none;
 
         .scroll & {
-            top: 4px;
+            top: 5px;
         }
     }
 
@@ -855,8 +850,8 @@ $nav-icon-color: #979797;
         border-bottom: 1px solid #e4e4e4;
         border-left-width: 0;
         border-right-width: 0;
-        top: 0px !important;
-        position: relative; // override affix positioning
+        z-index: 1100;
+        width: 100%;
 
         .side-title {
             padding-left: 15px;
@@ -1267,7 +1262,7 @@ $border-color: #d9d9d9;
     }
 
     .support-info-area {
-      margin-bottom: 50px;
+        margin-bottom: 50px;
     }
 
     .additional-info-content {
@@ -2689,8 +2684,8 @@ $callout-bg: #d7dfe3;
     }
 }
 
-.all-components {
-    display: inline-block;
+a.all-components {
+    float: left;
     position: relative;
     cursor: pointer;
     font-size: 16px;
@@ -2699,29 +2694,33 @@ $callout-bg: #d7dfe3;
     color: #333;
     padding-left: 15px;
     margin-left: 15px;
+    margin-right: 10px;
     box-shadow: 0 1px 6px rgba(0, 0, 0, 0.08), 0 3px 15px rgba(0, 0, 0, 0.04), 0 10px 30px rgba(0, 0, 0, 0.04);
     background-color: #fff;
     background-image: url(image_path("hamburger.svg"));
     background-repeat: no-repeat;
     background-position: left 11px top 50%;
+
     &.button {
-      min-width: 50px;
+        min-width: 42px;
+        height: 35px;
     }
 
-    &::after{
-      content: " ";
-      width: 150px;
-      height: 30px;
-      left: 56px;
-      position: absolute;
-      top:8px;
-      background: transparent url(image_path("logo-wpf.svg")) no-repeat 0 50%;      
-    }
-
+    &:active,
     &:hover,
     &:focus {
         background-color: #eaebec;
         color: #333;
+    }
+
+    &::after {
+      content: " ";
+      background-color: transparent !important;
+    }
+
+    .scroll & {
+        box-shadow: none;
+        margin-right: 0;        
     }
 }
 
@@ -2898,6 +2897,14 @@ $callout-bg: #d7dfe3;
 /* ####################################################################################################### */
 
 @media (min-width: 768px) { /* Styles for width >= 768px */
+
+    // Hat menu
+    .TK-Hat {
+        .scroll & {
+            transform: translateY(-100%);
+        }
+    }
+
     #navbar {
         select {
             display: none;
@@ -2915,12 +2922,7 @@ $callout-bg: #d7dfe3;
         }
 
         .navbar-brand {
-            margin-top: 0;
-            width: 200px;
-
-            .scroll & {
-                background-position: 0 10px;
-            }
+          display: none;
         }
     }
 
@@ -2932,8 +2934,12 @@ $callout-bg: #d7dfe3;
         padding: 0 15px;
     }
 
+    .all-components {
+        display: none;
+    }
+
     .side-nav {
-        // display: block;
+        display: block;
         padding-bottom: 40px;
         position: fixed;
         box-shadow: 6px 2px 8px -6px rgba(0, 0, 0, 0.2);
@@ -3046,11 +3052,6 @@ $callout-bg: #d7dfe3;
 }
 
 /* ####################################################################################################### */
-@media (max-width: 1024px) {
-  div.content-wrapper {
-    margin-left: 0;
-  }
-}
 
 @media (min-width: 1025px) { /* Styles for width > 1024px */
     body,
@@ -3062,26 +3063,25 @@ $callout-bg: #d7dfe3;
         font-size: 15px;
     }
 
-    .all-components {
-      display: none;
-    }
-
-    .side-nav {
-      display: block;
-    }
-
     #navbar {
         a {
-            font-size: 15px;
+            font-size: 13px;
             padding: 1px 10px 0;
         }
 
         .navbar-brand {
+            margin-left: 31%;
+            width: 160px;
             display: block;
 
             .scroll & {
                 width: 230px;
                 background-position: 0 8px;
+                margin-left: 0;
+
+                a {
+                    font-size: 15px;
+                }
             }
         }
     }
@@ -3153,9 +3153,14 @@ $callout-bg: #d7dfe3;
     }
 
     #navbar {
-      .navbar-brand {
-        width: 220px;
-      }
+        .navbar-brand {
+            width: 220px;
+            margin-left: -15px;
+        }
+
+        a {
+            font-size: 15px;
+        }
     }
 }
 
@@ -3231,7 +3236,7 @@ $callout-bg: #d7dfe3;
     }
 
     .col-xl-offset-0 {
-      margin-left: 0;
+        margin-left: 0;
     }
 
     .col-xl-offset-1 {
