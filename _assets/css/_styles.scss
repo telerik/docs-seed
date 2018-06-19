@@ -433,7 +433,6 @@ $hover-text: darken($text-color, 10%);
         top: 54px;
         transition: top .1s;
         right: 15px;
-        width: 200px;
         max-width: 45%;
         padding: 3px 10px 4px;
         border: 1px solid #f1f1f1;
@@ -445,6 +444,7 @@ $hover-text: darken($text-color, 10%);
 
         .scroll & {
             top: 5px;
+            max-width: 30%;
         }
     }
 
@@ -3152,10 +3152,17 @@ a.all-components {
         }
     }
 
+    .nav-container {
+      .scroll & {
+        width: 100%;
+        margin-left: 0;
+      }
+    }
+
     #navbar {
         .navbar-brand {
             width: 220px;
-            margin-left: -15px;
+            margin-left: 8.33%;
         }
 
         a {
@@ -3229,6 +3236,27 @@ a.all-components {
 
     .navbar > .container-fluid .navbar-brand {
         margin-left: -7px;
+    }
+
+    .nav-container {
+      width: 83.33333333%;
+      margin-left: 8.33333333%;
+
+      .scroll & {
+        width: 83.33333333%;
+        margin-left: 8.33333333%;
+      }
+    }
+
+    #navbar {
+      .navbar-brand {
+          width: 220px;
+          margin-left: 0;
+
+          .scroll & {
+            margin-left: 0;
+          }
+      }
     }
 
     .global-search {
