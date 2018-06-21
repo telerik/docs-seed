@@ -1,11 +1,18 @@
 # docs-seed repo
 Contains the documentation site implementation.
 
-## Prerequisites
+- [Build :collision:](#build)
+- [Local Setup :computer:](#local-setup)
+
+
+## Build
+The current section describes what in the current documentation build process should be changed. 
+
+### Prerequisites 
 - ruby >= 2.3.3
 - bundler installed ('gem install bundler')
 
-## Build Instructions
+### Build Instructions
 It is **mandatory** to add a step in the documentation build. You should execute the following bash/shell script:
 
 ```console
@@ -24,3 +31,25 @@ sh $clone_path/install.sh || exit 1
 sh $clone_path/build.sh '_config.yml' || exit 1
 echo 'Complete.'
 ```
+
+## Local Setup
+This section describes the best practices about what and how should be done in order to run the documentation locally.
+
+### Prerequisites
+- Install Docker (Community Edititon(CE) is enough) - please use the [official Docker installation](https://docs.docker.com/install/) guide.
+
+### Instructions
+- Clone the current repo 
+```bash
+git clone git@github.com:telerik/docs-seed.git
+```
+
+- Then clone the repo which shall populate the site's content (e.g. the XAML documentation) in the root folder (basically, this is is the folder in which you've cloned the **docs-seed** repo.
+- Open a terminal of your choice (e.g. gitBash) and execute the following bash command in the root folder again (where the **Dockerfile** is located)
+```bash
+sh start-docs.sh
+```
+
+- This is it! You can find the documentation site on the following address: *http://0.0.0.0:4400/*. If you can't open the previous URL, replace the '0.0.0.0' with 'localhost' - *http://localhost:4400*.
+
+
