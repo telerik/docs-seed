@@ -50,6 +50,7 @@ git clone git@github.com:telerik/docs-seed.git
 sh start-docs.sh
 ```
 
-- This is it! You can find the documentation site on the following address: *http://0.0.0.0:4400/*. If you can't open the previous URL, replace the '0.0.0.0' with 'localhost' - *http://localhost:4400*.
+- This is it! You can find the documentation site on server address which is written in the terminal: *http://0.0.0.0:4000/*. If you can't open the previous URL, replace the '0.0.0.0' with 'localhost' - *http://localhost:4000*. 
+> For example, for WPF documentation this would be: http://0.0.0.0:4000/devtools/wpf/
 
 
