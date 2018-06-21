@@ -13,4 +13,4 @@ COPY . ${APP_ROOT}
 
 EXPOSE 4000
 
-CMD bundle exec jekyll serve --host 0.0.0.0 --watch
+CMD bundle exec jekyll serve --watch --incremental --force_polling --host 0.0.0.0 
