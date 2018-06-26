@@ -53,4 +53,12 @@ sh start-docs.sh
 - This is it! You can find the documentation site on server address which is written in the terminal: *http://0.0.0.0:4000/*. If you can't open the previous URL, replace the '0.0.0.0' with 'localhost' - *http://localhost:4000*. 
 > For example, for WPF documentation this would be: http://0.0.0.0:4000/devtools/wpf/
 
+> If you want to stop the web site and the container in which it has been served, navigate to the terminal in which you've executed the previous command and press 'CTRL+C'.
 
+#### LiveSync
+To be able to monitor the changes you are making on the built documentation, execute the following command in a new terminal in the root directory of the site:
+```bash
+sh watch.sh
+```
+
+> **Prerequisite**: If you haven't yet, please install [Node.js](https://nodejs.org/en/).
