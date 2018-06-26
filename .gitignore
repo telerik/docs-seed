@@ -1,6 +1,7 @@
 .jekyll-metadata
 .asset-cache
 
+node_modules/
 _site
 _src/*
 _data/components/*.yml
