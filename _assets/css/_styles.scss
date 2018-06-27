@@ -349,7 +349,7 @@ $hover-text: darken($text-color, 10%);
     padding-top: 50px;
 
     .scroll & {
-      padding-top: 0;
+        padding-top: 0;
     }
 
     a {
@@ -2714,13 +2714,13 @@ a.all-components {
     }
 
     &::after {
-      content: " ";
-      background-color: transparent !important;
+        content: " ";
+        background-color: transparent !important;
     }
 
     .scroll & {
         box-shadow: none;
-        margin-right: 0;        
+        margin-right: 0;
     }
 }
 
@@ -2922,7 +2922,7 @@ a.all-components {
         }
 
         .navbar-brand {
-          display: none;
+            display: none;
         }
     }
 
@@ -3153,10 +3153,10 @@ a.all-components {
     }
 
     .nav-container {
-      .scroll & {
-        width: 100%;
-        margin-left: 0;
-      }
+        .scroll & {
+            width: 100%;
+            margin-left: 0;
+        }
     }
 
     #navbar {
@@ -3239,24 +3239,24 @@ a.all-components {
     }
 
     .nav-container {
-      width: 83.33333333%;
-      margin-left: 8.33333333%;
-
-      .scroll & {
         width: 83.33333333%;
         margin-left: 8.33333333%;
-      }
+
+        .scroll & {
+            width: 83.33333333%;
+            margin-left: 8.33333333%;
+        }
     }
 
     #navbar {
-      .navbar-brand {
-          width: 220px;
-          margin-left: 0;
-
-          .scroll & {
+        .navbar-brand {
+            width: 220px;
             margin-left: 0;
-          }
-      }
+
+            .scroll & {
+                margin-left: 0;
+            }
+        }
     }
 
     .global-search {
@@ -4260,35 +4260,43 @@ code {
 /* START Introduction page all controls table styles */
 article table#allcontrols-table {
     border: none;
-}
+    word-break: break-word;
+    font-size: 15px;
 
-article table#allcontrols-table td {
-    background: none;
-    border: none;
-}
+    tr {
+        vertical-align: top;
 
-article table#allcontrols-table ul {
-    list-style-type: none;
-    padding-left: 0px;
-}
+        td:first-child {
+          padding-left: 0;
+        }
+    }
 
-#allcontrols-table {
-    ul li {
-        padding: 5px 5px;
+    td {
+        background: none;
+        border: none;
+    }
+
+    ul {
+        list-style-type: none;
+        padding-left: 0px;
+        
+        li {
+          padding: 5px 5px;
+      }
     }
 
     .control-category {
-        color: $accent;
-        text-transform: uppercase;
-        font-weight: bold;
-        margin-top: 15px;
-        margin-bottom: 5px;
-        padding: 3px 5px;
-    }
+      color: $accent;
+      text-transform: uppercase;
+      font-weight: bold;
+      margin-top: 15px;
+      margin-bottom: 5px;
+      padding: 3px 5px;
+  }
 
-    ul:not(.docs-tabstrip) li:before {
-        background-color: transparent !important;
-    }
+  ul:not(.docs-tabstrip) li:before {
+      background-color: transparent !important;
+  }
 }
 
 /* END Introduction page all controls table styles */
