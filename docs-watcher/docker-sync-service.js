@@ -22,12 +22,12 @@ module.exports = class DockerSyncService {
     }
 
     onChanged(file) {
-        let cmd = `docker cp ${file} ${config.dockerName}:${config.dockerRoot}/${this.toPosixPath(file)}`;
+        let cmd = `docker cp "${file}" "${config.dockerName}:${config.dockerRoot}/${this.toPosixPath(file)}"`;
         this.execute(cmd);
     }
 
     onRemoved(file) {
-        let cmd = `docker exec ${config.dockerName} rm -rf ${file}`;
+        let cmd = `docker exec ${config.dockerName} rm -rf "${file}"`;
         this.execute(cmd);
     }
 
@@ -51,5 +51,4 @@ module.exports = class DockerSyncService {
     toPosixPath(f) {
         return f.replace(new RegExp('\\' + path.sep, 'g'), '/');
     }
-
 };
