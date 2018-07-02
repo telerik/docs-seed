@@ -1,10 +1,4 @@
 window.initFeedbackForm = function (options) {
-    var sheetIds = {
-      angular: "1nh7t7gAThgrMcBUN7WYPfMmk72NFYjb-A90n4J7AazE",
-      react: "d50298ea-45d1-492c-b08f-50daef313311",
-      vue: "95a5cfba-ca2a-4db5-8392-3e70b2445986"
-    };
-
     var generateUUID = function () {
       return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
         var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
