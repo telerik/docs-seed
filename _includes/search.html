@@ -23,9 +23,11 @@
       <li>
         <label class="custom-checkbox unselectable"><input type="checkbox" {% if page.res_type != 'kb' and page.res_type != 'api' %} disabled="true" {% endif %} data-bind="checked: docs" /><span class="k-icon k-i-check"></span>Search in Documentation</label>
       </li>
+      {% if site.google_custom_kb_search %}
       <li>
         <label class="custom-checkbox unselectable"><input type="checkbox" {% if page.res_type == 'kb' %} disabled="true" {% endif %} data-bind="checked: kb" /><span class="k-icon k-i-check"></span>Search in Knowledge Base</label>
       </li>
+      {% endif %}
       <li>
         <label class="custom-checkbox unselectable"><input type="checkbox" {% if page.res_type == 'api' %} disabled="true" {% endif %} data-bind="checked: api" /><span class="k-icon k-i-check"></span>Search in API Reference</label>
       </li>
