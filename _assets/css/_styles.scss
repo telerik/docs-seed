@@ -92,6 +92,9 @@ label {
     background-color: $footer-bg;
     font-size: 11px;
     line-height: 1.3em;
+    bottom: 0;
+    left: 0;
+    right: 0;
 
     h1, h2, h3, h4, h5, h6 {
         color: #898c92;
@@ -1922,7 +1925,7 @@ div.gsc-results div.gsc-cursor-box {
     font-weight: 500;
 
     h4 {
-        color: #ffffff;
+        color: #ffffff !important;
         margin-top: 0;
         margin-bottom: 0;
         font-size: 21px;
