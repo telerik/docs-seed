@@ -1,6 +1,5 @@
 //= require clipboard.min
 //= require module-directives
-// from telerik/kendo-common-tasks
 //= require codemirror/codemirror.min
 //= require codemirror/clike.min
 //= require codemirror/css.min

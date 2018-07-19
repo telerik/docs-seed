@@ -18,6 +18,10 @@ $font-code: Consolas, Menlo, "Ubuntu Mono", monospace;
 $footer-bg: #1b1e24;
 $env-develop-bg: $accent;
 
+$tip-bg: #e4f1df;
+$important-bg: #f9edc6;
+$caution-bg: #f7e1df;
+
 html,
 body {
     min-height: 100%;
@@ -1175,9 +1179,13 @@ ul.mdash {
 blockquote {
     border: 0;
     margin: 20px 0;
-    padding: 20px 30px;
-    background-color: rgba(36, 137, 216, 0.8);
+    padding: 16px 32px 16px 80px;
+    background-color: #6699ff;
     color: #fff;
+    background-repeat: no-repeat;
+    background-size: 48px;
+    background-position: center;
+    background-position-x: 16px;
 
     &:not(.alert-note) a,
     &:not(.alert-note) a:link {
@@ -1218,6 +1226,24 @@ blockquote {
         margin-bottom: 2em;
         background-color: #eaebec;
         color: #4f5d6c;
+    }
+
+    &.important {
+        background-color: $important-bg;
+        background-image: url(image_path("important-icon.svg"));
+        color: #000000;
+    }
+
+    &.caution {
+        color: #000000;
+        background-color: $caution-bg;
+        background-image: url(image_path("caution-icon.svg"));
+    }
+
+    &.tip {
+        color: #000000;
+        background-color: $tip-bg;
+        background-image: url(image_path("tip-icon.svg"));
     }
 }
 
@@ -4274,7 +4300,7 @@ article table#allcontrols-table {
         vertical-align: top;
 
         td:first-child {
-          padding-left: 0;
+            padding-left: 0;
         }
     }
 
@@ -4286,24 +4312,24 @@ article table#allcontrols-table {
     ul {
         list-style-type: none;
         padding-left: 0px;
-        
+
         li {
-          padding: 5px 5px;
-      }
+            padding: 5px 5px;
+        }
     }
 
     .control-category {
-      color: $accent;
-      text-transform: uppercase;
-      font-weight: bold;
-      margin-top: 15px;
-      margin-bottom: 5px;
-      padding: 3px 5px;
-  }
+        color: $accent;
+        text-transform: uppercase;
+        font-weight: bold;
+        margin-top: 15px;
+        margin-bottom: 5px;
+        padding: 3px 5px;
+    }
 
-  ul:not(.docs-tabstrip) li:before {
-      background-color: transparent !important;
-  }
+    ul:not(.docs-tabstrip) li:before {
+        background-color: transparent !important;
+    }
 }
 
 /* END Introduction page all controls table styles */
