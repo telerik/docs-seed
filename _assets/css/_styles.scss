@@ -1179,13 +1179,15 @@ ul.mdash {
 blockquote {
     border: 0;
     margin: 20px 0;
-    padding: 16px 32px 16px 80px;
+    min-height: 80px;
+    padding: 16px 80px;
     background-color: #6699ff;
     color: #fff;
     background-repeat: no-repeat;
     background-size: 48px;
     background-position: center;
     background-position-x: 16px;
+    background-position-y: 16px;
 
     &:not(.alert-note) a,
     &:not(.alert-note) a:link {
@@ -1231,19 +1233,39 @@ blockquote {
     &.important {
         background-color: $important-bg;
         background-image: url(image_path("important-icon.svg"));
-        color: #000000;
     }
 
     &.caution {
-        color: #000000;
         background-color: $caution-bg;
         background-image: url(image_path("caution-icon.svg"));
     }
 
     &.tip {
-        color: #000000;
         background-color: $tip-bg;
         background-image: url(image_path("tip-icon.svg"));
+    }
+
+    &.important,
+    &.caution,
+    &.tip {
+        color: #000000;
+
+        a,
+        a:link {
+            color: #000000;
+            text-decoration: underline;
+
+            &:hover,
+            &:active,
+            &:focus {
+                color: #000000;
+                text-decoration: none !important;
+            }
+        }
+        
+        code {
+          color: #000000;
+        }
     }
 }
 
