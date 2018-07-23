@@ -7,6 +7,12 @@ _src/*
 _data/components/*.yml
 _assets/js/module-directives.js
 
+controls/
+styling-and-appearance/
+common/
+getting-started/
+distribution-and-licensing/
+
 .tmp
 npm/*
 
