@@ -10,4 +10,4 @@ fi
 rm -rf _site/ && rm -rf .sass-cache && rm -rf .jekyll-cache
 winpty docker pull tmitev/docs-seed:site
 winpty docker build -t tmitev/docs-seed:site .
-winpty docker run --rm --env CONFIG_FILE=$config_file --env JEKYLL_COMMAND=build --name docs_site -t -i -v "$(pwd):/app_root" -p 4000:4000 -t tmitev/docs-seed:site
+winpty docker run --rm --env CONFIG_FILE=$config_file --env JEKYLL_COMMAND=build --name docs_site -t -v "$(pwd):/app_root" -p 4000:4000 -t tmitev/docs-seed:site
