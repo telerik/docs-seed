@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 22.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!-- Generator: Adobe Illustrator 19.2.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 11 14" style="enable-background:new 0 0 11 14;" xml:space="preserve">
-<style type="text/css">
-	.st0{enable-background:new    ;}
-	.st1{fill:#707070;}
-</style>
-<g class="st0">
-	<path class="st1" d="M1.3,1.5h9.2v9.7c0,0.2-0.1,0.4-0.2,0.6S9.9,12,9.7,12H0.8c-0.2,0-0.4-0.1-0.6-0.2S0,11.4,0,11.2V2.8h0.9v0.4
-		H0.4v7.9c0,0.1,0,0.2,0.1,0.3s0.2,0.1,0.3,0.1h8.8c0.1,0,0.2,0,0.3-0.1s0.1-0.2,0.1-0.3V1.9H1.8v8.8H1.3V1.9V1.5z M2.6,3.2V2.8h3.5
-		v0.4H2.6z M2.6,5.4V5h6.6v0.4H2.6z M2.6,7.6V7.2h5.2v0.4H2.6z M2.6,9.8V9.4h6.6v0.4H2.6z"/>
-</g>
+	 viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve" fill="#B3B4B5">
+<path d="M352,32H96c-17.7,0-32,14.3-32,32v384c0,17.7,14.3,32,32,32h320c17.7,0,32-14.3,32-32V128L352,32z M416,448H96V64h224v96h96
+	V448z"/>
 </svg>
