@@ -12,6 +12,10 @@ styling-and-appearance/
 common/
 getting-started/
 distribution-and-licensing/
+integration/
+upgrade/
+troubleshooting/
+images/
 
 .tmp
 npm/*
