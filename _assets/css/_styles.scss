@@ -619,7 +619,8 @@ $hover-text: darken($text-color, 10%);
 /* Side-Nav Styles */
 $nav-icon-color: #979797;
 
-#page-tree {
+#page-tree,
+#page-tree-api {
     padding: 0;
     white-space: normal;
     word-break: break-word;
@@ -641,10 +642,10 @@ $nav-icon-color: #979797;
     border: 1px solid #ececec;
     z-index: 1070;
 
-    #page-tree {
+    #page-tree,
+    #page-tree-api {
         .k-item {
-            padding-left: 10px;
-            padding-right: 10px;
+            padding-left: 0;
         }
 
         ul:focus {
@@ -708,7 +709,8 @@ $nav-icon-color: #979797;
         background: url(image_path("article.svg")) no-repeat 50% 50%;
     }
 
-    #page-tree > .k-group > .k-item {
+    #page-tree > .k-group > .k-item,
+    #page-tree-api > .k-group > .k-item {
         div {
             position: relative;
 
@@ -775,7 +777,7 @@ $nav-icon-color: #979797;
         }
 
         .k-in {
-            padding-left: 38px;
+            padding-left: 48px;
             font-weight: 500;
 
             a {
@@ -786,12 +788,12 @@ $nav-icon-color: #979797;
         }
 
         .k-icon, .article {
-            left: 18px;
+            left: 28px;
         }
 
         .k-group {
             .k-in {
-                padding-left: 46px;
+                padding-left: 66px;
                 font-weight: 400;
 
                 a {
@@ -802,12 +804,12 @@ $nav-icon-color: #979797;
             }
 
             .k-icon, .article {
-                left: 25px;
+                left: 46px;
             }
 
             .k-group {
                 .k-in {
-                    padding-left: 54px;
+                    padding-left: 84px;
 
                     a {
                         padding-left: 0;
@@ -815,12 +817,12 @@ $nav-icon-color: #979797;
                 }
 
                 .k-icon, .article {
-                    left: 25px;
+                    left: 64px;
                 }
 
                 .k-group {
                     .k-in {
-                        padding-left: 62px;
+                        padding-left: 102px;
 
                         a {
                             padding-left: 0;
@@ -828,12 +830,12 @@ $nav-icon-color: #979797;
                     }
 
                     .k-icon, .article {
-                        left: 15;
+                        left: 82;
                     }
 
                     .k-group {
                         .k-in {
-                            padding-left: 70px;
+                            padding-left: 120px;
 
                             a {
                                 padding-left: 0;
@@ -841,7 +843,7 @@ $nav-icon-color: #979797;
                         }
 
                         .k-icon, .article {
-                            left: 32px;
+                            left: 100px;
                         }
                     }
                 }
