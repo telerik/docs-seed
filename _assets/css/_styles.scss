@@ -93,7 +93,7 @@ label {
     min-height: 340px;
 }
 
-#footer {
+#footer  {
     color: #898c92;
     background-color: $footer-bg;
     font-size: 11px;
@@ -2024,10 +2024,27 @@ div.gsc-results div.gsc-cursor-box {
     }
 }
 
+#feedback-container {
+  h3 {
+    color: #000000;
+  }
+
+  p {
+    font-size: 16px;
+    line-height: 1.44em;
+  }
+}
+
 #feedback-form {
     -webkit-flex: 1;
     -moz-flex: 1;
     overflow: auto;
+
+    label, p {
+      font-size: 16px;
+      color: #4f5d6c;
+      line-height: 1.44em;
+    }
 
     span.required-field:after {
         content: "* required";
@@ -2096,6 +2113,7 @@ div.gsc-results div.gsc-cursor-box {
     height: 510px !important;
     display: -webkit-flex;
     display: flex;
+    font-size: 16px;
     -webkit-flex-direction: column;
     flex-direction: column;
 
