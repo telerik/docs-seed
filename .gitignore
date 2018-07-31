@@ -9,6 +9,10 @@ _assets/js/module-directives.js
 
 controls/
 styling-and-appearance/
+styles/
+fonts/
+api/
+articles/
 common/
 getting-started/
 distribution-and-licensing/
@@ -30,3 +34,7 @@ bin/
 .bundle
 .vscode
 
+toc.html
+xrefmap.yml
+search-stopwords.json
+manifest.json
