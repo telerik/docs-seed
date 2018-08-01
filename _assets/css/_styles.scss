@@ -781,9 +781,8 @@ $nav-icon-color: #979797;
             font-weight: 500;
 
             a {
-                padding-left: 0;
-                padding-top: 0;
-                padding-bottom: 0;
+                padding-left: 48px;
+                margin-left: -48px
             }
         }
 
@@ -797,9 +796,8 @@ $nav-icon-color: #979797;
                 font-weight: 400;
 
                 a {
-                    padding-left: 0;
-                    padding-top: 0;
-                    padding-bottom: 0;
+                    padding-left: 66px;
+                    margin-left: -66px;
                 }
             }
 
@@ -812,7 +810,8 @@ $nav-icon-color: #979797;
                     padding-left: 84px;
 
                     a {
-                        padding-left: 0;
+                        padding-left: 84px;
+                        margin-left: -84px;
                     }
                 }
 
@@ -825,7 +824,8 @@ $nav-icon-color: #979797;
                         padding-left: 102px;
 
                         a {
-                            padding-left: 0;
+                            padding-left: 102px;
+                            margin-left: -102px;
                         }
                     }
 
@@ -838,7 +838,8 @@ $nav-icon-color: #979797;
                             padding-left: 120px;
 
                             a {
-                                padding-left: 0;
+                                padding-left: 120px;
+                                margin-left: -120px;
                             }
                         }
 
