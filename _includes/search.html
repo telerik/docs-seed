@@ -10,9 +10,9 @@
       <div id="refine-search-popup" style="display: none">
         <ul>
           <li>
-            <label class="custom-checkbox unselectable"><input type="checkbox" {% if page.res_type != 'kb' and page.res_type != 'api' %} disabled="true" {% endif %} data-bind="checked: docs" /><span class="k-icon k-i-check"></span>Search in Documentation</label>
+            <label class="custom-checkbox unselectable"><input type="checkbox" {% if page.res_type != 'kb' and page.res_type != 'api' %} disabled="true" {% endif %} data-bind="checked: documentation" /><span class="k-icon k-i-check"></span>Search in Documentation</label>
           </li>
-          {% if site.google_custom_kb_search %}
+          {% if site.has_kb %}
           <li>
             <label class="custom-checkbox unselectable"><input type="checkbox" {% if page.res_type == 'kb' %} disabled="true" {% endif %} data-bind="checked: kb" /><span class="k-icon k-i-check"></span>Search in Knowledge Base</label>
           </li>
@@ -27,18 +27,9 @@
 
 <script>
     var gcsInstance = '{{site.gcs_engine}}';
-    var gcsKey=  '{{site.gcs_api_key}}';
+    var gcsKey = '{{site.gcs_api_key}}';
+    var isKbPage = '{{ page.res_type }}';
+    var siteHasKbPortal = '{{ site.has_kb_portal == true }}'
 </script>
 
 {% javascript "search-results" %}
-
-<script>
-      $(document)
-        .ready(function () {
-    var propertyNames = {% case page.res_type %} {% when 'kb' %} ['kb'] {% else %} ['docs', 'api', 'kb'] {% endcase %}
-    for(var i = 0; i < propertyNames.length; i++) {
-      searchViewModel.set(propertyNames[i], true);
-    }
-    searchViewModel.updateLabel();
-});
-</script>

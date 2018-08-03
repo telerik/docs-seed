@@ -8,7 +8,7 @@
         <meta name="turbolinks-root" content="{{site.baseurl}}/">
         <title>{{ page.page_title | default: generated_title }}</title>
         <meta name="description" content="{{ page.description }}" />
-
+        {% if page.res_type %}<meta name="restype" content="{{ page.res_type }}">{% else %}<meta name="restype" content="documentation">{% endif %}
         <link rel="shortcut icon" href="{{site.baseurl}}/favicon.ico"/>
 
         {% if page.needs_canonical %}

@@ -2,10 +2,11 @@ var PAGE_FILTER = " more:pagemap:metatags-restype:";
 var GCSE_ELEMENT_NAME = "google-search";
 var GCSE_API_URL = "https://www.googleapis.com/customsearch/v1";
 var searchTerms = "";
+var searchItemsStorageKey = "searchItemsStorageKey";
 
 var searchViewModel = kendo.observable({
     kb: false,
-    docs: false,
+    documentation: false,
     api: false,
     label: "",
     filterValues: [],
@@ -21,14 +22,18 @@ var searchViewModel = kendo.observable({
 
         return filterExpression;
     },
-    updateLabel: function () {
+    getFilterExpression: function() {
+        var filter = this.getFilter();
+        return filter !== '' ? PAGE_FILTER + filter : '';
+    },
+    updateLabel: function() {
         var label = "";
         this.filterValues = [];
 
-        if ((this.kb && this.docs && this.api) || (!this.kb && !this.docs && !this.api)) {
+        if ((this.kb && this.documentation && this.api) || (!this.kb && !this.documentation && !this.api)) {
             label = "Search all";
         } else {
-            if (this.docs) {
+            if (this.documentation) {
                 label += "DOCS";
                 this.filterValues.push('documentation');
             }
@@ -46,7 +51,34 @@ var searchViewModel = kendo.observable({
             label = "Search in " + label;
         }
 
-        this.set("label", label)
+        this.set("label", label);
+    },
+    update: function () {
+        this.updateLabel();
+        localStorage.setItem(searchItemsStorageKey, JSON.stringify(this.filterValues));
+    },
+    init: function () {
+        var propertyNames = JSON.parse(localStorage.getItem(searchItemsStorageKey));
+        if (!propertyNames) {
+            propertyNames = [];
+
+            if (isKbPage) {
+                propertyNames.push('kb');
+            } else {
+                propertyNames.push('documentation', 'api');
+                if (siteHasKbPortal) {
+                    propertyNames.push('kb');
+                }
+            }
+
+            localStorage.setItem(searchItemsStorageKey, JSON.stringify(propertyNames));
+        }
+
+        for (var i = 0; i < propertyNames.length; i++) {
+            searchViewModel.set(propertyNames[i], true);
+        }
+
+        searchViewModel.updateLabel();
     }
 });
 
@@ -61,25 +93,21 @@ function init() {
         popup.toggle();
     });
 
-    searchViewModel.updateLabel();
+    searchViewModel.init();
 
     kendo.bind($(".search-input-container"), searchViewModel);
     kendo.bind($("#refine-search-popup"), searchViewModel);
 
     $(".custom-checkbox input[type='checkbox']").change(function () {
-        searchViewModel.updateLabel();
+        searchViewModel.update();
     });
 
     attachToEvents();
 }
 
 function search(input) {
-    // TODO: Filter!
     searchTerms = input.val();
-    var filterExpression = searchViewModel.getFilter();
     trackSearchQuery(filterExpression, searchTerms);
-    filterExpression = filterExpression !== '' ? PAGE_FILTER + filterExpression : '';
-    // input.val(searchTerms + filterExpression);
 }
 
 function closePopup() {
@@ -98,7 +126,6 @@ function attachToEvents() {
             var $this = $(this);
             searchInternal($this);
             $this.parents('form').submit();
-            // $this.val(searchTerms);
             return false;
         }
     });
@@ -125,16 +152,9 @@ function trackItem(category, action, label) {
     });
 }
 
-function observeCallback(mutations) {
-    mutations.forEach(function (mutation) {
-        if (mutation.type == 'childList') {
-            updateLayout();
-            stopObserving();
-        }
-    });
-}
-
 $(function () {
+    init();
+
     function toKV(n) {
         n = n.split("=");
         this[n[0]] = n[1];
@@ -153,7 +173,7 @@ $(function () {
                     num: data.pageSize,
                     cx: gcsInstance,
                     key: gcsKey,
-                    q: params.q,
+                    q: params.q + searchViewModel.getFilterExpression(),
                 };
             },
             read: {
@@ -220,5 +240,5 @@ $(function () {
         }
     });
 
-    init();
+    setSideNavPosition();
 });
