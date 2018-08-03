@@ -3,15 +3,17 @@ title: Search results
 position: 1
 heading: Search results
 include_in_navigation: false
+is_search_page: true
 ---
 <div class="container-fluid headbanner">
   <div class="row">
-  <div class=" col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+  <div class=" col-sm-10 col-sm-offset-1 col-lg-offset-2">
     <div class="row mt-40">
-    <div class="col-sm-12 col-md-12 col-lg-10 col-lg-offset-1">
+    <div class="col-sm-12">
       <article>
         <h1>{{ page.heading }}</h1>
         <div class="local-search mt-20">
+            {% include search.html %}
         </div>
       </article>
     </div>
@@ -22,13 +24,14 @@ include_in_navigation: false
 
 <div class="container-fluid mt-30 mb-80">
   <div class="row">
-  <div class="col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+  <div class="col-sm-10 col-sm-offset-1 col-lg-offset-2">
     <div class="row">
-    <div class="col-sm-12 col-md-12 col-lg-10 col-lg-offset-1">
-        <div id="search-container">
+    <div class="col-sm-12">
+        <div id="search-container" style="display: none">
+            <div class="results-message mb-5"></div>
             <div id="results" class="mb-20">
-              {% include search.html %}
             </div>
+            <div class="site-pager"></div>
         </div>
         <div id="no-results" style="display: none">
             <h1>Sorry,</h1>
@@ -45,7 +48,7 @@ include_in_navigation: false
         <div>
           <h2><a href="#= url #">#= title #</a></h2>
           <p>#= excerpt #</p>
-          <p><a href="#= url #">/#= url.split("/").slice(3).join("/") #</a></p>
+          <p><a href="#= url #">#= url #</a></p>
         </div>
       </script>
 
@@ -55,5 +58,3 @@ include_in_navigation: false
   </div>
 
 </div>
-
-{% javascript "search-results" %}

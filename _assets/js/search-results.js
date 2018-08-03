@@ -1,8 +1,7 @@
 var PAGE_FILTER = " more:pagemap:metatags-restype:";
 var GCSE_ELEMENT_NAME = "google-search";
-var observer = new MutationObserver(observeCallback);
+var GCSE_API_URL = "https://www.googleapis.com/customsearch/v1";
 var searchTerms = "";
-var isObserving = false;
 
 var searchViewModel = kendo.observable({
     kb: false,
@@ -51,59 +50,20 @@ var searchViewModel = kendo.observable({
     }
 });
 
-function startObserving() {
-    if (isObserving) {
-        return;
-    }
-    var gcseResults = $("div.gsc-results");
-    if (gcseResults.length) {
-        var target = gcseResults.get(0);
-        var observerConfiguration = { childList: true };
-        observer.observe(target, observerConfiguration);
-    }
-
-    isObserving = true;
-}
-
-function stopObserving() {
-    if (!isObserving) {
-        return;
-    }
-    
-    observer.disconnect();
-    isObserving = false;
-}
-
-function gcse_callback() {
-    if (document.readyState == 'complete') {
-        updateLayout();
-    } else {
-        google.setOnLoadCallback(function () {
-            loadSearch();
-            startObserving();
-        }, true);
-    }
-}
-
-function loadSearch() {
-    $("#page-search table.gsc-search-box > tbody > tr")
-        .append($("<td id='refine-search-container'><div id='refine-search-button' class='unselectable'><span id='refine-search-label' data-bind='text: label'></span><span class='k-icon k-i-arrow-chevron-down'></span></div></td>"));
-
+function init() {
     var popup = $("#refine-search-popup").kendoPopup({
-        anchor: $("#page-search table.gsc-search-box"),
+        anchor: $("#refine-search-container"),
         origin: "bottom right",
         position: "top right",
     }).data("kendoPopup");
 
-    $("#page-search #refine-search-button").on("click", function () {
+    $("#refine-search-button").on("click", function () {
         popup.toggle();
     });
 
-    var resources = {};
-
     searchViewModel.updateLabel();
 
-    kendo.bind($("#page-search"), searchViewModel);
+    kendo.bind($(".search-input-container"), searchViewModel);
     kendo.bind($("#refine-search-popup"), searchViewModel);
 
     $(".custom-checkbox input[type='checkbox']").change(function () {
@@ -111,53 +71,15 @@ function loadSearch() {
     });
 
     attachToEvents();
-    onSearchLoaded();
 }
 
-function search() {
-    onBeforeSearch();
-
-    var element = google.search.cse.element.getElement(GCSE_ELEMENT_NAME);
-    if (element) {
-        searchTerms = $(".gsc-input-box .gsc-input").val();
-        var filterExpression = searchViewModel.getFilter();
-        trackSearchQuery(filterExpression, searchTerms);
-        filterExpression = filterExpression !== '' ? PAGE_FILTER + filterExpression : '';
-        element.execute(searchTerms + filterExpression);
-
-        $(".gsc-input-box .gsc-input").val(searchTerms);
-    }
-
-    onAfterSearch();
-}
-
-function onSearchLoaded() {
-    updateLayout();
-    onSearchLoadedInternal();
-}
-
-function onSearchLoadedInternal() { }
-
-function onBeforeSearch() {
-    startObserving();
-    $('#no-results').hide();
-}
-
-function onAfterSearch() {
-    onAfterSearchInternal();
-}
-
-function onAfterSearchInternal() { }
-
-function arrangeResults() {
-    if ($('div.gs-no-results-result div.gs-snippet').length) {
-        $('#no-results').show();
-    }
-}
-
-function updateLayout() {
-    arrangeResults();
-    setSideNavPosition();
+function search(input) {
+    // TODO: Filter!
+    searchTerms = input.val();
+    var filterExpression = searchViewModel.getFilter();
+    trackSearchQuery(filterExpression, searchTerms);
+    filterExpression = filterExpression !== '' ? PAGE_FILTER + filterExpression : '';
+    // input.val(searchTerms + filterExpression);
 }
 
 function closePopup() {
@@ -165,32 +87,24 @@ function closePopup() {
     popup.close();
 }
 
-function searhInternal() {
+function searchInternal(input) {
     closePopup();
-    search();
+    search(input);
 }
 
 function attachToEvents() {
-    var oldInput = $('.gsc-input input[type="text"]');
-    var newInput = oldInput.clone();
-    oldInput.replaceWith(newInput);
-    newInput.keydown(function (e) {
+    $('form input[name="q"]').keydown(function (e) {
         if (e.keyCode == 13) { // Enter
-            searhInternal();
+            var $this = $(this);
+            searchInternal($this);
+            $this.parents('form').submit();
+            // $this.val(searchTerms);
             return false;
         }
     });
 
-    var oldSearchButton = $('.gsc-search-button input[type="image"].gsc-search-button.gsc-search-button-v2');
-    var newSearchButton = oldSearchButton.clone();
-    oldSearchButton.replaceWith(newSearchButton);
-    newSearchButton.click(function (e) {
-        searhInternal();
-        return false;
-    });
-
-    $("#page-search").on("click", "a.gs-title", function (e) {
-        trackSearchResult($(e.target).data("ctorig"));
+    $("div#results").on("click", "a", function (e) {
+        trackSearchResult($(this).attr("href"));
     });
 }
 
@@ -231,7 +145,80 @@ $(function () {
     searchTerms = params.q;
     $("[name=q]").val(searchTerms);
 
-    window.__gcse = {
-        callback: gcse_callback
-    };
+    var ds = new kendo.data.DataSource({
+        transport: {
+            parameterMap: function (data) {
+                return {
+                    start: 1 + data.skip,
+                    num: data.pageSize,
+                    cx: gcsInstance,
+                    key: gcsKey,
+                    q: params.q,
+                };
+            },
+            read: {
+                url: GCSE_API_URL
+            }
+        },
+        change: function () {
+            var resultsPresent = this.data().length > 0;
+            $("#search-container").toggle(resultsPresent);
+            $("#no-results").toggle(!resultsPresent);
+
+            setSideNavPosition();
+        },
+        serverPaging: true,
+        pageSize: 10,
+        schema: {
+            type: "json",
+            data: function (data) {
+                if (parseInt(data.searchInformation.totalResults) === 0) {
+                    return [];
+                }
+
+                return data.items.map(function (item) {
+                    return {
+                        title: item.htmlTitle,
+                        url: item.link,
+                        excerpt: item.htmlSnippet
+                    };
+                });
+            },
+            total: function (data) {
+                return data.searchInformation.totalResults;
+            }
+        }
+    });
+
+    $("#results").kendoListView({
+        dataSource: ds,
+        template: $("#results-template").html(),
+        dataBound: function () {
+            window.scrollTo(0, 0);
+            setSideNavPosition();
+        }
+    });
+
+    $(".site-pager").kendoPager({
+        dataSource: ds,
+        buttonCount: 5,
+        messages: {
+            previous: "Previous",
+            next: "Next",
+            display: "",
+            empty: ""
+        }
+    });
+
+    $(".results-message").kendoPager({
+        dataSource: ds,
+        numeric: false,
+        previousNext: false,
+        messages: {
+            display: "{0}-{1} of {2} results",
+            empty: "Sorry, there were no results found. Maybe try a broader search."
+        }
+    });
+
+    init();
 });

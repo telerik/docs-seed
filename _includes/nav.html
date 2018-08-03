@@ -75,17 +75,18 @@
                 <li><a href="{{ item[1] }}" target="_blank">{{ item[0] }}</a></li>
               {% endfor %}
 
+              {% if page.is_search_page != true  %}
               <li class="hidden-xs">
                 <a class="search-icon">
                     {% include icons/search.svg %}
                     &nbsp;
                     <span class="sr-only">Search</span>
                 </a>
-
-                <form class="global-search" action="{{site.baseurl}}/search">
-                  <input name="q" />
-                </form>
+                <div class="global-search">
+                  {% include search.html %}
+                </div>
               </li>
+              {% endif %}
               {% if site.download %}
                 <li class="primary-cta"><a href="{{site.download}}" target="_blank">Try now</a></li>
               {% endif %}
@@ -101,31 +102,40 @@
   </nav>
 
   <script>
-      function showSearch() {
-          var form = $(".global-search");
+    {% if page.is_search_page != true  %}
+     var searchContainer = $(".global-search");
 
-          form.toggleClass("show-search")
-              .one("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", function(e) {
-                  if (form.hasClass("show-search")) {
-                      form.find("input:first")
-                        .focus()
-                        .one("focusout", function() {
-                          setTimeout(function() {
-                              form.removeClass("show-search");
-                          }, 200)
-                        });
-                  }
-              });
+     function hideSearch(e){
+      if (!searchContainer.is(e.target) && 
+          searchContainer.has(e.target).length === 0 && 
+          $(e.target).parents("#refine-search-popup").length === 0) {
+            setTimeout(function(e) {
+              searchContainer.removeClass("show-search");
+              $(document).off('click', hideSearch);
+            }, 200)
       }
+    }
 
+    function showSearch() {
+
+      searchContainer.toggleClass("show-search")
+          .one("transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd", function(e) {
+              if (searchContainer.hasClass("show-search")) {
+                searchContainer.find("input:first")
+                    .focus();
+                $(document).on("click", hideSearch);
+              }
+          });
+    }
+
+    $(document).off("click", ".search-icon")
+               .on("click", ".search-icon", showSearch);
+    {% endif %}
     function navigate(e) {
         window.location.href = e.target.value;
     }
     
       $(document)
         .off("change", "#nav-dropdown")
-        .on("change", "#nav-dropdown", navigate)
-        
-        .off("click", ".search-icon")
-        .on("click", ".search-icon", showSearch);
+        .on("change", "#nav-dropdown", navigate);
   </script>
