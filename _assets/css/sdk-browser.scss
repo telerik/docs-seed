@@ -186,14 +186,12 @@ pre .dec { color: #3e526b; } /* decimal */
 }
 		
 #kendoDiv p {
-         width: 530px;  
-         word-break: normal;
+         word-break: break-all;
          white-space: normal;
       }
 	  
 #kendoDivSL p {
- width: 530px;  
- word-break: normal;
+ word-break: break-all;
  white-space: normal;
 }
 	  
