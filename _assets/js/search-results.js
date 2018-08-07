@@ -3,6 +3,7 @@ var GCSE_ELEMENT_NAME = "google-search";
 var GCSE_API_URL = "https://www.googleapis.com/customsearch/v1";
 var searchTerms = "";
 var searchItemsStorageKey = "searchItemsStorageKey";
+var siteHasKbPortal, isKbPage;
 
 var searchViewModel = kendo.observable({
     kb: false,
@@ -66,7 +67,7 @@ var searchViewModel = kendo.observable({
                 propertyNames.push('kb');
             } else {
                 propertyNames.push('documentation', 'api');
-                if (siteHasKbPortal) {
+                if (siteHasKbPortal === 'true') {
                     propertyNames.push('kb');
                 }
             }

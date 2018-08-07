@@ -28,8 +28,8 @@
 <script>
     var gcsInstance = '{{site.gcs_engine}}';
     var gcsKey = '{{site.gcs_api_key}}';
-    var isKbPage = '{{ page.res_type }}';
-    var siteHasKbPortal = '{{ site.has_kb_portal == true }}'
+    isKbPage = {% if page.res_type == 'kb' %} true {% else %} false {% endif %};
+    siteHasKbPortal = '{{ site.has_kb_portal }}'
 </script>
 
 {% javascript "search-results" %}
