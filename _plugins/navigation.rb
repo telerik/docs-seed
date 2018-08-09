@@ -197,18 +197,22 @@ class TreeNode < Liquid::Drop
         if version_node?
             @parent.parent.bread_crumb(
                 baseurl,
-                "<a href='#{baseurl}#{@parent.url}#{@segment}/'>#{@parent.title}</a>#{so_far}"
+                "<a href='#{baseurl}#{@parent.url}#{@segment}/'>#{format_title(@parent.title)}</a>#{so_far}"
             )
         else
             if level > 0
                 @parent.bread_crumb(
                     baseurl,
-                    "<a href='#{baseurl}#{url}'>#{title}</a>#{so_far}"
+                    "<a href='#{baseurl}#{url}'>#{format_title(title)}</a>#{so_far}"
                 )
             else
                 so_far
             end
         end
+    end
+
+    def format_title(title)
+      title.split('-').map { |w| w.upcase[0] + w[1,w.size - 1] }.join(' ')
     end
 end
 
