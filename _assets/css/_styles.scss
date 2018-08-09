@@ -78,9 +78,9 @@ label {
 }
 
 image {
-  width: auto;
-  height: auto;
-  max-width: 100%;
+    width: auto;
+    height: auto;
+    max-width: 100%;
 }
 
 /* Sticky Footer Styles */
@@ -99,7 +99,7 @@ image {
     min-height: 340px;
 }
 
-#footer  {
+#footer {
     color: #898c92;
     background-color: $footer-bg;
     font-size: 11px;
@@ -199,26 +199,24 @@ h5, .h5,
 h6, .h6 {
     margin-top: 30px;
     margin-bottom: 10px;
+    font-weight: 400;
     color: #000000;
     letter-spacing: -0.02em;
 }
 
 h1, .h1 {
-    font-size: 56px;
-    font-weight: 300;
+    font-size: 64px;
     font-family: $font-heading;
     line-height: .95em;
 }
 
 h2, .h2 {
-    font-size: 36px;
-    font-weight: 300;
+    font-size: 44px;
     font-family: $font-heading;
 }
 
 h3, .h3 {
     font-size: 28px;
-    font-weight: 500;
     font-family: $font-heading;
 }
 
@@ -232,7 +230,7 @@ h5, .h5 {
 
 p.lead {
     font-size: 20px;
-    font-family: $font-light;
+    font-family: $font-regular;
     line-height: 1.3;
     color: #4f5d6c;
     margin-bottom: 0;
@@ -657,6 +655,10 @@ $nav-icon-color: #979797;
         ul:focus {
             outline: none;
         }
+
+        ul li span {
+            font-size: 14px;
+        }
     }
 
     .k-in {
@@ -788,7 +790,7 @@ $nav-icon-color: #979797;
 
             a {
                 padding-left: 48px;
-                margin-left: -48px
+                margin-left: -48px;
             }
         }
 
@@ -982,29 +984,17 @@ article {
         a {
             cursor: pointer;
             color: inherit;
-
-            &:hover:after {
-                position: absolute;
-                margin-top: -30px;
-                left: -32px;
-                width: 19px;
-                height: 18px;
-                display: block;
-                content: "";
-                background: transparent url(image_path("anchor.png")) no-repeat 0 50%;
-            }
         }
     }
 
     h1, .h1 {
-        font-size: 56px;
+        font-size: 50px;
         line-height: .95em;
     }
 
     h2, .h2 {
-        font-size: 36px;
+        font-size: 30px;
         line-height: .95em;
-        font-weight: 300;
         margin-top: 44px; /* 36 + 44 = 80px */
         margin-bottom: 10px;
     }
@@ -1061,11 +1051,11 @@ article {
     &:not(.api-reference) > p:first-child,
     &:not(.api-reference) h1 + p {
         font-size: 18px;
-        font-weight: 300;
+        font-weight: 400;
         line-height: 24px;
         margin-top: 15px;
         margin-bottom: 20px;
-        font-family: $font-light;
+        font-family: $font-regular;
         color: #8a959f;
     }
 
@@ -1093,13 +1083,13 @@ article {
     }
 
     ul:not(.docs-tabstrip):not(.k-reset) > li:before {
-      content: "";
-      position: absolute;
-      top: .7em;
-      left: -20px;
-      width: 14px;
-      height: 1px;
-      background-color: currentColor;
+        content: "";
+        position: absolute;
+        top: .7em;
+        left: -20px;
+        width: 14px;
+        height: 1px;
+        background-color: currentColor;
     }
 
     ul.list-unstyled li {
@@ -1271,9 +1261,9 @@ blockquote {
                 text-decoration: none !important;
             }
         }
-        
+
         code {
-          color: #000000;
+            color: #000000;
         }
     }
 }
@@ -1485,120 +1475,120 @@ $border-color: #d9d9d9;
 /* Search Results */
 
 #results {
-  border-top: 1px solid #e4e4e4;
+    border-top: 1px solid #e4e4e4;
 
-  > div {
-    padding: 20px 0 0;
-    line-height: 1.3em;
-  }
-
-  h2 {
-    margin-top: 0;
-    margin-bottom: 2px;
-    font-size: 24px;
-    font-weight: 400;
-    color: #2489d8 !important
-  }
-
-  p {
-    margin: 0;
-    font-size: 13px;
-    color: #7d8a98;
-
-    a {
-      font-size: 13px;
+    > div {
+        padding: 20px 0 0;
+        line-height: 1.3em;
     }
-  }
+
+    h2 {
+        margin-top: 0;
+        margin-bottom: 2px;
+        font-size: 24px;
+        font-weight: 400;
+        color: #2489d8 !important;
+    }
+
+    p {
+        margin: 0;
+        font-size: 13px;
+        color: #7d8a98;
+
+        a {
+            font-size: 13px;
+        }
+    }
 }
 
 .go-back {
-  svg {
-    width: 12px;
-    height: 12px;
-  }
+    svg {
+        width: 12px;
+        height: 12px;
+    }
 
-  path {
-    fill: $link-color;
-  }
+    path {
+        fill: $link-color;
+    }
 
-  &:hover path {
-    fill: $link-hover-color;
-  }
+    &:hover path {
+        fill: $link-hover-color;
+    }
 }
-
 
 /* Pager Styles */
 
 .site-pager {
-  text-align: center;
-  font-size: 15px;
+    text-align: center;
+    font-size: 15px;
 
-  .k-pager-nav.k-pager-first,
-  .k-pager-nav.k-pager-last {
-    display: none;
-  }
+    .k-pager-nav.k-pager-first,
+    .k-pager-nav.k-pager-last {
+        display: none;
+    }
 
-  .k-pager-numbers {
-    display: inline-block;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-  .k-pager-numbers li {
-    display: inline-block;
-    padding: 0;
-  }
+    .k-pager-numbers {
+        display: inline-block;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
 
-  .k-pager-numbers li a,
-  .k-pager-numbers li span,
-  a.k-pager-nav {
-    display: block;
-    min-width: 50px;
-    height: 50px;
-    line-height: 50px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
-    vertical-align: middle;
-    color: #a2a2a4;
-    outline: none;
-    border: 1px solid transparent;
-  }
+    .k-pager-numbers li {
+        display: inline-block;
+        padding: 0;
+    }
 
-  .k-pager-numbers li a:hover,
-  .k-pager-numbers li a:focus {
-    background-color: #eaebec;
-    color: #36393f;
-  }
+    .k-pager-numbers li a,
+    .k-pager-numbers li span,
+    a.k-pager-nav {
+        display: block;
+        min-width: 50px;
+        height: 50px;
+        line-height: 50px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding-left: 20px;
+        padding-right: 20px;
+        vertical-align: middle;
+        color: #a2a2a4;
+        outline: none;
+        border: 1px solid transparent;
+    }
 
-  .k-pager-numbers li .k-state-selected {
-    border-color: #cacacb;
-    color: #36393f;
-  }
+    .k-pager-numbers li a:hover,
+    .k-pager-numbers li a:focus {
+        background-color: #eaebec;
+        color: #36393f;
+    }
 
-  li.k-current-page {
-    display: none;
-  }
+    .k-pager-numbers li .k-state-selected {
+        border-color: #cacacb;
+        color: #36393f;
+    }
 
-  a.k-pager-nav {
-    min-width: 80px;
-    padding-left: 10px;
-    padding-right: 10px;
-    border-color: #cacacb;
-    color: #36393f;
-    font-family: $font-regular;
-  }
+    li.k-current-page {
+        display: none;
+    }
 
-  a.k-pager-nav.k-state-disabled {
-    display: none;
-  }
+    a.k-pager-nav {
+        min-width: 80px;
+        padding-left: 10px;
+        padding-right: 10px;
+        border-color: #cacacb;
+        color: #36393f;
+        font-family: $font-regular;
+    }
 
-  a.k-pager-nav:hover,
-  a.k-pager-nav:focus {
-    background-color: #eaebec;
-    color: #36393f;
-  }
+    a.k-pager-nav.k-state-disabled {
+        display: none;
+    }
+
+    a.k-pager-nav:hover,
+    a.k-pager-nav:focus {
+        background-color: #eaebec;
+        color: #36393f;
+    }
 }
 
 article table tr {
@@ -1666,7 +1656,7 @@ article table tr {
 }
 
 .search-input-container {
-  position: relative;
+    position: relative;
 }
 
 #refine-search-container {
@@ -1935,14 +1925,14 @@ article table tr {
 }
 
 #feedback-container {
-  h3 {
-    color: #000000;
-  }
+    h3 {
+        color: #000000;
+    }
 
-  p {
-    font-size: 16px;
-    line-height: 1.44em;
-  }
+    p {
+        font-size: 16px;
+        line-height: 1.44em;
+    }
 }
 
 #feedback-form {
@@ -1951,9 +1941,9 @@ article table tr {
     overflow: auto;
 
     label, p {
-      font-size: 16px;
-      color: #4f5d6c;
-      line-height: 1.44em;
+        font-size: 16px;
+        color: #4f5d6c;
+        line-height: 1.44em;
     }
 
     span.required-field:after {
@@ -2489,11 +2479,11 @@ $callout-bg: #d7dfe3;
     }
 
     #refine-search-container {
-      height: 36px;
+        height: 36px;
     }
 
     #refine-search-button {
-      line-height: 24px;
+        line-height: 24px;
     }
 }
 
@@ -2915,40 +2905,15 @@ a.all-components {
         margin-bottom: 10px;
     }
 
-    h1, .h1 {
-        font-size: 70px;
-    }
-
-    h2, .h2 {
-        font-size: 38px;
-    }
-
-    p.lead {
-        font-size: 22px;
-        line-height: 1.3em;
-    }
-
     article {
-        h1, .h1 {
-            font-size: 70px;
-        }
-
-        h2, .h2 {
-            font-size: 40px;
-        }
-
-        h4, .h4 {
-            font-size: 20px;
-        }
-
         ul, ol {
             padding: 0 0 0 3em;
         }
 
         &:not(.api-reference) > p:first-child,
         &:not(.api-reference) h1 + p {
-            font-size: 22px;
-            line-height: 28px;
+            font-size: 20px;
+            line-height: 26px;
         }
     }
 
@@ -2989,30 +2954,6 @@ a.all-components {
                     font-size: 15px;
                 }
             }
-        }
-    }
-
-    h1, .h1 {
-        font-size: 80px;
-    }
-
-    p.lead {
-        font-size: 28px;
-    }
-
-    article {
-        h2, .h2 {
-            font-size: 44px;
-        }
-
-        h3, .h3 {
-            font-size: 30px;
-        }
-
-        &:not(.api-reference) > p:first-child,
-        &:not(.api-reference) h1 + p {
-            font-size: 26px;
-            line-height: 32px;
         }
     }
 
@@ -3084,6 +3025,21 @@ a.all-components {
         font-size: 15px;
     }
 
+    article {
+        h1 {
+            font-size: 56px;
+        }
+
+        h2 {
+            font-size: 36px;
+        }
+
+        &:not(.api-reference) > p:first-child,
+        &:not(.api-reference) h1 + p {
+            font-size: 24px;
+        }
+    }
+
     h1, .h1,
     h2, .h2,
     h3, .h3,
@@ -3092,23 +3048,6 @@ a.all-components {
     h6, .h6 {
         margin-top: 60px;
         margin-bottom: 20px;
-    }
-
-    h1, .h1 {
-        font-size: 110px;
-    }
-
-    h2, .h2 {
-        font-size: 50px;
-    }
-
-    h3, .h3 {
-        margin-top: 40px;
-        font-size: 26px;
-    }
-
-    p.lead {
-        font-size: 36px;
     }
 
     .components {
@@ -3234,12 +3173,6 @@ a.all-components {
     blockquote,
     #results > div {
         font-size: 16px;
-    }
-
-    article {
-        h1, .h1 {
-            font-size: 75px;
-        }
     }
 }
 

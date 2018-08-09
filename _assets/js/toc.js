@@ -19,7 +19,7 @@ $(function() {
     var toc = $("#toc");
     toc.empty();
 
-    var headings = $("#content article > h2, #content article > h3");
+    var headings = $("#content article > h1, #content article > h2, #content article > h3");
     var empty = headings.length < 2;
 
     articleToc.toggleClass("empty", empty);
