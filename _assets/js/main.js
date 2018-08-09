@@ -13,6 +13,7 @@
 //= require kendo/kendo.validator.min
 //= require kendo/kendo.ui.core.min
 
+//= require tracking
 //= require top-menu
 //= require related-articles
 //= require toc

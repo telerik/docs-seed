@@ -108,7 +108,7 @@ function init() {
 
 function search(input) {
     searchTerms = input.val();
-    trackSearchQuery(filterExpression, searchTerms);
+    trackSearchQuery(searchViewModel.getFilterExpression(), searchTerms);
 }
 
 function closePopup() {
@@ -142,15 +142,6 @@ function trackSearchQuery(filter, query) {
 
 function trackSearchResult(link) {
     trackItem("docs-search-results", searchTerms, link);
-}
-
-function trackItem(category, action, label) {
-    dataLayer.push({
-        'event': 'virtualEvent',
-        'eventCategory': category,
-        'eventAction': action,
-        'eventLabel': label,
-    });
 }
 
 $(function () {

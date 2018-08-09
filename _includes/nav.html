@@ -72,7 +72,7 @@
 
             <ul class="nav navbar-nav main-menu">
               {% for item in site.nav %}
-                <li><a href="{{ item[1] }}" target="_blank">{{ item[0] }}</a></li>
+                <li><a href="{{ item[1] }}" target="_blank" onclick="trackItemFromCurrentPage('docs-navigation', '{{ item[0] }}')">{{ item[0] }}</a></li>
               {% endfor %}
 
               {% if page.is_search_page != true  %}
@@ -131,7 +131,9 @@
     $(document).off("click", ".search-icon")
                .on("click", ".search-icon", showSearch);
     {% endif %}
+
     function navigate(e) {
+        trackItemFromCurrentPage('docs-navigation', e.target.children[e.target.selectedIndex].text);
         window.open(e.target.value, "_blank");
     }
     
