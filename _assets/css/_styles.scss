@@ -1906,6 +1906,10 @@ article table tr {
             outline: none;
         }
     }
+
+    div.feedback > div {
+      line-height: 23px;
+    }
 }
 
 .feedback-dialog {
