@@ -132,7 +132,7 @@
                .on("click", ".search-icon", showSearch);
     {% endif %}
     function navigate(e) {
-        window.location.href = e.target.value;
+        window.open(e.target.value, "_blank");
     }
     
       $(document)
