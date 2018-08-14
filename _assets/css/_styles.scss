@@ -1180,7 +1180,8 @@ blockquote {
     margin: 20px 0;
     min-height: 80px;
     padding: 16px 80px;
-    background-color: #6699ff;
+    background-color: $important-bg;
+    background-image: url(image_path("important-icon.svg"));
     color: #fff;
     background-repeat: no-repeat;
     background-size: 48px;
@@ -1190,16 +1191,18 @@ blockquote {
 
     &:not(.alert-note) a,
     &:not(.alert-note) a:link {
-        color: #fff;
-        text-decoration: underline;
+      color: #000000;
+      text-decoration: underline;
 
         &:hover,
         &:active,
         &:focus {
-            color: #fff;
-            text-decoration: none !important;
+          color: #000000;
+          text-decoration: none !important;
         }
     }
+
+    color: #000000;
 
     p:first-child,
     ul:first-child,
@@ -1242,29 +1245,6 @@ blockquote {
     &.tip {
         background-color: $tip-bg;
         background-image: url(image_path("tip-icon.svg"));
-    }
-
-    &.important,
-    &.caution,
-    &.tip {
-        color: #000000;
-
-        a,
-        a:link {
-            color: #000000;
-            text-decoration: underline;
-
-            &:hover,
-            &:active,
-            &:focus {
-                color: #000000;
-                text-decoration: none !important;
-            }
-        }
-
-        code {
-            color: #000000;
-        }
     }
 }
 
@@ -1908,7 +1888,7 @@ article table tr {
     }
 
     div.feedback > div {
-      line-height: 23px;
+        line-height: 23px;
     }
 }
 
