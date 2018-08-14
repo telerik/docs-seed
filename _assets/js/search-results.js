@@ -57,6 +57,8 @@ var searchViewModel = kendo.observable({
     update: function () {
         this.updateLabel();
         localStorage.setItem(searchItemsStorageKey, JSON.stringify(this.filterValues));
+        updateSearchLayout();
+        
     },
     init: function () {
         var propertyNames = JSON.parse(localStorage.getItem(searchItemsStorageKey));
@@ -104,6 +106,7 @@ function init() {
     });
 
     attachToEvents();
+    updateSearchLayout();
 }
 
 function search(input) {
@@ -142,6 +145,10 @@ function trackSearchQuery(filter, query) {
 
 function trackSearchResult(link) {
     trackItem("docs-search-results", searchTerms, link);
+}
+
+function updateSearchLayout() {
+    $('#local-search').css('padding-right', $('#refine-search-button').outerWidth());
 }
 
 $(function () {

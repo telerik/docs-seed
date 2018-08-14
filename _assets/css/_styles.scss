@@ -468,11 +468,11 @@ $hover-text: darken($text-color, 10%);
 
     svg {
         display: block;
-        width: 16px;
-        height: 16px;
+        width: 20px;
+        height: 20px;
         position: relative;
-        top: 50%;
-        transform: perspective(1px) translateY(-50%);
+        top: 45%;
+        transform: perspective(1px) translateY(-55%);
     }
 
     .search-icon {
@@ -2443,7 +2443,7 @@ $callout-bg: #d7dfe3;
     }
 
     &.show-search {
-        left: 0;
+        left: -10%;
     }
 
     input {
