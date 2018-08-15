@@ -20,6 +20,12 @@ integration/
 upgrade/
 troubleshooting/
 images/
+xamlflix-step-by-step-guide/
+licensing/
+developer-focused-examples/
+common-information/
+cloud-integration/
+assembly-minifier/
 
 .tmp
 npm/*
