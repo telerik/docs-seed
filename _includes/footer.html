@@ -5,44 +5,26 @@
       <div class="row">
       <div class="col-md-12 col-lg-10 col-lg-offset-1">
       <div class="row">
-      {% if site.footer.community_support %}
-      <div class="col-sm-3 mb-20">
-        <h6 class="mt-0 mb-10">{{ site.product}}</h6>
-        <ul class="list-unstyled">
-          {% for item in site.footer.main %}
-            <li><a href="{{ item[1] }}" target="_blank">{{ item[0] }}</a></li>
+        {% if site.footer %}
+          {% for column in site.footer %}
+            <div class="col-sm-{{ 12 | divided_by: site.footer.size }} mb-20">
+                <h6 class="mt-0 mb-10">{{ column.title }}</h6>
+                <ul class="list-unstyled">
+                  {% for item in column.links %}
+                    <li><a href="{{ item[1] }}" target="_blank">{{ item[0] }}</a></li>
+                  {% endfor %}
+                </ul>
+            </div>
           {% endfor %}
-        </ul>
-      </div>
-      {% endif %}
-      {% if site.footer.community_support %}
-      <div class="col-sm-3 mb-20">
-        <h6 class="mt-0 mb-10">Community & Support</h6>
-        <ul class="list-unstyled">
-          {% for item in site.footer.community_support %}
-            <li><a href="{{ item[1] }}" target="_blank">{{ item[0] }}</a></li>
-          {% endfor %}
-        </ul>
-      </div>
-      {% endif %}
-      {% if site.footer.get_involved %}
-      <div class="col-sm-3 mb-20">
-        <h6 class="mt-0 mb-10">Get Involved</h6>
-        <ul class="list-unstyled">
-          {% for item in site.footer.get_involved %}
-            <li><a href="{{ item[1] }}" target="_blank">{{ item[0] }}</a></li>
-          {% endfor %}
-        </ul>
-      </div>
-      {% endif %}
+        {% endif %}
       </div>
       <div class="row copyright">
        <div class="col-sm-4 social-icons">
           <span class="sticky">
-            {% if site.footer.social.facebook %}<a class="social-icon" href="{{ site.footer.social.facebook }}" title="">{% include icons/facebook.svg %}</a>{% endif %}
-            {% if site.footer.social.twitter %}<a class="social-icon" href="{{ site.footer.social.twitter }}" title="">{% include icons/twitter.svg %}</a>{% endif %}
-            {% if site.footer.social.youtube %}<a class="social-icon" href="{{ site.footer.social.youtube }}" title="">{% include icons/youtube.svg %}</a>{% endif %}
-            {% if site.footer.social.linkedin %}<a class="social-icon" href="{{ site.footer.social.linkedin }}" title="">{% include icons/linkedin.svg %}</a>{% endif %}
+            {% if site.footer_social.facebook %}<a class="social-icon" href="{{ site.footer_social.facebook }}" title="">{% include icons/facebook.svg %}</a>{% endif %}
+            {% if site.footer_social.twitter %}<a class="social-icon" href="{{ site.footer_social.twitter }}" title="">{% include icons/twitter.svg %}</a>{% endif %}
+            {% if site.footer_social.youtube %}<a class="social-icon" href="{{ site.footer_social.youtube }}" title="">{% include icons/youtube.svg %}</a>{% endif %}
+            {% if site.footer_social.linkedin %}<a class="social-icon" href="{{ site.footer_social.linkedin }}" title="">{% include icons/linkedin.svg %}</a>{% endif %}
           </span>
        </div>
        <div class="col-sm-8">
