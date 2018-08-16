@@ -664,6 +664,12 @@ $nav-icon-color: #979797;
         }
     }
 
+    .k-treeview .k-in {
+      border: 0;
+      line-height: 1.44em;
+      padding-right: 0;
+    }
+
     .k-in {
         cursor: pointer;
         display: block;
