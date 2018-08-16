@@ -18,6 +18,7 @@
 //= require related-articles
 //= require toc
 //= require feedback
+//= require code-snippet
 //= require sdk-browser
 //= require side-nav
 //= require additional-content
