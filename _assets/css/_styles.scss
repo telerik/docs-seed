@@ -1,13 +1,16 @@
 /* Base Vars */
 
-$accent: #ff6358; /*#ee5247*/
+$accent: #27A306; /*#ee5247*/
 $accent-solid: #3f5366;
 $text-active-color: #4b4e52;
 
 $link-color: #2489d8; /*#2f8eb8*/
-$link-hover-color: #ff6358; /*006a88*/
+$link-hover-color: #27A306; /*006a88*/
 $link-background-color: #f2f8ff;
 $navigation-link-color: #696b6e;
+
+$try-now: #E74B3C;
+$try-now-hover: #E53321;
 
 $font-heading: "Roboto", Helvetica, Arial, sans-serif;
 $font-regular: "Roboto", Helvetica, Arial, sans-serif;
@@ -205,13 +208,13 @@ h6, .h6 {
 }
 
 h1, .h1 {
-    font-size: 64px;
+    font-size: 56px;
     font-family: $font-heading;
     line-height: .95em;
 }
 
 h2, .h2 {
-    font-size: 44px;
+    font-size: 36px;
     font-family: $font-heading;
 }
 
@@ -505,11 +508,11 @@ $hover-text: darken($text-color, 10%);
     }
 
     .primary-cta a {
-        background-color: $accent;
+        background-color: $try-now;
 
         &:hover,
         &:active {
-            background-color: darken($accent, 10%);
+            background-color: $try-now-hover;
         }
     }
 
@@ -1261,12 +1264,12 @@ $border-color: #d9d9d9;
     top: 100px;
 
     .btn-action {
-        color: $link-color;
+        color: $accent;
         background-color: transparent;
         text-transform: uppercase;
         padding: 10px 20px;
         margin: 10px 0;
-        border: 1px solid $link-color;
+        border: 1px solid $accent;
         border-radius: 0;
         font-size: 14px;
         font-weight: 500;
@@ -1275,7 +1278,7 @@ $border-color: #d9d9d9;
         &:focus,
         &:active {
             color: #f1f1f1;
-            background-color: $link-color;
+            background-color: $accent;
         }
     }
 
@@ -1283,6 +1286,7 @@ $border-color: #d9d9d9;
         font-size: 14px;
         position: relative;
         padding-left: 20px;
+        color: $accent;
 
         &::before {
             content: "";
@@ -1871,8 +1875,7 @@ article table tr {
         text-transform: uppercase;
         background: transparent;
         border: none;
-        color: #ffffff;
-        color: #ffd8d5;
+        color: #f1f1f1;
         cursor: pointer;
         transition-property: background-color, color;
         transition-duration: 0.2s;
@@ -2755,7 +2758,7 @@ a.all-components {
             z-index: 1;
 
             a {
-                color: #ff6358;
+                color: $accent;
             }
         }
 
