@@ -80,8 +80,8 @@ pre .dec {
     background: transparent;
 }
 
-.k-grid tr:hover {
-    background-color: #f5f6f6;
+.k-grid-content > table > tbody > tr:not(.k-detail-row):hover {
+    background-color: #f2f8ff !important;
 }
 
 .k-grid-header th.k-state-focused,
@@ -204,42 +204,10 @@ pre .dec {
     background-color: #86d9e4;
 }
 
-/* END Kendo Grid Nova Theme CSS*/
-
-/* START Kendo Grid Nova Theme CSS*/
 .k-grid td {
     white-space: nowrap;
     text-overflow: ellipsis;
 }
-
-#kendoDiv {
-    margin-bottom: 10px;
-    border-color: #e0e0e0;
-}
-
-#kendoDivSL {
-    margin-bottom: 10px;
-    border-color: #e0e0e0;
-}
-
-#kendoDiv .detailsDIV {
-    color: #E0E0E0 !important;
-}
-
-#kendoDivSL .detailsDIV {
-    color: #E0E0E0 !important;
-}
-
-#kendoDiv p {
-    word-break: break-all;
-    white-space: normal;
-}
-
-#kendoDivSL p {
-    word-break: break-all;
-    white-space: normal;
-}
-
 
 tr.k-detail-row:hover {
     background: transparent;
@@ -251,6 +219,32 @@ tr.k-detail-row:hover {
 }
 
 #kendoDiv, #kendoDivSL {
+    margin-bottom: 10px;
+    border-color: #e0e0e0;
+    
+    .k-state-selected td {
+      white-space: normal;
+    }
+
+    .k-detail-cell {
+      padding-left: 0;
+    }
+
+    .readmeDiv {
+      padding: 0 0 0 40px;
+    }
+
+    .detailsDIV {
+        color: #E0E0E0 !important;
+        float: left;
+    }
+
+    p {
+        word-break: break-all;
+        white-space: normal;
+        max-width: 530px;
+    }
+
     table td {
         border: 1px solid #e1e5ea;
         color: #555;
@@ -262,7 +256,6 @@ tr.k-detail-row:hover {
     .k-grid-toolbar {
         padding: 0px;
         border-color: #E0E0E0;
-        margin-bottom: -1px;
     }
 
     table th {
@@ -275,7 +268,7 @@ tr.k-detail-row:hover {
 
     .toolbar {
         background: #FAFAFA;
-        padding: 10px 0px 10px 0px;
+        padding: 10px 0px;
     }
 
     .k-grid-content {
@@ -309,7 +302,7 @@ tr.k-detail-row:hover {
     #searchBox {
         display: table-cell;
         height: 40px;
-        width: 97%;
+        width: 72%;
         border: 1px solid;
         border-color: #e0e0e0;
     }

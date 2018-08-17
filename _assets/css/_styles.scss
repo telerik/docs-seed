@@ -720,10 +720,11 @@ $nav-icon-color: #979797;
     }
 
     .article {
-        top: 7px;
+        top: 6px;
         width: 14px;
         height: 16px;
         background: url(image_path("article.svg")) no-repeat 50% 50%;
+        z-index: 10;
     }
 
     #page-tree > .k-group > .k-item,

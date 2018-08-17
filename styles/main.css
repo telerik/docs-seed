@@ -2080,8 +2080,7 @@ body .toc {
         text-transform: uppercase;
         background: transparent;
         border: none;
-        color: #ffffff;
-        color: #ffd8d5;
+        color: #f1f1f1;
         cursor: pointer;
         transition-property: background-color, color;
         transition-duration: 0.2s;
@@ -2771,8 +2770,7 @@ h6, .h6 {
 }
 
 h1, .h1 {
-    font-size: 56px;
-    font-weight: 300;
+    font-size: 44px;
     font-family: "Roboto", Helvetica, Arial, sans-serif;
     line-height: .95em;
 }
