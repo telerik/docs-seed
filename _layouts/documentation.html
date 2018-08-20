@@ -10,7 +10,7 @@ layout: default
   </div>
   <div class="content-wrapper col-sm-8 col-sm-offset-4 col-md-offset-3 col-lg-8 col-lg-offset-2">
     <div class="row" style="overflow: hidden;">
-      <div class="col-md-10 col-md-offset-1">
+      <div class="col-md-10 col-md-offset-1 mb-40">
 
         <p class="breadcrumbs">
           {% if site.nested_bread_crumbs %}
@@ -28,7 +28,7 @@ layout: default
         </article>
 
         {% if page.enable_prev_next == true %} {% if page.node.prev != null or page.node.next != null %} 
-        <div class="row prev-next mb-40">
+        <div class="row prev-next">
           <div class="col-xs-6 previous">
             {% if page.node.prev != null and page.has_prev != false %}
             {% assign prev_url = page.node.prev.url %}
