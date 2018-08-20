@@ -413,6 +413,10 @@ $hover-text: darken($text-color, 10%);
             background: transparent url(image_path("logo-wpf.svg")) no-repeat 0 50%;
         }
 
+        &.brand-platform-silverlight {
+          background: transparent url(image_path("logo-silverlight.svg")) no-repeat 0 50%;
+      }
+
         &::before {
             // preload scroll logo
             content: " ";
@@ -423,6 +427,10 @@ $hover-text: darken($text-color, 10%);
             &.brand-platform-wpf {
                 background-image: url(image_path("logo-scroll-wpf.svg"));
             }
+
+            &.brand-platform-silverlight {
+              background-image: url(image_path("logo-scroll-silverlight.svg"));
+          }
         }
 
         .scroll & {
@@ -434,6 +442,10 @@ $hover-text: darken($text-color, 10%);
             &.brand-platform-wpf {
                 background: transparent url(image_path("logo-scroll-wpf.svg")) no-repeat 0 8px;
             }
+
+            &.brand-platform-silverlight {
+              background: transparent url(image_path("logo-scroll-silverlight.svg")) no-repeat 0 8px;
+          }
         }
 
         .alt-text {
