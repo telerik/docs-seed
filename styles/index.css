@@ -5,8 +5,8 @@ article {
 blockquote {
   border: 0;
   margin: 20px 0;
-  min-height: 80px;
-  padding: 16px 80px;
+  min-height: 70px;
+  padding: 24px 80px;
   background-color: #f9edc6;
   background-image: url("/devtools/wpf/assets/important-icon.svg");
   color: #fff;
@@ -14,7 +14,7 @@ blockquote {
   background-size: 48px;
   background-position: center;
   background-position-x: 16px;
-  background-position-y: 16px;
+  background-position-y: 50%;
   color: #000000; }
   blockquote:not(.alert-note) a, blockquote:not(.alert-note) a:link {
     color: #000000;
