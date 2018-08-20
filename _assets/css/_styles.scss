@@ -1192,8 +1192,8 @@ ul.mdash {
 blockquote {
     border: 0;
     margin: 20px 0;
-    min-height: 80px;
-    padding: 16px 80px;
+    min-height: 70px;
+    padding: 24px 80px;
     background-color: $important-bg;
     background-image: url(image_path("important-icon.svg"));
     color: #fff;
@@ -1201,7 +1201,7 @@ blockquote {
     background-size: 48px;
     background-position: center;
     background-position-x: 16px;
-    background-position-y: 16px;
+    background-position-y: 50%;
 
     &:not(.alert-note) a,
     &:not(.alert-note) a:link {
