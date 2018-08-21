@@ -1,0 +1,8 @@
+.git
+README.md
+.gitignore
+.contentignore
+.vscode
+.asset-cache
+_site
+docs-watcher/node_modules
