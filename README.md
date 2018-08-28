@@ -3,12 +3,12 @@ Contains the documentation site implementation.
 
 - [Local Setup :computer:](#local-setup)
 
-
 ## Local Setup
 This section describes the best practices about what and how should be done in order to run the documentation locally.
 
 ### Prerequisites
 - Install Docker (Community Edititon(CE) is enough) - please use the [official Docker installation](https://docs.docker.com/install/) guide.
+- Pull the repo to which you want to contribute (we will refer to that repo later as 'MY-REPO')
 
 ### Instructions
 - Clone the current repo 
@@ -16,10 +16,21 @@ This section describes the best practices about what and how should be done in o
 git clone git@github.com:telerik/docs-seed.git
 ```
 
-- Then clone the repo which shall populate the site's content (e.g. the XAML documentation) in the root folder (basically, this is is the folder in which you've cloned the **docs-seed** repo.
-- Open a terminal of your choice (e.g. gitBash) and execute the following bash command in the root folder again (where the **Dockerfile** is located)
+- Go to the directory in which you've pulled it (e.g. D:\Work\docs-seed)
+- Open a terminal of your choice (e.g. gitBash)
+- Run the following command by passing the MY-REPO path:
+```bash
+sh copy_local.sh "D:\Work\xaml-docs"
+```
+
+- Go to the MY-REPO directory and execute the following bash command in the root folder again (where the **Dockerfile** is located)
 ```bash
 sh start-docs.sh
+```
+
+In case you want to use a different config.yml file, pass it to the above command as follows:
+```bash
+sh start-docs.sh _silverlight.yml
 ```
 
 - This is it! You can find the documentation site on server address which is written in the terminal: *http://0.0.0.0:4000/*. If you can't open the previous URL, replace the '0.0.0.0' with 'localhost' - *http://localhost:4000*. 
