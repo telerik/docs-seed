@@ -28,6 +28,11 @@ sh copy_local.sh "D:\Work\xaml-docs"
 sh start-docs.sh
 ```
 
+In case you want to use a different config.yml file, pass it to the above command as follows:
+```bash
+sh start-docs.sh _silverlight.yml
+```
+
 - This is it! You can find the documentation site on server address which is written in the terminal: *http://0.0.0.0:4000/*. If you can't open the previous URL, replace the '0.0.0.0' with 'localhost' - *http://localhost:4000*. 
 > For example, for WPF documentation this would be: http://0.0.0.0:4000/devtools/wpf/
 
