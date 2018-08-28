@@ -10,10 +10,10 @@ fi
 
 destination=$1
 echo "Start copying to $1"
-rsync -rv --exlcude-from=exclude.txt "./*" $destination/
-files_to_exclude="`cat ./exclude.txt`"
-# robocopy *.* "$destination" /MIR > xcopy.out  #/EXCLUDE:".\exclude.txt" /exclude:exclude.txt 
-# xcopy  "*.*" "$destination"  /exclude:exclude.txt /y #> xcopy.out /r /i /s /y
+
+files_to_exclude="`cat ./exclude_files.txt`"
+dirs_to_exclude="`cat ./exclude_dirs.txt`"
+robocopy . "$destination" `/XD $dirs_to_exclude /XF $files_to_exclude /S`
 
 #shopt -s extglob
 #cp -rf $(ls !(.git|.vscode|_site|.asset-cache|.contentignore|.gitignore|docs-watcher/node_modules)) $destination
