@@ -1,5 +1,4 @@
 #!/bin/bash
-set -e
 
 if [ -z "$1" ]
   then 
@@ -13,7 +12,7 @@ echo "Start copying to $1"
 
 files_to_exclude="`cat ./exclude_files.txt`"
 dirs_to_exclude="`cat ./exclude_dirs.txt`"
-robocopy . "$destination" `/XD $dirs_to_exclude /XF $files_to_exclude /S`
+robocopy . "$destination" //XD $dirs_to_exclude //XF $files_to_exclude //E
 
 #shopt -s extglob
 #cp -rf $(ls !(.git|.vscode|_site|.asset-cache|.contentignore|.gitignore|docs-watcher/node_modules)) $destination

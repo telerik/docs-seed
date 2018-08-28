@@ -1,1 +1,1 @@
-.git/ .vscode/ .asset-cache/ _site/ docs-watcher/node_modules/
+.git .vscode .asset-cache _site .github
