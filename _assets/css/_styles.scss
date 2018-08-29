@@ -1078,11 +1078,9 @@ article {
     &:not(.api-reference) h1 + p {
         font-size: 18px;
         font-weight: 400;
-        line-height: 24px;
         margin-top: 15px;
         margin-bottom: 20px;
         font-family: $font-regular;
-        color: #8a959f;
     }
 
     h3 + p,
@@ -2919,12 +2917,6 @@ a.all-components {
         ul, ol {
             padding: 0 0 0 3em;
         }
-
-        &:not(.api-reference) > p:first-child,
-        &:not(.api-reference) h1 + p {
-            font-size: 20px;
-            line-height: 26px;
-        }
     }
 
     .api-index.api-columns ul {
@@ -3042,11 +3034,6 @@ a.all-components {
 
         h2 {
             font-size: 36px;
-        }
-
-        &:not(.api-reference) > p:first-child,
-        &:not(.api-reference) h1 + p {
-            font-size: 24px;
         }
     }
 
