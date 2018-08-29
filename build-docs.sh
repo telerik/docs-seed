@@ -3,8 +3,8 @@
 config_file="_config.yml"	
 if [ ! -z "$1" ]	
   then 	
-    echo "Using configuration file: $1"	
-    config_file=$1	
+    config_file+=",$1"
+    echo "Using configuration from: $config_file"	
 fi
 
 rm -rf _site/ && rm -rf .sass-cache && rm -rf .jekyll-cache && rm -rf .asset-cache
