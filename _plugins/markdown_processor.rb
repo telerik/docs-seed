@@ -21,8 +21,6 @@ module Jekyll
                 id.gsub!(PUNCTUATION_REGEXP, '') # remove punctuation
                 id.gsub!(' ', '-') # replace spaces with dash
 
-                id = "toc-#{id}"
-
                 heading['id'] = id
 
                 a = Nokogiri::XML::Node.new('a', doc)
