@@ -1,5 +1,5 @@
 $(function () {
-    var relatedArticlesMarker = $('h2#toc-see-also');
+    var relatedArticlesMarker = $('h2#see-also');
     if (relatedArticlesMarker.length) {
         var relatedArticlesList = relatedArticlesMarker.next('ul');
         $('#related-articles').append(relatedArticlesList.html());
