@@ -7,7 +7,7 @@ Contains the documentation site implementation.
 This section describes the best practices about what and how should be done in order to run the documentation locally.
 
 ### Prerequisites
-- Install Docker (Community Edititon(CE) is enough) - please use the [official Docker installation](https://docs.docker.com/install/) guide.
+- Install Docker (Community Edititon(CE) is enough) - please use the [official Docker installation](https://docs.docker.com/install/) guide. Accept the default installation instructions (use Linux containers, etc.)
 - Pull the repo to which you want to contribute (we will refer to that repo later as 'MY-REPO')
 
 ### Instructions
