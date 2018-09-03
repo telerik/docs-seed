@@ -3,6 +3,7 @@ source "https://rubygems.org"
 
 # gem "rails"
 gem 'jekyll', '~> 3.0'
+gem 'jekyll-sitemap'
 gem 'wdm', '>= 0.1.0'
 gem "kramdown"
 gem "rouge"

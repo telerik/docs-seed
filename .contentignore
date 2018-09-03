@@ -14,6 +14,7 @@
 Dockerfile
 Gemfile
 Gemfile.lock
+robots.txt
 /bs-config.js
 /build-docs.sh
 /copy_content.sh
