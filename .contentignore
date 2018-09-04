@@ -7,6 +7,7 @@
 /_templates/
 /docs-watcher/
 /styles/
+/fonts/
 
 .dockerignore
 .editorconfig
@@ -15,12 +16,16 @@ Dockerfile
 Gemfile
 Gemfile.lock
 robots.txt
-/bs-config.js
-/build-docs.sh
-/copy_content.sh
-/copy_local.sh
+bs-config.js
+build-docs.sh
+copy_content.sh
+copy_local.sh
 /favicon.ico
-/install-npm.sh
-/search.html
-/start-docs.sh
-/watch.sh
+install-npm.sh
+search.html
+start-docs.sh
+watch.sh
+manifest.json
+search-stopwords.json
+xrefmap.yml
+toc.html
