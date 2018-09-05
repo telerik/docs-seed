@@ -25,7 +25,3 @@ install-npm.sh
 search.html
 start-docs.sh
 watch.sh
-manifest.json
-search-stopwords.json
-xrefmap.yml
-toc.html

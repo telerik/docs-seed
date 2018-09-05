@@ -37,8 +37,3 @@ cacert.pem
 bin/
 .bundle
 .vscode
-
-toc.html
-xrefmap.yml
-search-stopwords.json
-manifest.json
