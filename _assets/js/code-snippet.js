@@ -1,17 +1,29 @@
 const selectedLanguageKey = "Selected_TabStrip_Language_Key";
-
-function saveLanguage(language) {
-    localStorage.setItem(selectedLanguageKey, language);
-}
+// Necessary for the offline docs.
+const localStorageMock = {
+    getItem: function() {
+        return null;
+    },
+    setItem: function() {
+    }
+};
 
 $(function () {
     $("pre").addClass("prettyprint");
+    
+    function getStorage() {
+        return localStorage !== undefined ? localStorage : localStorageMock;
+    }
+    
+    function saveLanguage(language) {
+        getStorage().setItem(selectedLanguageKey, language);
+    }
 
     prettyPrint();
 
     /* START TabStrip logic */
 
-    var selectedLanguage = localStorage.getItem(selectedLanguageKey);
+    var selectedLanguage = getStorage().getItem(selectedLanguageKey);
 
     var onTabActivated = function (e) {
         var language = e.item.innerText;
