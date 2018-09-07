@@ -28,7 +28,7 @@ sh copy_local.sh "D:\Work\xaml-docs"
 sh start-docs.sh
 ```
 
-In case you want to use a different config.yml file, pass it to the above command as follows:
+In case you want to add an additional config.yml file, pass it to the above command as follows:
 ```bash
 sh start-docs.sh _silverlight.yml
 ```
