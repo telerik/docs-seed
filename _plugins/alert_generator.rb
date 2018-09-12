@@ -21,8 +21,9 @@ module Reading
 				if	slugsInBlock.count > 0				
 					slugsInBlock.each do |slug|								
 						targetPage = @site.pages.find {|p| p.data['slug'] == slug[1]}			
-						if targetPage
-							block.sub!(slug[0], targetPage.url.sub('.html', ''))					
+            if targetPage
+              link = @site.baseurl + targetPage.url.sub('.html', '')
+							block.sub!(slug[0], link)					
 						end
 					end
 				end				
