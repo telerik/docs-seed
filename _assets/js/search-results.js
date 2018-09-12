@@ -24,8 +24,11 @@ var searchViewModel = kendo.observable({
         return filterExpression;
     },
     getFilterExpression: function() {
-        var filter = this.getFilter();
-        return filter !== '' ? PAGE_FILTER + filter : '';
+        return '';
+
+        // TODO: Turn filter on after google indexing.
+        // var filter = this.getFilter();
+        // return filter !== '' ? PAGE_FILTER + filter : '';
     },
     updateLabel: function() {
         var label = "";
