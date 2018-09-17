@@ -88,7 +88,7 @@
               </li>
               {% endif %}
               {% if site.download %}
-                <li class="primary-cta"><a href="{{site.download}}" target="_blank">Try now</a></li>
+                <li class="primary-cta"><a href="{{site.download}}" target="_blank" onclick="trackItemFromCurrentPage('docs-navigation', 'Try now')">Try now</a></li>
               {% endif %}
             </ul>
           </div>
