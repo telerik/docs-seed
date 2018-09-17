@@ -1,10 +1,10 @@
 function scrollNodeIntoView(li) {
-    var container = $(".side-nav")[0];
-    var top = li[0].offsetTop;
+    var top = li.offset().top;
     var bottom = top + li.find(">div").outerHeight();
 
+    var container = $(".side-nav")[0];
     var containerTop = container.scrollTop;
-    var containerHeight = container.clientHeight;
+    var containerHeight = container.clientHeight + parseInt(container.style.bottom, 10);
 
     if (top < containerTop || bottom > containerHeight + containerTop) {
         container.scrollTop = top - containerHeight / 2;

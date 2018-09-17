@@ -101,8 +101,14 @@ layout: default
     });
 
     $(".all-components").click(function() {
-        $(".all-components").toggleClass("show-components");
-        $(".side-nav").toggleClass("show-components");
+      var showComponentsClassName = 'show-components';
+      $(".all-components").toggleClass(showComponentsClassName);
+      
+      var sideNav = $('.side-nav');
+      sideNav.toggleClass(showComponentsClassName);
+      if (sideNav.hasClass(showComponentsClassName)) {
+        scrollNodeIntoView($('#page-tree').data('kendoTreeView').select());
+      }
     });
 
     $(".api-index").toggleClass(function() {
