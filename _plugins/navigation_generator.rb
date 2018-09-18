@@ -41,7 +41,6 @@ module Jekyll
                       else
                           path = segments[0..index].join('/')
                           navigation_entry =  @navigation.find { |key, value| path =~ key }
-                          next if navigation_entry && navigation_entry[1]['include_in_navigation'] == false
                           mapping = navigation_entry ? navigation_entry[1] : {}
                           item['text'] = mapping['title'] || segment
                           item['items'] = []
