@@ -75,7 +75,7 @@
                 <li><a href="{{ item[1] }}" target="_blank" onclick="trackItemFromCurrentPage('docs-navigation', '{{ item[0] }}')">{{ item[0] }}</a></li>
               {% endfor %}
 
-              {% if page.is_search_page != true  %}
+              {% if page.is_search_page != true or site.has_search != false  %}
               <li class="hidden-xs">
                 <a class="search-icon">
                     {% include icons/search.svg %}
