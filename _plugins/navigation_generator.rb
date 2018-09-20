@@ -3,6 +3,7 @@ module Jekyll
   class NavigationGenerator < Generator
       def initialize(config)
           @navigation = Hash[(config['navigation'] || {}).map { |key, value| [/^#{key.gsub('*', '.*?')}$/, value] }]
+          @exclude_navigation = (config['exclude_navigation'] || {}).map { |item| /^#{item.gsub('*', '.*?')}$/ }
       end
 
       def categories(site)
@@ -22,7 +23,7 @@ module Jekyll
 
               url = page.url.sub('/', '')
 
-              next if url.include? "knowledge-base/"
+              next if @exclude_navigation.any? { |regex| regex.match(url) }
 
               segments = url.split('/')
 
@@ -30,7 +31,6 @@ module Jekyll
                   item = node.find { |n| n['path'] == segment }
 
                   unless item
-
                       item = { 'path' => segment }
 
                       if index == segments.size - 1
