@@ -75,7 +75,8 @@
                 <li><a href="{{ item[1] }}" target="_blank" onclick="trackItemFromCurrentPage('docs-navigation', '{{ item[0] }}')">{{ item[0] }}</a></li>
               {% endfor %}
 
-              {% if page.is_search_page != true or site.has_search != false  %}
+              {% if site.has_search != false %}
+              {% if page.is_search_page != true  %}
               <li class="hidden-xs">
                 <a class="search-icon">
                     {% include icons/search.svg %}
@@ -86,6 +87,7 @@
                   {% include search.html %}
                 </div>
               </li>
+              {% endif %}
               {% endif %}
               {% if site.download %}
                 <li class="primary-cta"><a href="{{site.download}}" target="_blank" onclick="trackItemFromCurrentPage('docs-navigation', 'Try now')">Try now</a></li>

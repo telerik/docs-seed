@@ -24,11 +24,8 @@ var searchViewModel = kendo.observable({
         return filterExpression;
     },
     getFilterExpression: function() {
-        return '';
-
-        // TODO: Turn filter on after google indexing.
-        // var filter = this.getFilter();
-        // return filter !== '' ? PAGE_FILTER + filter : '';
+        var filter = this.getFilter();
+        return filter !== '' ? PAGE_FILTER + filter : '';
     },
     updateLabel: function() {
         var label = "";
@@ -164,7 +161,7 @@ $(function () {
     }
 
     var params = location.search.replace(/(^\?)/, '').split("&").map(toKV.bind({}))[0];
-    searchTerms = params.q;
+    searchTerms = decodeURIComponent(params.q ? params.q.replace(/\+/g,' ') : '');
     $("[name=q]").val(searchTerms);
 
     var ds = new kendo.data.DataSource({
