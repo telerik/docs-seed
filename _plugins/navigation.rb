@@ -2,6 +2,19 @@ DEFAULT_POSITION = 10000
 # https://github.com/sindresorhus/semver-regex/blob/master/index.js
 VERSION_REGEXP = /\bv?(?:0|[1-9][0-9]*)\.(?:0|[1-9][0-9]*)\.(?:X|0|[1-9][0-9]*)(?:-[\da-z\-]+(?:\.[\da-z\-]+)*)?(?:\+[\da-z\-]+(?:\.[\da-z\-]+)*)?\b/i;
 
+class Navigation
+  @@instance = nil
+
+  def self.load(content)
+      @@instance = Hash[(content || {}).map { |key, value| [/^#{key.gsub('*', '.*?')}$/, value] }] unless @@instance
+  end
+
+  def self.get_entry(path)
+    entry_candidate = @@instance.find { |key,value| path =~ key }    
+    entry_candidate ? entry_candidate[1] : nil
+  end
+end
+
 class TreeNode < Liquid::Drop
     include Comparable
     attr_reader :position, :children, :parent, :tags, :include_in_navigation
@@ -12,21 +25,16 @@ class TreeNode < Liquid::Drop
         @tags = []
         @include_in_navigation = true
 
-        meta_file = File.join('./', path, '_meta.yml')
-    
-        if File.exists?(meta_file)
-            meta = YAML.load(File.read(meta_file))
-        elsif File.exists?('_config.yml')
-            new_path = path 
-            new_path = new_path.slice(1..-1) unless new_path.length < 1
-            meta = YAML.load(File.read('_config.yml'))['navigation'];
-            meta = Hash[(meta || {}).map { |key, value| [key.gsub(/\*(.*?)/, new_path), value] }][new_path]
-        end
+        Navigation.load(YAML.load(File.read('_config.yml'))['navigation'])
+  
+        new_path = path 
+        new_path = new_path.slice(1..-1) unless new_path.length < 1
+        navigation_entry = Navigation.get_entry(new_path)
 
-        if meta
-          @title = meta["title"]
-          @position = meta["position"]
-          @tags = (meta["tags"] || "").split(",")
+        if navigation_entry
+          @title = navigation_entry["title"]
+          @position = navigation_entry["position"]
+          @tags = (navigation_entry["tags"] || "").split(",")
         end 
     end
 
