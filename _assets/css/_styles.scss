@@ -415,7 +415,11 @@ $hover-text: darken($text-color, 10%);
 
         &.brand-platform-silverlight {
           background: transparent url(image_path("logo-silverlight.svg")) no-repeat 0 50%;
-      }
+        }
+
+        &.brand-platform-dpl {
+            background: transparent url(image_path("logo-dpl.svg")) no-repeat 0 50%;
+        }
 
         &::before {
             // preload scroll logo
@@ -430,7 +434,11 @@ $hover-text: darken($text-color, 10%);
 
             &.brand-platform-silverlight {
               background-image: url(image_path("logo-scroll-silverlight.svg"));
-          }
+            }
+
+            &.brand-platform-dpl {
+              background-image: url(image_path("logo-scroll-dpl.svg"));
+            }
         }
 
         .scroll & {
@@ -445,7 +453,11 @@ $hover-text: darken($text-color, 10%);
 
             &.brand-platform-silverlight {
               background: transparent url(image_path("logo-scroll-silverlight.svg")) no-repeat 0 8px;
-          }
+            }
+
+            &.brand-platform-dpl {
+              background: transparent url(image_path("logo-scroll-dpl.svg")) no-repeat 0 8px;
+            }
         }
 
         .alt-text {
@@ -864,7 +876,7 @@ $nav-icon-color: #979797;
                     }
 
                     .k-icon, .article {
-                        left: 82;
+                        left: 82px;
                     }
 
                     .k-group {
