@@ -4155,3 +4155,19 @@ article table#allcontrols-table {
 }
 
 /* END Introduction page all controls table styles */
+
+
+/* Kendo loading indicator in API*/
+div#sidetoc {
+  .k-loading-mask {
+    background-image: url(image_path("loading-image.gif"));
+    background-repeat: no-repeat;
+    z-index: 10000;
+    background-position-x: center;
+    background-position-y: center;
+  }
+  
+  .k-loading-text {
+    display: none;
+  }
+}
