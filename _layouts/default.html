@@ -19,7 +19,7 @@
         <link rel="stylesheet" href="https://d6vtbcy3ong79.cloudfront.net/fonts/1.1.5/css/metric.min.css" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono|Roboto:300,400,500,700" />
         {% stylesheet "bundle" %}
-
+        {% if site.platforms.size > 0 %} {% stylesheet "platform_styles" %} {% endif %}
         {% javascript "main" %}
         <script src="https://cdn.cookielaw.org/consent/2fffb1c2-c64a-4fcc-bc19-a4adecbc5ebf.js" type="text/javascript" charset="UTF-8"></script> 
         <!-- Google Tag Manager -->
