@@ -11,6 +11,7 @@ layout: default
   <div class="content-wrapper col-sm-8 col-sm-offset-4 col-md-offset-3 col-lg-8 col-lg-offset-2">
     <div class="row" style="overflow: hidden;">
       <div class="col-md-10 col-md-offset-1 mb-40">
+        {% if site.platforms.size > 0 %} {% platforms Available for: %} {% endif %}
 
         <p class="breadcrumbs">
           {% if site.nested_bread_crumbs %}
