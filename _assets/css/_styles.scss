@@ -421,6 +421,10 @@ $hover-text: darken($text-color, 10%);
             background: transparent url(image_path("logo-dpl.svg")) no-repeat 0 50%;
         }
 
+        &.brand-platform-aspnet-ajax {
+          background: transparent url(image_path("logo-aspnet-ajax.svg")) no-repeat 0 50%;
+      }
+
         &::before {
             // preload scroll logo
             content: " ";
@@ -438,6 +442,10 @@ $hover-text: darken($text-color, 10%);
 
             &.brand-platform-dpl {
               background-image: url(image_path("logo-scroll-dpl.svg"));
+            }
+
+            &.brand-platform-aspnet-ajax {
+              background-image: url(image_path("logo-scroll-aspnet-ajax.svg"));
             }
         }
 
@@ -457,6 +465,10 @@ $hover-text: darken($text-color, 10%);
 
             &.brand-platform-dpl {
               background: transparent url(image_path("logo-scroll-dpl.svg")) no-repeat 0 8px;
+            }
+
+            &.brand-platform-aspnet-ajax {
+              background: transparent url(image_path("logo-scroll-aspnet-ajax.svg")) no-repeat 0 8px;
             }
         }
 
