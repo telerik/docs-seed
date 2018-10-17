@@ -7,7 +7,7 @@
             {% for category in intro_column.categories %}
               <li class="control-category">{{ category.title }}</li>
               {% for item in category.items %}
-                <li>{% mdslug %}[{{ item[0] }}]({% if item[1].isLink == true %}{{ item[1].value }}{% else %}{%slug {{ item[1] }}%}{% endif %}) {% endmdslug %}</li>
+                <li><a href="{% if item[1].isLink == true %}{{ item[1].value }}{% else %}{%slug {{ item[1] }}%}{% endif %}">{{ item[0] }}</a></li>
               {% endfor%}
             {% endfor %}
           </ul>
