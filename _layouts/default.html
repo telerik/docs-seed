@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="turbolinks-root" content="{{site.baseurl}}/">
-        <title>{{ page.page_title | page.title }} - {{ site.product }}</title>
+        <title>{{ page.page_title | default: page.title }} - {{ site.product }}</title>
         <meta name="description" content="{{ page.description }}" />
         {% if page.res_type %}<meta name="restype" content="{{ page.res_type }}">{% else %}<meta name="restype" content="documentation">{% endif %}
         <link rel="shortcut icon" href="{{site.baseurl}}/favicon.ico"/>
