@@ -12,33 +12,77 @@ This section describes the best practices about what and how should be done in o
 - Pull the repo to which you want to contribute (we will refer to that repo later as 'MY-REPO')
 
 ### Instructions
-- Clone the current repo 
+- Clone the current (seed) repo 
 ```bash
 git clone git@github.com:telerik/docs-seed.git
 ```
 
-- Go to the directory in which you've pulled it (e.g. D:\Work\docs-seed)
-- Open a terminal of your choice (e.g. gitBash)
-- Run the following command by passing the MY-REPO path (Please note, that the quotes are mandatory):
+- Go to the directory in which you've pulled it (e.g., `D:\Work\docs-seed`)
+- Open a terminal of your choice (e.g., gitBash)
+- Run the following command by passing the MY-REPO path (the **quotes** are mandatory):
 ```bash
 sh copy_local.sh "D:\Work\xaml-docs"
 ```
 
-- Go to the MY-REPO directory and execute the following bash command in the root folder again (where the **Dockerfile** is located)
+- Go to the MY-REPO directory
+- Open a terminal of your choice (e.g., gitBash)
+- Execute the following bash command in the root folder (where the **Dockerfile** is located)
 ```bash
 sh start-docs.sh
-```
-
-In case you want to add an additional config.yml file, pass it to the above command as follows:
-```bash
-sh start-docs.sh _silverlight.yml
 ```
 
 - This is it! You can find the documentation site on server address which is written in the terminal: *http://0.0.0.0:4000/*. If you can't open the previous URL, replace the '0.0.0.0' with 'localhost' - *http://localhost:4000*. 
 > For example, for WPF documentation this would be: http://0.0.0.0:4000/devtools/wpf/
 
-> If you want to stop the web site and the container in which it has been served, navigate to the terminal in which you've executed the previous command and press 'CTRL+C'.
+> If you want to stop the web site and the container in which it has been served, navigate to the terminal in which you've executed the previous command and press `CTRL+C`.
 
+> For WPF and Silverlight, see how to pass an [additional config file](#additional-config-file).
+
+### Troubleshooting
+
+#### Does Not Serve
+
+You executed `sh start-docs.sh` but you did not see any Jekyll output. Instead, the command ended with
+
+>the input device is not a TTY. If you are using mintty, try prefixing the command with 'winpty'
+
+This happens whtn using Git Bash with the MinTTY console. This console does not allow combinations such as `Ctrl+C` to pass to the Docker container and so you get such an error.
+
+The easiest way to **resolve** it is to prefix the command with `winpty`:
+
+```bash
+winpty sh start-docs.sh
+```
+
+An alternative is to re-install Git Bash and choose the default Windows terminal this time. You can read more detailes in the following post: [Docker for Windows: Interactive Sessions in MinTTY Git Bash](https://willi.am/blog/2016/08/08/docker-for-windows-interactive-sessions-in-mintty-git-bash/).
+
+#### Ctrl+C Does not Work
+
+When you want to stop serving the docs, you may have to **repeat** the `Ctrl+C` command or **press** `Enter` after it.
+
+#### .gitignore is Always Modified
+
+The scripts that copy the seed repo to the content repo (MY-REPO), also update the `.gitignore` file so as to avoid creating unstanged changes with work files that must not be commited. If you keep getting the `.gitignore` checked out, see what the change is with the original and commit to your repo the version that matches what the tool generates.
+
+#### Performance
+
+Docker is a resource-intensive tool. If you are not using it on a daily basis, consider preventing it from running on startup. Right click its tray icon > Settings > General, uncheck "Start Docker when you log in". This can save you time when booting up/logging in, but you will need to explicitly start Docker before working on documentation.
+
+Also, it tends to require a lot of HDD space, which may be an issue if you are running it on an SSD drive with limited capacity. You can reduce its quota by opening the Settings dialog > Advanced and either changing the image location, and/or reducing its max size. This also lets you limit its RAM consumption.
+
+### Extra Features
+
+You can benefit from the following features:
+* [additional config file](#additional-config-file)
+* [live sync](#livesync)
+* [build without serve](#only-build)
+
+#### Additional Config File
+
+In case you want to add an additional config.yml file, pass it to the above command as follows:
+```bash
+sh start-docs.sh _silverlight.yml
+```
 #### LiveSync
 To be able to monitor the changes you are making on the built documentation, execute the following command in a new terminal in the root directory of the site:
 ```bash
@@ -46,3 +90,13 @@ sh watch.sh
 ```
 
 > **Prerequisite**: If you haven't yet, please install [Node.js](https://nodejs.org/en/).
+
+#### Only Build
+
+To only run `jekyll build` and not `jekyll serve`, you need to execute the following bash command:
+```bash
+sh build-docs.sh
+```
+
+This can be useful if you want to (or already have) setup local IIS to point to the `_site` folder in your documentation repo. This allows you to also test redirects that `jekyll serve` does not support.
+
