@@ -18,7 +18,7 @@ git clone git@github.com:telerik/docs-seed.git
 
 - Go to the directory in which you've pulled it (e.g. D:\Work\docs-seed)
 - Open a terminal of your choice (e.g. gitBash)
-- Run the following command by passing the MY-REPO path:
+- Run the following command by passing the MY-REPO path (Please note, that the quotes are mandatory):
 ```bash
 sh copy_local.sh "D:\Work\xaml-docs"
 ```
