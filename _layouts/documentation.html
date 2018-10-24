@@ -20,7 +20,7 @@ layout: default
           {% render_bread_crumbs %}
         </p>
 
-        {% if page.api_reference == true and page.position != 1 %}
+        {% if page.kind == "api" and page.position != 1 %}
         <article class="api-reference">
         {% else %}
         <article>
