@@ -15,6 +15,6 @@ if [ ! -z "$2" ]
 fi
 
 rm -rf _site/ .sass-cache .jekyll-cache .asset-cache
-docker pull tmitev/docs-seed:site
-docker build -t tmitev/docs-seed:site .
-docker run --rm --env CONFIG_FILE=$config_file --env JEKYLL_COMMAND=build --env JEKYLL_EXTRA=$debug_params -t -v "/$(pwd):/app_root" -t tmitev/docs-seed:site
+docker pull progressdocs/docs-seed:site
+docker build -t progressdocs/docs-seed:site .
+docker run --rm --env CONFIG_FILE=$config_file --env JEKYLL_COMMAND=build --env JEKYLL_EXTRA=$debug_params -t -v "/$(pwd):/app_root" -t progressdocs/docs-seed:site
