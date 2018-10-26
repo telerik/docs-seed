@@ -4,8 +4,9 @@ config_file="_config.yml"
 if [ ! -z "$1" ]	
   then 	
     config_file+=",$1"
-    echo "Using configuration from: $config_file"	
 fi
+
+echo "Using configuration from: $config_file"	
 
 rm -rf _site/ .sass-cache .jekyll-cache .asset-cache
 docker pull progressdocs/docs-seed:site

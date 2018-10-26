@@ -2721,6 +2721,26 @@ i {
     content: "\e142";
 }
 
+.t-i-equal:before {
+    content: "\e14a";
+}
+
+.t-i-not-equal:before {
+    content: "\e14b";
+}
+
+.t-i-less-or-equal:before {
+    content: "\e14c";
+}
+
+.t-i-greater-or-equal:before {
+    content: "\e14d";
+}
+
+.t-i-divide:before {
+    content: "\e14e";
+}
+
 .t-i-play:before {
     content: "\e200";
 }
