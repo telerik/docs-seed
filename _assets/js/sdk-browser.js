@@ -1,5 +1,4 @@
-/* WPF/Silverlight specific
-START Developer Focused Examples Kendo Grid implementation */
+/* START Developer Focused Examples Kendo Grid implementation */
 
 function strEndsWith(str, suffix) {
     return str.match(suffix + "$") == suffix;
@@ -77,7 +76,7 @@ function convertApiLinkToCDNLink(url, fileName) {
     var contentsIndex = url.indexOf('contents');
     var rootDir = url.substring(contentsIndex + 9);
 
-    return "https://cdn.rawgit.com/telerik/xaml-sdk/master/" + rootDir + fileName;
+    return sdkCdnRepoPath + rootDir + fileName;
 }
 
 function getCodeInPlainText(theURL, fileName) {
@@ -150,14 +149,9 @@ function getGitHubFolderUrl(exampleInfo) {
     var rootDir = exampleInfo.GitHubPath.substring(masterIndex + 9);
     var dirName = exampleInfo.ExampleInfo.DirectoryName;
 
-    var result = "<a href='https://github.com/telerik/xaml-sdk/tree/master/" + rootDir + "/' target='_blank'>" + dirName + "</a>";
+    var result = "<a href='" + sdkRepoPath + rootDir + "/' target='_blank'>" + dirName + "</a>";
     return result;
 }
-
-$(function () {
-    createKendoGrid("#kendoDiv", "sdk_wpf.json");
-    createKendoGrid("#kendoDivSL", "sdk_sl.json");
-});
 
 function createKendoGrid(containerId, dataSourceUrl) {
     var kendoDiv = $(containerId);
@@ -258,5 +252,10 @@ function onUserInputSL() {
         }
     });
 }
+
+$(document).ready(function () {
+    createKendoGrid("#kendoDiv", mainSdkExamples);
+    createKendoGrid("#kendoDivSL", "sdk_sl.json");
+});
 
 /* END Developer Focused Examples Kendo Grid implementation */

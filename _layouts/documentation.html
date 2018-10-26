@@ -89,6 +89,9 @@ layout: default
 </div>
 
 <script>
+    var mainSdkExamples = {{ site.sdk_examples | prepend: '"' | append: '"' }};
+    var sdkRepoPath = {{ site.sdk_repo_path | prepend: '"' | append: '"' }};
+    var sdkCdnRepoPath = {{ site.sdk_cdn_path | prepend: '"' | append: '"' }};
     $(".read-prev").hover(function() {
         $(".title-prev").show();
     }, function() {
