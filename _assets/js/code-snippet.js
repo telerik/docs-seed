@@ -19,7 +19,21 @@ $(function () {
         getStorage().setItem(selectedLanguageKey, language);
     }
 
-    prettyPrint();
+    function mergeTabbedCodes() {
+        var tabbedCodeSelector = 'div.tabbedCode';
+        $(tabbedCodeSelector).each(function () {
+            var container = $(this);
+            var nextSibling = container.next(tabbedCodeSelector);
+            while (nextSibling.length) {
+                nextSibling.children().each(function (index, child) {
+                    container.append(child);
+                });
+
+                nextSibling.remove();
+                nextSibling = container.next(tabbedCodeSelector);
+            }
+        });
+    }
 
     /* START TabStrip logic */
 
@@ -32,11 +46,13 @@ $(function () {
         }
     };
 
+    mergeTabbedCodes();
+
     $("div.tabbedCode").each(function () {
         var container = $(this);
         var langs = container.find("pre");
         if (langs.length === 0) {
-            //console.log("Cannot find any languages")
+            // console.log("Cannot find any languages")
             return;
         }
 
@@ -81,12 +97,14 @@ $(function () {
         'ASPNET': 'html',
         'XML': 'xml',
         'TypeScript': 'commonjs',
-    }
+    };
 
     $("pre").each(function (index) {
         var langExtension = codeSampleMapper[$(this).attr('lang')];
         $(this).addClass('lang-' + langExtension).addClass("prettyprint");
     });
+
+    prettyPrint();
 
     /* END TabStrip logic */
 });

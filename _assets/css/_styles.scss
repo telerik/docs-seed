@@ -421,6 +421,10 @@ $hover-text: darken($text-color, 10%);
             background: transparent url(image_path("logo-dpl.svg")) no-repeat 0 50%;
         }
 
+        &.brand-platform-aspnet-ajax {
+          background: transparent url(image_path("logo-aspnet-ajax.svg")) no-repeat 0 50%;
+      }
+
         &::before {
             // preload scroll logo
             content: " ";
@@ -438,6 +442,10 @@ $hover-text: darken($text-color, 10%);
 
             &.brand-platform-dpl {
               background-image: url(image_path("logo-scroll-dpl.svg"));
+            }
+
+            &.brand-platform-aspnet-ajax {
+              background-image: url(image_path("logo-scroll-aspnet-ajax.svg"));
             }
         }
 
@@ -457,6 +465,10 @@ $hover-text: darken($text-color, 10%);
 
             &.brand-platform-dpl {
               background: transparent url(image_path("logo-scroll-dpl.svg")) no-repeat 0 8px;
+            }
+
+            &.brand-platform-aspnet-ajax {
+              background: transparent url(image_path("logo-scroll-aspnet-ajax.svg")) no-repeat 0 8px;
             }
         }
 
@@ -1436,6 +1448,8 @@ $border-color: #d9d9d9;
     .anchor-h3 {
         margin: 5px 0;
         font-family: $font-light;
+        font-size: 12px;
+        padding-left: 30px;
     }
 }
 
@@ -2668,6 +2682,10 @@ a.all-components {
 /* API Pages */
 
 .api-reference {
+    h1 {
+      word-break: break-all;
+    }
+    
     h1 + p {
         margin-top: 30px;
     }
@@ -2683,27 +2701,30 @@ a.all-components {
         margin-bottom: 2px;
         font-size: 20px;
         font-weight: 500;
+    }
 
-        code,
-        .code {
-            background-color: rgba(36, 137, 216, 0.8);
-            color: #ffffff;
-            margin-top: 3px;
-            margin-left: 3px;
-            padding: 3px 4px;
-            font-size: 13px;
-            line-height: 10px;
+    h3, 
+    h4, 
+    h4 ~ p {
+      code,
+      .code {
+          background-color: rgba(39, 163, 6, 0.8);
+          color: #ffffff;
+          margin-top: 3px;
+          padding: 3px 4px;
+          font-size: 13px;
+          line-height: 10px;
 
-            a:hover,
-            a:focus,
-            a:active {
-                color: #fff;
+          a:hover,
+          a:focus,
+          a:active {
+              color: #fff;
 
-                &::after {
-                    display: none;
-                }
-            }
-        }
+              &::after {
+                  display: none;
+              }
+          }
+      }
     }
 
     h4 {
@@ -2730,9 +2751,8 @@ a.all-components {
 
         code,
         .code {
-            background-color: rgba(36, 137, 216, 0.8);
+            background-color: rgba(39, 163, 6, 0.8);
             color: #ffffff;
-            margin-left: 3px;
             padding: 1px 3px 2px;
             font-size: 13px;
             font-weight: 400;

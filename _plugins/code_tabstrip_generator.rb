@@ -1,5 +1,5 @@
 module Reading
-  class TabbedCodeGenerator < Jekyll::Generator
+  class RegionCodeTabStripGenerator < Jekyll::Generator
 		def generate(site)					
 			@headerSearchPattern = /####\s{1,}(__|\*\*)?\[?(VB|VB.NET|C#|XAML|SQL|XML)\]?\s*.*/ 
 			@snippetSearchPattern = /####\s{1,}(__|\*\*)?\[?(VB|VB.NET|C#|XAML|SQL|XML)\]?\s*.*\s*(>\n*)*{{region\s.*}}\n*\r*((?!{{endregion}}).*\n*\r*\s*)+?(>?{{endregion}})/ # gets the whole snippet portion - header + region tags + code snippet 			
@@ -95,7 +95,7 @@ module Reading
 				languageString = languageString.gsub("__", "")
 				languageString = languageString.gsub("**", "")
 				languageString = languageString.gsub("[", "")
-				languageString = languageString.gsub("]", "")
+        languageString = languageString.gsub("]", "")
 				return languageString
 			end
 			return ""
