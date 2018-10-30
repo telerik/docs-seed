@@ -87,7 +87,7 @@ function setSideNavPosition() {
     var scrollFold = $window.scrollTop() + windowHeight;
 
     var top = Math.min($('.navbar').height(), $('aside.TK-Hat').height());
-    var footerHeight = $('#footer').outerHeight(true);
+    var footerHeight = $('div#footer').outerHeight(true);
     var feedbackOffsetTop = document.body.scrollHeight - footerHeight;
     var bottom = Math.max(0, Math.min(footerHeight, scrollFold - feedbackOffsetTop));
 

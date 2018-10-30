@@ -10,7 +10,7 @@ $(function () {
                     return (this.top = offset.top - NAVBAR_HEIGHT - 25);
                 },
                 bottom: function () {
-                    return (this.bottom = $('#footer').outerHeight(true) + FOOTER_DISTANCE);
+                    return (this.bottom = $('div#footer').outerHeight(true) + FOOTER_DISTANCE);
                 }
             }
         });
