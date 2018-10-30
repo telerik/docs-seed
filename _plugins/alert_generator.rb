@@ -15,7 +15,8 @@ module Reading
 	  	if sub_string.count == 0
 	  		##puts "no " + alertType + "s"
 	  	else
-        sub_string.each do |s|			
+        sub_string.each do |s|
+          # puts("s - #{s} ; s1 - #{s[1]}; replaced - #{s[1].gsub(/(^>)/, "")}")
           block ="<blockquote class='#{alertType}'>" +  @converter.convert(s[1].gsub(/(^>)/x, "")) + "</blockquote>"
 	  			slugsInBlock = block.scan(/.*?(%7[Bb]%slug%20([\w-]+)%{2}7[Dd])/)				
 	  			if	slugsInBlock.count > 0				
