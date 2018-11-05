@@ -1,5 +1,5 @@
 $(function () {
-    var relatedArticlesMarker = $('h2#see-also, h3#see-also');
+    var relatedArticlesMarker = $('h1#see-also, h2#see-also, h3#see-also');
     if (relatedArticlesMarker.length) {
         var relatedArticlesList = relatedArticlesMarker.next('ul');
         if (relatedArticlesList.length) {
