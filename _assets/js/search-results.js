@@ -61,7 +61,7 @@ var searchViewModel = kendo.observable({
         
     },
     init: function () {
-        var propertyNames = JSON.parse(localStorage.getItem(searchItemsStorageKey));
+        var propertyNames = false; // JSON.parse(localStorage.getItem(searchItemsStorageKey));
         if (!propertyNames) {
             propertyNames = [];
 

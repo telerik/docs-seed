@@ -1,7 +1,6 @@
 ---
 layout: default
 ---
-{% assign package = page.path | remove:'documentation/' | split:'/' | first %}
 
 <div class="container-fluid">
   <div class="row">
@@ -25,7 +24,7 @@ layout: default
         {% else %}
         <article>
         {% endif %}
-          {{ content }}
+        {{ content }} 
         </article>
 
         {% if page.enable_prev_next == true %} {% if page.node.prev != null or page.node.next != null %} 
