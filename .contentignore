@@ -12,6 +12,7 @@
 .dockerignore
 .editorconfig
 .ruby-version
+.jekyll-metadata
 Dockerfile
 Gemfile
 Gemfile.lock
