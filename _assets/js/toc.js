@@ -30,8 +30,6 @@ $(function() {
 
     toc.parent().show();
 
-    var lastId;
-
     headings.each(function() {
         if (!this.firstElementChild) {
             return;
