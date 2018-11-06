@@ -19,22 +19,6 @@ $(function () {
         getStorage().setItem(selectedLanguageKey, language);
     }
 
-    function mergeTabbedCodes() {
-        var tabbedCodeSelector = 'div.tabbedCode';
-        $(tabbedCodeSelector).each(function () {
-            var container = $(this);
-            var nextSibling = container.next(tabbedCodeSelector);
-            while (nextSibling.length) {
-                nextSibling.children().each(function (index, child) {
-                    container.append(child);
-                });
-
-                nextSibling.remove();
-                nextSibling = container.next(tabbedCodeSelector);
-            }
-        });
-    }
-
     /* START TabStrip logic */
 
     var selectedLanguage = getStorage().getItem(selectedLanguageKey);
@@ -45,8 +29,6 @@ $(function () {
             saveLanguage(language);
         }
     };
-
-    mergeTabbedCodes();
 
     $("div.tabbedCode").each(function () {
         var container = $(this);
