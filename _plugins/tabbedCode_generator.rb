@@ -2,7 +2,7 @@ module Reading
   class TabbedCodeGenerator < Jekyll::Generator
     def generate(site)	
       @site = site
-      unless site.data['skip_tabbed_code'] == true
+      unless site.config['skip_tabbed_code'] == true
         @converter = site.find_converter_instance(Jekyll::Converters::Markdown)	
         site.pages.each do |p|			
           createTabbedCode(p, p.content)
