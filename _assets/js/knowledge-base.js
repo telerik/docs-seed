@@ -1,12 +1,21 @@
 //= require search-base
+var DEFAULT_KB_QUERY = "knowledge base";
+
+function trackSearchResult(link) {
+    trackItem("docs-kb-search-results", searchTerms, link);
+}
+
+function getSearchQuery() {
+    return $('input[name="q"]').val() || DEFAULT_KB_QUERY;
+}
 
 function attachToEvents() {
-    $('form input[name="q"]').keydown(function (e) {
+    $('input[name="q"].kb-search').keydown(function (e) {
         if (e.keyCode == 13) { // Enter
             var $this = $(this);
             searchInternal($this);
-            $this.parents('form').submit();
-            return false;
+            $("#results").data('kendoListView').dataSource.read();
+            return true;
         }
     });
 
@@ -16,24 +25,10 @@ function attachToEvents() {
 }
 
 function getSearchCategory() {
-    return "docs-search-terms";
-}
-
-function trackSearchResult(link) {
-    trackItem("docs-search-results", searchTerms, link);
-}
-
-function toKV(n) {
-    n = n.split("=");
-    this[n[0]] = n[1];
-    return this;
+    return "docs-kb-search-terms";
 }
 
 function getDataSource() {
-    var params = location.search.replace(/(^\?)/, '').split("&").map(toKV.bind({}))[0];
-    searchTerms = decodeURIComponent(params.q ? params.q.replace(/\+/g,' ') : '');
-    $("[name=q]").val(searchTerms);
-
     return new kendo.data.DataSource({
         transport: {
             parameterMap: function (data) {
@@ -42,7 +37,7 @@ function getDataSource() {
                     num: data.pageSize,
                     cx: gcsInstance,
                     key: gcsKey,
-                    q: params.q + searchViewModel.getFilterExpression(),
+                    q: getSearchQuery() + searchViewModel.getFilterExpression(),
                 };
             },
             read: {

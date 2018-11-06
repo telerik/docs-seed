@@ -26,10 +26,10 @@
 </form>
 
 <script>
-    var gcsInstance = {% if page.slug == 'knowledge_base' %} '{{site.gcs_kb_engine}}' {% else %} '{{site.gcs_engine}}' {% endif %};
+    var gcsInstance = '{{site.gcs_engine}}';
     var gcsKey = '{{site.gcs_api_key}}';
     isKbPage = {% if page.res_type == 'kb' %} true {% else %} false {% endif %};
-    siteHasKbPortal = '{{ site.has_kb_portal }}';
+    siteHasKbPortal = '{{ site.has_kb_portal }}'
 </script>
 
 {% javascript "search-results" %}
