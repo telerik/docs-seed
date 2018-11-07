@@ -437,6 +437,14 @@ $hover-text: darken($text-color, 10%);
           background: transparent url(image_path("logo-winforms.svg")) no-repeat 0 50%;
         }
 
+        &.brand-platform-reporting {
+          background: transparent url(image_path("logo-reporting.svg")) no-repeat 0 50%;
+        }
+
+        &.brand-platform-report-server {
+          background: transparent url(image_path("logo-report-server.svg")) no-repeat 0 50%;
+        }
+
         &::before {
             // preload scroll logo
             content: " ";
@@ -462,7 +470,15 @@ $hover-text: darken($text-color, 10%);
 
             &.brand-platform-winforms {
               background-image: url(image_path("logo-scroll-winforms.svg"));
-           }
+            }
+
+            &.brand-platform-reporting {
+               background-image: url(image_path("logo-scroll-reporting.svg"));
+            }
+
+            &.brand-platform-report-server {
+              background-image: url(image_path("logo-scroll-report-server.svg"));
+            }
 
         }
 
@@ -490,6 +506,14 @@ $hover-text: darken($text-color, 10%);
 
             &.brand-platform-winforms {
               background: transparent url(image_path("logo-scroll-winforms.svg")) no-repeat 0 8px;
+            }
+
+            &.brand-platform-reporting {
+              background: transparent url(image_path("logo-scroll-reporting.svg")) no-repeat 0 8px;
+            }
+
+            &.brand-platform-report-server {
+              background: transparent url(image_path("logo-scroll-report-server.svg")) no-repeat 0 8px;
             }
         }
 
