@@ -9,7 +9,8 @@ This section describes the best practices about what and how should be done in o
 ### Prerequisites
 - Install Docker (Community Edititon(CE) is enough) - please use the [official Docker installation](https://docs.docker.com/install/) guide. Accept the default installation instructions (use Linux containers, etc.)    
   - From the Docker Settings window, share the drive where the documentation repos reside with Docker.
-- Pull the repo to which you want to contribute (we will refer to that repo later as 'MY-REPO')
+- Choose a repo you want to contribute to (e.g. [https://github.com/telerik/xaml-docs.git](https://github.com/telerik/xaml-docs.git), we will refer to that repo later as 'MY-REPO')
+- Pull the repo onto your hard drive (e.g. `"D:\Work\xaml-docs"`)
 
 ### Instructions
 - Clone the current (seed) repo 
@@ -17,7 +18,7 @@ This section describes the best practices about what and how should be done in o
 git clone git@github.com:telerik/docs-seed.git
 ```
 
-- Go to the directory in which you've pulled it (e.g., `D:\Work\docs-seed`)
+- Go to the directory in which you've pulled it (e.g. `D:\Work\docs-seed`)
 - Open a terminal of your choice (e.g., gitBash)
 - Run the following command by passing the MY-REPO path (the **quotes** are mandatory):
 ```bash

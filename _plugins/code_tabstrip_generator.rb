@@ -132,7 +132,7 @@ module Reading
 		end
 		
 		def encodeNewLines(content)
-			content = content.gsub("\n","&#13;")
+			content = content.gsub("\n"," &#13;")
 		end
 		
 		def encodeLiquid(content)
