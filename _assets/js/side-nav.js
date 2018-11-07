@@ -18,7 +18,6 @@ function expandNavigation(url) {
         }
 
         var segments = url.split("/");
-        var treeview = this;
 
         var dataSource = this.dataSource;
         var node;
@@ -106,5 +105,10 @@ function setSideNavPosition() {
 $(function () {
     $(window).scroll(setSideNavPosition)
         .resize(setSideNavPosition);
-    setSideNavPosition();
+        
+    $(document).ready(function () {
+        setSideNavPosition();
+    });
 });
+
+
