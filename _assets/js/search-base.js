@@ -61,11 +61,11 @@ var searchViewModel = kendo.observable({
 
     },
     init: function () {
-        var propertyNames = false; // JSON.parse(localStorage.getItem(searchItemsStorageKey));
+        var propertyNames = JSON.parse(localStorage.getItem(searchItemsStorageKey));
         if (!propertyNames) {
             propertyNames = [];
 
-            if (isKbPage || isKbPortalRoot || siteHasKbPortal) {
+            if (isKbPage || isKbPortalRoot) {
                 propertyNames.push('kb');
             } else {
                 propertyNames.push('documentation', 'api');
