@@ -10,11 +10,11 @@
       <div id="refine-search-popup" style="display: none">
         <ul>
           <li>
-            <label class="custom-checkbox unselectable"><input type="checkbox" {% if page.res_type != 'kb' and page.res_type != 'api' %} disabled="true" {% endif %} data-bind="checked: documentation" /><span class="k-icon k-i-check"></span>Search in Documentation</label>
+            <label class="custom-checkbox unselectable"><input type="checkbox" data-bind="checked: documentation" /><span class="k-icon k-i-check"></span>Search in Documentation</label>
           </li>
-          {% if site.has_kb %}
+          {% if site.has_kb_portal %}
           <li>
-            <label class="custom-checkbox unselectable"><input type="checkbox" {% if page.res_type == 'kb' %} disabled="true" {% endif %} data-bind="checked: kb" /><span class="k-icon k-i-check"></span>Search in Knowledge Base</label>
+            <label class="custom-checkbox unselectable"><input type="checkbox" data-bind="checked: kb" /><span class="k-icon k-i-check"></span>Search in Knowledge Base</label>
           </li>
           {% endif %}
           <li>

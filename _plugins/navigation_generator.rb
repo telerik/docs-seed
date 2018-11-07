@@ -2,6 +2,7 @@ module Jekyll
 
   class NavigationGenerator < Generator
       def initialize(config)
+          @has_kb_portal = config['has_kb_portal'] == true
           @navigation = Hash[(config['navigation'] || {}).map { |key, value| [/^#{key.gsub('*', '.*?')}$/, value] }]
           @exclude_navigation = (config['exclude_navigation'] || {}).map { |item| /^#{item.gsub('*', '.*?')}$/ }
       end
@@ -12,7 +13,7 @@ module Jekyll
           site.pages.each do |page|
               category = page.data['category']
 
-              next if page.data['publish'] == false || page.data['include_in_navigation'] == false
+              next if page.data['publish'] == false || page.data['include_in_navigation'] == false || (page.data['kb_portal_root'] == true && @has_kb_portal != true)
               next unless category
 
               node = categories[category]

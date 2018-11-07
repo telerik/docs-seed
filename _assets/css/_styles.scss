@@ -431,7 +431,11 @@ $hover-text: darken($text-color, 10%);
 
         &.brand-platform-aspnet-ajax {
           background: transparent url(image_path("logo-aspnet-ajax.svg")) no-repeat 0 50%;
-      }
+        }
+
+        &.brand-platform-winforms {
+          background: transparent url(image_path("logo-winforms.svg")) no-repeat 0 50%;
+        }
 
         &::before {
             // preload scroll logo
@@ -441,7 +445,7 @@ $hover-text: darken($text-color, 10%);
             visibility: hidden;
 
             &.brand-platform-wpf {
-                background-image: url(image_path("logo-scroll-wpf.svg"));
+              background-image: url(image_path("logo-scroll-wpf.svg"));
             }
 
             &.brand-platform-silverlight {
@@ -455,6 +459,11 @@ $hover-text: darken($text-color, 10%);
             &.brand-platform-aspnet-ajax {
               background-image: url(image_path("logo-scroll-aspnet-ajax.svg"));
             }
+
+            &.brand-platform-winforms {
+              background-image: url(image_path("logo-scroll-winforms.svg"));
+           }
+
         }
 
         .scroll & {
@@ -464,7 +473,7 @@ $hover-text: darken($text-color, 10%);
             max-width: 40%;
 
             &.brand-platform-wpf {
-                background: transparent url(image_path("logo-scroll-wpf.svg")) no-repeat 0 8px;
+              background: transparent url(image_path("logo-scroll-wpf.svg")) no-repeat 0 8px;
             }
 
             &.brand-platform-silverlight {
@@ -477,6 +486,10 @@ $hover-text: darken($text-color, 10%);
 
             &.brand-platform-aspnet-ajax {
               background: transparent url(image_path("logo-scroll-aspnet-ajax.svg")) no-repeat 0 8px;
+            }
+
+            &.brand-platform-winforms {
+              background: transparent url(image_path("logo-scroll-winforms.svg")) no-repeat 0 8px;
             }
         }
 

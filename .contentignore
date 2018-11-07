@@ -12,6 +12,7 @@
 .dockerignore
 .editorconfig
 .ruby-version
+.jekyll-metadata
 Dockerfile
 Gemfile
 Gemfile.lock
@@ -25,3 +26,4 @@ install-npm.sh
 search.html
 start-docs.sh
 watch.sh
+knowledge-base.html
