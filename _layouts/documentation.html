@@ -12,12 +12,14 @@ layout: default
       <div class="col-md-10 col-md-offset-1 mb-40">
         {% if site.platforms.size > 0 %} {% platforms Available for: %} {% endif %}
 
+        {% if page.res_type != 'kb' %}
         <p class="breadcrumbs">
           {% if site.nested_bread_crumbs %}
             <a href="{{site.baseurl}}/#{{site.nested_bread_crumbs.toc}}">{{site.nested_bread_crumbs.title}}</a> /
           {% endif %}
           {% render_bread_crumbs %}
         </p>
+        {% endif %}
 
         {% if page.kind == "api" and page.position != 1 %}
         <article class="api-reference">
