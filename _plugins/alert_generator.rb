@@ -5,8 +5,10 @@ module Reading
 	    @converter = site.find_converter_instance(Jekyll::Converters::Markdown)	
         site.pages.each do |p|			
           createAlert("tip", p.content)
+          createAlert("note", p.content)
           createAlert("important", p.content)
           createAlert("caution", p.content)
+          createAlert("warning", p.content)
         end
     end
 	

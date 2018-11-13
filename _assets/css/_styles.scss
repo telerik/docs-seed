@@ -1334,12 +1334,14 @@ blockquote {
         background-image: url(image_path("important-icon.svg"));
     }
 
-    &.caution {
+    &.caution,
+    &.warning {
         background-color: $caution-bg;
         background-image: url(image_path("caution-icon.svg"));
     }
 
-    &.tip {
+    &.tip,
+    &.note {
         background-color: $tip-bg;
         background-image: url(image_path("tip-icon.svg"));
     }
