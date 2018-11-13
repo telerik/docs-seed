@@ -36,6 +36,7 @@ function getDataSource() {
                     start: 1 + data.skip,
                     num: data.pageSize,
                     cx: gcsInstance,
+                    sort: 'date',
                     key: gcsKey,
                     q: getSearchQuery() + searchViewModel.getFilterExpression(),
                 };
