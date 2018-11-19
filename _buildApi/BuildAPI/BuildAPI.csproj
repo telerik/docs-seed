@@ -2,13 +2,6 @@
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
-      <DocfxJsonGeneratorPath>..\Tools\GenerateDocFxJsonTool\DocFxJsonModifier.exe</DocfxJsonGeneratorPath>
-  </PropertyGroup>
-  <Target Name="CreateDocfxJson">
-    <Exec Command='$(DocfxJsonGeneratorPath) $(DocumentationBaseUrl)'></Exec>
-    <!--TODO: Copy file to the current directory...-->
-  </Target>
-  <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{7FD0D7A7-E798-4CC6-9270-14CB760DF2ED}</ProjectGuid>
@@ -49,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="api\index.md" />
     <None Include="docfx-tmpl\src\layout\_master.tmpl" />
     <None Include="docfx-tmpl\src\partials\affix.tmpl.partial" />
     <None Include="docfx-tmpl\src\partials\class.header.tmpl.partial" />
@@ -59,9 +53,7 @@
     <None Include="docfx-tmpl\src\partials\namespace.tmpl.partial" />
     <None Include="docfx-tmpl\src\partials\toc.tmpl.partial" />
     <None Include="docfx.json" />
-    <None Include="packages.config">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="packages.config" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="toc.yml" />
   </ItemGroup>
@@ -69,10 +61,15 @@
     <Content Include="docfx-tmpl\src\styles\main.js" />
     <Content Include="sitemap.xml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="api\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\docfx.console.2.36.1\build\docfx.console.targets" Condition="Exists('..\packages\docfx.console.2.36.1\build\docfx.console.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\docfx.console.2.36.1\build\docfx.console.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\docfx.console.2.36.1\build\docfx.console.targets'))" />
+  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

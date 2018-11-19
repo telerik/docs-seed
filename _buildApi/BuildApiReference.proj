@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="BuildApiReference" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <UsingTask TaskName="MSBuild.Community.Tasks.FileUpdate" AssemblyFile="Tools\MSBuildCommunityTasks\MSBuild.Community.Tasks.dll" />
+
+  <PropertyGroup>
+    <BuildApiReferenceDependsOn>
+      CheckRequiredProperties;
+      PrepareProperties;
+      CopyLatestBinaries;
+      CopyAssetsAPIFiles;
+      CreateDocfxJson;
+      RestoreNugetAPISolution;
+      BuildAPISolution;
+      ProcessSitemap;
+      CopyAPIHtmlFilesToSiteFolder
+    </BuildApiReferenceDependsOn>
+  </PropertyGroup>
+
+  <Target Name="BuildApiReference" DependsOnTargets="$(BuildApiReferenceDependsOn)"/>
+
+  <Target Name="CheckRequiredProperties">
+
+    <Error Condition=" '$(LatestBinariesPath)' == '' " Text="LatestBinariesPath is not defined (Ex. \\telerik.com\distributions\OfficialReleases\XAML\2018_R3\2018_R3_Official)"/>
+    <Error Condition=" '$(DocsRepoName)' == '' " Text="DocsRepoName is not defined (Ex. winforms-docs)"/>
+    <Error Condition=" '$(DocumentationBaseUrl)' == '' " Text="DocumentationBaseUrl is not defined (Ex. https://docs.telerik.com/devtools/document-processing)"/>
+
+    <Message Text="DEBUG INFO: LatestBinariesPath -> $(LatestBinariesPath)" />
+    <Message Text="DEBUG INFO: DocsRepoName -> $(DocsRepoName)" />
+    <Message Text="DEBUG INFO: DocumentationBaseUrl -> $(DocumentationBaseUrl)" />
+
+  </Target>
+
+  <Target Name="PrepareProperties">
+    <PropertyGroup>
+
+      <!--Tools-->
+      <ToolsFolder>$(MsBuildProjectDirectory)\Tools</ToolsFolder>
+      <NugetTool>$(ToolsFolder)\Nuget.exe</NugetTool>
+
+      <!--Folder properties-->
+      <BuildApiRootFolder>$(MsBuildProjectDirectory)\BuildAPI</BuildApiRootFolder>
+      <BuildApiSrcFolder>$(BuildApiRootFolder)\src</BuildApiSrcFolder>
+      <SourceFolder>$(MsBuildProjectDirectory)\..\..</SourceFolder>
+      <DocsFolder>$(SourceFolder)\$(DocsRepoName)</DocsFolder>
+      <DocsAssets>$(DocsFolder)\_assetsApi</DocsAssets>
+
+      <!--Docfx properties-->
+      <DocfxJsonGeneratorPath>$(ToolsFolder)\GenerateDocFxJsonTool\DocFxJsonModifier.exe</DocfxJsonGeneratorPath>
+      <DocfxFile>$(MsBuildProjectDirectory)\docfx.json</DocfxFile>
+
+      <!--Build Api solution-->
+      <BuildApiSolutionName>$(MsBuildProjectDirectory)\BuildAPI.sln</BuildApiSolutionName>
+
+      <!--Outpur properties-->
+      <OutputFolder>$(BuildApiRootFolder)\_site</OutputFolder>
+      <SitemapFile>$(OutputFolder)\sitemap.xml</SitemapFile>
+      <ApiOutputFolder>$(OutputFolder)\api</ApiOutputFolder>
+      <ApiStylesOutputFolder>$(OutputFolder)\styles</ApiStylesOutputFolder>
+      <DocsRepoOutputFolder>$(DocsFolder)\_site</DocsRepoOutputFolder>
+
+      <!--Build Configurations-->
+      <BuildConfiguration>Release</BuildConfiguration>
+      <BuildPlatform>Any CPU</BuildPlatform>
+
+    </PropertyGroup>
+  </Target>
+
+  <Target Name="CopyLatestBinaries">
+
+    <ItemGroup>
+      <Binaries Include="$(LatestBinariesPath)\*.dll;
+                         $(LatestBinariesPath)\*.xml"/>
+    </ItemGroup>
+
+    <Copy SourceFiles="@(Binaries)" DestinationFolder="$(BuildApiSrcFolder)" />
+
+  </Target>
+
+  <Target Name="CopyAssetsAPIFiles">
+
+    <ItemGroup>
+      <DocsAssets Include="$(DocsAssets)\**\*.*"/>
+    </ItemGroup>
+
+    <Message Text="DEBUG INFO: DocsAssets=$(DocsAssets)" />
+
+    <Copy SourceFiles="@(DocsAssets)" DestinationFolder="$(BuildApiRootFolder)\%(RecursiveDir)" />
+
+  </Target>
+
+  <Target Name="CreateDocfxJson">
+    
+    <Exec Command='$(DocfxJsonGeneratorPath) $(DocumentationBaseUrl)'></Exec>
+
+    <Copy SourceFiles='$(DocfxFile)' DestinationFolder='$(BuildApiRootFolder)' />
+  
+  </Target>
+
+  <Target Name="RestoreNugetAPISolution">
+
+    <Exec Command="$(NugetTool) restore $(BuildApiSolutionName)" />
+
+  </Target>
+
+  <Target Name="BuildAPISolution">
+
+    <MSBuild Projects="$(BuildApiSolutionName)" Properties="Configuration=$(BuildConfiguration);Platform=$(BuildPlatform)" Targets="Rebuild" />
+
+  </Target>
+
+  <Target Name="ProcessSitemap">
+
+    <Message Text="DEBUG INFO: SitemapFile=$(SitemapFile)" />
+
+    <FileUpdate Files="$(SitemapFile)"
+                Regex="(&lt;lastmod&gt;)(\d{4}-\d{2}-\d{2})(.*?)(&lt;\/lastmod&gt;)"
+                ReplacementText="$1$2$4"  />
+
+    <Copy SourceFiles='$(SitemapFile)' DestinationFolder='$(ApiOutputFolder)' />
+
+  </Target>
+
+  <Target Name="CopyAPIHtmlFilesToSiteFolder">
+
+    <ItemGroup>
+      <ApiFiles Include="$(ApiOutputFolder)\*.*" />
+      <ApiStyleFiles Include="$(ApiStylesOutputFolder)\*.*" />
+    </ItemGroup>
+
+    <Copy SourceFiles='@(ApiFiles)' DestinationFolder='$(DocsRepoOutputFolder)\api' />
+    <Copy SourceFiles='@(ApiStyleFiles)' DestinationFolder='$(DocsRepoOutputFolder)\styles' />
+
+  </Target>
+
+</Project>
