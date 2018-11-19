@@ -445,6 +445,14 @@ $hover-text: darken($text-color, 10%);
           background: transparent url(image_path("logo-report-server.svg")) no-repeat 0 50%;
         }
 
+        &.brand-platform-uwp {
+          background: transparent url(image_path("logo-uwp.svg")) no-repeat 0 50%;
+        }
+
+        &.brand-platform-xamarin {
+          background: transparent url(image_path("logo-xamarin.svg")) no-repeat 0 50%;
+        }
+
         &::before {
             // preload scroll logo
             content: " ";
@@ -480,6 +488,13 @@ $hover-text: darken($text-color, 10%);
               background-image: url(image_path("logo-scroll-report-server.svg"));
             }
 
+            &.brand-platform-uwp {
+              background-image: url(image_path("logo-scroll-uwp.svg"));
+            }
+
+            &.brand-platform-xamarin {
+              background-image: url(image_path("logo-scroll-xamarin.svg"));
+            }
         }
 
         .scroll & {
@@ -514,6 +529,14 @@ $hover-text: darken($text-color, 10%);
 
             &.brand-platform-report-server {
               background: transparent url(image_path("logo-scroll-report-server.svg")) no-repeat 0 8px;
+            }
+
+            &.brand-platform-uwp {
+              background: transparent url(image_path("logo-scroll-uwp.svg")) no-repeat 0 8px;
+            }
+
+            &.brand-platform-xamarin {
+              background: transparent url(image_path("logo-scroll-xamarin.svg")) no-repeat 0 8px;
             }
         }
 
