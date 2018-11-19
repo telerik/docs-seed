@@ -115,11 +115,11 @@ function attachToEvents() { }
 
 function search(input) {
     searchTerms = input.val();
-    trackSearchQuery(searchViewModel.getFilterExpression(), searchTerms);
+    trackSearchQuery(searchTerms);
 }
 
-function trackSearchQuery(filter, query) {
-    trackItem(getSearchCategory(), filter, query);
+function trackSearchQuery(query) {
+    trackItem(getSearchCategory(), prd, query);
 }
 
 function getSearchCategory() { }
