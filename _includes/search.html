@@ -10,16 +10,18 @@
       <div id="refine-search-popup" style="display: none">
         <ul>
           <li>
-            <label class="custom-checkbox unselectable"><input type="checkbox" data-bind="checked: documentation" /><span class="k-icon k-i-check"></span>Search in Documentation</label>
+            <label class="custom-checkbox unselectable"><input type="checkbox" data-bind="checked: documentation" {% if site.has_kb_portal != true and site.has_api_reference == false %} disabled="true" {% endif %} /><span class="k-icon k-i-check"></span>Search in Documentation</label>
           </li>
           {% if site.has_kb_portal %}
           <li>
             <label class="custom-checkbox unselectable"><input type="checkbox" data-bind="checked: kb" /><span class="k-icon k-i-check"></span>Search in Knowledge Base</label>
           </li>
           {% endif %}
+          {% if site.has_api_reference != false %}
           <li>
             <label class="custom-checkbox unselectable"><input type="checkbox" {% if page.res_type == 'api' %} disabled="true" {% endif %} data-bind="checked: api" /><span class="k-icon k-i-check"></span>Search in API Reference</label>
           </li>
+          {% endif %}
         </ul>
       </div>
   </div>
@@ -29,7 +31,8 @@
     var gcsInstance = '{{site.gcs_engine}}';
     var gcsKey = '{{site.gcs_api_key}}';
     isKbPage = {% if page.res_type == 'kb' %} true {% else %} false {% endif %};
-    siteHasKbPortal = '{{ site.has_kb_portal }}'
+    siteHasKbPortal = '{{ site.has_kb_portal }}';
+    hasApiReference = {% if site.has_api_reference != false %} true {% else %} false {% endif %};
 </script>
 
 {% javascript "search-results" %}

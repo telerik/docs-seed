@@ -3,7 +3,7 @@ var GCSE_ELEMENT_NAME = "google-search";
 var GCSE_API_URL = "https://www.googleapis.com/customsearch/v1";
 var searchTerms = "";
 var searchItemsStorageKey = "searchItemsStorageKey";
-var siteHasKbPortal, isKbPage, isKbPortalRoot;
+var siteHasKbPortal, isKbPage, isKbPortalRoot, hasApiReference;
 
 var searchViewModel = kendo.observable({
     kb: false,
@@ -44,7 +44,7 @@ var searchViewModel = kendo.observable({
                 this.filterValues.push('kb');
             }
 
-            if (this.api) {
+            if (this.api && hasApiReference) {
                 label += (label ? " / " : "") + "API";
                 this.filterValues.push('api');
             }
@@ -71,7 +71,11 @@ var searchViewModel = kendo.observable({
             if (isKbPage || isKbPortalRoot) {
                 propertyNames.push('kb');
             } else {
-                propertyNames.push('documentation', 'api');
+                propertyNames.push('documentation');
+                if (hasApiReference) {
+                    propertyNames.push('api');
+                }
+
                 if (siteHasKbPortal) {
                     propertyNames.push('kb');
                 }
