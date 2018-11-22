@@ -54,14 +54,17 @@ var searchViewModel = kendo.observable({
 
         this.set("label", label);
     },
+    getLocalStorageKey: function () {
+        return searchItemsStorageKey + gcsInstance;
+    },
     update: function () {
         this.updateLabel();
-        localStorage.setItem(searchItemsStorageKey, JSON.stringify(this.filterValues));
+        localStorage.setItem(this.getLocalStorageKey(), JSON.stringify(this.filterValues));
         updateSearchLayout();
 
     },
     init: function () {
-        var propertyNames = JSON.parse(localStorage.getItem(searchItemsStorageKey));
+        var propertyNames = JSON.parse(localStorage.getItem(this.getLocalStorageKey()));
         if (!propertyNames || isKbPortalRoot) {
             propertyNames = [];
 
@@ -75,7 +78,7 @@ var searchViewModel = kendo.observable({
             }
 
             if (!isKbPortalRoot) {
-                localStorage.setItem(searchItemsStorageKey, JSON.stringify(propertyNames));
+                localStorage.setItem(this.getLocalStorageKey(), JSON.stringify(propertyNames));
             }
         }
 
