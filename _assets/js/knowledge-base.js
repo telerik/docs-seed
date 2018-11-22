@@ -61,7 +61,9 @@ function getDataSource() {
                     return [];
                 }
 
-                return data.items.map(function (item) {
+                return data.items.filter(function (item) {
+                    return !item.link.match(/(.*)knowledge-base(.html){0,}$/);
+                }).map(function (item) {
                     return {
                         title: item.htmlTitle,
                         url: item.link,
