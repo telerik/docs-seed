@@ -457,6 +457,10 @@ $hover-text: darken($text-color, 10%);
           background: transparent url(image_path("logo-fiddler-everywhere.svg")) no-repeat 0 50%;
         }
 
+        &.brand-platform-aspnet-core {
+          background: transparent url(image_path("logo-aspnet-core.svg")) no-repeat 0 50%;
+        }
+
         &::before {
             // preload scroll logo
             content: " ";
@@ -502,6 +506,10 @@ $hover-text: darken($text-color, 10%);
 
             &.brand-platform-fiddler-everywhere {
               background-image: url(image_path("logo-scroll-fiddler-everywhere.svg"));
+            }
+
+            &.brand-platform-aspnet-core {
+              background-image: url(image_path("logo-scroll-aspnet-core.svg"));
             }
         }
 
@@ -549,6 +557,10 @@ $hover-text: darken($text-color, 10%);
 
             &.brand-platform-fiddler-everywhere {
               background: transparent url(image_path("logo-scroll-fiddler-everywhere.svg")) no-repeat 0 8px;
+            }
+
+            &.brand-platform-aspnet-core {
+              background: transparent url(image_path("logo-scroll-aspnet-core.svg")) no-repeat 0 8px;
             }
         }
 
