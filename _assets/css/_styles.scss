@@ -453,6 +453,10 @@ $hover-text: darken($text-color, 10%);
           background: transparent url(image_path("logo-xamarin.svg")) no-repeat 0 50%;
         }
 
+        &.brand-platform-fiddler-everywhere {
+          background: transparent url(image_path("logo-fiddler-everywhere.svg")) no-repeat 0 50%;
+        }
+
         &::before {
             // preload scroll logo
             content: " ";
@@ -494,6 +498,10 @@ $hover-text: darken($text-color, 10%);
 
             &.brand-platform-xamarin {
               background-image: url(image_path("logo-scroll-xamarin.svg"));
+            }
+
+            &.brand-platform-fiddler-everywhere {
+              background-image: url(image_path("logo-scroll-fiddler-everywhere.svg"));
             }
         }
 
@@ -537,6 +545,10 @@ $hover-text: darken($text-color, 10%);
 
             &.brand-platform-xamarin {
               background: transparent url(image_path("logo-scroll-xamarin.svg")) no-repeat 0 8px;
+            }
+
+            &.brand-platform-fiddler-everywhere {
+              background: transparent url(image_path("logo-scroll-fiddler-everywhere.svg")) no-repeat 0 8px;
             }
         }
 
