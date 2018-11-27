@@ -36,9 +36,11 @@ res_type: kb
                     <li>
                       <label class="custom-checkbox unselectable"><input type="checkbox" {% if page.res_type == 'kb' %} disabled="true" {% endif %} data-bind="checked: kb" /><span class="k-icon k-i-check"></span>Search in Knowledge Base</label>
                     </li>
+                    {% if site.has_api_reference != false %}
                     <li>
                       <label class="custom-checkbox unselectable"><input type="checkbox" {% if page.res_type == 'api' %} disabled="true" {% endif %} data-bind="checked: api" /><span class="k-icon k-i-check"></span>Search in API Reference</label>
                     </li>
+                    {% endif %}
                   </ul>
                 </div>
             </div>
