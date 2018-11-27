@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="BuildApiReference" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="14.0" DefaultTargets="BuildApiReference" 
+  xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <UsingTask TaskName="MSBuild.Community.Tasks.FileUpdate" AssemblyFile="Tools\MSBuildCommunityTasks\MSBuild.Community.Tasks.dll" />
 
   <PropertyGroup>
@@ -7,12 +8,12 @@
       CheckRequiredProperties;
       PrepareProperties;
       CopyLatestBinaries;
-      CopyAssetsAPIFiles;
+            <!-- CopyAssetsAPIFiles;
       CreateDocfxJson;
       RestoreNugetAPISolution;
       BuildAPISolution;
       ProcessSitemap;
-      CopyAPIHtmlFilesToSiteFolder
+      CopyAPIHtmlFilesToSiteFolder -->
     </BuildApiReferenceDependsOn>
   </PropertyGroup>
 
@@ -45,6 +46,7 @@
       <SourceFolder>$(MsBuildProjectDirectory)\..\..</SourceFolder>
       <DocsFolder>$(SourceFolder)\$(DocsRepoName)</DocsFolder>
       <DocsAssets>$(DocsFolder)\$(DocsRepoApiAssetsFolder)</DocsAssets>
+      <LatestBinariesFile>$(DocsAssets)\Binaries.targets</LatestBinariesFile>
 
       <!--Docfx properties-->
       <DocfxJsonGeneratorPath>$(ToolsFolder)\GenerateDocFxJsonTool\DocFxJsonModifier.exe</DocfxJsonGeneratorPath>
@@ -67,12 +69,18 @@
     </PropertyGroup>
   </Target>
 
-  <Target Name="CopyLatestBinaries">
+  <Import Project="$(LatestBinariesFile)" Condition="Exists('$(LatestBinariesFile)')"/>
 
-    <ItemGroup>
+  <Target Name="CopyLatestBinaries">
+    <Message Text="DEBUG INFO: LatestBinariesFile -> $(LatestBinariesFile)" />
+
+    <ItemGroup Condition="!Exists('$(LatestBinariesFile)')">
       <Binaries Include="$(LatestBinariesPath)\*.dll;
                          $(LatestBinariesPath)\*.xml"/>
     </ItemGroup>
+
+    <Message Text="DEBUG INFO: LatestBinariesPath -> $(LatestBinariesPath)" />
+    <Message Text="DEBUG INFO: Binaries -> @(Binaries)" />
 
     <Copy SourceFiles="@(Binaries)" DestinationFolder="$(BuildApiSrcFolder)" />
 
@@ -91,11 +99,11 @@
   </Target>
 
   <Target Name="CreateDocfxJson">
-    
+
     <Exec Command='$(DocfxJsonGeneratorPath) $(DocumentationBaseUrl)'></Exec>
 
     <Copy SourceFiles='$(DocfxFile)' DestinationFolder='$(BuildApiRootFolder)' />
-  
+
   </Target>
 
   <Target Name="RestoreNugetAPISolution">
@@ -114,9 +122,7 @@
 
     <Message Text="DEBUG INFO: SitemapFile=$(SitemapFile)" />
 
-    <FileUpdate Files="$(SitemapFile)"
-                Regex="(&lt;lastmod&gt;)(\d{4}-\d{2}-\d{2})(.*?)(&lt;\/lastmod&gt;)"
-                ReplacementText="$1$2$4"  />
+    <FileUpdate Files="$(SitemapFile)" Regex="(&lt;lastmod&gt;)(\d{4}-\d{2}-\d{2})(.*?)(&lt;\/lastmod&gt;)" ReplacementText="$1$2$4" />
 
     <Copy SourceFiles='$(SitemapFile)' DestinationFolder='$(ApiOutputFolder)' />
 
