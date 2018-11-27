@@ -79,8 +79,12 @@ $(function () {
         'ASPNET': 'html',
         'XML': 'xml',
         'TypeScript': 'commonjs',
+        'C++' : 'cpp',
+        'C' : 'c',
+        'Objective-C' : 'm',
+        'Java' : 'java'
     };
-
+    
     $("pre").each(function (index) {
         var langExtension = codeSampleMapper[$(this).attr('lang')];
         $(this).addClass('lang-' + langExtension).addClass("prettyprint");
