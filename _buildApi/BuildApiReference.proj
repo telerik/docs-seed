@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="BuildApiReference" 
-  xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="14.0" DefaultTargets="BuildApiReference" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <UsingTask TaskName="MSBuild.Community.Tasks.FileUpdate" AssemblyFile="Tools\MSBuildCommunityTasks\MSBuild.Community.Tasks.dll" />
 
   <PropertyGroup>
     <BuildApiReferenceDependsOn>
       CheckRequiredProperties;
       PrepareProperties;
+      InitializeBinariesFiles;
       CopyLatestBinaries;
-            <!-- CopyAssetsAPIFiles;
+      CopyAssetsAPIFiles;
       CreateDocfxJson;
       RestoreNugetAPISolution;
       BuildAPISolution;
       ProcessSitemap;
-      CopyAPIHtmlFilesToSiteFolder -->
+      CopyAPIHtmlFilesToSiteFolder 
     </BuildApiReferenceDependsOn>
   </PropertyGroup>
 
@@ -43,10 +43,12 @@
       <!--Folder properties-->
       <BuildApiRootFolder>$(MsBuildProjectDirectory)\BuildAPI</BuildApiRootFolder>
       <BuildApiSrcFolder>$(BuildApiRootFolder)\src</BuildApiSrcFolder>
-      <SourceFolder>$(MsBuildProjectDirectory)\..\..</SourceFolder>
+      <SourceFolder>$([System.IO.Path]::GetFullPath('$(MSBuildProjectDirectory)\..\..'))</SourceFolder>
+      <DocsRepoName Condition="'$(DocsRepoName)' == '' ">Xamarin-Forms-docs</DocsRepoName>
       <DocsFolder>$(SourceFolder)\$(DocsRepoName)</DocsFolder>
+      <DocsRepoApiAssetsFolder Condition="'$(DocsRepoApiAssetsFolder)' == '' ">_assets</DocsRepoApiAssetsFolder>
       <DocsAssets>$(DocsFolder)\$(DocsRepoApiAssetsFolder)</DocsAssets>
-      <LatestBinariesFile>$(DocsAssets)\Binaries.targets</LatestBinariesFile>
+      <LatestBinariesFile>$(DocsAssets)\Binaries.txt</LatestBinariesFile>
 
       <!--Docfx properties-->
       <DocfxJsonGeneratorPath>$(ToolsFolder)\GenerateDocFxJsonTool\DocFxJsonModifier.exe</DocfxJsonGeneratorPath>
@@ -69,20 +71,29 @@
     </PropertyGroup>
   </Target>
 
-  <Import Project="$(LatestBinariesFile)" Condition="Exists('$(LatestBinariesFile)')"/>
+  <Target Name="InitializeBinariesFiles">
 
-  <Target Name="CopyLatestBinaries">
-    <Message Text="DEBUG INFO: LatestBinariesFile -> $(LatestBinariesFile)" />
+    <ReadLinesFromFile Condition="Exists('$(LatestBinariesFile)')"
+            File="$(LatestBinariesFile)" >
+      <Output
+          TaskParameter="Lines"
+          ItemName="BinariesNames"/>
+    </ReadLinesFromFile>
+
+    <ItemGroup Condition="Exists('$(LatestBinariesFile)')">
+      <Binaries Include="$(LatestBinariesPath)\**\%(BinariesNames.Identity)"/>
+    </ItemGroup>
 
     <ItemGroup Condition="!Exists('$(LatestBinariesFile)')">
       <Binaries Include="$(LatestBinariesPath)\*.dll;
                          $(LatestBinariesPath)\*.xml"/>
     </ItemGroup>
 
-    <Message Text="DEBUG INFO: LatestBinariesPath -> $(LatestBinariesPath)" />
-    <Message Text="DEBUG INFO: Binaries -> @(Binaries)" />
+  </Target>
 
-    <Copy SourceFiles="@(Binaries)" DestinationFolder="$(BuildApiSrcFolder)" />
+  <Target Name="CopyLatestBinaries">
+
+    <Copy SourceFiles="%(Binaries.FullPath)" DestinationFiles="@(Binaries->'$(BuildApiSrcFolder)\%(RecursiveDir)%(Filename)%(Extension)')" />
 
   </Target>
 
