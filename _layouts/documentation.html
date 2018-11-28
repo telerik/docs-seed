@@ -85,7 +85,7 @@ layout: default
       <div>
         <a class="btn btn-action" href='https://www.telerik.com/account/support-tickets?pid={{ site.data.support_products[site.product] }}' target="_blank" onclick="trackItemFromCurrentPage('docs-contact-support', '{{ site.product }}')">Contact support</a>
       </div>
-      {% if page.is_search_page != true %}
+      {% if site.edit_repo_url and page.is_search_page != true and page.editable != false %}
       <a class="btn-edit-article" href="{{ site.edit_repo_url }}{{ page.url | replace: '.html','' }}.md" target="_blank">Improve this article</a>
       {% endif %}
     </div>
