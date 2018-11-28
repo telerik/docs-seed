@@ -6,13 +6,14 @@
     <BuildApiReferenceDependsOn>
       CheckRequiredProperties;
       PrepareProperties;
+      InitializeBinariesFiles;
       CopyLatestBinaries;
       CopyAssetsAPIFiles;
       CreateDocfxJson;
       RestoreNugetAPISolution;
       BuildAPISolution;
       ProcessSitemap;
-      CopyAPIHtmlFilesToSiteFolder
+      CopyAPIHtmlFilesToSiteFolder 
     </BuildApiReferenceDependsOn>
   </PropertyGroup>
 
@@ -42,9 +43,12 @@
       <!--Folder properties-->
       <BuildApiRootFolder>$(MsBuildProjectDirectory)\BuildAPI</BuildApiRootFolder>
       <BuildApiSrcFolder>$(BuildApiRootFolder)\src</BuildApiSrcFolder>
-      <SourceFolder>$(MsBuildProjectDirectory)\..\..</SourceFolder>
+      <SourceFolder>$([System.IO.Path]::GetFullPath('$(MSBuildProjectDirectory)\..\..'))</SourceFolder>
+      <DocsRepoName Condition="'$(DocsRepoName)' == '' ">Xamarin-Forms-docs</DocsRepoName>
       <DocsFolder>$(SourceFolder)\$(DocsRepoName)</DocsFolder>
+      <DocsRepoApiAssetsFolder Condition="'$(DocsRepoApiAssetsFolder)' == '' ">_assets</DocsRepoApiAssetsFolder>
       <DocsAssets>$(DocsFolder)\$(DocsRepoApiAssetsFolder)</DocsAssets>
+      <LatestBinariesFile>$(DocsAssets)\Binaries.txt</LatestBinariesFile>
 
       <!--Docfx properties-->
       <DocfxJsonGeneratorPath>$(ToolsFolder)\GenerateDocFxJsonTool\DocFxJsonModifier.exe</DocfxJsonGeneratorPath>
@@ -67,14 +71,29 @@
     </PropertyGroup>
   </Target>
 
-  <Target Name="CopyLatestBinaries">
+  <Target Name="InitializeBinariesFiles">
 
-    <ItemGroup>
+    <ReadLinesFromFile Condition="Exists('$(LatestBinariesFile)')"
+            File="$(LatestBinariesFile)" >
+      <Output
+          TaskParameter="Lines"
+          ItemName="BinariesNames"/>
+    </ReadLinesFromFile>
+
+    <ItemGroup Condition="Exists('$(LatestBinariesFile)')">
+      <Binaries Include="$(LatestBinariesPath)\**\%(BinariesNames.Identity)"/>
+    </ItemGroup>
+
+    <ItemGroup Condition="!Exists('$(LatestBinariesFile)')">
       <Binaries Include="$(LatestBinariesPath)\*.dll;
                          $(LatestBinariesPath)\*.xml"/>
     </ItemGroup>
 
-    <Copy SourceFiles="@(Binaries)" DestinationFolder="$(BuildApiSrcFolder)" />
+  </Target>
+
+  <Target Name="CopyLatestBinaries">
+
+    <Copy SourceFiles="%(Binaries.FullPath)" DestinationFiles="@(Binaries->'$(BuildApiSrcFolder)\%(RecursiveDir)%(Filename)%(Extension)')" />
 
   </Target>
 
@@ -91,11 +110,11 @@
   </Target>
 
   <Target Name="CreateDocfxJson">
-    
+
     <Exec Command='$(DocfxJsonGeneratorPath) $(DocumentationBaseUrl)'></Exec>
 
     <Copy SourceFiles='$(DocfxFile)' DestinationFolder='$(BuildApiRootFolder)' />
-  
+
   </Target>
 
   <Target Name="RestoreNugetAPISolution">
@@ -114,9 +133,7 @@
 
     <Message Text="DEBUG INFO: SitemapFile=$(SitemapFile)" />
 
-    <FileUpdate Files="$(SitemapFile)"
-                Regex="(&lt;lastmod&gt;)(\d{4}-\d{2}-\d{2})(.*?)(&lt;\/lastmod&gt;)"
-                ReplacementText="$1$2$4"  />
+    <FileUpdate Files="$(SitemapFile)" Regex="(&lt;lastmod&gt;)(\d{4}-\d{2}-\d{2})(.*?)(&lt;\/lastmod&gt;)" ReplacementText="$1$2$4" />
 
     <Copy SourceFiles='$(SitemapFile)' DestinationFolder='$(ApiOutputFolder)' />
 
