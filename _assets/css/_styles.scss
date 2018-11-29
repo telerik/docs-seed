@@ -1253,7 +1253,8 @@ article {
         table-layout: fixed;
         margin: 15px 0 20px;
         word-break: break-word;
-
+        overflow-wrap: break-word;
+        
         th {
             color: #8a959f;
             background-color: #f7f7f8;
