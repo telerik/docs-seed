@@ -9,14 +9,20 @@ module Jekyll
         def generate(site)
             site.config['redirect_pages'] = redirect_pages(site)
             site.config['redirect_directories'] = redirect_directories(site)
+            config_name = site.config['nginx_host'] == true ? 'redirects.conf' : 'web.config'
+            
+            write_redirects(site, config_name)
+        end
 
-            web_config = Page.new(site, site.source, '', 'web.config')
-            web_config.content = File.read(File.join(site.source, 'web.config'))
-            web_config.render(Hash.new, site.site_payload)
-            FileUtils.mkdir_p(site.dest)
-            File.write(File.join(site.dest, 'web.config'), web_config.output)
+        def write_redirects(site, name)
+          config_file = Page.new(site, site.source, '', name)
+          config_file.content = File.read(File.join(site.source, name))
+          config_file.render(Hash.new, site.site_payload)
 
-            site.static_files << web_config
+          FileUtils.mkdir_p(site.dest)
+          File.write(File.join(site.dest, name), config_file.output);
+
+          site.static_files << config_file
         end
 
         def redirect_pages(site)
