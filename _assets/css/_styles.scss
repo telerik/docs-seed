@@ -456,13 +456,13 @@ $hover-text: darken($text-color, 10%);
         &.brand-platform-fiddler-everywhere {
           background: transparent url(image_path("logo-fiddler-everywhere.svg")) no-repeat 0 50%;
         }
+        
+        &.brand-platform-aspnet-mvc {
+          background: transparent url(image_path("logo-aspnet-mvc.svg")) no-repeat 0 50%;
+        }
 
         &.brand-platform-aspnet-core {
           background: transparent url(image_path("logo-aspnet-core.svg")) no-repeat 0 50%;
-        }
-
-        &.brand-platform-aspnet-mvc {
-          background: transparent url(image_path("logo-aspnet-mvc.svg")) no-repeat 0 50%;
         }
 
         &::before {
@@ -512,12 +512,12 @@ $hover-text: darken($text-color, 10%);
               background-image: url(image_path("logo-scroll-fiddler-everywhere.svg"));
             }
 
-            &.brand-platform-aspnet-core {
-              background-image: url(image_path("logo-scroll-aspnet-core.svg"));
-            }
-
             &.brand-platform-aspnet-mvc {
               background-image: url(image_path("logo-scroll-aspnet-mvc.svg"));
+            }
+
+            &.brand-platform-aspnet-core {
+              background-image: url(image_path("logo-scroll-aspnet-core.svg"));
             }
         }
 
@@ -567,12 +567,12 @@ $hover-text: darken($text-color, 10%);
               background: transparent url(image_path("logo-scroll-fiddler-everywhere.svg")) no-repeat 0 8px;
             }
 
-            &.brand-platform-aspnet-core {
-              background: transparent url(image_path("logo-scroll-aspnet-core.svg")) no-repeat 0 8px;
-            }
-
             &.brand-platform-aspnet-mvc {
               background: transparent url(image_path("logo-scroll-aspnet-mvc.svg")) no-repeat 0 8px;
+            }
+            
+            &.brand-platform-aspnet-core {
+              background: transparent url(image_path("logo-scroll-aspnet-core.svg")) no-repeat 0 8px;
             }
         }
 
