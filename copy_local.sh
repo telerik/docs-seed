@@ -15,7 +15,7 @@ if [ -z "$2" ] || [ "$2" = "false" ]; then
   dirs_to_exclude="`cat ./exclude_dirs.txt`"
   robocopy . "$destination" //XD $dirs_to_exclude //XF $files_to_exclude //E
 else
-  rsync -arv --exclude-from=./exclude_files.txt --exclude-from=./exclude_dirs.txt $(pwd)/ "$destination" 
+  rsync -arv --exclude-from=./.exclude $(pwd)/ "$destination" 
 fi
 
 #shopt -s extglob
