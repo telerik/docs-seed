@@ -2,6 +2,19 @@ module Jekyll
 
     require 'html/pipeline'
 
+    class LangFilter < HTML::Pipeline::Filter
+
+      def call
+          doc.css('pre[lang]').each do |node|
+              node['data-lang'] = node['lang']
+              node.remove_attribute('lang')
+          end
+
+          doc
+      end
+
+    end
+
     class HeaderLinkFilter < HTML::Pipeline::Filter
 
         PUNCTUATION_REGEXP = /[^\p{Word}\- ]/u
@@ -46,11 +59,11 @@ module Jekyll
         def initialize(config)
             @config = config
 
-            @pipeline = HTML::Pipeline.new [
-                HTML::Pipeline::MarkdownFilter,
-                HeaderLinkFilter
-            ]
-
+            if @config['code_lang']
+              @pipeline = HTML::Pipeline.new [ HTML::Pipeline::MarkdownFilter, LangFilter, HeaderLinkFilter ]
+            else 
+              @pipeline = HTML::Pipeline.new [ HTML::Pipeline::MarkdownFilter, HeaderLinkFilter ]
+            end
         end
 
         def convert(content)

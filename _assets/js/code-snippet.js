@@ -1,3 +1,4 @@
+var hasDataLang = false;
 const selectedLanguageKey = "Selected_TabStrip_Language_Key";
 // Necessary for the offline docs.
 const localStorageMock = {
@@ -7,6 +8,38 @@ const localStorageMock = {
     setItem: function() {
     }
 };
+
+function handleDataLangCodeSnippets() {
+    $("pre[data-lang]").each(function() {
+        if (this.parentNode.className.indexOf("k-content") >= 0) {
+            return;
+        }
+
+        var langs = $(this).nextUntil(":not(pre)", "pre").add(this);
+
+        var tabs = $.map(langs, function(item) {
+            var title = $(item).attr("data-lang").replace("tab-", "");
+            return $("<li>").text(title);
+        });
+
+        if (tabs.length < 2) {
+            return;
+        }
+
+        tabs[0].addClass("k-state-active");
+
+        var tabstrip = $("<div>")
+        .insertBefore(this)
+        .append($("<ul>").append(tabs))
+        .append(langs);
+
+        langs.wrap("<div>");
+
+        tabstrip.kendoTabStrip({ animation: false });
+
+        $(document).on("click", ".current-topic > div a", false);
+    });
+}
 
 $(function () {
     $("pre").addClass("prettyprint");
@@ -84,11 +117,15 @@ $(function () {
         'Objective-C' : 'm',
         'Java' : 'java'
     };
-    
-    $("pre").each(function (index) {
-        var langExtension = codeSampleMapper[$(this).attr('lang')];
-        $(this).addClass('lang-' + langExtension).addClass("prettyprint");
-    });
+
+    if (hasDataLang) {
+        handleDataLangCodeSnippets();
+    } else {
+        $("pre").each(function (index) {
+            var langExtension = codeSampleMapper[$(this).attr('lang')];
+            $(this).addClass('lang-' + langExtension).addClass("prettyprint");
+        });
+    }
 
     prettyPrint();
 
