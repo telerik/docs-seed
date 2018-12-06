@@ -18,6 +18,7 @@ layout: default
             <a href="{{site.baseurl}}/#{{site.nested_bread_crumbs.toc}}">{{site.nested_bread_crumbs.title}}</a> /
           {% endif %}
           {% render_bread_crumbs %}
+          {% if site.has_web_api == true and page.kind == 'api' %}<div id="markdown-toc"></div>{% endif %}
         </p>
         {% endif %}
 

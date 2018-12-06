@@ -1,3 +1,4 @@
+# For now this plugin is designed to work only with Kendo UI for jQuery
 require 'kramdown'
 
 module Jekyll
@@ -44,7 +45,7 @@ module Jekyll
     safe true
 
     def generate(site)
-      if site.layouts.key? 'api-index' && site.config['has_web_api'] == true
+      if site.layouts.key? 'api-index' and site.config['has_web_api'] == true
         api_groups = Array.new
         site.config['api'].each_entry do |element|
           children = Array.new

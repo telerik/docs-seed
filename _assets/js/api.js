@@ -83,29 +83,6 @@ function getBreadcrumbsInfo(values) {
     };
 }
 
-function buildToc() {
-    var tocContainer = $('.api-toc-container');
-    if (tocContainer.length > 0) {
-        var listItems = "";
-        var headersCount = 0;
-        $('h3').each(function () {
-            headersCount++;
-            var text = this.id === 'related-properties' ? 'Related Properties' : this.id;
-            listItems += '<li class="api-toc-item"><a href="#' + this.id + '">' + text + '</a></li>';
-        });
-
-        if (headersCount > 1) {
-            tocContainer.append('<div class="api-toc-title">In this article</div><ul>' + listItems + '</ul>');
-
-            var list = tocContainer.children('ul:first-of-type');
-            var windowHeight = $(window).outerHeight();
-            var footerHeight = $("#feedback-section").outerHeight() + $("footer").outerHeight();
-            var listTop = list.offset().top - $(window).scrollTop();
-            list.css('max-height', windowHeight - listTop - footerHeight);
-        }
-    }
-}
-
 function repeat(string, count) {
     var result = "";
     for (var i = 0; i < count; i++) {
@@ -450,15 +427,6 @@ function attachToApiPageEvents() {
             }
         });
     }
-
-    var headingAnchors = $('h3');
-    var apiContainer = $('.api-toc-container');
-    if (apiContainer.length) {
-        updateActiveTocItem(headingAnchors);
-        $(window).scroll(function () {
-            updateActiveTocItem(headingAnchors);
-        });
-    }
 }
 
 function getDataForCurrentPage(data) {
@@ -483,7 +451,6 @@ $(document).ready(function () {
             if (!$('#markdown-toc').length) {
                 buildApiBreadcrumbs(getDataForCurrentPage(data));
             }
-            buildToc();
             attachToApiPageEvents();
         }
     });
