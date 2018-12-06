@@ -469,6 +469,10 @@ $hover-text: darken($text-color, 10%);
           background: transparent url(image_path("logo-fiddler.svg")) no-repeat 0 50%;
         }
 
+        &.brand-platform-kendo-ui {
+          background: transparent url(image_path("logo-kendo-ui.svg")) no-repeat 0 50%;
+        }
+
         &::before {
             // preload scroll logo
             content: " ";
@@ -526,6 +530,10 @@ $hover-text: darken($text-color, 10%);
 
             &.brand-platform-fiddler {
               background-image: url(image_path("logo-scroll-fiddler.svg"));
+            }
+
+            &.brand-platform-kendo-ui {
+              background-image: url(image_path("logo-scroll-kendo-ui.svg"));
             }
         }
 
@@ -585,6 +593,10 @@ $hover-text: darken($text-color, 10%);
 
             &.brand-platform-fiddler {
               background: transparent url(image_path("logo-scroll-fiddler.svg")) no-repeat 0 8px;
+            }
+
+            &.brand-platform-kendo-ui {
+              background: transparent url(image_path("logo-scroll-kendo-ui.svg")) no-repeat 0 8px;
             }
         }
 
