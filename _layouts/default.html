@@ -21,6 +21,12 @@
         {% stylesheet "bundle" %}
         {% if site.platforms.size > 0 %} {% stylesheet "platform_styles" %} {% endif %}
         {% javascript "main" %}
+        {% if page.is_api %}
+        {% javascript "api" %}
+        {% endif %}
+        {% if site.enable_dojo == true %}
+        {% javascript "dojo" %}
+        {% endif %}
         <script src="https://cdn.cookielaw.org/consent/2fffb1c2-c64a-4fcc-bc19-a4adecbc5ebf.js" type="text/javascript" charset="UTF-8"></script> 
         <!-- Google Tag Manager -->
         <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -82,6 +88,7 @@
 
     <script>
       hasDataLang = {% if site.code_lang == true %} true {% else %} false {% endif %};
+      hasWebApi = {% if site.has_web_api == true %} true {% else %} false {% endif %};
     </script>
 
 {% include nav.html %}
