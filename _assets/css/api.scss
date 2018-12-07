@@ -1,16 +1,46 @@
-// #page-edit-link {
-//   margin-top: 80px !important;
-// }
+body {
+    min-width: 640px;
+
+    &.scroll {
+        .api-breadcrumbs-container {
+            top: 37px;
+        }
+
+        .additional-content-column.affix {
+            margin-top: 100px;
+        }
+    }
+}
+
+.additional-content-column.affix {
+    margin-top: 160px;
+}
+
+article.api-reference {
+    ul, ol {
+        padding: 0 0 0 22px;
+
+        li {
+          margin-bottom: 0;
+        }
+    }
+
+    h3 {
+      margin-top: -6px;
+      padding-top: 40px;
+    }
+}
 
 .api-breadcrumbs-container {
-    padding: 0 0 0 5.8em;
+    padding: 0 0 0 12px;
     font-family: Roboto, Helvetica, Arial, sans-serif;
     border-bottom: 1px solid #ebecee;
     position: fixed;
-    left: 18%;
+    left: 14%;
     right: 0;
     background-color: #fff;
-    top: 118px;
+    top: 100px;
+    height: 47px;
     width: 100%;
     max-width: 100%;
     z-index: 5;
@@ -27,6 +57,10 @@
     ~ #page-article article {
         margin-top: 60px !important;
     }
+
+    &.breadcrumbs {
+        font-size: 15px;
+    }
 }
 
 .links-container {
@@ -41,6 +75,7 @@
         display: none;
         margin: 0 0 0 25px;
         left: 200px;
+        top: 47px;
         min-width: 150px;
 
         > li {
@@ -65,7 +100,6 @@
         &:last-of-type {
             font-weight: bold;
             display: inline-block;
-            color: #e50870;
 
             &::after {
                 background: none !important;
@@ -88,9 +122,29 @@
     }
 }
 
+@media (min-width: 1601px) {
+  #navbar {
+    .navbar-brand {
+      margin-left: -5px;
+
+      .scroll & {
+          margin-left: -5px;
+      }
+  }
+}
+
 @media (min-width: 1468px) and (max-width: 1579px) {
     #page-article {
         padding-right: 240px;
+    }
+
+    #navbar {
+      .navbar-brand {
+        margin-left: -5px;
+  
+        .scroll & {
+            margin-left: -5px;
+        }
     }
 }
 
@@ -101,7 +155,19 @@
     }
 }
 
-@media (max-width: 1200px) {
+@media (min-width: 768px) and (max-width: 992px) {
+    .links-container {
+        margin-left: 20%;
+    }
+
+    .api-breadcrumbs-container {
+        &.breadcrumbs {
+            font-size: 13px;
+        }
+    }
+}
+
+@media (max-width: 767px) {
     .api-breadcrumbs-container {
         padding-left: 2em;
         left: 0;
@@ -125,12 +191,12 @@ h2 a:first-child + a code:before {
     color: #cccccc;
 }
 
-#markdown-toc + #page-article ul, #related-properties + ul {
+#markdown-toc ~ article.api-reference ul, #related-properties + ul {
     list-style-type: none;
     margin-left: -18px;
 }
 
-#markdown-toc + #page-article ul > li, #related-properties + ul > li {
+#markdown-toc ~ article.api-reference ul > li, #related-properties + ul > li {
     margin-right: 25px;
     width: 33%;
 }
@@ -231,7 +297,7 @@ h2 a:first-child + a code:before {
     width: 270px;
 
     .search {
-        padding: 7px 5px 7px 25px;
+        padding: 7px 5px 7px 35px;
         width: 100%;
     }
 
@@ -248,6 +314,10 @@ h2 a:first-child + a code:before {
         border-width: 1px;
         border-style: solid;
         border-color: #b8b8b8;
+        background-image: url(image_path("search.svg"));
+        background-repeat: no-repeat;
+        background-position: 10px 50%;
+        background-size: 16px;
     }
 
     input[type="search"]:focus {

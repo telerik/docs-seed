@@ -1,5 +1,3 @@
-var hasWebApi = false;
-
 function scrollNodeIntoView(li) {
     var top = li.offset().top;
     var bottom = top + li.find(">div").outerHeight();
@@ -39,37 +37,6 @@ function expandNavigation(url) {
             var li = this.element.find("li[data-uid='" + node.uid + "']");
             scrollNodeIntoView(li);
             this.select(li);
-
-            if (hasWebApi && location.pathname.indexOf("/api/") < 0) {
-                li.addClass("current-topic");
-    
-                $("h2").each(function() {
-                    var hash = $(this).find("a").attr("href");
-    
-                    $(".current-topic>ul>li:first-child>div>span.k-in").addClass("k-state-selected");
-    
-                    var state = $(".k-state-selected");
-                    if (state.length > 1) {
-                      $(".k-state-selected").first().removeClass("k-state-selected");
-                    }
-                    var h2Node = treeview.append({ path: hash, text: kendo.htmlEncode($(this).text()) }, li);
-    
-                    if (location.hash.replace("#", "") === hash.replace("#", "")) {
-                        selectNode(hash);
-                    }
-    
-                    $(this).nextUntil("h2", "h3").each(function() {
-                        var hash = $(this).find("a").attr("href");
-                        treeview.append({ path: hash, text: kendo.htmlEncode($(this).text()) }, h2Node);
-    
-                        if (location.hash.replace("#", "") === hash.replace("#", "")) {
-                            selectNode(hash);
-                            $("h1").css("font-weight", "bold");
-                        }
-                    });
-    
-                });
-            }
 
             $('.side-nav > #page-tree > .k-group > .k-item > div > span.k-i-collapse').closest('li').addClass('expanded');
 

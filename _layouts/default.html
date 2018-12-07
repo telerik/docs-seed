@@ -22,6 +22,9 @@
         {% if site.enable_dojo == true %}
         {% stylesheet "dojo" %}
         {% endif %}
+        {% if site.has_web_api == true and page.kind == "api" %}
+        {% stylesheet "api" %}
+        {% endif %}
         {% if site.platforms.size > 0 %} {% stylesheet "platform_styles" %} {% endif %}
         {% javascript "main" %}
         {% if page.is_api %}
@@ -91,7 +94,6 @@
 
     <script>
       hasDataLang = {% if site.code_lang == true %} true {% else %} false {% endif %};
-      hasWebApi = {% if site.has_web_api == true %} true {% else %} false {% endif %};
     </script>
 
 {% include nav.html %}

@@ -596,7 +596,7 @@ $hover-text: darken($text-color, 10%);
             }
 
             &.brand-platform-kendo-ui {
-              background: transparent url(image_path("logo-scroll-kendo-ui.svg")) no-repeat 0 8px;
+              background: transparent url(image_path("logo-scroll-kendo-ui.svg")) no-repeat 0 4px;
             }
         }
 
@@ -1258,7 +1258,7 @@ article {
         list-style: none;
     }
 
-    ul:not(.docs-tabstrip):not(.k-reset) > li:before {
+    &:not(.api-reference) ul:not(.docs-tabstrip):not(.k-reset) > li:before {
         content: "";
         position: absolute;
         top: .7em;
