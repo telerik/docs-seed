@@ -1,3 +1,4 @@
+//= require codemirror/codemirror.min.js
 
 var dojoApi = (function($) {
     var dojoApi = {
@@ -224,19 +225,7 @@ var dojoApi = (function($) {
 })(jQuery);
 
 $(function(){
-    $(".toggle-nav").click(function() {
-        $("#page-search").removeClass("search-visibility");
-        $("#page-inner-content").removeClass("move-inner-content");
-        $("#page-nav").toggleClass("nav-visibility");
-    });
-
-    $(".show-search").click(function() {
-        $("#page-nav").removeClass("nav-visibility");
-        $("#page-search").toggleClass("search-visibility");
-        $("#page-inner-content").toggleClass("move-inner-content");
-    });
-
-    $("body").find(".prettyprint[data-lang=html]").each(function() {
+    $("body").find(".prettyprint[data-lang=dojo]").each(function() {
         if (this.parentNode.className.indexOf("k-content") < 0) {
             dojoApi.addButtons(this);
         }
@@ -260,10 +249,3 @@ $(function(){
         dojoApi.openSnippet(this);
     });
 });
-
-jQuery(function() {
-    $("body").find(".prettyprint").not("[data-lang=pseudo]").each(function() {
-         dojoApi.addButtons(this);
-    });
- });
- 
