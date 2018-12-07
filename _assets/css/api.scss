@@ -21,13 +21,13 @@ article.api-reference {
         padding: 0 0 0 22px;
 
         li {
-          margin-bottom: 0;
+            margin-bottom: 0;
         }
     }
 
     h3 {
-      margin-top: -6px;
-      padding-top: 40px;
+        margin-top: -6px;
+        padding-top: 40px;
     }
 }
 
@@ -123,14 +123,15 @@ article.api-reference {
 }
 
 @media (min-width: 1601px) {
-  #navbar {
-    .navbar-brand {
-      margin-left: -5px;
+    #navbar {
+        .navbar-brand {
+            margin-left: -5px;
 
-      .scroll & {
-          margin-left: -5px;
-      }
-  }
+            .scroll & {
+                margin-left: -5px;
+            }
+        }
+    }
 }
 
 @media (min-width: 1468px) and (max-width: 1579px) {
@@ -139,11 +140,12 @@ article.api-reference {
     }
 
     #navbar {
-      .navbar-brand {
-        margin-left: -5px;
-  
-        .scroll & {
+        .navbar-brand {
             margin-left: -5px;
+
+            .scroll & {
+                margin-left: -5px;
+            }
         }
     }
 }
