@@ -24,6 +24,10 @@
         {% endif %}
         {% if site.has_web_api == true and page.kind == "api" %}
         {% stylesheet "api" %}
+        {% if page.has_api_toc == true %}
+        {% stylesheet "api-toc" %}
+        {% javascript "api-toc" %}
+        {% endif %}
         {% endif %}
         {% if site.platforms.size > 0 %} {% stylesheet "platform_styles" %} {% endif %}
         {% javascript "main" %}
@@ -94,6 +98,9 @@
 
     <script>
       hasDataLang = {% if site.code_lang == true %} true {% else %} false {% endif %};
+      {% if site.has_web_api == true and page.kind == 'api' %}
+      isMainApiPage = {% if page.is_main or page.has_api_toc %} true {% else %} false {% endif %}
+      {% endif %}
     </script>
 
 {% include nav.html %}

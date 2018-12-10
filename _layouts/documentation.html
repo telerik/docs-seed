@@ -14,11 +14,15 @@ layout: default
 
         {% if page.res_type != 'kb' %}
         <p class="breadcrumbs">
-          {% if site.nested_bread_crumbs %}
+          {% if site.nested_bread_crumbs and page.has_api_toc != true %}
             <a href="{{site.baseurl}}/#{{site.nested_bread_crumbs.toc}}">{{site.nested_bread_crumbs.title}}</a> /
           {% endif %}
+          {% if page.has_api_toc != true %}
           {% render_bread_crumbs %}
-          {% if site.has_web_api == true and page.kind == 'api' %}<div id="markdown-toc"></div>{% endif %}
+          {% endif %}
+          {% if site.has_web_api == true and page.kind == 'api' and page.is_main != true %}
+          <div id="markdown-toc"></div>
+          {% endif %}
         </p>
         {% endif %}
 

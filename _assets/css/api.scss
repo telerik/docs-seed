@@ -2,7 +2,8 @@ body {
     min-width: 640px;
 
     &.scroll {
-        .api-breadcrumbs-container {
+        .api-breadcrumbs-container,
+        #markdown-toc  {
             top: 37px;
         }
 
@@ -47,17 +48,6 @@ article.api-reference {
     margin-top: 0;
     margin-left: 0;
 
-    + #page-article :target:before {
-        content: "";
-        display: block;
-        height: 175px;
-        margin: -175px 0 0;
-    }
-
-    ~ #page-article article {
-        margin-top: 60px !important;
-    }
-
     &.breadcrumbs {
         font-size: 15px;
     }
@@ -85,7 +75,7 @@ article.api-reference {
     }
 
     > a {
-        background: transparent url(../images/arrow.png) 100% 50% no-repeat;
+        background: transparent url(image_path("arrow.png")) 100% 50% no-repeat;
         padding-right: 18px;
         padding-left: 14px;
         margin-right: 10px;
@@ -107,7 +97,7 @@ article.api-reference {
         }
 
         &:after {
-            background: transparent url(../images/shadow.png) 100% 50% no-repeat;
+            background: transparent url(image_path("shadow.png")) 100% 50% no-repeat;
             content: "";
             display: inline-block;
             width: 17px;
@@ -135,10 +125,6 @@ article.api-reference {
 }
 
 @media (min-width: 1468px) and (max-width: 1579px) {
-    #page-article {
-        padding-right: 240px;
-    }
-
     #navbar {
         .navbar-brand {
             margin-left: -5px;
@@ -147,13 +133,6 @@ article.api-reference {
                 margin-left: -5px;
             }
         }
-    }
-}
-
-@media (min-width: 1200px) and (max-width: 1467px) {
-    #page-article {
-        padding-right: 240px;
-        max-width: 93em;
     }
 }
 

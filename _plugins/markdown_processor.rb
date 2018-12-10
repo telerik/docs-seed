@@ -15,6 +15,56 @@ module Jekyll
 
     end
 
+    class ApiHeaderIdFilter < HTML::Pipeline::Filter
+
+      def call
+          # Headers in the new API design
+          doc.css('div.api-article').each do |node|
+            node = node.next_element
+            until node.nil?
+              if node.name == 'h3'
+                node['id'] = node.text == 'Related Properties' ? 'related-properties' : sanitaze_id(node.text)
+              end
+
+              node = node.next_element
+            end
+          end
+
+          # Headers in the old API design
+          doc.css('h2').each do |node|
+              text = node.text
+
+              next unless text =~ /^(Configuration|Events|Properties|Methods|Class Methods|Fields|Constructor Parameters)$/
+
+              prefix = text.downcase.gsub(' ', '-')
+
+              node = node.next_element
+
+              until node.nil?
+                  break if node.name == 'h2'
+
+                  if node.name == 'h3'
+                      id = sanitaze_id(node.text)
+                      node['id'] = "#{prefix}-#{id}"
+                  end
+
+                  node = node.next_element
+              end
+
+          end
+          doc
+      end
+
+      def sanitaze_id(id)
+        id.gsub!(/ .*/, '')
+        id.gsub!(/`[^`]*`/, '')
+        id.gsub!(/\\/,'')
+        id.gsub!(/\*[^*]*\*/, '')
+        id
+      end
+    end
+
+
     class HeaderLinkFilter < HTML::Pipeline::Filter
 
         PUNCTUATION_REGEXP = /[^\p{Word}\- ]/u
@@ -60,9 +110,9 @@ module Jekyll
             @config = config
 
             if @config['code_lang']
-              @pipeline = HTML::Pipeline.new [ HTML::Pipeline::MarkdownFilter, LangFilter, HeaderLinkFilter ]
+              @pipeline = HTML::Pipeline.new [ HTML::Pipeline::MarkdownFilter, LangFilter, ApiHeaderIdFilter, HeaderLinkFilter ]
             else 
-              @pipeline = HTML::Pipeline.new [ HTML::Pipeline::MarkdownFilter, HeaderLinkFilter ]
+              @pipeline = HTML::Pipeline.new [ HTML::Pipeline::MarkdownFilter, ApiHeaderIdFilter, HeaderLinkFilter ]
             end
         end
 

@@ -8,6 +8,7 @@ var MINIMUM_CHILDREN_COUNT = 6;
 var COLUMN_HEIGHT_TOLLERANCE = 40;
 var filterControl = null;
 var previousSearch = "";
+var isMainApiPage = false;
 
 function getApiCategoryAndIndex(values) {
     var startIndex = -1;
@@ -229,6 +230,8 @@ function arrangeColumns(list, columnsCount) {
     } else {
         list.css('height', '');
     }
+
+    setSideNavPosition();
 }
 
 function setupColumnsInternal(category, subCategory, mainNestingLevel) {
@@ -297,7 +300,6 @@ function filter() {
     });
 
     previousSearch = text;
-    setSideNavPosition();
 }
 
 function getApiSectionIndex(hash) {
@@ -436,7 +438,7 @@ $(document).ready(function () {
     $.get("/kendo-ui/api.json", function (data) {
         if (!ensureCorrectNavigation()) {
             setupColumns();
-            if (!$('#markdown-toc').length) {
+            if (!isMainApiPage) {
                 buildApiBreadcrumbs(getDataForCurrentPage(data));
             }
             attachToApiPageEvents();
