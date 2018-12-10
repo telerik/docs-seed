@@ -300,6 +300,7 @@ function filter() {
     });
 
     previousSearch = text;
+    setSideNavPosition();
 }
 
 function getApiSectionIndex(hash) {
