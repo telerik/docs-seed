@@ -2813,7 +2813,7 @@ a.all-components {
     h4 ~ p {
       code,
       .code {
-          background-color: rgba(39, 163, 6, 0.8);
+          background-color: $code-background-color;
           color: #ffffff;
           margin-top: 3px;
           padding: 3px 4px;
@@ -2856,7 +2856,7 @@ a.all-components {
 
         code,
         .code {
-            background-color: rgba(39, 163, 6, 0.8);
+            background-color: $code-background-color;
             color: #ffffff;
             padding: 1px 3px 2px;
             font-size: 13px;
