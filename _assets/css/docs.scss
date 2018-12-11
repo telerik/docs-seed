@@ -75,11 +75,11 @@ a code {
 }
 
 .docs-tabstrip li.active {
-  border-bottom: 2px solid #27A306;
+  border-bottom: 2px solid $accent;
 }
 
 .docs-tabstrip li.active a {
-  color: #27A306;
+  color: $accent;
 }
 
 .docs-tabstrip a {
@@ -122,7 +122,7 @@ a code {
 }
 
 .file-list .docs-tabstrip li.active a:hover {
-  color: #27A306;
+  color: $accent;
 }
 
 .file-list pre {
