@@ -11,9 +11,9 @@
 .cm-s-default .cm-keyword, .cm-s-default .cm-property { color:#4f5d6c; }
 .cm-s-default .cm-atom,.cm-s-default .cm-number { color:#4f5d6c; }
 .cm-s-default .cm-node,.cm-s-default .cm-tag { color:#4f5d6c; }
-.cm-s-default .cm-attribute { color:#27A306; }
+.cm-s-default .cm-attribute { color: $accent; }
 .cm-s-default .cm-string { color:#4f5d6c; }
-.cm-s-default .cm-string-2 { color:#27A306; }
+.cm-s-default .cm-string-2 { color: $accent; }
 .cm-s-default .cm-variable,.cm-s-default .cm-qualifier { color:#2c90dd; }
 .cm-s-default .cm-variable-2 { color: #4f5d6c; }
 
