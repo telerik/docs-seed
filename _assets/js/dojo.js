@@ -231,8 +231,8 @@ $(function(){
         }
     });
     
-    // Add Dojo to all API reference code-snippets
-    $("body article.api-reference").find(".prettyprint").not("[data-lang=pseudo]").each(function() {
+    // Add Dojo to all API javascript reference code-snippets
+    $("body article.api-reference.javascript").find(".prettyprint").not("[data-lang=pseudo]").each(function() {
         dojoApi.addButtons(this);
     });
         
