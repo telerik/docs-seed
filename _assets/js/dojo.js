@@ -230,6 +230,12 @@ $(function(){
             dojoApi.addButtons(this);
         }
     });
+    
+    // Add Dojo to all API reference code-snippets
+    $("body article.api-reference").find(".prettyprint").not("[data-lang=pseudo]").each(function() {
+        dojoApi.addButtons(this);
+    });
+        
 
     $("body").on("click", ".btn-edit", function(e) {
         e.preventDefault();
