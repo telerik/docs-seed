@@ -84,6 +84,8 @@ var dojoApi = (function($) {
 
             $(element).addClass("active-button");
             $(element).next().removeClass("active-button");
+
+            setSideNavPosition();
         },
         runSnippet: function(element) {
             reset();
@@ -123,6 +125,8 @@ var dojoApi = (function($) {
 
             $(element).addClass("active-button");
             $(element).prev().removeClass("active-button");
+
+            setSideNavPosition();
         },
 
         openSnippet: function(element) {
