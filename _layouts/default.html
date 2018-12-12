@@ -101,6 +101,7 @@
       {% if site.has_web_api == true and page.kind == 'api' %}
       isMainApiPage = {% if page.is_main or page.has_api_toc %} true {% else %} false {% endif %}
       {% endif %}
+      supportSelfLinkTreeNode = {% if site.navigation_parent_links = true %} true {% else %} false {% endif %}
     </script>
 
 {% include nav.html %}

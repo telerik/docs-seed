@@ -1,3 +1,5 @@
+var supportSelfLinkTreeNode = false;
+
 function scrollNodeIntoView(li) {
     var top = li.offset().top;
     var bottom = top + li.find(">div").outerHeight();
@@ -34,15 +36,98 @@ function expandNavigation(url) {
         }
 
         if (isInNavigation) {
-            var li = this.element.find("li[data-uid='" + node.uid + "']");
-            scrollNodeIntoView(li);
-            this.select(li);
+            var li;
+            var t = [];
+            if (supportSelfLinkTreeNode && getDataPath(this.dataSource._pristineData, url, t)) {
+                for (var currentNode, a = (t[t.length - 1], this.dataSource), index = 0; index < t.length; index++) {
+                    currentNode = a.get(t[index]);
+                    currentNode.set("expanded", !0);
+                    a = currentNode.children;
+                }
+                node.set("selected", !0);
 
-            $('.side-nav > #page-tree > .k-group > .k-item > div > span.k-i-collapse').closest('li').addClass('expanded');
+                li = this.element.find("li[data-uid='" + node.uid + "']");
+                li.addClass("current-topic");
+
+                var firstChild = $(".current-topic>ul>li:first-child");
+                scrollNodeIntoView(li);
+                this.select(li);
+
+                if (location.pathname.indexOf("/api/") < 0) {
+                    $("h2").each(function () {
+                        li.addClass("current-topic");
+                        var hash = $(this).find("a").attr("href");
+
+                        if (typeof hash !== 'undefined' && hash !== null) {
+                            var state = $(".k-state-selected");
+                            if (state.length > 1) {
+                                $(".k-state-selected").first().removeClass("k-state-selected");
+                            }
+
+                            var newChild = {
+                                path: getBaseUri($(this)) + hash,
+                                text: kendo.htmlEncode($(this).text())
+                            };
+                            var h2Node = (typeof firstChild[0] !== 'undefined' && firstChild[0] !== null) ?
+                                treeview.insertBefore(newChild, firstChild) :
+                                treeview.append(newChild, li);
+
+                            h2Node.addClass("section");
+
+                            if (location.hash.replace("#", "") === hash.replace("#", "")) {
+                                selectNode(hash);
+                            }
+
+                            $(this).nextUntil("h2", "h3").each(function () {
+                                var hash = $(this).find("a").attr("href");
+                                if (typeof hash !== 'undefined' && hash !== null) {
+                                    var h3Node = treeview.append({ path: getBaseUri($(this)) + hash, text: kendo.htmlEncode($(this).text()) }, h2Node);
+                                    h3Node.addClass("section");
+
+                                    if (location.hash.replace("#", "") === hash.replace("#", "")) {
+                                        selectNode(hash);
+                                        $("h1").css("font-weight", "bold");
+                                    }
+                                }
+                            });
+                        }
+                    });
+                }
+            } else {
+                li = this.element.find("li[data-uid='" + node.uid + "']");
+
+                scrollNodeIntoView(li);
+                this.select(li);
+
+                $('.side-nav > #page-tree > .k-group > .k-item > div > span.k-i-collapse').closest('li').addClass('expanded');
+            }
 
             this.unbind("dataBound", expand);
         }
     };
+}
+
+function getBaseUri(element) {
+    var baseUri = element[0].baseURI;
+    var start = baseUri.lastIndexOf("/") + 1;
+    var end = baseUri.indexOf("#") > -1 ? baseUri.indexOf("#") : baseUri.length;
+
+    return baseUri.substring(start, end);
+}
+
+function getDataPath(items, path, resultArray, undefined) {
+    for (var i = 0; i < items.length; i++) {
+        var item = items[i];
+        if (item.path == path) {
+            resultArray.push(path);
+            return true;
+        }
+        if (item.items && getDataPath(item.items, path, resultArray, undefined)) {
+            resultArray.unshift(item.path);
+            return true;
+        }
+    }
+    return false;
 }
 
 function navigationTemplate(root) {
@@ -105,7 +190,7 @@ function setSideNavPosition() {
 $(function () {
     $(window).scroll(setSideNavPosition)
         .resize(setSideNavPosition);
-        
+
     $(document).ready(function () {
         setSideNavPosition();
     });
