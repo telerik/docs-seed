@@ -50,6 +50,7 @@ sh start-docs.sh
 
 > For more info on the above you can read the following article - http://jekyll-windows.juthilo.com/1-ruby-and-devkit/.
 
+- Install bundler (if you have already installed, continue to the next step) by executing `gem install bundler`
 - Clone the current (seed) repo 
 ```bash
 git clone git@github.com:telerik/docs-seed.git
@@ -64,6 +65,7 @@ sh copy_local.sh "D:\Work\xaml-docs"
 
 - Go to the MY-REPO directory
 - Open a terminal of your choice (e.g., gitBash)
+- Install gems by executing `bundle install`
 - Execute the following bash command in the root folder
 ```bash
 bundle exec jekyll serve
