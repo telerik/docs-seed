@@ -16,7 +16,7 @@ blockquote,
 .side-nav,
 .components {
     font-size: 14px;
-    line-height: 1.44em;
+    line-height: 1.2em;
 }
 
 html {
@@ -60,11 +60,11 @@ image {
 }
 
 div.caption {
-  color: #000000;
-  font-weight: 500;
-  font-size: 18px;
-  letter-spacing: -0.02em;
-  line-height: 1.222em;
+    color: #000000;
+    font-weight: 500;
+    font-size: 18px;
+    letter-spacing: -0.02em;
+    line-height: 1.222em;
 }
 
 /* Sticky Footer Styles */
@@ -181,7 +181,7 @@ h3, .h3,
 h4, .h4,
 h5, .h5,
 h6, .h6 {
-    margin-top: 30px;
+    margin-top: 20px;
     margin-bottom: 10px;
     font-weight: 400;
     color: #000000;
@@ -189,18 +189,24 @@ h6, .h6 {
 }
 
 h1, .h1 {
-    font-size: 56px;
+    font-size: 40px;
     font-family: $font-heading;
     line-height: .95em;
 }
 
 h2, .h2 {
-    font-size: 36px;
+    font-size: 26px;
     font-family: $font-heading;
 }
 
 h3, .h3 {
-    font-size: 28px;
+    font-size: 22px;
+    font-family: $font-heading;
+}
+
+h4, .h4 {
+    font-size: 16px;
+    font-weight: 500;
     font-family: $font-heading;
 }
 
@@ -395,7 +401,7 @@ $hover-text: darken($text-color, 10%);
         }
 
         &.brand-platform-silverlight {
-          background: transparent url(image_path("logo-silverlight.svg")) no-repeat 0 50%;
+            background: transparent url(image_path("logo-silverlight.svg")) no-repeat 0 50%;
         }
 
         &.brand-platform-dpl {
@@ -403,47 +409,51 @@ $hover-text: darken($text-color, 10%);
         }
 
         &.brand-platform-aspnet-ajax {
-          background: transparent url(image_path("logo-aspnet-ajax.svg")) no-repeat 0 50%;
+            background: transparent url(image_path("logo-aspnet-ajax.svg")) no-repeat 0 50%;
         }
 
         &.brand-platform-winforms {
-          background: transparent url(image_path("logo-winforms.svg")) no-repeat 0 50%;
+            background: transparent url(image_path("logo-winforms.svg")) no-repeat 0 50%;
         }
 
         &.brand-platform-reporting {
-          background: transparent url(image_path("logo-reporting.svg")) no-repeat 0 50%;
+            background: transparent url(image_path("logo-reporting.svg")) no-repeat 0 50%;
         }
 
         &.brand-platform-report-server {
-          background: transparent url(image_path("logo-report-server.svg")) no-repeat 0 50%;
+            background: transparent url(image_path("logo-report-server.svg")) no-repeat 0 50%;
         }
 
         &.brand-platform-uwp {
-          background: transparent url(image_path("logo-uwp.svg")) no-repeat 0 50%;
+            background: transparent url(image_path("logo-uwp.svg")) no-repeat 0 50%;
         }
 
         &.brand-platform-xamarin {
-          background: transparent url(image_path("logo-xamarin.svg")) no-repeat 0 50%;
+            background: transparent url(image_path("logo-xamarin.svg")) no-repeat 0 50%;
         }
 
         &.brand-platform-fiddler-everywhere {
-          background: transparent url(image_path("logo-fiddler-everywhere.svg")) no-repeat 0 50%;
+            background: transparent url(image_path("logo-fiddler-everywhere.svg")) no-repeat 0 50%;
         }
-        
+
         &.brand-platform-aspnet-mvc {
-          background: transparent url(image_path("logo-aspnet-mvc.svg")) no-repeat 0 50%;
+            background: transparent url(image_path("logo-aspnet-mvc.svg")) no-repeat 0 50%;
         }
 
         &.brand-platform-aspnet-core {
-          background: transparent url(image_path("logo-aspnet-core.svg")) no-repeat 0 50%;
+            background: transparent url(image_path("logo-aspnet-core.svg")) no-repeat 0 50%;
         }
 
         &.brand-platform-fiddler {
-          background: transparent url(image_path("logo-fiddler.svg")) no-repeat 0 50%;
+            background: transparent url(image_path("logo-fiddler.svg")) no-repeat 0 50%;
         }
 
         &.brand-platform-kendo-ui {
-          background: transparent url(image_path("logo-kendo-ui.svg")) no-repeat 0 50%;
+            background: transparent url(image_path("logo-kendo-ui.svg")) no-repeat 0 50%;
+        }
+
+        &.brand-platform-teststudio {
+            background: transparent url(image_path("logo-teststudio.svg")) no-repeat 0 50%;
         }
 
         &::before {
@@ -454,59 +464,63 @@ $hover-text: darken($text-color, 10%);
             visibility: hidden;
 
             &.brand-platform-wpf {
-              background-image: url(image_path("logo-scroll-wpf.svg"));
+                background-image: url(image_path("logo-scroll-wpf.svg"));
             }
 
             &.brand-platform-silverlight {
-              background-image: url(image_path("logo-scroll-silverlight.svg"));
+                background-image: url(image_path("logo-scroll-silverlight.svg"));
             }
 
             &.brand-platform-dpl {
-              background-image: url(image_path("logo-scroll-dpl.svg"));
+                background-image: url(image_path("logo-scroll-dpl.svg"));
             }
 
             &.brand-platform-aspnet-ajax {
-              background-image: url(image_path("logo-scroll-aspnet-ajax.svg"));
+                background-image: url(image_path("logo-scroll-aspnet-ajax.svg"));
             }
 
             &.brand-platform-winforms {
-              background-image: url(image_path("logo-scroll-winforms.svg"));
+                background-image: url(image_path("logo-scroll-winforms.svg"));
             }
 
             &.brand-platform-reporting {
-               background-image: url(image_path("logo-scroll-reporting.svg"));
+                background-image: url(image_path("logo-scroll-reporting.svg"));
             }
 
             &.brand-platform-report-server {
-              background-image: url(image_path("logo-scroll-report-server.svg"));
+                background-image: url(image_path("logo-scroll-report-server.svg"));
             }
 
             &.brand-platform-uwp {
-              background-image: url(image_path("logo-scroll-uwp.svg"));
+                background-image: url(image_path("logo-scroll-uwp.svg"));
             }
 
             &.brand-platform-xamarin {
-              background-image: url(image_path("logo-scroll-xamarin.svg"));
+                background-image: url(image_path("logo-scroll-xamarin.svg"));
             }
 
             &.brand-platform-fiddler-everywhere {
-              background-image: url(image_path("logo-scroll-fiddler-everywhere.svg"));
+                background-image: url(image_path("logo-scroll-fiddler-everywhere.svg"));
             }
 
             &.brand-platform-aspnet-mvc {
-              background-image: url(image_path("logo-scroll-aspnet-mvc.svg"));
+                background-image: url(image_path("logo-scroll-aspnet-mvc.svg"));
             }
 
             &.brand-platform-aspnet-core {
-              background-image: url(image_path("logo-scroll-aspnet-core.svg"));
+                background-image: url(image_path("logo-scroll-aspnet-core.svg"));
             }
 
             &.brand-platform-fiddler {
-              background-image: url(image_path("logo-scroll-fiddler.svg"));
+                background-image: url(image_path("logo-scroll-fiddler.svg"));
             }
 
             &.brand-platform-kendo-ui {
-              background-image: url(image_path("logo-scroll-kendo-ui.svg"));
+                background-image: url(image_path("logo-scroll-kendo-ui.svg"));
+            }
+
+            &.brand-platform-teststudio {
+                background-image: url(image_path("logo-scroll-teststudio.svg"));
             }
         }
 
@@ -517,59 +531,63 @@ $hover-text: darken($text-color, 10%);
             max-width: 40%;
 
             &.brand-platform-wpf {
-              background: transparent url(image_path("logo-scroll-wpf.svg")) no-repeat 0 8px;
+                background: transparent url(image_path("logo-scroll-wpf.svg")) no-repeat 0 8px;
             }
 
             &.brand-platform-silverlight {
-              background: transparent url(image_path("logo-scroll-silverlight.svg")) no-repeat 0 8px;
+                background: transparent url(image_path("logo-scroll-silverlight.svg")) no-repeat 0 8px;
             }
 
             &.brand-platform-dpl {
-              background: transparent url(image_path("logo-scroll-dpl.svg")) no-repeat 0 8px;
+                background: transparent url(image_path("logo-scroll-dpl.svg")) no-repeat 0 8px;
             }
 
             &.brand-platform-aspnet-ajax {
-              background: transparent url(image_path("logo-scroll-aspnet-ajax.svg")) no-repeat 0 8px;
+                background: transparent url(image_path("logo-scroll-aspnet-ajax.svg")) no-repeat 0 8px;
             }
 
             &.brand-platform-winforms {
-              background: transparent url(image_path("logo-scroll-winforms.svg")) no-repeat 0 8px;
+                background: transparent url(image_path("logo-scroll-winforms.svg")) no-repeat 0 8px;
             }
 
             &.brand-platform-reporting {
-              background: transparent url(image_path("logo-scroll-reporting.svg")) no-repeat 0 8px;
+                background: transparent url(image_path("logo-scroll-reporting.svg")) no-repeat 0 8px;
             }
 
             &.brand-platform-report-server {
-              background: transparent url(image_path("logo-scroll-report-server.svg")) no-repeat 0 8px;
+                background: transparent url(image_path("logo-scroll-report-server.svg")) no-repeat 0 8px;
             }
 
             &.brand-platform-uwp {
-              background: transparent url(image_path("logo-scroll-uwp.svg")) no-repeat 0 8px;
+                background: transparent url(image_path("logo-scroll-uwp.svg")) no-repeat 0 8px;
             }
 
             &.brand-platform-xamarin {
-              background: transparent url(image_path("logo-scroll-xamarin.svg")) no-repeat 0 8px;
+                background: transparent url(image_path("logo-scroll-xamarin.svg")) no-repeat 0 8px;
             }
 
             &.brand-platform-fiddler-everywhere {
-              background: transparent url(image_path("logo-scroll-fiddler-everywhere.svg")) no-repeat 0 8px;
+                background: transparent url(image_path("logo-scroll-fiddler-everywhere.svg")) no-repeat 0 8px;
             }
 
             &.brand-platform-aspnet-mvc {
-              background: transparent url(image_path("logo-scroll-aspnet-mvc.svg")) no-repeat 0 8px;
+                background: transparent url(image_path("logo-scroll-aspnet-mvc.svg")) no-repeat 0 8px;
             }
-            
+
             &.brand-platform-aspnet-core {
-              background: transparent url(image_path("logo-scroll-aspnet-core.svg")) no-repeat 0 8px;
+                background: transparent url(image_path("logo-scroll-aspnet-core.svg")) no-repeat 0 8px;
             }
 
             &.brand-platform-fiddler {
-              background: transparent url(image_path("logo-scroll-fiddler.svg")) no-repeat 0 8px;
+                background: transparent url(image_path("logo-scroll-fiddler.svg")) no-repeat 0 8px;
             }
 
             &.brand-platform-kendo-ui {
-              background: transparent url(image_path("logo-scroll-kendo-ui.svg")) no-repeat 0 4px;
+                background: transparent url(image_path("logo-scroll-kendo-ui.svg")) no-repeat 0 4px;
+            }
+
+            &.brand-platform-teststudio {
+                background: transparent url(image_path("logo-scroll-teststudio.svg")) no-repeat 0 4px;
             }
         }
 
@@ -802,9 +820,9 @@ $nav-icon-color: #979797;
     }
 
     .k-treeview .k-in {
-      border: 0;
-      line-height: 1.44em;
-      padding-right: 0;
+        border: 0;
+        line-height: 1.2em;
+        padding-right: 0;
     }
 
     .k-in {
@@ -895,9 +913,9 @@ $nav-icon-color: #979797;
                 transition: background-color .1s, padding .1s, font-weight .1s;
                 font-weight: 500;
                 color: $text-active-color !important;
-                font-size: 15px;
+                font-size: 14px;
                 font-family: $font-light;
-                line-height: 1.4em;
+                line-height: 1.2em;
             }
 
             .k-icon {
@@ -938,10 +956,10 @@ $nav-icon-color: #979797;
             a {
                 padding-left: 48px;
                 margin-left: -48px;
-                padding-top: 8px;
-                margin-top: -8px;
-                padding-bottom: 8px;
-                margin-bottom: -8px;
+                padding-top: 6px;
+                margin-top: -6px;
+                padding-bottom: 6px;
+                margin-bottom: -6px;
             }
         }
 
@@ -1064,7 +1082,7 @@ $nav-icon-color: #979797;
 
     > ul > li > a {
         font-weight: 500;
-        line-height: 1.4em;
+        line-height: 1.2em;
     }
 
     > ul > li.expanded {
@@ -1074,7 +1092,7 @@ $nav-icon-color: #979797;
 
     > ul > li > ul { /* Level 2 */
         padding: 0 0 10px 0;
-        font-size: 15px;
+        font-size: 14px;
         font-family: $font-regular;
     }
 
@@ -1139,37 +1157,36 @@ article {
     }
 
     h1, .h1 {
-        font-size: 50px;
-        line-height: .95em;
+      margin-top: 20px; 
+      margin-bottom: 10px;
+      line-height: .95em;
     }
 
     h2, .h2 {
-        font-size: 30px;
-        line-height: .95em;
-        margin-top: 44px; /* 36 + 44 = 80px */
-        margin-bottom: 10px;
-    }
-
+      line-height: .95em;
+      margin-top: 20px; 
+      margin-bottom: 10px;
+  }
     h3, .h3,
     &.api-reference .editor h3 {
-        font-size: 28px;
+        font-size: 22px;
         line-height: 1em;
         font-weight: 400;
         letter-spacing: -0.02em;
-        margin-top: 32px; /* 28 + 32 = 60px */
-        margin-bottom: 10px;
-    }
+        margin-top: 20px; 
+        margin-bottom: 10px;      
+      }
 
     &.api-reference .editor h3 {
         margin: 0;
     }
 
     h4, .h4 {
-        font-size: 18px;
+        font-size: 16px;
         line-height: 1.222em;
         font-weight: 500;
         letter-spacing: -0.02em;
-        margin-top: 18px; /* 22 + 18 = 40px */
+        margin-top: 20px; 
         margin-bottom: 10px;
     }
 
@@ -1179,7 +1196,7 @@ article {
         font-weight: 500;
         text-transform: uppercase;
         letter-spacing: 0.05em;
-        margin-top: 24px; /* 16 + 24 = 40px */
+        margin-top: 20px; /* 16 + 24 = 40px */
         margin-bottom: 10px;
     }
 
@@ -1187,6 +1204,7 @@ article {
         max-width: 1200px;
         margin-top: 1em;
         margin-bottom: 1em;
+        font-size: 14;
 
         a:hover,
         a:focus {
@@ -1201,10 +1219,10 @@ article {
 
     &:not(.api-reference) > p:first-child,
     &:not(.api-reference) h1 + p {
-        font-size: 18px;
+        font-size: 16px;
         font-weight: 400;
-        margin-top: 15px;
-        margin-bottom: 20px;
+        margin-top: 10px;
+        margin-bottom: 15px;
         font-family: $font-regular;
     }
 
@@ -1263,7 +1281,7 @@ article {
         margin: 15px 0 20px;
         word-break: break-word;
         overflow-wrap: break-word;
-        
+
         th {
             color: #8a959f;
             background-color: #f7f7f8;
@@ -1345,14 +1363,14 @@ blockquote {
 
     &:not(.alert-note) a,
     &:not(.alert-note) a:link {
-      color: #000000;
-      text-decoration: underline;
+        color: #000000;
+        text-decoration: underline;
 
         &:hover,
         &:active,
         &:focus {
-          color: #000000;
-          text-decoration: none !important;
+            color: #000000;
+            text-decoration: none !important;
         }
     }
 
@@ -1524,8 +1542,17 @@ $border-color: #d9d9d9;
         }
     }
 
+    .anchor-h1,
     .anchor-h2 {
-        font-size: 15px;
+        font-family: $font-medium;
+        font-size: 14px;
+    }
+
+    .anchor-h3 {
+        margin: 5px 0;
+        font-family: $font-light;
+        font-size: 12px;
+        padding-left: 30px;
     }
 
     hr {
@@ -1542,19 +1569,6 @@ $border-color: #d9d9d9;
 
     a:active {
         color: #36393f;
-    }
-
-    .anchor-h1,
-    .anchor-h2 {
-        font-family: $font-medium;
-        font-size: 15px;
-    }
-
-    .anchor-h3 {
-        margin: 5px 0;
-        font-family: $font-light;
-        font-size: 12px;
-        padding-left: 30px;
     }
 }
 
@@ -1614,13 +1628,13 @@ $border-color: #d9d9d9;
 /* Search Results */
 
 #search-container {
-  .results-message {
-    border: none;
-  }
+    .results-message {
+        border: none;
+    }
 
-  .k-pager-wrap {
-    background-color: transparent;
-  }
+    .k-pager-wrap {
+        background-color: transparent;
+    }
 }
 
 #results {
@@ -2788,48 +2802,48 @@ a.all-components {
 
 .api-reference {
     h1 {
-      word-break: break-all;
+        word-break: break-all;
     }
-    
+
     h1 + p {
         margin-top: 30px;
     }
 
     h2 {
-        margin-top: 34px;
-        font-size: 30px;
+        margin-top: 20px;
+        font-size: 26px;
         font-weight: 400;
     }
 
     h3 {
-        margin-top: 24px;
+        margin-top: 20px;
         margin-bottom: 2px;
         font-size: 20px;
         font-weight: 500;
     }
 
-    h3, 
-    h4, 
+    h3,
+    h4,
     h4 ~ p {
-      code,
-      .code {
-          background-color: $code-background-color;
-          color: #ffffff;
-          margin-top: 3px;
-          padding: 3px 4px;
-          font-size: 13px;
-          line-height: 10px;
+        code,
+        .code {
+            background-color: $code-background-color;
+            color: #ffffff;
+            margin-top: 3px;
+            padding: 3px 4px;
+            font-size: 13px;
+            line-height: 10px;
 
-          a:hover,
-          a:focus,
-          a:active {
-              color: #fff;
+            a:hover,
+            a:focus,
+            a:active {
+                color: #fff;
 
-              &::after {
-                  display: none;
-              }
-          }
-      }
+                &::after {
+                    display: none;
+                }
+            }
+        }
     }
 
     h4 {
@@ -3059,16 +3073,6 @@ a.all-components {
         text-align: right;
     }
 
-    h1, .h1,
-    h2, .h2,
-    h3, .h3,
-    h4, .h4,
-    h5, .h5,
-    h6, .h6 {
-        margin-top: 40px;
-        margin-bottom: 10px;
-    }
-
     article {
         ul, ol {
             padding: 0 0 0 3em;
@@ -3089,7 +3093,7 @@ a.all-components {
     #results > div,
     .side-nav,
     .components {
-        font-size: 15px;
+        font-size: 14px;
     }
 
     #navbar {
@@ -3134,6 +3138,39 @@ a.all-components {
 /* ####################################################################################################### */
 
 @media (min-width: 1199px) { /* Styles for width > 1199px */
+    article {
+        h1 {
+            font-size: 44px;
+        }
+
+        h2 {
+            font-size: 28px;
+        }
+
+        h3 {
+            font-size: 22px;
+        }
+
+        h4 {
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        h5 {
+            font-size: 13px;
+            font-weight: 500;
+        }
+        
+      h1, .h1,
+      h2, .h2,
+      h3, .h3,
+      h4, .h4,
+      h5, .h5,
+      h6, .h6 {
+          margin-top: 30px;
+          margin-bottom: 14px;
+      }
+    }
     .component-item {
         padding-left: 0;
         padding-top: 36px;
@@ -3179,8 +3216,24 @@ a.all-components {
 /* ####################################################################################################### */
 
 @media (min-width: 1441px) { /* Styles for width > 1440px */
-    .side-nav ul {
+    .side-nav {
         font-size: 15px;
+        line-height: 1.44em;
+
+        ul {
+            font-size: 15px;
+        }
+
+        #page-tree > .k-group > .k-item,
+        #page-tree-api > .k-group > .k-item {
+            > div {
+                .k-in, span > a {
+                    font-weight: 500;
+                    font-size: 15px;
+                    line-height: 1.44em;
+                }
+            }
+        }
     }
 
     article {
@@ -3191,20 +3244,52 @@ a.all-components {
         h2 {
             font-size: 36px;
         }
-    }
 
-    h1, .h1,
-    h2, .h2,
-    h3, .h3,
-    h4, .h4,
-    h5, .h5,
-    h6, .h6 {
-        margin-top: 60px;
-        margin-bottom: 20px;
+        h3 {
+            font-size: 28px;
+        }
+
+        h4 {
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        h5 {
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        &:not(.api-reference) > p:first-child,
+        &:not(.api-reference) h1 + p {
+            font-size: 18px;
+            font-weight: 400;
+            font-weight: 400;
+            margin-top: 15px;
+            margin-bottom: 20px;
+            font-family: $font-regular;
+        }
+
+        h1, .h1,
+        h2, .h2,
+        h3, .h3,
+        h4, .h4,
+        h5, .h5,
+        h6, .h6 {
+            margin-top: 40px;
+            margin-bottom: 16px;
+        }
     }
 
     .components {
-        font-size: 15px;
+        font-size: 16px;
+    }
+
+    .article-toc, .related-articles {
+        .anchor-h1,
+        .anchor-h2 {
+            font-family: $font-medium;
+            font-size: 15px;
+        }
     }
 
     .article-toc {
@@ -4292,18 +4377,17 @@ article table#allcontrols-table {
 
 /* END Introduction page all controls table styles */
 
-
 /* Kendo loading indicator in API*/
 div#sidetoc {
-  .k-loading-mask {
-    background-image: url(image_path("loading-image.gif"));
-    background-repeat: no-repeat;
-    z-index: 10000;
-    background-position-x: center;
-    background-position-y: center;
-  }
-  
-  .k-loading-text {
-    display: none;
-  }
+    .k-loading-mask {
+        background-image: url(image_path("loading-image.gif"));
+        background-repeat: no-repeat;
+        z-index: 10000;
+        background-position-x: center;
+        background-position-y: center;
+    }
+
+    .k-loading-text {
+        display: none;
+    }
 }
