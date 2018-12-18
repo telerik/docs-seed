@@ -69,7 +69,7 @@ div.caption {
 
 /* Sticky Footer Styles */
 
-#content {
+div#content {
     min-height: 100%;
     height: auto !important;
     height: 100%;
@@ -1761,7 +1761,7 @@ $border-color: #d9d9d9;
 }
 
 article table tr {
-    background-color: #f8f8f8 !important;
+    background-color: #f8f8f8;
 }
 
 /* Search Popup */
