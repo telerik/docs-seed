@@ -1,14 +1,4 @@
 // https://github.com/rails/sass-rails/issues/363
 @import "theme/teststudio-theme.scss";
 
-@import "docs.scss";
-
-@import "bootstrap-custom";
-@import "icon-font";
-
-@import "styles.scss";
-
-@import "codemirror/codemirror.scss";
-@import "codemirror/theme.scss";
-
-@import "sdk-browser.scss";
+@import "_bundle-main.scss";
