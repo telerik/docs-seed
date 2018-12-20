@@ -815,7 +815,7 @@ $nav-icon-color: #979797;
         }
 
         ul li span {
-            font-size: 14px;
+            font-size: 13px;
         }
     }
 
@@ -3217,11 +3217,11 @@ a.all-components {
 
 @media (min-width: 1441px) { /* Styles for width > 1440px */
     .side-nav {
-        font-size: 15px;
-        line-height: 1.44em;
+        font-size: 14px;
+        line-height: 1.2em;
 
         ul {
-            font-size: 15px;
+            font-size: 14px;
         }
 
         #page-tree > .k-group > .k-item,
@@ -3229,8 +3229,8 @@ a.all-components {
             > div {
                 .k-in, span > a {
                     font-weight: 500;
-                    font-size: 15px;
-                    line-height: 1.44em;
+                    font-size: 14px;
+                    line-height: 1.2em;
                 }
             }
         }
