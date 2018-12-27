@@ -456,6 +456,10 @@ $hover-text: darken($text-color, 10%);
             background: transparent url(image_path("logo-teststudio.svg")) no-repeat 0 50%;
         }
 
+        &.brand-platform-teststudiodev {
+          background: transparent url(image_path("logo-teststudiodev.svg")) no-repeat 0 50%;
+        }
+
         &::before {
             // preload scroll logo
             content: " ";
@@ -521,6 +525,10 @@ $hover-text: darken($text-color, 10%);
 
             &.brand-platform-teststudio {
                 background-image: url(image_path("logo-scroll-teststudio.svg"));
+            }
+
+            &.brand-platform-teststudiodev {
+              background-image: url(image_path("logo-scroll-teststudiodev.svg"));
             }
         }
 
@@ -588,6 +596,10 @@ $hover-text: darken($text-color, 10%);
 
             &.brand-platform-teststudio {
                 background: transparent url(image_path("logo-scroll-teststudio.svg")) no-repeat 0 4px;
+            }
+
+            &.brand-platform-teststudiodev {
+              background: transparent url(image_path("logo-scroll-teststudiodev.svg")) no-repeat 0 4px;
             }
         }
 
@@ -815,7 +827,7 @@ $nav-icon-color: #979797;
         }
 
         ul li span {
-            font-size: 14px;
+            font-size: 13px;
         }
     }
 
@@ -3217,11 +3229,11 @@ a.all-components {
 
 @media (min-width: 1441px) { /* Styles for width > 1440px */
     .side-nav {
-        font-size: 15px;
-        line-height: 1.44em;
+        font-size: 14px;
+        line-height: 1.2em;
 
         ul {
-            font-size: 15px;
+            font-size: 14px;
         }
 
         #page-tree > .k-group > .k-item,
@@ -3229,8 +3241,8 @@ a.all-components {
             > div {
                 .k-in, span > a {
                     font-weight: 500;
-                    font-size: 15px;
-                    line-height: 1.44em;
+                    font-size: 14px;
+                    line-height: 1.2em;
                 }
             }
         }
