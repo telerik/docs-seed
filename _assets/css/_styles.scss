@@ -464,6 +464,10 @@ $hover-text: darken($text-color, 10%);
           background: transparent url(image_path("logo-teststudio-apis.svg")) no-repeat 0 50%;
         }
 
+        &.brand-platform-justdecompile {
+          background: transparent url(image_path("logo-justdecompile.svg")) no-repeat 0 50%;
+        }
+
         &::before {
             // preload scroll logo
             content: " ";
@@ -537,6 +541,10 @@ $hover-text: darken($text-color, 10%);
 
             &.brand-platform-teststudio-apis {
               background-image: url(image_path("logo-scroll-teststudio-apis.svg"));
+            }
+
+            &.brand-platform-justdecompile {
+              background-image: url(image_path("logo-scroll-justdecompile.svg"));
             }
         }
 
@@ -612,6 +620,10 @@ $hover-text: darken($text-color, 10%);
 
             &.brand-platform-teststudio-apis {
               background: transparent url(image_path("logo-scroll-teststudio-apis.svg")) no-repeat 0 8px;
+            }
+
+            &.brand-platform-justdecompile {
+              background: transparent url(image_path("logo-scroll-justdecompile.svg")) no-repeat 0 8px;
             }
         }
 
