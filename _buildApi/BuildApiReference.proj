@@ -53,6 +53,14 @@
       <!--Docfx properties-->
       <DocfxJsonGeneratorPath>$(ToolsFolder)\GenerateDocFxJsonTool\DocFxJsonModifier.exe</DocfxJsonGeneratorPath>
       <DocfxFile>$(MsBuildProjectDirectory)\docfx.json</DocfxFile>
+      <Choose>  
+        <When Condition=" '$(HasApiFilter)' == '' ">  
+          <FilterApi>false</FilterApi>
+        </When>
+        <When Condition=" '$(HasApiFilter)' != '' ">  
+          <FilterApi>$(HasApiFilter)</FilterApi>
+        </When>
+      </Choose>
 
       <!--Build Api solution-->
       <BuildApiSolutionName>$(MsBuildProjectDirectory)\BuildAPI.sln</BuildApiSolutionName>
@@ -111,7 +119,7 @@
 
   <Target Name="CreateDocfxJson">
 
-    <Exec Command='$(DocfxJsonGeneratorPath) $(DocumentationBaseUrl)'></Exec>
+    <Exec Command='$(DocfxJsonGeneratorPath) $(DocumentationBaseUrl) $(FilterApi)'></Exec>
 
     <Copy SourceFiles='$(DocfxFile)' DestinationFolder='$(BuildApiRootFolder)' />
 
