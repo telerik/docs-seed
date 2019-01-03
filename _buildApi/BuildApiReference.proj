@@ -112,6 +112,8 @@
 
   <Target Name="CreateDocfxJson">
 
+    <Message Text="DEBUG INFO: FilterApi=$(FilterApi)" />
+
     <Exec Command='$(DocfxJsonGeneratorPath) $(DocumentationBaseUrl) $(FilterApi)'></Exec>
 
     <Copy SourceFiles='$(DocfxFile)' DestinationFolder='$(BuildApiRootFolder)' />
