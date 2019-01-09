@@ -55,7 +55,7 @@ var dojoApi = (function($) {
                 '<body>\n  \n'+
                 snippet+ '\n' +
                 '</body>\n'+
-            '</html>').replace(/kendo-version/g, dojoApi.configuration.currentKendoVersion);
+            '</html>').replace(/kendo-version/g, kendo.version);
         return result;
         },
 
