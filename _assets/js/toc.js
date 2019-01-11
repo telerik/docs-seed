@@ -65,5 +65,5 @@ $(function() {
     // animated scroll
     // Exclude the app inside the div.theme-preview since it's not in an <iframe/>,
     // leading to unwanted scrollTop when clicking on links inside the app.
-    $("body a[href^='#']:not(.theme-preview a, .components-tabstrip a)").on('click', window.animateScrollTo);
+    $("body a[href^='#']:not(.theme-preview a, .components-tabstrip a, .trigger a)").on('click', window.animateScrollTo);
 });
