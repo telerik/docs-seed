@@ -968,3 +968,25 @@ div.embeddedvideo iframe {
 .k-loading-text {
   display: none;
 }
+
+.scroll .sidetoc.show-components, .scroll .sidefilter.show-components {
+  top: 100px !important;
+}
+
+.sidetoc.show-components, .sidetoc {
+  top: 160px !important;
+}
+
+.sidefilter.show-components, .sidefilter {
+  top: 100px !important;
+}
+.no-js .navbar, .scroll .navbar {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+@media (min-width: 768px) {
+  .scroll .TK-Hat {
+    transform: translateY(0) !important;
+  }
+}
