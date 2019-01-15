@@ -3,12 +3,12 @@ body {
 
     &.scroll {
         .api-breadcrumbs-container,
-        #markdown-toc  {
-            top: 37px;
+        #markdown-toc {
+            top: 100px;
         }
 
         .additional-content-column.affix {
-            margin-top: 100px;
+            margin-top: 160px;
         }
     }
 }
@@ -112,6 +112,10 @@ article.api-reference {
     }
 }
 
+#navbar {
+  padding-top: 60px;
+}
+
 @media (min-width: 1601px) {
     #navbar {
         .navbar-brand {
@@ -152,6 +156,19 @@ article.api-reference {
     .api-breadcrumbs-container {
         padding-left: 2em;
         left: 0;
+    }
+
+    body {
+        &.scroll {
+            .api-breadcrumbs-container,
+            #markdown-toc {
+                top: 56px;
+            }
+        }
+    }
+
+    #navbar {
+        padding-top: 10px;
     }
 }
 
