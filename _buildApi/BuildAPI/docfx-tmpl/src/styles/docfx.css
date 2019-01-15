@@ -990,3 +990,14 @@ div.embeddedvideo iframe {
     transform: translateY(0) !important;
   }
 }
+
+@media (max-width: 767px) {
+  body {
+    padding-top: 0 !important;
+  }
+}
+
+
+div.subnav {
+  display: none !important;
+}
