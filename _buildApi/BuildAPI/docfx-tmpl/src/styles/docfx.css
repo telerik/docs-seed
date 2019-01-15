@@ -969,20 +969,6 @@ div.embeddedvideo iframe {
   display: none;
 }
 
-.scroll .sidefilter.show-components {
-  top: 56px;
-}
-.scroll .sidetoc.show-components {
-  top: 120px !important;
-}
-
-.sidetoc.show-components, .sidetoc {
-  top: 230px !important;
-}
-
-.sidefilter.show-components, .sidefilter {
-  top: 170px !important;
-}
 .no-js .navbar, .scroll .navbar {
   background-color: transparent !important;
   box-shadow: none !important;
@@ -997,6 +983,21 @@ div.embeddedvideo iframe {
 @media (max-width: 767px) {
   body {
     padding-top: 0 !important;
+  }
+
+  .scroll .sidefilter.show-components {
+    top: 56px !important;
+  }
+  .scroll .sidetoc.show-components {
+    top: 120px !important;
+  }
+  
+  .sidetoc.show-components, .sidetoc {
+    top: 230px !important;
+  }
+  
+  .sidefilter.show-components, .sidefilter {
+    top: 170px !important;
   }
 }
 
