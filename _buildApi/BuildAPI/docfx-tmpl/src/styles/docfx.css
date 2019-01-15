@@ -969,16 +969,19 @@ div.embeddedvideo iframe {
   display: none;
 }
 
-.scroll .sidetoc.show-components, .scroll .sidefilter.show-components {
-  top: 100px !important;
+.scroll .sidefilter.show-components {
+  top: 56px;
+}
+.scroll .sidetoc.show-components {
+  top: 120px !important;
 }
 
 .sidetoc.show-components, .sidetoc {
-  top: 160px !important;
+  top: 230px !important;
 }
 
 .sidefilter.show-components, .sidefilter {
-  top: 100px !important;
+  top: 170px !important;
 }
 .no-js .navbar, .scroll .navbar {
   background-color: transparent !important;
