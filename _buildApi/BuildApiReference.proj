@@ -54,7 +54,7 @@
       <DocfxJsonGeneratorPath>$(ToolsFolder)\GenerateDocFxJsonTool\DocFxJsonModifier.exe</DocfxJsonGeneratorPath>
       <DocfxFile>$(MsBuildProjectDirectory)\docfx.json</DocfxFile>
       <FilterApi Condition=" '$(HasApiFilter)' == 'true' ">true</FilterApi>
-      <SiteOutputFolder Condition=" '$(SiteOutputFolderName)' == '' ">_site</SiteOutputFolder>
+      <SiteOutputFolder Condition=" '$(SiteOutputFolder)' == '' ">_site</SiteOutputFolder>
 
       <!--Build Api solution-->
       <BuildApiSolutionName>$(MsBuildProjectDirectory)\BuildAPI.sln</BuildApiSolutionName>
