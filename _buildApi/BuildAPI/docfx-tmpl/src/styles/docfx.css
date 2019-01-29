@@ -80,7 +80,7 @@ span.languagekeyword{
     font-weight: bold;
 }
 
-svg:hover path {
+svg:hover path:not([fill]) {
     fill: #ffffff;
 }
 
