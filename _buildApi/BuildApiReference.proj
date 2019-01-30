@@ -60,7 +60,7 @@
       <BuildApiSolutionName>$(MsBuildProjectDirectory)\BuildAPI.sln</BuildApiSolutionName>
 
       <!--Outpur properties-->
-      <OutputFolder>$(BuildApiRootFolder)\$(SiteOutputFolder)</OutputFolder>
+      <OutputFolder>$(BuildApiRootFolder)\_site</OutputFolder>
       <SitemapFile>$(OutputFolder)\sitemap.xml</SitemapFile>
       <ApiOutputFolder>$(OutputFolder)\api</ApiOutputFolder>
       <ApiStylesOutputFolder>$(OutputFolder)\styles</ApiStylesOutputFolder>
