@@ -23,7 +23,7 @@ Jekyll::Hooks.register :site, :after_init do |site, payload|
     "xamarin" => "xamarin" 
   }
 
-  html = open("https://cdn.telerik-web-assets.com/telerik-navigation/next/nav-#{navigations_map[site.config['platform']]}-csa-abs-component.html").read
+  html = open("http://cdn.telerik-web-assets.com/telerik-navigation/next/nav-#{navigations_map[site.config['platform']]}-csa-abs-component.html").read
 
   File.write('./_includes/top-nav.html', html)
 end
