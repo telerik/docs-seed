@@ -1,11 +1,3 @@
-html {
-  height: 100%;
-}
-
-body {
-  min-height: 100%;
-}
-
 html,
 body {
     text-rendering: optimizeLegibility;
@@ -26,11 +18,14 @@ blockquote,
 }
 
 html {
+    height: 100%;
     font-size: 14px;
     background-color: #f8f8f8;
 }
 
 body {
+    min-height: 100%;
+    height: 100%;
     position: relative;
     font-family: $font-regular;
     background-color: transparent;
@@ -39,7 +34,11 @@ body {
     padding-top: 95px; // navbar-fixed-top height + 20px margin
 
     &.scroll {
-        padding-top: 70px;
+      padding-top: 70px;
+    }
+
+    &.scroll-page {
+      height: auto !important;
     }
 }
 
@@ -2845,11 +2844,11 @@ a.all-components {
 }
 
 span.all-components-expanded-icon {
-  position: absolute;
-  top: 10px;
-  left: 80px;
-  background-image: url(image_path('group-expand-collapse.svg'));
-  background-repeat: no-repeat;
+    position: absolute;
+    top: 10px;
+    left: 80px;
+    background-image: url(image_path("group-expand-collapse.svg"));
+    background-repeat: no-repeat;
 }
 
 .col-xl-8, .col-xl-10 {
@@ -3031,15 +3030,15 @@ span.all-components-expanded-icon {
 /* ####################################################################################################### */
 
 @media (max-width: 767px) {
-  .global-search {
-    position: absolute;
-    left: 100px;
-  }
+    .global-search {
+        position: absolute;
+        left: 100px;
+    }
 }
 
 @media (min-width: 768px) { /* Styles for width >= 768px */
     span.all-components-expanded-icon {
-      display: none;
+        display: none;
     }
 
     #navbar {
