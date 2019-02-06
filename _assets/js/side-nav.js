@@ -84,8 +84,9 @@ function setSideNavPosition() {
     var $window = $(window);
     var windowHeight = $window.height();
     var scrollFold = $window.scrollTop() + windowHeight;
+    var topNavigationHeight = $('nav.TK-Nav').height();
 
-    var top = $('nav.TK-Nav').height();
+    var top = window.scrollY > 0 ? topNavigationHeight - $('aside.TK-Hat').height() : topNavigationHeight;
     if (window.screen.availWidth < 768) {
         if (window.scrollY > 0) {
             top = $('#navbar').outerHeight();
