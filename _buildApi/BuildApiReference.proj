@@ -49,21 +49,24 @@
       <DocsRepoApiAssetsFolder Condition="'$(DocsRepoApiAssetsFolder)' == '' ">_assets</DocsRepoApiAssetsFolder>
       <DocsAssets>$(DocsFolder)\$(DocsRepoApiAssetsFolder)</DocsAssets>
       <LatestBinariesFile>$(DocsAssets)\Binaries.txt</LatestBinariesFile>
+      <TopNavigationHtmlSource>$(DocsFolder)\_includes\top-nav.html</TopNavigationHtmlSource>
+      <TopNavigationHtmlDestination>$(BuildApiRootFolder)\docfx-tmpl\src\partials\navbar.tmpl.partial</TopNavigationHtmlDestination>
 
       <!--Docfx properties-->
       <DocfxJsonGeneratorPath>$(ToolsFolder)\GenerateDocFxJsonTool\DocFxJsonModifier.exe</DocfxJsonGeneratorPath>
       <DocfxFile>$(MsBuildProjectDirectory)\docfx.json</DocfxFile>
       <FilterApi Condition=" '$(HasApiFilter)' == 'true' ">true</FilterApi>
+      <SiteOutputFolder Condition=" '$(SiteOutputFolder)' == '' ">_site</SiteOutputFolder>
 
       <!--Build Api solution-->
       <BuildApiSolutionName>$(MsBuildProjectDirectory)\BuildAPI.sln</BuildApiSolutionName>
 
-      <!--Outpur properties-->
+      <!--Output properties-->
       <OutputFolder>$(BuildApiRootFolder)\_site</OutputFolder>
       <SitemapFile>$(OutputFolder)\sitemap.xml</SitemapFile>
       <ApiOutputFolder>$(OutputFolder)\api</ApiOutputFolder>
       <ApiStylesOutputFolder>$(OutputFolder)\styles</ApiStylesOutputFolder>
-      <DocsRepoOutputFolder>$(DocsFolder)\_site</DocsRepoOutputFolder>
+      <DocsRepoOutputFolder>$(DocsFolder)\$(SiteOutputFolder)</DocsRepoOutputFolder>
 
       <!--Build Configurations-->
       <BuildConfiguration>Release</BuildConfiguration>
@@ -99,6 +102,8 @@
   </Target>
 
   <Target Name="CopyAssetsAPIFiles">
+
+    <Copy SourceFiles="$(TopNavigationHtmlSource)" DestinationFiles="$(TopNavigationHtmlDestination)" />
 
     <ItemGroup>
       <DocsAssets Include="$(DocsAssets)\**\*.*"/>

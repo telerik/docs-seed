@@ -1,9 +1,18 @@
 /* Copyright (c) Microsoft Corporation. All Rights Reserved. Licensed under the MIT License. See License.txt in the project root for license information. */
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  height: auto !important;
+}
+
 html,
 body {
   font-family: 'Segoe UI', Tahoma, Helvetica, sans-serif;
-  height: 100%;
 }
+
 button,
 a {
   color: #337ab7;
@@ -80,7 +89,7 @@ span.languagekeyword{
     font-weight: bold;
 }
 
-svg:hover path {
+svg:hover path:not([fill]) {
     fill: #ffffff;
 }
 
@@ -967,4 +976,41 @@ div.embeddedvideo iframe {
 
 .k-loading-text {
   display: none;
+}
+
+.no-js .navbar, .scroll .navbar {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+@media (min-width: 768px) {
+  .scroll .TK-Hat {
+    transform: translateY(0) !important;
+  }
+}
+
+@media (max-width: 767px) {
+  body {
+    padding-top: 0 !important;
+  }
+
+  .scroll .sidefilter.show-components {
+    top: 56px !important;
+  }
+  .scroll .sidetoc.show-components {
+    top: 120px !important;
+  }
+  
+  .sidetoc.show-components, .sidetoc {
+    top: 230px !important;
+  }
+  
+  .sidefilter.show-components, .sidefilter {
+    top: 170px !important;
+  }
+}
+
+
+div.subnav {
+  display: none !important;
 }

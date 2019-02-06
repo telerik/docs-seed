@@ -8,11 +8,11 @@
 <html>
   {{>partials/head}}
   <body data-spy="scroll" data-target="#affix" data-offset="120">
+    {{^_disableNavbar}}
+    {{>partials/navbar}}
+    {{/_disableNavbar}}
     <div id="wrapper">
       <header>
-        {{^_disableNavbar}}
-        {{>partials/navbar}}
-        {{/_disableNavbar}}
         {{^_disableBreadcrumb}}
         {{>partials/breadcrumb}}
         {{/_disableBreadcrumb}}
@@ -35,6 +35,7 @@
           {{/_disableAffix}}
           {{^_disableAffix}}
           <div class="col-md-9">
+          {{>partials/docsearch}}
           {{/_disableAffix}}
             <article class="content wrap" id="_content" data-uid="{{uid}}">
                 {{!body}}
