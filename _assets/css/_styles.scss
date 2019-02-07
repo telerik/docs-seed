@@ -3036,8 +3036,19 @@ span.all-components-expanded-icon {
     }
 }
 
+// Overrides the default which is from width 1240px, because to match our side-navigation behavior.
+@media only screen and (min-width: 768px){
+  nav.TK-Nav {
+    position: sticky;
+    position: -webkit-sticky;
+    top: -40px;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+  }
+}
+
 @media (min-width: 768px) { /* Styles for width >= 768px */
-    span.all-components-expanded-icon {
+  span.all-components-expanded-icon {
         display: none;
     }
 
