@@ -17,6 +17,17 @@ body {
   font-family: 'Segoe UI', Tahoma, Helvetica, sans-serif;
 }
 
+/* Overrides the default which is from width 1240px, because to match our side-navigation behavior. */
+@media only screen and (min-width: 768px){
+  nav.TK-Nav {
+    position: sticky;
+    position: -webkit-sticky;
+    top: -40px;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+  }
+}
+
 button,
 a {
   color: #337ab7;

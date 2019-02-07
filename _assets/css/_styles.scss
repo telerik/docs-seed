@@ -3036,7 +3036,7 @@ span.all-components-expanded-icon {
     }
 }
 
-// Overrides the default which is from width 1240px, because to match our side-navigation behavior.
+/* Overrides the default which is from width 1240px, because to match our side-navigation behavior. */
 @media only screen and (min-width: 768px){
   nav.TK-Nav {
     position: sticky;
