@@ -2014,7 +2014,8 @@ $(function() {
         var scrollTop = body.scrollTop() || $('html').scrollTop();
         body
             .toggleClass("scroll", scrollTop > 0)
-            .toggleClass("scroll-page", scrollTop > 630);
+            .toggleClass("scroll-page", scrollTop > 630)
+            .toggleClass("scroll-small-page", $(window).height() - scrollTop < $('.TK-Bar').height());
     }
 
     $(window).scroll(setScrollPosition);

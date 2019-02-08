@@ -8,7 +8,8 @@ body {
   height: 100%;
 }
 
-body.scroll-page {
+body.scroll-page,
+body.scroll-small-page, {
   height: auto !important; 
 }
 
