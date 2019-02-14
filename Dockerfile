@@ -7,7 +7,6 @@ RUN apt-get -qq update && \
 
 RUN locale-gen C.UTF-8
 
-RUN ls
 RUN chmod 0755 /etc/default/locale
 ENV LC_ALL=C.UTF-8
 ENV LANG=C.UTF-8
@@ -26,15 +25,6 @@ RUN bundle check || bundle install
 RUN apt-get -y install curl gnupg
 RUN curl -sL https://deb.nodesource.com/setup_11.x  | bash -
 RUN apt-get -y install nodejs
-
-
-RUN locale-gen en_US.UTF-8 \
-    && locale-gen en en_US en_US.UTF-8 \
-    && dpkg-reconfigure locales
-
-ENV LANG en_US.UTF-8
-ENV LANGUAGE en_US.UTF-8
-ENV LC_ALL en_US.UTF-8
 
 RUN locale -a
 
