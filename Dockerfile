@@ -1,5 +1,18 @@
 FROM ruby:2.3.5
 
+RUN apt-get -qq update && \
+    apt-get -q -y upgrade && \
+    apt-get install -y sudo curl wget locales && \
+    rm -rf /var/lib/apt/lists/*
+
+RUN locale-gen C.UTF-8
+
+RUN ls
+RUN chmod 0755 /etc/default/locale
+ENV LC_ALL=C.UTF-8
+ENV LANG=C.UTF-8
+ENV LANGUAGE=C.UTF-8
+
 ENV APP_ROOT /app_root
 
 # By adding Gemfiles and invoke bundle install before copy all files we are using container cache for gems.
@@ -8,6 +21,22 @@ ADD Gemfile.lock ${APP_ROOT}/
 
 WORKDIR ${APP_ROOT}
 RUN bundle check || bundle install
+
+# Installing NodeJS
+RUN apt-get -y install curl gnupg
+RUN curl -sL https://deb.nodesource.com/setup_11.x  | bash -
+RUN apt-get -y install nodejs
+
+
+RUN locale-gen en_US.UTF-8 \
+    && locale-gen en en_US en_US.UTF-8 \
+    && dpkg-reconfigure locales
+
+ENV LANG en_US.UTF-8
+ENV LANGUAGE en_US.UTF-8
+ENV LC_ALL en_US.UTF-8
+
+RUN locale -a
 
 COPY . ${APP_ROOT}
 

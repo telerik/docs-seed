@@ -16,6 +16,10 @@ if [ ! -z "$2" ]
 fi
 
 rm -rf _site/ .sass-cache .jekyll-cache .asset-cache
-docker pull progressdocs/docs-seed:site
-docker build -t progressdocs/docs-seed:site .
-docker run --rm --env CONFIG_FILE=$config_file --env JEKYLL_COMMAND=build --env JEKYLL_EXTRA=$debug_params -t -v "/$(pwd):/app_root" -t progressdocs/docs-seed:site
+docker pull progressdocs/docs-seed:2.2
+docker build -t progressdocs/docs-seed:2.2 .
+docker run --rm --env CONFIG_FILE=$config_file --env JEKYLL_COMMAND=build --env JEKYLL_EXTRA=$debug_params \
+ --env LANG=C.UTF-8 \
+ --env LANGUAGE=C.UTF-8 \
+ --env LC_ALL=C.UTF-8 \
+ -t -v "/$(pwd):/app_root" -t progressdocs/docs-seed:2.2
