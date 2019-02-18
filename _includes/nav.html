@@ -1,4 +1,4 @@
-{% include top-nav.html %}
+{% if page.platform %}{% include top-nav-{{page.platform}}.html %}{% else %}{% include top-nav.html %}{% endif %}
 
   <script>
     {% if page.is_search_page != true  %}
