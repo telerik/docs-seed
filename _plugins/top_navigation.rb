@@ -1,6 +1,6 @@
 require 'open-uri'
 
-Jekyll::Hooks.register :site, :after_init do |site, payload|
+Jekyll::Hooks.register :site, :after_init do |site|
   navigations_map = {
     "aspnet-ajax" => "asp-net-ajax", 
     "aspnet-core" => "asp-net-core",
@@ -20,10 +20,21 @@ Jekyll::Hooks.register :site, :after_init do |site, payload|
     "uwp" => "uwp", 
     "winforms" => "winforms", 
     "wpf" => "wpf", 
-    "xamarin" => "xamarin" 
+    "xamarin" => "xamarin",
+    "php-ui" => "php",
+    "jsp-ui" => "jsp"
   }
 
-  html = open("http://cdn.telerik-web-assets.com/telerik-navigation/next/nav-#{navigations_map[site.config['platform']]}-csa-abs-component.html").read
+  navigation_url = "http://cdn.telerik-web-assets.com/telerik-navigation/next/nav-%s-csa-abs-component.html"
+  platform = site.config['platform']
 
+  html = open(navigation_url % [navigations_map[platform]]).read
   File.write('./_includes/top-nav.html', html)
+
+  if site.config['other_platforms']
+    site.config['other_platforms'].each do |other_platform|
+      html = open(navigation_url % [navigations_map[other_platform]]).read
+      File.write("./_includes/top-nav-#{other_platform}.html", html)
+    end
+  end
 end
