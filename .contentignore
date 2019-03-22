@@ -1,3 +1,4 @@
+
 /_assets/
 /_common/root/
 /_data/
@@ -8,6 +9,8 @@
 /docs-watcher/
 /styles/
 /fonts/
+/_build/
+/_buildApi/
 
 .dockerignore
 .editorconfig
