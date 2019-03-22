@@ -15,6 +15,10 @@ case $i in
     CONFIG="${i#*=}"
     shift
     ;;
+    -d=*|--docker=*)
+    DOCKER="${i#*=}"
+    shift
+    ;;
     --default)
     DEFAULT=YES
     shift
@@ -28,6 +32,7 @@ done
 # echo "INCLUDE = ${INCLUDE}"
 # echo "SERVE = ${SERVE}"
 # echo "SECOND CONFIG = ${CONFIG}"
+# echo "USING DOCKER = ${DOCKER}"
 # exit
 
 config_file="_config.yml"
@@ -51,6 +56,9 @@ echo "Using config_file: $config_file"
 
 if [[ $SERVE == "true" ]];then
   bundle exec jekyll serve --config=$config_file
+elif [[ $DOCKER == "true" ]]
+then
+  sh start-docs.sh $tempconfig
 else
   bundle exec jekyll build --config=$config_file
 fi
