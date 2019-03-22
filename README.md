@@ -114,6 +114,7 @@ You can benefit from the following features:
 * [additional config file](#additional-config-file)
 * [live sync](#livesync)
 * [build without serve](#only-build)
+* [build site partially](#build-site-partially)
 
 ### Additional Config File
 
@@ -138,3 +139,19 @@ sh build-docs.sh
 
 This can be useful if you want to (or already have) setup local IIS to point to the `_site` folder in your documentation repo. This allows you to also test redirects that `jekyll serve` does not support.
 
+
+### Build Site Partially
+
+If you want to speed up the site's building time, you can pass **only** a specific part(s) of it - the folders you want to include in the site. 
+
+This could be achieved by executing the `sh modify-config.sh` script with passing the corresponding *arguments* which are:
+
+- **-i,--include** - the folders you want to include in the final build. Multiple folders are separated with comma. No spaces are allowed
+- **-c,--config** - path to an additional config file which shall be used for the build (see here more about [additional config file](#additional-config-file)
+- **-s,--serve** - accepts true/false - indicates whether the Jekyll should only build, or build and serve
+- **-d,--docker** - accepts true/false - indicates whether the site shuold be run in Docker (set --docker=true if you're using Docker)
+
+
+EXAMPLE: Let's say that you want to build only the documentation for 2 controls - Barcode and Chart, you are using Docker and you have an extra config YAML file. Then you have to open a terminal and execute the following:
+
+`sh modify-config.sh --include=controls/barcode,controls/Chart --docker=true --config=_extra.yml`
