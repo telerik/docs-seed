@@ -23,7 +23,8 @@ Jekyll::Hooks.register :site, :after_init do |site|
     "xamarin" => "xamarin",
     "php-ui" => "php",
     "jsp-ui" => "jsp",
-    "blazor" => "blazor-ui"
+    "blazor" => "blazor-ui",
+    "ar-vr" => "vr-lab"
   }
 
   navigation_url = "http://cdn.telerik-web-assets.com/telerik-navigation/next/nav-%s-csa-abs-component.html"
