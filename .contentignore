@@ -24,6 +24,7 @@ bs-config.js
 build-docs.sh
 copy_content.sh
 copy_local.sh
+modify-config.sh
 /favicon.ico
 install-npm.sh
 search.html

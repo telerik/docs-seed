@@ -6,8 +6,7 @@ $(function () {
         additionalContentElement.affix({
             offset: {
                 top: function () {
-                    var offset = $("p.lead,h1+p").offset() || { top: 0 };
-                    return (this.top = offset.top - NAVBAR_HEIGHT - 25);
+                    return (this.top = 0);
                 },
                 bottom: function () {
                     return (this.bottom = $('div#footer').outerHeight(true) + FOOTER_DISTANCE);
