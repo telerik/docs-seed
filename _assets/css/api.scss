@@ -19,7 +19,7 @@ body {
 
 article.api-reference {
     ul, ol {
-        padding: 0 0 0 22px;
+        padding: 0 0 0 2px;
 
         li {
             margin-bottom: 0;
@@ -219,6 +219,7 @@ h2 a:first-child + a code:before {
     overflow-wrap: break-word;
 
     > li {
+      padding-left: 20px;
       max-width: 33%;
       text-overflow: ellipsis;
       overflow: hidden;
@@ -250,7 +251,7 @@ h2 a:first-child + a code:before {
         top: 2px;
         right: 18px;
         bottom: -2px;
-        left: -18px;
+        left: 0;
         content: "C";
         color: #fff;
         font-size: 8px;
