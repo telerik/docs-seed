@@ -1,5 +1,6 @@
 var API_CATEGORIES = ['configuration', 'fields', 'methods', 'events', 'class methods', 'properties', 'constructor parameters'];
 var NESTED_ELEMENT_MARK = '.';
+var ELEMENT_TYPE_MARK_START = '(';
 var COLUMNS_STYLE_CLASS_NAME = 'columns';
 var API_SUBPAGE_TITLE = 'related-properties';
 var MAX_NESTING_LEVEL = 10000;
@@ -9,6 +10,7 @@ var COLUMN_HEIGHT_TOLLERANCE = 40;
 var filterControl = null;
 var previousSearch = "";
 var isMainApiPage = false;
+var hasWebApiData = false;
 
 function getApiCategoryAndIndex(values) {
     var startIndex = -1;
@@ -185,7 +187,7 @@ function getMinNestingLevel() {
     if (linksSection.length) {
         var list = $(linksSection[linksSection.length - 1]).next('ul');
         list.children().each(function () {
-            minNestingLevel = Math.min(minNestingLevel, $(this).text().split(NESTED_ELEMENT_MARK).length - 1);
+            minNestingLevel = Math.min(minNestingLevel, $(this).text().split(ELEMENT_TYPE_MARK_START)[0].split(NESTED_ELEMENT_MARK).length - 1);
         });
     }
 
@@ -195,7 +197,7 @@ function getMinNestingLevel() {
 function styleItems(listItems, category, mainNestingLevel) {
     listItems.each(function () {
         var itemText = $(this).text();
-        var styleClassToAdd = itemText.split(NESTED_ELEMENT_MARK).length - 1 === mainNestingLevel ? 'api-icon ' + category : 'nested-list-item';
+        var styleClassToAdd = itemText.split(ELEMENT_TYPE_MARK_START)[0].split(NESTED_ELEMENT_MARK).length - 1 === mainNestingLevel ? 'api-icon ' + category : 'nested-list-item';
         $(this).addClass(styleClassToAdd);
     });
 }
@@ -436,13 +438,13 @@ function getDataForCurrentPage(data) {
 }
 
 $(document).ready(function () {
-    $.get("/kendo-ui/api.json", function (data) {
-        if (!ensureCorrectNavigation()) {
-            setupColumns();
-            if (!isMainApiPage) {
+    if (!ensureCorrectNavigation()) {
+        setupColumns();
+        if (!isMainApiPage && hasWebApiData) {
+            $.get("/kendo-ui/api.json", function (data) {
                 buildApiBreadcrumbs(getDataForCurrentPage(data));
-            }
-            attachToApiPageEvents();
+            });
         }
-    });
+        attachToApiPageEvents();
+    }
 });

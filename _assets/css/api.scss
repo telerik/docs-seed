@@ -217,6 +217,13 @@ h2 a:first-child + a code:before {
     flex-direction: column;
     flex-wrap: wrap;
     overflow-wrap: break-word;
+
+    > li {
+      max-width: 33%;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+    }
 }
 
 .api-icon {
