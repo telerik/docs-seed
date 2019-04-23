@@ -2,6 +2,7 @@ var API_CATEGORIES = ['configuration', 'fields', 'methods', 'events', 'class met
 var NESTED_ELEMENT_MARK = '.';
 var ELEMENT_TYPE_MARK_START = '(';
 var COLUMNS_STYLE_CLASS_NAME = 'columns';
+var COLUMNS_NUMBER_CLASS_NAME = 'columns-count-';
 var API_SUBPAGE_TITLE = 'related-properties';
 var MAX_NESTING_LEVEL = 10000;
 var DEFAULT_COLUMN_COUNT = 3;
@@ -220,6 +221,7 @@ function arrangeColumns(list, columnsCount) {
     columnsCount = columnsCount ? columnsCount : apiColumnsCount;
     var listItemsCount = getVisibleChildrenCount(list);
     list.removeClass(COLUMNS_STYLE_CLASS_NAME);
+    list.removeClass(COLUMNS_NUMBER_CLASS_NAME + columnsCount);
 
     if (listItemsCount > MINIMUM_CHILDREN_COUNT) {
         var averageItemHeight = list.data('item-height');
@@ -228,6 +230,7 @@ function arrangeColumns(list, columnsCount) {
         }
         var desiredItemsCount = listItemsCount / columnsCount;
         list.addClass(COLUMNS_STYLE_CLASS_NAME);
+        list.addClass(COLUMNS_NUMBER_CLASS_NAME + columnsCount);
         list.height(averageItemHeight * desiredItemsCount + COLUMN_HEIGHT_TOLLERANCE);
         list.data('item-height', averageItemHeight);
     } else {
