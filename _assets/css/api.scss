@@ -226,6 +226,14 @@ h2 a:first-child + a code:before {
       overflow: hidden;
       white-space: nowrap;
     }
+
+    &.columns-count-2 {
+        align-content: space-between;
+
+        > li {
+            max-width: 45%;
+        }
+    }
 }
 
 .api-icon {
