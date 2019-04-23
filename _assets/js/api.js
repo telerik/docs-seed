@@ -1,6 +1,8 @@
 var API_CATEGORIES = ['configuration', 'fields', 'methods', 'events', 'class methods', 'properties', 'constructor parameters'];
 var NESTED_ELEMENT_MARK = '.';
+var ELEMENT_TYPE_MARK_START = '(';
 var COLUMNS_STYLE_CLASS_NAME = 'columns';
+var COLUMNS_NUMBER_CLASS_NAME = 'columns-count-';
 var API_SUBPAGE_TITLE = 'related-properties';
 var MAX_NESTING_LEVEL = 10000;
 var DEFAULT_COLUMN_COUNT = 3;
@@ -9,6 +11,8 @@ var COLUMN_HEIGHT_TOLLERANCE = 40;
 var filterControl = null;
 var previousSearch = "";
 var isMainApiPage = false;
+var hasWebApiData = false;
+var apiColumnsCount;
 
 function getApiCategoryAndIndex(values) {
     var startIndex = -1;
@@ -185,7 +189,7 @@ function getMinNestingLevel() {
     if (linksSection.length) {
         var list = $(linksSection[linksSection.length - 1]).next('ul');
         list.children().each(function () {
-            minNestingLevel = Math.min(minNestingLevel, $(this).text().split(NESTED_ELEMENT_MARK).length - 1);
+            minNestingLevel = Math.min(minNestingLevel, $(this).text().split(ELEMENT_TYPE_MARK_START)[0].split(NESTED_ELEMENT_MARK).length - 1);
         });
     }
 
@@ -195,7 +199,7 @@ function getMinNestingLevel() {
 function styleItems(listItems, category, mainNestingLevel) {
     listItems.each(function () {
         var itemText = $(this).text();
-        var styleClassToAdd = itemText.split(NESTED_ELEMENT_MARK).length - 1 === mainNestingLevel ? 'api-icon ' + category : 'nested-list-item';
+        var styleClassToAdd = itemText.split(ELEMENT_TYPE_MARK_START)[0].split(NESTED_ELEMENT_MARK).length - 1 === mainNestingLevel ? 'api-icon ' + category : 'nested-list-item';
         $(this).addClass(styleClassToAdd);
     });
 }
@@ -214,9 +218,10 @@ function getTotalParentHeight(list) {
 }
 
 function arrangeColumns(list, columnsCount) {
-    columnsCount = columnsCount ? columnsCount : DEFAULT_COLUMN_COUNT;
+    columnsCount = columnsCount ? columnsCount : apiColumnsCount;
     var listItemsCount = getVisibleChildrenCount(list);
     list.removeClass(COLUMNS_STYLE_CLASS_NAME);
+    list.removeClass(COLUMNS_NUMBER_CLASS_NAME + columnsCount);
 
     if (listItemsCount > MINIMUM_CHILDREN_COUNT) {
         var averageItemHeight = list.data('item-height');
@@ -225,6 +230,7 @@ function arrangeColumns(list, columnsCount) {
         }
         var desiredItemsCount = listItemsCount / columnsCount;
         list.addClass(COLUMNS_STYLE_CLASS_NAME);
+        list.addClass(COLUMNS_NUMBER_CLASS_NAME + columnsCount);
         list.height(averageItemHeight * desiredItemsCount + COLUMN_HEIGHT_TOLLERANCE);
         list.data('item-height', averageItemHeight);
     } else {
@@ -246,6 +252,7 @@ function setupColumnsInternal(category, subCategory, mainNestingLevel) {
 }
 
 function setupColumns() {
+    apiColumnsCount = apiColumnsCount ? apiColumnsCount : DEFAULT_COLUMN_COUNT;
     for (var i = 0; i < API_CATEGORIES.length; i++) {
         var category = API_CATEGORIES[i].replace(' ', '-');
         setupColumnsInternal(category, category, 0);
@@ -295,7 +302,7 @@ function filter() {
             list.addClass('hide-api-container');
             list.prev('h2').addClass('hide-api-container');
         } else {
-            arrangeColumns(list, DEFAULT_COLUMN_COUNT);
+            arrangeColumns(list, apiColumnsCount);
         }
     });
 
@@ -436,13 +443,13 @@ function getDataForCurrentPage(data) {
 }
 
 $(document).ready(function () {
-    $.get("/kendo-ui/api.json", function (data) {
-        if (!ensureCorrectNavigation()) {
-            setupColumns();
-            if (!isMainApiPage) {
+    if (!ensureCorrectNavigation()) {
+        setupColumns();
+        if (!isMainApiPage && hasWebApiData) {
+            $.get("/kendo-ui/api.json", function (data) {
                 buildApiBreadcrumbs(getDataForCurrentPage(data));
-            }
-            attachToApiPageEvents();
+            });
         }
-    });
+        attachToApiPageEvents();
+    }
 });

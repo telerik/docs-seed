@@ -28,7 +28,11 @@ layout: default
           },
           select: preventParentSelection,
           template: navigationTemplate("{{site.baseurl}}/"),
+          {% if site.has_web_api_index == true %}
+          dataBound: expandNavigation("{{page.url | remove_first: '/' }}")
+          {% else %}
           dataBound: expandNavigation("{{page.parent_path}}.html")
+          {% endif %}
       });
       </script>
   </div>
@@ -48,7 +52,9 @@ layout: default
                 {% endif %}
                 {% endif %}
             </div>
+            {% if site.has_web_api_index != true %}
             <div class="breadcrumbs api-breadcrumbs-container"></div>
+            {% endif %}
         {% if page.kind == "api" and page.position != 1 %}
         <article class="api-reference {{page.sub_category}} {{ page.api_type }}">
         {% else %}

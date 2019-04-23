@@ -19,10 +19,11 @@ body {
 
 article.api-reference {
     ul, ol {
-        padding: 0 0 0 22px;
+        padding: 0 0 0 2px;
 
         li {
             margin-bottom: 0;
+            padding-left: 20px;
         }
     }
 
@@ -217,6 +218,22 @@ h2 a:first-child + a code:before {
     flex-direction: column;
     flex-wrap: wrap;
     overflow-wrap: break-word;
+
+    > li {
+      padding-left: 20px;
+      max-width: 33%;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    &.columns-count-2 {
+        align-content: space-between;
+
+        > li {
+            max-width: 45%;
+        }
+    }
 }
 
 .api-icon {
@@ -243,7 +260,7 @@ h2 a:first-child + a code:before {
         top: 2px;
         right: 18px;
         bottom: -2px;
-        left: -18px;
+        left: 0;
         content: "C";
         color: #fff;
         font-size: 8px;

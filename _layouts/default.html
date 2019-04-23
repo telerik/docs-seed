@@ -21,8 +21,8 @@
         {% if site.enable_dojo == true %}
         {% stylesheet "dojo" %}
         {% endif %}
-        {% if site.has_web_api == true and page.kind == "api" %}
-        {% stylesheet "api" %}
+        {% if page.kind == "api" %}
+        {% if site.has_web_api == true or site.has_web_api_index == true %} {% stylesheet "api" %} {% endif %}
         {% if page.has_api_toc == true %}
         {% stylesheet "api-toc" %}
         {% javascript "api-toc" %}
@@ -97,8 +97,14 @@
 
     <script>
       hasDataLang = {% if site.code_lang == true %} true {% else %} false {% endif %};
-      {% if site.has_web_api == true and page.kind == 'api' %}
-      isMainApiPage = {% if page.is_main or page.has_api_toc %} true {% else %} false {% endif %}
+      {% if site.has_web_api == true or site.has_web_api_index == true %}
+      {% if page.kind == 'api'%}
+      isMainApiPage = {% if page.is_main or page.has_api_toc %} true {% else %} false {% endif %};
+      hasWebApiData = {% if site.has_web_api == true %} true {% else %} false {% endif %};
+      {% endif %}
+      {% endif %}
+      {% if site.api_columns_count %}
+      apiColumnsCount = {{ site.api_columns_count }};
       {% endif %}
     </script>
 
