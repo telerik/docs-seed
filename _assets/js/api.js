@@ -11,6 +11,7 @@ var filterControl = null;
 var previousSearch = "";
 var isMainApiPage = false;
 var hasWebApiData = false;
+var apiColumnsCount;
 
 function getApiCategoryAndIndex(values) {
     var startIndex = -1;
@@ -216,7 +217,7 @@ function getTotalParentHeight(list) {
 }
 
 function arrangeColumns(list, columnsCount) {
-    columnsCount = columnsCount ? columnsCount : DEFAULT_COLUMN_COUNT;
+    columnsCount = columnsCount ? columnsCount : apiColumnsCount;
     var listItemsCount = getVisibleChildrenCount(list);
     list.removeClass(COLUMNS_STYLE_CLASS_NAME);
 
@@ -248,6 +249,7 @@ function setupColumnsInternal(category, subCategory, mainNestingLevel) {
 }
 
 function setupColumns() {
+    apiColumnsCount = apiColumnsCount ? apiColumnsCount : DEFAULT_COLUMN_COUNT;
     for (var i = 0; i < API_CATEGORIES.length; i++) {
         var category = API_CATEGORIES[i].replace(' ', '-');
         setupColumnsInternal(category, category, 0);
@@ -297,7 +299,7 @@ function filter() {
             list.addClass('hide-api-container');
             list.prev('h2').addClass('hide-api-container');
         } else {
-            arrangeColumns(list, DEFAULT_COLUMN_COUNT);
+            arrangeColumns(list, apiColumnsCount);
         }
     });
 
