@@ -445,11 +445,14 @@ function getDataForCurrentPage(data) {
 $(document).ready(function () {
     if (!ensureCorrectNavigation()) {
         setupColumns();
+        // TODO: Refactor - obtain the JSON data from variable.
         if (!isMainApiPage && hasWebApiData) {
             $.get("/kendo-ui/api.json", function (data) {
                 buildApiBreadcrumbs(getDataForCurrentPage(data));
+                attachToApiPageEvents();
             });
+        } else {
+            attachToApiPageEvents();
         }
-        attachToApiPageEvents();
     }
 });

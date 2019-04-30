@@ -8,13 +8,19 @@ body {
         }
 
         .additional-content-column.affix {
-            margin-top: 160px;
+            margin-top: 120px;
         }
     }
 }
 
-.additional-content-column.affix {
+.additional-content-column{
+  &.affix {
     margin-top: 160px;
+  }
+
+  &.affix-top {
+    top: 60px;
+  }
 }
 
 article.api-reference {
