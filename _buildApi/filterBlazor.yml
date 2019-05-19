@@ -1,0 +1,5 @@
+- exclude:
+    hasAttribute:
+      uid: Telerik.Blazor.HideFromApiRefAttribute
+      ctorArguments:
+      - true
