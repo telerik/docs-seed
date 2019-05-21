@@ -4,6 +4,7 @@ Contains the documentation site implementation.
 - [Local Setup :computer:](#local-setup)
 - [Troubleshooting :hankey:](#troubleshooting)
 - [Extra Features :moneybag:](#extra-features)
+- [Build API Reference](#build-api-reference)
 
 ## Local Setup
 This section describes the best practices about what and how should be done in order to run the documentation locally.
@@ -155,3 +156,37 @@ This could be achieved by executing the `sh modify-config.sh` script with passin
 EXAMPLE: Let's say that you want to build only the documentation for 2 controls - Barcode and Chart, you are using Docker and you have an extra config YAML file. Then you have to open a terminal and execute the following:
 
 `sh modify-config.sh --include=controls/barcode,controls/Chart --docker=true --config=_extra.yml`
+
+## Build API Reference
+
+There is infrastructure that uses [DocFx](https://dotnet.github.io/docfx/) to generate an API reference portion of the site for you. To use it, you need the following:
+
+* the docs-seed repo on your build machine. This should already be set up.
+
+* an API ref link in your table of contents on the left. To enable it, add the following line in your `_config.yml` file: 
+
+    **_config.yml**
+    
+        api_reference_url: "api/"
+        
+* a folder on a shared network location that the build can access, and that contains the `.dll` and `.xml` files you want generated.
+
+* the assets for building the API reference in your repo. You can start by copying existing assets, for example from Winforms: [https://github.com/telerik/winforms-docs/tree/master/_assetsApi](https://github.com/telerik/winforms-docs/tree/master/_assetsApi). Note that the templates are plain HTML for the time being, so you must keep them in sync with your actual repo code manually - update the footer template with the generated HTML of your own docs, make sure the search template can reach the scripts it needs (can be an issue mostly if you have cache busting enabled in your own repo). Also, update the `index.md` file to have the contents suitable for your case. Keep them updated if you change your own repo as well.
+
+* an `MSBuild` step in your content repo builds that will take the binaries, xml files and content repo, build the HTML files for the API ref, and copy them to the `_site/api` folder in your content repo.
+
+    This build is executed through the [_buildApi/BuildApiReference.proj](https://github.com/telerik/docs-seed/blob/master/_buildApi/BuildApiReference.proj) file. For example, in the VS command prompt: `msbuild.exe BuildApiReference.proj /p:LatestBinariesPath=\\\\someNetworkServer\MySourceFiles;DocsRepoName=blazor-docs;DocumentationBaseUrl=https://docs.telerik.com/blazor-ui;DocsRepoApiAssetsFolder=_assetsApi;HasApiFilter=true`
+                
+            
+    Here is a list of the build parameters and their purpose:
+    
+    * `LatestBinariesPath` - the path to where you have the `.dll`+`.xml` pairs of code you want documented. The format is usually something like `\\\\someNetworkServer\MySourceFiles` or `C:\work\myFolder`. The escaping of the backslashes is an example for using this as a build parameter.
+    
+    * `DocsRepoName` - the name of the repo with your actual contents. The build assumes the docs-seed repo and the content repo are in adjacent folders. So, it is, for example just `blazor-docs` or `winforms-docs`, or `teststudio/docs` (when the docs are nested further down in a folder inside your repo).
+    
+    * `DocumentationBaseUrl` - the base URL of your docs when on the desired server. It is important for relative URLs. You must adapt it to local builds, staging environment and live enfironment. For a live environment it can be, for example, `https://docs.telerik.com/blazor-ui` and the same thing for a local build can be `https://localhost/blazor-ui`.
+    
+    * `DocsRepoApiAssetsFolder` - this is where the build assets specific to your repo reside (at the time of writing, search, footer templates, feedback form, plus a little of bit of styles). If you copy from an existing repo, this would always be `_assetsApi`.
+    
+    * `HasApiFilter` - an `optional` parameter in case you want to avoid generating API reference docs for certain classes or their members. See the [DocFx docs on the matter](https://dotnet.github.io/docfx/tutorial/howto_filter_out_unwanted_apis_attributes.html) for syntax and examples. To use this filter, you must add a file in your repo with the desired filter contents, and put it in `<DocsRepoApiAssetsFolder>\filterConfig.yml`. The file is always at the root of the API assets folder, and is always called `filterConfig.yml`.
+
