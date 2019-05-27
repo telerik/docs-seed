@@ -164,6 +164,7 @@ $(function () {
     $(".site-pager").kendoPager({
         dataSource: ds,
         buttonCount: 5,
+        responsive: false,
         messages: {
             previous: "Previous",
             next: "Next",
@@ -176,6 +177,7 @@ $(function () {
         dataSource: ds,
         numeric: false,
         previousNext: false,
+        responsive: false,
         messages: {
             display: "{0}-{1} of {2} results",
             empty: "Sorry, there were no results found. Maybe try a broader search."
