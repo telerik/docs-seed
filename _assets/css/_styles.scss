@@ -1689,6 +1689,11 @@ $border-color: #d9d9d9;
 
     .k-pager-wrap {
         background-color: transparent;
+        justify-content: space-between;
+
+        .k-pager-info {
+            display: none;
+        }
     }
 }
 
