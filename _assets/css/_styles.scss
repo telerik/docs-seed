@@ -3041,6 +3041,10 @@ span.all-components-expanded-icon {
         position: absolute;
         left: 100px;
     }
+
+    #refine-search-label {
+      display: none;
+    }
 }
 
 /* Overrides the default which is from width 1240px, because to match our side-navigation behavior. */
