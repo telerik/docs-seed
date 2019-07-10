@@ -184,9 +184,23 @@ There is infrastructure that uses [DocFx](https://dotnet.github.io/docfx/) to ge
     
     * `DocsRepoName` - the name of the repo with your actual contents. The build assumes the docs-seed repo and the content repo are in adjacent folders. So, it is, for example just `blazor-docs` or `winforms-docs`, or `teststudio/docs` (when the docs are nested further down in a folder inside your repo).
     
-    * `DocumentationBaseUrl` - the base URL of your docs when on the desired server. It is important for relative URLs. You must adapt it to local builds, staging environment and live enfironment. For a live environment it can be, for example, `https://docs.telerik.com/blazor-ui` and the same thing for a local build can be `https://localhost/blazor-ui`.
+    * `DocumentationBaseUrl` - the base URL of your docs when on the live server. Used for the `sitemap.xml` file. For example, `https://docs.telerik.com/blazor-ui/`.
     
     * `DocsRepoApiAssetsFolder` - this is where the build assets specific to your repo reside (at the time of writing, search, footer templates, feedback form, plus a little of bit of styles). If you copy from an existing repo, this would always be `_assetsApi`.
     
-    * `HasApiFilter` - an `optional` parameter in case you want to avoid generating API reference docs for certain classes or their members. See the [DocFx docs on the matter](https://dotnet.github.io/docfx/tutorial/howto_filter_out_unwanted_apis_attributes.html) for syntax and examples. To use this filter, you must add a file in your repo with the desired filter contents, and put it in `<DocsRepoApiAssetsFolder>\filterConfig.yml`. The file is always at the root of the API assets folder, and is always called `filterConfig.yml`.
+    * `HasApiFilter` - an `optional` parameter in case you want to avoid generating API reference docs for certain classes or their members. See the [DocFx docs on the matter](https://dotnet.github.io/docfx/tutorial/howto_filter_out_unwanted_apis_attributes.html) for syntax and examples. To use this filter, you must add a file in your repo with the desired filter contents, and put it in `<DocsRepoApiAssetsFolder>\filterConfig.yml`. The file is always at the root of the API assets folder, and is always called `filterConfig.yml`. Here's what docfx generate at the time of writing (10 Jul 2019, docfx version 2.40.5):
+    
+      **C#**
+
+          //GENERATED
+          public string publicTest;
+          protected string protectedTest;
+          protected internal string protectedInternalTest;
+
+          //NOT GENERATED
+          private string privateTest;
+          internal string internalTest;
+          private protected string privateProtectedTest;
+
+
 
