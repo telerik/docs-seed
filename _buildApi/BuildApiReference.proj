@@ -13,7 +13,8 @@
       RestoreNugetAPISolution;
       BuildAPISolution;
       ProcessSitemap;
-      CopyAPIHtmlFilesToSiteFolder 
+      DeleteDocFxFavicon;
+      CopyAPIHtmlFilesToSiteFolder
     </BuildApiReferenceDependsOn>
   </PropertyGroup>
 
@@ -44,6 +45,8 @@
       <BuildApiRootFolder>$(MsBuildProjectDirectory)\BuildAPI</BuildApiRootFolder>
       <BuildApiSrcFolder>$(BuildApiRootFolder)\src</BuildApiSrcFolder>
       <SourceFolder>$([System.IO.Path]::GetFullPath('$(MSBuildProjectDirectory)\..\..'))</SourceFolder>
+      <DocsSeedRoot>$([System.IO.Path]::GetFullPath('$(BuildApiRootFolder)'))\..\..\</DocsSeedRoot>
+      <FavIconPath>$(DocsSeedRoot)\favicon.ico</FavIconPath>
       <DocsRepoName Condition="'$(DocsRepoName)' == '' ">Xamarin-Forms-docs</DocsRepoName>
       <DocsFolder>$(SourceFolder)\$(DocsRepoName)</DocsFolder>
       <DocsRepoApiAssetsFolder Condition="'$(DocsRepoApiAssetsFolder)' == '' ">_assets</DocsRepoApiAssetsFolder>
@@ -157,6 +160,12 @@
     <Copy SourceFiles='@(ApiFiles)' DestinationFolder='$(DocsRepoOutputFolder)\api' />
     <Copy SourceFiles='@(ApiStyleFiles)' DestinationFolder='$(DocsRepoOutputFolder)\styles' />
 
+  </Target>
+  
+  <Target Name="DeleteDocFxFavicon">
+    <Delete Files="$(BuildApiRootFolder)\_site\favicon.ico" />
+    <Copy SourceFiles="$(FavIconPath)" DestinationFolder="$(BuildApiRootFolder)\_site\" />
+    <Copy SourceFiles="$(FavIconPath)" DestinationFolder="$(DocsRepoOutputFolder)" />
   </Target>
 
 </Project>
