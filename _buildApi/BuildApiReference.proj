@@ -13,7 +13,8 @@
       RestoreNugetAPISolution;
       BuildAPISolution;
       ProcessSitemap;
-      CopyAPIHtmlFilesToSiteFolder 
+      DeleteDocFxFavicon;
+      CopyAPIHtmlFilesToSiteFolder
     </BuildApiReferenceDependsOn>
   </PropertyGroup>
 
@@ -157,6 +158,12 @@
     <Copy SourceFiles='@(ApiFiles)' DestinationFolder='$(DocsRepoOutputFolder)\api' />
     <Copy SourceFiles='@(ApiStyleFiles)' DestinationFolder='$(DocsRepoOutputFolder)\styles' />
 
+  </Target>
+  
+  <Target Name="DeleteDocFxFavicon">
+    <Delete Files="$([System.IO.Path]::GetFullPath('$(BuildApiRootFolder)'))\_site\favicon.ico" />
+    <Copy SourceFiles="$([System.IO.Path]::GetFullPath('$(BuildApiRootFolder)'))\..\..\favicon.ico" DestinationFolder="$([System.IO.Path]::GetFullPath('$(BuildApiRootFolder)'))\_site\" />
+    <Copy SourceFiles="$([System.IO.Path]::GetFullPath('$(BuildApiRootFolder)'))\..\..\favicon.ico" DestinationFolder="$(DocsRepoOutputFolder)" />
   </Target>
 
 </Project>
