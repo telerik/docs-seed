@@ -109,6 +109,20 @@ Docker is a resource-intensive tool. If you are not using it on a daily basis, c
 
 Also, it tends to require a lot of HDD space, which may be an issue if you are running it on an SSD drive with limited capacity. You can reduce its quota by opening the Settings dialog > Advanced and either changing the image location, and/or reducing its max size. This also lets you limit its RAM consumption.
 
+### Encoding Problems While Building
+
+When you try to build the documentation site, you could see an error including the following `incomplete "\n" on UTF-16LE` message. It might be caused because of different things. Use the following steps to try to fix or workaround it:
+
+1. Allow [files with long path](https://confluence.atlassian.com/bamkb/git-checkouts-fail-on-windows-with-filename-too-long-error-unable-to-create-file-errors-867363792.html) using the following command:
+```bash
+git config --system core.longpaths true
+```
+
+2. Add the following [System Environment Variables](https://www.linkedin.com/pulse/how-resolve-utf-8-encoding-issue-jenkins-ajuram-salim/)
+    * JAVA_TOOL_OPTIONS: -Dfile.encoding=UTF-8
+    * LANG: en_GB.UTF-8
+3. Modify the `runtimes.rb` file in the execJs gem by changing the UTF-16LE with UTF-8 values - [see detailed instructions here](https://stackoverflow.com/questions/25830561/incomplete-n-on-utf-16le-error) or [here](https://stackoverflow.com/questions/12520456/execjsruntimeerror-on-windows-trying-to-follow-rubytutorial). 
+
 ## Extra Features
 
 You can benefit from the following features:
