@@ -64,6 +64,9 @@
         ]
       }
     ],
+    "globalMetadata": {
+      "_disableContribution": "true"
+    },
     "dest": "_site",
     "template": [
       "default",
