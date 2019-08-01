@@ -5,12 +5,7 @@ html {
 
 body {
   min-height: 100%;
-  height: 100%;
-}
-
-body.scroll-page,
-body.scroll-small-page, {
-  height: auto !important; 
+  height: auto;
 }
 
 html,
