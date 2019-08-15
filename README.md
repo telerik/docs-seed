@@ -121,7 +121,7 @@ git config --system core.longpaths true
 2. Add the following [System Environment Variables](https://www.linkedin.com/pulse/how-resolve-utf-8-encoding-issue-jenkins-ajuram-salim/)
     * JAVA_TOOL_OPTIONS: -Dfile.encoding=UTF-8
     * LANG: en_GB.UTF-8
-3. Modify the `runtimes.rb` file in the execJs gem by changing the UTF-16LE with UTF-8 values - [see detailed instructions here](https://stackoverflow.com/questions/25830561/incomplete-n-on-utf-16le-error) or [here](https://stackoverflow.com/questions/12520456/execjsruntimeerror-on-windows-trying-to-follow-rubytutorial). 
+3. Modify the `runtimes.rb` file in the execJs gem by changing `UTF-16LE` with `UTF-8` values - [see detailed instructions here](https://stackoverflow.com/questions/25830561/incomplete-n-on-utf-16le-error) or [here](https://stackoverflow.com/questions/12520456/execjsruntimeerror-on-windows-trying-to-follow-rubytutorial). The `runtimes.rb` file is located in `[Ruby Installation folder]\lib\ruby\gems\2.3.0\gems\execjs-2.7.0\lib\execjs`
 
 ## Extra Features
 
