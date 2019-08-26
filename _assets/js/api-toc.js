@@ -1,23 +1,11 @@
 //= require jquery.min
+//= require toc-base
 
 $(function () {
-    window.animateScrollTo = function (e) {
+    
+    window.animateScrollTo = function(e){
         e.preventDefault();
-
-        var currentScrollTop = $(window).scrollTop();
-        var hash = this.hash;
-        var offset = $(this.hash).offset() || { top: currentScrollTop };
-        var scrollOffsetCorrection = currentScrollTop == 0 ? HEADER_HEIGHT + NAVBAR_HEIGHT : NAVBAR_HEIGHT;
-
-        $('html, body').animate({
-            scrollTop: offset.top - scrollOffsetCorrection
-        }, 500, function () {
-            if (history.pushState) {
-                history.pushState(null, null, hash);
-            } else {
-                window.location.hash = hash;
-            }
-        });
+        animateScrolling(this.hash);
     };
 
     $("#markdown-toc")
