@@ -14,6 +14,7 @@ module Jekyll
 		pageSuiteNames = page["platforms"]
 		nonSlFolders = context.registers[:site].config["non-sl-folders"]
 		nonXamarinFolders = context.registers[:site].config["non-xamarin-folders"]
+		nonCoreFolders = context.registers[:site].config["non-netcore-folders"]
 		
 		result = String.new
 		
@@ -30,6 +31,10 @@ module Jekyll
 				
 				if (folderNames & nonXamarinFolders).any?
 					platformNames.reject!{|suite| suite.downcase.include?("xamarin")}
+				end
+				
+				if (folderNames & nonCoreFolders).any?
+					platformNames.reject!{|suite| suite.downcase.include?("core")}
 				end
 			end
 		
