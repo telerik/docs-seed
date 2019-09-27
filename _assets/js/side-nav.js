@@ -84,9 +84,10 @@ function setSideNavPosition() {
     var $window = $(window);
     var windowHeight = $window.height();
     var scrollFold = $window.scrollTop() + windowHeight;
-    var topNavigationHeight = $('nav.TK-Nav').height();
+    var topNavigationHeight = $('nav.TK-Nav').height() || ($('.PRGS-Nav').height() + $('.PRGS-Bar').height());
+    var progressBarHeight = $('aside.TK-Hat').height() || $('.PRGS-Bar').height();
 
-    var top = window.scrollY > 0 ? topNavigationHeight - $('aside.TK-Hat').height() : topNavigationHeight;
+    var top = window.scrollY > 0 ? topNavigationHeight - progressBarHeight : topNavigationHeight;
     if (window.screen.availWidth < 768) {
         if (window.scrollY > 0) {
             top = $('#navbar').outerHeight();
