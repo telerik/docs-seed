@@ -28,10 +28,13 @@ Jekyll::Hooks.register :site, :after_init do |site|
     "ar-vr" => "vr-lab"
   }
 
-  navigation_url = "http://cdn.telerik-web-assets.com/telerik-navigation/stable/nav-%s-csa-abs-component.html"
+  html = ''
   platform = site.config['platform']
-
-  html = open(navigation_url % [navigations_map[platform]]).read
+  if platform == 'unite-ux'
+    html = open("https://cdn.telerik-web-assets.com/progress-navigation/latest/pair-unite-ux-fluid-rel.html").read
+  else
+    html = open("http://cdn.telerik-web-assets.com/telerik-navigation/stable/nav-%s-csa-abs-component.html" % [navigations_map[platform]]).read
+  end
   File.write('./_includes/top-nav.html', html)
 
   if site.config['other_platforms']
