@@ -198,11 +198,13 @@ h1, .h1 {
     font-size: 40px;
     font-family: $font-heading;
     line-height: .95em;
+    font-weight: $heading-fw;
 }
 
 h2, .h2 {
     font-size: 26px;
     font-family: $font-heading;
+    font-weight: $heading-fw;
 }
 
 h3, .h3 {
@@ -890,11 +892,11 @@ $nav-icon-color: #979797;
     }
 
     .k-state-selected {
-        color: $accent;
+        color: $side-nav-link-color;
 
         a {
-            color: $accent;
-            font-weight: 500;
+            color: $side-nav-link-color;
+            font-weight: $side-nav-selected-fw;
 
             &:hover {
                 background-color: $link-background-color;
@@ -902,7 +904,7 @@ $nav-icon-color: #979797;
 
             &:active {
                 background-color: transparent;
-                color: $accent;
+                color: $side-nav-link-color;
             }
         }
     }
@@ -1491,8 +1493,8 @@ $border-color: #d9d9d9;
     margin-right: 40px;
 
     .btn-action {
-        color: $accent;
-        background-color: transparent;
+        color: $btn-action-foreground;
+        background-color: $btn-action-background;
         text-transform: uppercase;
         padding: 10px 20px;
         margin: 10px 0;
@@ -1504,8 +1506,8 @@ $border-color: #d9d9d9;
         &:hover,
         &:focus,
         &:active {
-            color: #f1f1f1;
-            background-color: $accent;
+            color: $btn-action-active-color;
+            background-color: $btn-action-active;
         }
     }
 
@@ -2101,15 +2103,15 @@ article table tr {
 /* Feedback Styles */
 
 .feedback-row {
-    background-color: $accent;
-    color: #ffffff;
+    background-color: $feedback-background;
+    color: $feedback-foreground;
     padding-top: 14px;
     padding-bottom: 13px;
     font-size: 20px;
     font-weight: 500;
 
     h4 {
-        color: #ffffff !important;
+        color: $feedback-foreground !important;
         margin-top: 0;
         margin-bottom: 0;
         font-size: 21px;
@@ -2121,7 +2123,7 @@ article table tr {
         text-transform: uppercase;
         background: transparent;
         border: none;
-        color: #f1f1f1;
+        color: $feedback-button-foreground;
         cursor: pointer;
         transition-property: background-color, color;
         transition-duration: 0.2s;
@@ -2131,7 +2133,7 @@ article table tr {
         &:focus,
         &:active,
         &:visited {
-            color: #ffffff;
+            color: $feedback-foreground;
             outline: none;
         }
     }
