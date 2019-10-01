@@ -3047,6 +3047,19 @@ span.all-components-expanded-icon {
     #refine-search-label {
         display: none;
     }
+
+    .feedback-dialog {
+        position: static;
+        width: 100%;
+        height: 100%;
+        top: auto;
+        left: auto;
+        margin: 100px;
+
+        .scroll & {
+            margin-top: 0;
+        }
+    }
 }
 
 /* Overrides the default which is from width 1240px, because to match our side-navigation behavior. */
