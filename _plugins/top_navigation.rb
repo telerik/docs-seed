@@ -31,7 +31,7 @@ Jekyll::Hooks.register :site, :after_init do |site|
   html = ''
   platform = site.config['platform']
   if platform == 'unite-ux'
-    html = open("https://cdn.telerik-web-assets.com/progress-navigation/latest/pair-unite-ux-fluid-rel.html").read
+    html = open("http://cdn.telerik-web-assets.com/progress-navigation/latest/pair-unite-ux-fluid-rel.html").read
   else
     html = open("http://cdn.telerik-web-assets.com/telerik-navigation/stable/nav-%s-csa-abs-component.html" % [navigations_map[platform]]).read
   end
