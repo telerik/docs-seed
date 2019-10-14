@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="{{_rel}}styles/docfx.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono|Roboto:300,400,500,700" />
   <link rel="stylesheet" href="{{_rel}}styles/main.css">
+  <script src="https://cdn.cookielaw.org/consent/2fffb1c2-c64a-4fcc-bc19-a4adecbc5ebf.js" type="text/javascript" charset="UTF-8"></script> 
   <!-- Google Tag Manager -->
         <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
         new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
