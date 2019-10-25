@@ -27,7 +27,6 @@
             e.className = e.className.replace(/(^|\s)no-js(\s|$)/i, "$2");	
         </script>
   <script src="//kendo.cdn.telerik.com/2017.3.1026/js/kendo.web.min.js"></script>
-  <script src="//cdn.optimizely.com/js/2380340583.js"></script>
   <meta property="docfx:navrel" content="{{_navRel}}">
   <meta property="docfx:tocrel" content="{{_tocRel}}">
   {{#_noindex}}<meta name="searchOption" content="noindex">{{/_noindex}}
