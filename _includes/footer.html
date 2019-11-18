@@ -1,5 +1,5 @@
 <div id="footer" class="container-fluid pb-40">
-  {% if page.is_search_page != true %}
+  {% if page.is_search_page != true and page.is_main != true %}
   {% include feedback.html %}
   {% endif %}
   <div class="row mt-60">
