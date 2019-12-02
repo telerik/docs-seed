@@ -44,10 +44,7 @@ var dojoApi = (function($) {
                 '<head>\n'+
                 '    <meta charset="utf-8"/>\n'+
                 '    <title>Kendo UI Snippet</title>\n\n'+
-                '    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/kendo-version/styles/kendo.common.min.css"/>\n'+
-                '    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/kendo-version/styles/kendo.rtl.min.css"/>\n'+
-                '    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/kendo-version/styles/kendo.silver.min.css"/>\n'+
-                '    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/kendo-version/styles/kendo.mobile.all.min.css"/>\n\n'+
+                '    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/kendo-version/styles/kendo.default-v2.min.css"/>\n\n'+
                 '    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>\n'+
                 angular + jszip +
                 '    <script src="https://kendo.cdn.telerik.com/kendo-version/js/kendo.all.min.js"></script>\n'+
@@ -158,10 +155,7 @@ var dojoApi = (function($) {
             'font-size: 14px' +
             '}' +
             '</style>' +
-            '<link rel="stylesheet" href="https://kendo.cdn.telerik.com/${version}/styles/kendo.common.min.css"/>' +
-            '<link rel="stylesheet" href="https://kendo.cdn.telerik.com/${version}/styles/kendo.silver.min.css"/>' +
-            '<link rel="stylesheet" href="https://kendo.cdn.telerik.com/${version}/styles/kendo.mobile.all.min.css"/>' +
-            '<link rel="stylesheet" href="https://kendo.cdn.telerik.com/${version}/styles/kendo.rtl.min.css">' +
+            '<link rel="stylesheet" href="https://kendo.cdn.telerik.com/${version}/styles/kendo.default-v2.min.css">' +
             '<script src="https://kendo.cdn.telerik.com/${version}/js/jszip.min.js"></script>' +
             '# if ((/ng-app/i).test(snippet)) { # <script src="https://kendo.cdn.telerik.com/${version}/js/angular.min.js"></script> # } #' +
             '<script src="https://kendo.cdn.telerik.com/${version}/js/kendo.all.min.js"></script>' +
