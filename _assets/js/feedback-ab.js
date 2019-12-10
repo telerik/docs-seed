@@ -16,12 +16,11 @@ $(document).ready(function () {
     };
 
     var onAfterVote = function () {
+        setCookieByName("feedbackSubmitted", true);
         $('.feedback-ab').html("<div class='side-title uppercase-clear'>Thank you!</div>");
     };
 
     var getFeedbackData = function () {
-        setCookieByName("submittingFeedback");
-
         var otherFeedbackText = $('#feedback-other-text-input').text().trim();
         return {
             otherFeedback: otherFeedbackText !== "",
@@ -35,10 +34,19 @@ $(document).ready(function () {
     };
 
     $('.feedback-ab .feedback-ab-button').on('click', function () {
-        $('.feedback-ab .feedback-ab-more-content').toggle();
+        $('.feedback-ab .feedback-ab-more-content').show();
     });
 
     $('.feedback-ab .feedback-ab-send-data-button').on('click', function () {
+        var uuid = getCookieByName("uuid");
+        
+        if (!uuid) {
+            uuid = generateUUID();
+            document.cookie = "uuid=" + uuid + ";";
+        }
+
+        setCookieByName("submittingFeedback");
+
         $.ajax({
             url: "https://baas.kinvey.com/rpc/kid_Hk57KwIFf/custom/saveFeedback",
             method: "POST",
