@@ -1,0 +1,26 @@
+{% javascript "feedback-ab" %}
+<div class="feedback-ab">
+  <div class="side-title uppercase-clear">Is this article helpful?</div>
+  <div class="row">
+    <div class="col-xs-4">
+      <button data-value="yes" id="yesButton" class="feedback-ab-button feedback-ab-yes-button">Yes</button>
+    </div>
+    <div class="col-xs-4">
+      <button data-value="no" id="noButton" class="feedback-ab-button feedback-ab-no-button">No</button>
+    </div>
+  </div>
+  <div class="row feedback-ab-more-content">
+    <div class="row">
+      <textarea id="feedback-other-text-input" placeholder="Please, enter more details or not listed feedback ..."
+        class="feedback-extw__textarea">
+      </textarea>
+    </div>
+    <div class="row">
+        <div class="col-xs-4">
+          <span class="feedback-ab-skip-button feedback-ab-send-data-button">Skip</span>
+        </div>
+        <div class="col-xs-4">
+          <button type="submit" class="feedback-ab-submit-button feedback-ab-send-data-button">Submit</button>
+        </div>
+      </div>
+  </div>
