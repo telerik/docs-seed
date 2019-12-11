@@ -1558,14 +1558,10 @@ $border-color: #d9d9d9;
 }
 
 .uppercase-clear {
-  text-transform: none !important;
+    text-transform: none !important;
 }
 
 .feedback-ab {
-    .feedback-ab-skip-button {
-        text-decoration: underline;
-    }
-
     .feedback-ab-more-content {
         display: none;
 
@@ -1573,13 +1569,41 @@ $border-color: #d9d9d9;
             display: block;
         }
 
-        #feedback-other-text-input {
-          margin-left: 15px;
-          margin-top: 10px;
-          margin-bottom: 10px;
-          width: 100%;
-          max-width: 100%;
-          min-width: 100%;
+        .feedback-ab-input {
+            margin: 10px 0 5px 15px;
+            padding: 5px;
+            width: 80%;
+            max-width: 80%;
+            min-width: 80%;
+            height: 80px;
+        }
+
+        .feedback-ab-skip-button {
+            padding: 6px 12px;
+            margin: 0px;
+            font-size: 14px;
+            display: block;
+            text-decoration: underline;
+
+            &:hover {
+                cursor: pointer;
+                text-decoration: none;
+            }
+        }
+
+        .btn-action {
+            &.feedback-ab-submit-button {
+                padding: 6px 12px;
+                margin: 0;
+                background-color: $accent;
+                color: #FFFFFF;
+
+                &:hover,
+                &:active,
+                &:focus {
+                    background-color: $code-background-color;
+                }
+            }
         }
     }
 }
