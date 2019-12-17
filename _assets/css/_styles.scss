@@ -1562,6 +1562,35 @@ $border-color: #d9d9d9;
 }
 
 .feedback-ab {
+    .feedback-ab-no-button-container {
+        margin: 0;
+        padding: 0;
+    }
+
+    .feedback-ab-button {
+        background: transparent;
+        border: none;
+        outline: none;
+        padding: 0;
+
+        svg {
+            &.voted {
+                display: none;
+            }
+
+            &.feedback-vote-up-button,
+            &.feedback-vote-down-button {
+                width: 18px;
+                height: 18px;
+                fill: $accent;
+            }
+
+            &.feedback-vote-down-button {
+                margin-top: 1px;
+            }
+        }
+    }
+
     .feedback-ab-more-content {
         display: none;
 
@@ -1579,7 +1608,7 @@ $border-color: #d9d9d9;
         }
 
         .feedback-ab-skip-button {
-            padding: 6px 12px;
+            padding: 6px 0;
             margin: 0px;
             font-size: 14px;
             display: block;

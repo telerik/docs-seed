@@ -33,13 +33,26 @@ $(document).ready(function () {
         };
     };
 
+    $('.feedback-ab-button').on('click', function () {
+        $('svg.no-voted').show();
+        $('svg.voted').hide();
+        $(this).find('svg.voted').toggle();
+        $(this).find('svg.no-voted').toggle();
+    });
+
     $('.feedback-ab .feedback-ab-button').on('click', function () {
-        $('.feedback-ab .feedback-ab-more-content').show();
+        var moreContent = $('.feedback-ab .feedback-ab-more-content');
+        if ($(this).hasClass('feedback-ab-no-button')) {
+            moreContent.show();
+        } else {
+            moreContent.hide();
+            onAfterVote();
+        }
     });
 
     $('.feedback-ab .feedback-ab-send-data-button').on('click', function () {
         var uuid = getCookieByName("uuid");
-        
+
         if (!uuid) {
             uuid = generateUUID();
             document.cookie = "uuid=" + uuid + ";";
