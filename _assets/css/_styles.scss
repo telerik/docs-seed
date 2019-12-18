@@ -1557,7 +1557,91 @@ $border-color: #d9d9d9;
     }
 }
 
-.article-toc, .related-articles {
+.uppercase-clear {
+    text-transform: none !important;
+}
+
+.feedback-ab {
+    .feedback-ab-title {
+        padding-bottom: 10px;
+    }
+
+    .feedback-ab-no-button-container {
+        margin: 0;
+        padding: 0;
+    }
+
+    .feedback-ab-button {
+        background: transparent;
+        border: none;
+        outline: none;
+        padding: 0;
+
+        svg {
+            &.voted {
+                display: none;
+            }
+
+            &.feedback-vote-up-button,
+            &.feedback-vote-down-button {
+                width: 18px;
+                height: 18px;
+                fill: $accent;
+            }
+
+            &.feedback-vote-down-button {
+                margin-top: 1px;
+            }
+        }
+    }
+
+    .feedback-ab-more-content {
+        display: none;
+
+        &.show {
+            display: block;
+        }
+
+        .feedback-ab-input {
+            margin: 10px 0 5px 15px;
+            padding: 5px;
+            width: 80%;
+            max-width: 80%;
+            min-width: 80%;
+            height: 80px;
+        }
+
+        .feedback-ab-skip-button {
+            padding: 6px 0;
+            margin: 0px;
+            font-size: 14px;
+            display: block;
+            text-decoration: underline;
+
+            &:hover {
+                cursor: pointer;
+                text-decoration: none;
+            }
+        }
+
+        .btn-action {
+            &.feedback-ab-submit-button {
+                padding: 6px 12px;
+                margin: 0;
+                background-color: $accent;
+                color: #FFFFFF;
+
+                &:hover,
+                &:active,
+                &:focus {
+                    background-color: $code-background-color;
+                }
+            }
+        }
+    }
+}
+
+.article-toc, .related-articles, .feedback-ab {
     font-size: 14px;
     margin-bottom: 30px;
 
@@ -3384,7 +3468,7 @@ span.all-components-expanded-icon {
         font-size: 16px;
     }
 
-    .article-toc, .related-articles {
+    .article-toc, .related-articles, .feedback-ab {
         .anchor-h1,
         .anchor-h2 {
             font-family: $font-medium;
@@ -3392,9 +3476,15 @@ span.all-components-expanded-icon {
         }
     }
 
-    .article-toc {
+    .article-toc, .feedback-ab {
         .layout-components &.affix-top {
             top: 170px;
+        }
+    }
+
+    .feedback-ab ~ .article-toc {
+        .layout-components &.affix-top {
+            top: 270px;
         }
     }
 
