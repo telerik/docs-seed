@@ -1,4 +1,36 @@
 $(document).ready(function () {
+    var vote;
+
+    var localStorageFeedbackKey = function() {
+        return 'T_DOCUMENTATION_FEEDBACK_SUBMIT' + window.location.href;
+    } ;
+
+    var saveVote = function () {
+        var currentVote = {
+            date: new Date(),
+            vote: vote,
+            url: window.location.href
+        };
+        localStorage.setItem(localStorageFeedbackKey(), JSON.stringify(currentVote));
+    };
+
+    var getVote = function () {
+        return localStorage.getItem(localStorageFeedbackKey());
+    };
+
+    var canVote = function () {
+        var previousVote = getVote();
+        if (previousVote) {
+            var previousVoteData = JSON.parse(previousVote);
+            if (previousVoteData.url === window.location.href) {
+                // You can vote once per week for an article.
+                return Math.abs(new Date() - new Date(previousVoteData.date)) / 1000 / 600 >= 168;
+            }
+        }
+
+        return true;
+    };
+
     var generateUUID = function () {
         return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
             var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
@@ -15,13 +47,12 @@ $(document).ready(function () {
         if (match) return match[1];
     };
 
-    var onAfterVote = function () {
-        setCookieByName("feedbackSubmitted", true);
-        $('.feedback-ab').html("<div class='side-title uppercase-clear'>Thank you!</div>");
+    var showMessage = function () {
+        $('.feedback-ab').html("<div class='side-title uppercase-clear'>Thank you for your feedback!</div>");
     };
 
     var getFeedbackData = function () {
-        var otherFeedbackText = $('#feedback-other-text-input').text().trim();
+        var otherFeedbackText = $('#feedback-other-text-input').val().trim();
         return {
             otherFeedback: otherFeedbackText !== "",
             textFeedback: otherFeedbackText,
@@ -33,21 +64,32 @@ $(document).ready(function () {
         };
     };
 
-    $('.feedback-ab-button').on('click', function () {
+    var toggleIcons = function (clickedButton) {
         $('svg.no-voted').show();
         $('svg.voted').hide();
-        $(this).find('svg.voted').toggle();
-        $(this).find('svg.no-voted').toggle();
-    });
+        $(clickedButton).find('svg.voted').toggle();
+        $(clickedButton).find('svg.no-voted').toggle();
+    };
 
-    $('.feedback-ab .feedback-ab-button').on('click', function () {
+    $('.feedback-ab .feedback-ab-button').on('click', function (e) {
+        if (!canVote()) {
+            e.preventDefault();
+            return;
+        }
+
+        toggleIcons(this);
+
         var moreContent = $('.feedback-ab .feedback-ab-more-content');
         if ($(this).hasClass('feedback-ab-no-button')) {
             moreContent.show();
+            vote = false;
         } else {
+            showMessage();
             moreContent.hide();
-            onAfterVote();
+            vote = true;
         }
+
+        saveVote();
     });
 
     $('.feedback-ab .feedback-ab-send-data-button').on('click', function () {
@@ -72,6 +114,21 @@ $(document).ready(function () {
             }
         });
 
-        onAfterVote();
+        setCookieByName("feedbackSubmitted", true);
+        showMessage();
     });
+
+    init = function () {
+        if (!canVote()) {
+            vote = JSON.parse(getVote()).vote;
+            var voteAsString = vote ? 'yes' : 'no';
+            $('.feedback-ab-' + voteAsString + '-button svg.no-voted').hide();
+            $('.feedback-ab-' + voteAsString + '-button svg.voted').show();
+
+            $('.feedabck-ab-send-buttons-container').hide();
+
+            $('.feedback-ab-yes-button').attr("disabled", true);
+            $('.feedback-ab-no-button').attr("disabled", true);
+        }
+    }();
 });
