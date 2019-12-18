@@ -1593,6 +1593,10 @@ $border-color: #d9d9d9;
                 margin-top: 1px;
             }
         }
+
+        span {
+          vertical-align: text-bottom;
+        }
     }
 
     .feedback-ab-more-content {
@@ -1613,7 +1617,7 @@ $border-color: #d9d9d9;
 
         .feedback-ab-skip-button {
             padding: 6px 0;
-            margin: 0px;
+            margin: 0 0 0 5px;
             font-size: 14px;
             display: block;
             text-decoration: underline;
@@ -3146,6 +3150,14 @@ span.all-components-expanded-icon {
     }
 }
 
+@media (max-width: 1444px) {
+    .feedback-ab {
+        .feedback-ab-submit-button-container {
+            width: 30%;
+        }
+    }
+}
+
 /* Overrides the default which is from width 1240px, because to match our side-navigation behavior. */
 @media only screen and (min-width: 768px) {
     nav.TK-Nav {
@@ -3400,6 +3412,12 @@ span.all-components-expanded-icon {
 /* ####################################################################################################### */
 
 @media (min-width: 1441px) { /* Styles for width > 1440px */
+    .feedback-ab {
+        .vote-buttons-container {
+            width: 33%;
+        }
+    }
+
     .side-nav {
         font-size: 14px;
         line-height: 1.2em;
