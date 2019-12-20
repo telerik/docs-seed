@@ -54,6 +54,16 @@ $(document).ready(function () {
     var getFeedbackData = function () {
         var otherFeedbackText = $('#feedback-other-text-input').val().trim();
         return {
+            email: "",
+            inaccurateContent: false,
+            inaccurateOutdatedContentText: "",
+            otherMoreInformation: false,
+            otherMoreInformationText: "",
+            textErrors: false,
+            typosLinksElementsText: "",
+            outdatedSample: false,
+            inaccurateOutdatedCodeSamplesText: "",
+            acceptFeedbackContact: false,
             otherFeedback: otherFeedbackText !== "",
             textFeedback: otherFeedbackText,
             yesNoFeedback: getCookieByName("yesNoFeedback") || "Not submitted",
