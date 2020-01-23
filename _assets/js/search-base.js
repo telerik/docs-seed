@@ -6,6 +6,7 @@ var searchItemsStorageKey = "searchItemsStorageKey";
 var siteHasKbPortal, isKbPage, isKbPortalRoot, hasApiReference;
 
 var searchViewModel = kendo.observable({
+    isInitialized: false,
     kb: false,
     documentation: false,
     api: false,
@@ -185,4 +186,5 @@ $(function () {
     });
 
     setSideNavPosition();
+    searchViewModel.isInitialized = true;
 });
