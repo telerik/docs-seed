@@ -46,6 +46,7 @@
     <None Include="docfx-tmpl\src\layout\_master.tmpl" />
     <None Include="docfx-tmpl\src\partials\affix.tmpl.partial" />
     <None Include="docfx-tmpl\src\partials\class.header.tmpl.partial" />
+    <None Include="docfx-tmpl\src\partials\metatitle.content.tmpl.partial" />
     <None Include="docfx-tmpl\src\partials\class.tmpl.partial" />
     <None Include="docfx-tmpl\src\partials\enum.tmpl.partial" />
     <None Include="docfx-tmpl\src\partials\head.tmpl.partial" />
