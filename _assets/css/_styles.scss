@@ -2958,7 +2958,7 @@ span.all-components-expanded-icon {
 
 .api-reference {
     h1 {
-        word-break: break-all;
+        word-break: break-word;
     }
 
     h1 + p {
@@ -2969,6 +2969,7 @@ span.all-components-expanded-icon {
         margin-top: 20px;
         font-size: 26px;
         font-weight: 400;
+        word-break: break-word;
     }
 
     h3 {
@@ -2976,6 +2977,7 @@ span.all-components-expanded-icon {
         margin-bottom: 2px;
         font-size: 20px;
         font-weight: 500;
+        word-break: break-word;
     }
 
     h3,
