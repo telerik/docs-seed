@@ -27,6 +27,7 @@ layout: default
 
         {% if site.platforms.size > 0 %} {% platforms Available for: %} {% endif %}
 
+        {% include read_time.html %}
         {% if page.res_type != 'kb' %}
         <p class="breadcrumbs">
           {% if site.nested_bread_crumbs and page.has_api_toc != true %}
