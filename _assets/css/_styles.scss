@@ -2164,6 +2164,32 @@ article table tr {
     padding-bottom: 13px;
     font-size: 20px;
     font-weight: 500;
+    z-index: 1100;
+
+    .close-button-container {
+        display: none;
+        position: fixed;
+        bottom: 6px;
+        right: 16px;
+        padding: 8px;
+
+        &:hover {
+          cursor: pointer;
+        }
+    }
+
+    &.feedback-fixed {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        margin: 0;
+        z-index: 1100;
+
+        .close-button-container {
+            display: block;
+        }
+    }
 
     h4 {
         color: $feedback-foreground !important;

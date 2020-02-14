@@ -1,27 +1,59 @@
+const feedbackProps = {
+    feedbackFixedClassName: 'feedback-fixed',
+    feedbackFormSelector: '.feedback-row',
+    isVoting: false,
+    isClosed: false
+};
+
 $(document).ready(function () {
-    
-    var generateUUID = function () {
-        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-            var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
-            return v.toString(16);
-        });
+
+    const localStorageFeedbackKey = function () {
+        return 'T_DOCUMENTATION_FEEDBACK_SUBMIT' + window.location.href;
     };
 
-    var setCookieByName = function (name, value) {
-        document.cookie = name + "=" + value + ";";
+    const getFeedbackInfo = function () {
+        return localStorage.getItem(localStorageFeedbackKey());
     };
 
-    var getCookieByName = function (name) {
+    const setFeedbackInfo = function (vote, closed) {
+        let feedbackInfo = getFeedbackInfo();
+
+        if (feedbackInfo) {
+            const currentFeedbackInfo = JSON.parse(feedbackInfo);
+            if (!vote) {
+                vote = currentFeedbackInfo.vote;
+            }
+            if (closed === undefined || closed === null) {
+                closed = currentFeedbackInfo.closed;
+            }
+
+        }
+
+        feedbackInfo = {
+            date: new Date(),
+            vote: vote,
+            closed: closed,
+            url: window.location.href
+        };
+
+        localStorage.setItem(localStorageFeedbackKey(), JSON.stringify(feedbackInfo));
+    };
+
+    const getCookieByName = function (name) {
         var match = document.cookie.match(new RegExp(name + '=([^;]+)'));
         if (match) return match[1];
     };
-    
-    var showMessage = function () {
+
+    const onAfterVote = function () {
         $('.feedback').html("<div class='side-title uppercase-clear'>Thank you for your feedback!</div>");
+
+        setTimeout(() => {
+            $(feedbackProps.feedbackFormSelector).removeClass(feedbackProps.feedbackFixedClassName);
+        }, 500)
     };
 
-    var getFeedbackData = function () {
-        var otherFeedbackText = $('#feedback-other-text-input').val().trim();
+    const getFeedbackData = function () {
+        const otherFeedbackText = $('#feedback-other-text-input').val().trim();
         return {
             email: "",
             inaccurateContent: false,
@@ -44,14 +76,19 @@ $(document).ready(function () {
     };
 
     $('.feedback .feedback-vote-button').on('click', function (e) {
-        var moreContent = $('.feedback-more-info');
+        const moreContent = $('.feedback-more-info');
+        let vote = '';
         if ($(this).hasClass('feedback-no-button')) {
             moreContent.show();
             $('.feedback .feedback-question').hide();
+            vote = 'yes';
         } else {
-            showMessage();
+            onAfterVote();
             moreContent.hide();
+            vote = 'no';
         }
+
+        setFeedbackInfo(vote);
     });
 
     $('.feedback .feedback-send-data-button').on('click', function () {
@@ -67,6 +104,88 @@ $(document).ready(function () {
             }
         });
 
-        showMessage();
+        onAfterVote();
     });
+
+    $('.close-button-container').on('click', function () {
+        feedbackProps.isClosed = true;
+        toggleFeedbackSticky(false);
+        setFeedbackInfo(null, feedbackProps.isClosed)
+    });
+
+    const hasVoted = () => {
+        let feedbackInfo = getFeedbackInfo();
+        if (feedbackInfo) {
+            const vote = JSON.parse(feedbackInfo).vote;
+            return vote && (vote.toLowerCase() === 'yes' || vote.toLowerCase() === 'no');
+        }
+
+        return false;
+    }
+
+    const hasClosed = () => {
+        let feedbackInfo = getFeedbackInfo();
+        if (feedbackInfo) {
+            return JSON.parse(feedbackInfo).closed;
+        }
+
+        return false;
+    }
+
+    const shouldRunFeedbackTimer = () => {
+        return !(hasVoted() || hasClosed());
+    }
+
+    const getElementTopOffset = (selector) => {
+        return $(selector)[0].getBoundingClientRect().top;
+    }
+
+    const isFeedbackBarInViewPort = () => {
+        return getElementTopOffset(feedbackProps.feedbackFormSelector) < window.innerHeight;
+    }
+
+    const shouldShowFeedbackPopup = () => {
+        return !feedbackProps.isVoting && !isFeedbackBarInViewPort();
+    }
+
+    const toggleFeedbackSticky = (isSticky) => {
+        if (isSticky) {
+            $(feedbackProps.feedbackFormSelector).addClass(feedbackProps.feedbackFixedClassName);
+        } else {
+            $(feedbackProps.feedbackFormSelector).removeClass(feedbackProps.feedbackFixedClassName);
+        }
+
+        feedbackProps.isSticky = isSticky;
+    }
+
+    const onWindowScrollOrResize = () => {
+        if (!feedbackProps.isClosed) {
+            const $window = $(window);
+            const scrollOffset = $window.height() + $window.scrollTop();
+            const footerHeight = $(feedbackProps.feedbackFormSelector).outerHeight() + $('#footer').outerHeight();
+            const feedbackOffsetTop = document.body.scrollHeight - footerHeight;
+
+            // Double the feedbck form height in order to have sticky scroll when it is scrolled down to footer
+            toggleFeedbackSticky(scrollOffset - $(feedbackProps.feedbackFormSelector).outerHeight() * 2 < feedbackOffsetTop);
+        }
+        else {
+            window.removeEventListener('scroll', onWindowScrollOrResize);
+            window.removeEventListener('resize', onWindowScrollOrResize);
+        }
+    }
+
+    const init = () => {
+        if (shouldRunFeedbackTimer()) {
+            setTimeout(() => {
+                if (shouldShowFeedbackPopup()) {
+                    $(feedbackProps.feedbackFormSelector).addClass(feedbackProps.feedbackFixedClassName);
+
+                    window.addEventListener('scroll', onWindowScrollOrResize);
+                    window.addEventListener('resize', onWindowScrollOrResize);
+                }
+            }, 30000) // 30 sec
+        }
+    };
+
+    init();
 });
