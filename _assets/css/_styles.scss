@@ -1562,10 +1562,20 @@ $border-color: #d9d9d9;
 }
 
 .feedback-more-info {
-    display: none;
+    max-height: 0;
+    overflow: hidden;
+    padding-left: 15px;
 
     &.show {
         display: block;
+        transition: max-height 0.2s ease-out;
+        max-height: 205px;
+    }
+
+    &.hide {
+        max-height: 50px;
+        overflow: hidden;
+        transition: max-height 0.2s ease-out;
     }
 
     .feedback-other-text-input {
@@ -1578,6 +1588,10 @@ $border-color: #d9d9d9;
         max-width: 100%;
         min-width: 100%;
         height: 120px;
+
+        &:focus {
+            outline: none;
+        }
     }
 
     .feedback-skip-button {
@@ -2174,7 +2188,28 @@ article table tr {
         padding: 8px;
 
         &:hover {
-          cursor: pointer;
+            cursor: pointer;
+        }
+    }
+
+    &.vote-disabled {
+        display: none;
+    }
+
+    &.vote-hide {
+        animation-name: hideFeedback;
+        animation-duration: 0.2s;
+        animation-timing-function: ease-out;
+        animation-fill-mode: forwards;
+    }
+
+    @keyframes hideFeedback {
+        from {
+            opacity: 1;
+        }
+
+        to {
+            opacity: 0;
         }
     }
 

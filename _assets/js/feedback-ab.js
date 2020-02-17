@@ -1,6 +1,8 @@
 const feedbackProps = {
     feedbackFixedClassName: 'feedback-fixed',
+    feedbackDisabledClassName: 'vote-disabled',
     feedbackFormSelector: '.feedback-row',
+    feedbackMoreInfoSelector: '.feedback-more-info',
     isVoting: false,
     isClosed: false
 };
@@ -39,17 +41,33 @@ $(document).ready(function () {
         localStorage.setItem(localStorageFeedbackKey(), JSON.stringify(feedbackInfo));
     };
 
+    const canVote = () => {
+        const previousVote = getFeedbackInfo();
+        if (previousVote) {
+            const previousVoteData = JSON.parse(previousVote);
+            if (previousVoteData.url === window.location.href) {
+                // You can vote once per week for an article.
+                return Math.abs(new Date() - new Date(previousVoteData.date)) / 1000 / 60 / 60 >= 168;
+            }
+        }
+
+        return true;
+    };
+
     const getCookieByName = function (name) {
         var match = document.cookie.match(new RegExp(name + '=([^;]+)'));
         if (match) return match[1];
     };
 
     const onAfterVote = function () {
-        $('.feedback').html("<div class='side-title uppercase-clear'>Thank you for your feedback!</div>");
-
+        setTimeout(() => {
+            $('.feedback').html("<div class='side-title uppercase-clear'>Thank you for your feedback!</div>");
+        }, 200);
+        
         setTimeout(() => {
             $(feedbackProps.feedbackFormSelector).removeClass(feedbackProps.feedbackFixedClassName);
-        }, 500)
+            $(feedbackProps.feedbackFormSelector).addClass('vote-hide');
+        }, 2000)
     };
 
     const getFeedbackData = function () {
@@ -76,22 +94,25 @@ $(document).ready(function () {
     };
 
     $('.feedback .feedback-vote-button').on('click', function (e) {
-        const moreContent = $('.feedback-more-info');
+        const moreContent = $(feedbackProps.feedbackMoreInfoSelector);
         let vote = '';
         if ($(this).hasClass('feedback-no-button')) {
             moreContent.show();
+            moreContent.addClass('show');
             $('.feedback .feedback-question').hide();
-            vote = 'yes';
+            vote = 'no';
         } else {
             onAfterVote();
             moreContent.hide();
-            vote = 'no';
+            vote = 'yes';
         }
 
         setFeedbackInfo(vote);
     });
 
     $('.feedback .feedback-send-data-button').on('click', function () {
+        $(feedbackProps.feedbackMoreInfoSelector).addClass('hide');
+       
         $.ajax({
             url: "https://baas.kinvey.com/rpc/kid_Hk57KwIFf/custom/saveFeedback",
             method: "POST",
@@ -165,7 +186,7 @@ $(document).ready(function () {
             const footerHeight = $(feedbackProps.feedbackFormSelector).outerHeight() + $('#footer').outerHeight();
             const feedbackOffsetTop = document.body.scrollHeight - footerHeight;
 
-            // Double the feedbck form height in order to have sticky scroll when it is scrolled down to footer
+            // Double the feedback form height in order to have sticky scroll when it is scrolled down to footer
             toggleFeedbackSticky(scrollOffset - $(feedbackProps.feedbackFormSelector).outerHeight() * 2 < feedbackOffsetTop);
         }
         else {
@@ -175,15 +196,20 @@ $(document).ready(function () {
     }
 
     const init = () => {
-        if (shouldRunFeedbackTimer()) {
-            setTimeout(() => {
-                if (shouldShowFeedbackPopup()) {
-                    $(feedbackProps.feedbackFormSelector).addClass(feedbackProps.feedbackFixedClassName);
+        if (!canVote()) {
+            $(feedbackProps.feedbackFormSelector).addClass(feedbackProps.feedbackDisabledClassName);
+        }
+        else {
+            if (shouldRunFeedbackTimer()) {
+                setTimeout(() => {
+                    if (shouldShowFeedbackPopup()) {
+                        $(feedbackProps.feedbackFormSelector).addClass(feedbackProps.feedbackFixedClassName);
 
-                    window.addEventListener('scroll', onWindowScrollOrResize);
-                    window.addEventListener('resize', onWindowScrollOrResize);
-                }
-            }, 30000) // 30 sec
+                        window.addEventListener('scroll', onWindowScrollOrResize);
+                        window.addEventListener('resize', onWindowScrollOrResize);
+                    }
+                }, 30000) // 30 sec
+            }
         }
     };
 
