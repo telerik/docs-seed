@@ -1,58 +1,77 @@
+const feedbackProps = {
+    feedbackFixedClassName: 'feedback-fixed',
+    feedbackDisabledClassName: 'vote-disabled',
+    feedbackFormSelector: '.feedback-row',
+    feedbackMoreInfoSelector: '.feedback-more-info',
+    isVoting: false,
+    isClosed: false
+};
+
 $(document).ready(function () {
-    var vote;
 
-    var localStorageFeedbackKey = function() {
+    const localStorageFeedbackKey = function () {
         return 'T_DOCUMENTATION_FEEDBACK_SUBMIT' + window.location.href;
-    } ;
-
-    var saveVote = function () {
-        var currentVote = {
-            date: new Date(),
-            vote: vote,
-            url: window.location.href
-        };
-        localStorage.setItem(localStorageFeedbackKey(), JSON.stringify(currentVote));
     };
 
-    var getVote = function () {
+    const getFeedbackInfo = function () {
         return localStorage.getItem(localStorageFeedbackKey());
     };
 
-    var canVote = function () {
-        var previousVote = getVote();
+    const setFeedbackInfo = function (vote, closed) {
+        let feedbackInfo = getFeedbackInfo();
+
+        if (feedbackInfo) {
+            const currentFeedbackInfo = JSON.parse(feedbackInfo);
+            if (!vote) {
+                vote = currentFeedbackInfo.vote;
+            }
+            if (closed === undefined || closed === null) {
+                closed = currentFeedbackInfo.closed;
+            }
+
+        }
+
+        feedbackInfo = {
+            date: new Date(),
+            vote: vote,
+            closed: closed,
+            url: window.location.href
+        };
+
+        localStorage.setItem(localStorageFeedbackKey(), JSON.stringify(feedbackInfo));
+    };
+
+    const canVote = () => {
+        const previousVote = getFeedbackInfo();
         if (previousVote) {
-            var previousVoteData = JSON.parse(previousVote);
+            const previousVoteData = JSON.parse(previousVote);
             if (previousVoteData.url === window.location.href) {
                 // You can vote once per week for an article.
-                return Math.abs(new Date() - new Date(previousVoteData.date)) / 1000 / 600 >= 168;
+                return Math.abs(new Date() - new Date(previousVoteData.date)) / 1000 / 60 / 60 >= 168;
             }
         }
 
         return true;
     };
 
-    var generateUUID = function () {
-        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-            var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
-            return v.toString(16);
-        });
-    };
-
-    var setCookieByName = function (name, value) {
-        document.cookie = name + "=" + value + ";";
-    };
-
-    var getCookieByName = function (name) {
+    const getCookieByName = function (name) {
         var match = document.cookie.match(new RegExp(name + '=([^;]+)'));
         if (match) return match[1];
     };
 
-    var showMessage = function () {
-        $('.feedback-ab').html("<div class='side-title uppercase-clear'>Thank you for your feedback!</div>");
+    const onAfterVote = function () {
+        setTimeout(() => {
+            $('.feedback').html("<div class='side-title uppercase-clear'>Thank you for your feedback!</div>");
+        }, 200);
+        
+        setTimeout(() => {
+            $(feedbackProps.feedbackFormSelector).removeClass(feedbackProps.feedbackFixedClassName);
+            $(feedbackProps.feedbackFormSelector).addClass('vote-hide');
+        }, 2000)
     };
 
-    var getFeedbackData = function () {
-        var otherFeedbackText = $('#feedback-other-text-input').val().trim();
+    const getFeedbackData = function () {
+        const otherFeedbackText = $('#feedback-other-text-input').val().trim();
         return {
             email: "",
             inaccurateContent: false,
@@ -74,44 +93,26 @@ $(document).ready(function () {
         };
     };
 
-    var toggleIcons = function (clickedButton) {
-        $('svg.no-voted').show();
-        $('svg.voted').hide();
-        $(clickedButton).find('svg.voted').toggle();
-        $(clickedButton).find('svg.no-voted').toggle();
-    };
-
-    $('.feedback-ab .feedback-ab-button').on('click', function (e) {
-        if (!canVote()) {
-            e.preventDefault();
-            return;
-        }
-
-        toggleIcons(this);
-
-        var moreContent = $('.feedback-ab .feedback-ab-more-content');
-        if ($(this).hasClass('feedback-ab-no-button')) {
+    $('.feedback .feedback-vote-button').on('click', function (e) {
+        const moreContent = $(feedbackProps.feedbackMoreInfoSelector);
+        let vote = '';
+        if ($(this).hasClass('feedback-no-button')) {
             moreContent.show();
-            vote = false;
+            moreContent.addClass('show');
+            $('.feedback .feedback-question').hide();
+            vote = 'no';
         } else {
-            showMessage();
+            onAfterVote();
             moreContent.hide();
-            vote = true;
+            vote = 'yes';
         }
 
-        saveVote();
+        setFeedbackInfo(vote);
     });
 
-    $('.feedback-ab .feedback-ab-send-data-button').on('click', function () {
-        var uuid = getCookieByName("uuid");
-
-        if (!uuid) {
-            uuid = generateUUID();
-            document.cookie = "uuid=" + uuid + ";";
-        }
-
-        setCookieByName("submittingFeedback");
-
+    $('.feedback .feedback-send-data-button').on('click', function () {
+        $(feedbackProps.feedbackMoreInfoSelector).addClass('hide');
+       
         $.ajax({
             url: "https://baas.kinvey.com/rpc/kid_Hk57KwIFf/custom/saveFeedback",
             method: "POST",
@@ -124,21 +125,93 @@ $(document).ready(function () {
             }
         });
 
-        setCookieByName("feedbackSubmitted", true);
-        showMessage();
+        onAfterVote();
     });
 
-    init = function () {
-        if (!canVote()) {
-            vote = JSON.parse(getVote()).vote;
-            var voteAsString = vote ? 'yes' : 'no';
-            $('.feedback-ab-' + voteAsString + '-button svg.no-voted').hide();
-            $('.feedback-ab-' + voteAsString + '-button svg.voted').show();
+    $('.close-button-container').on('click', function () {
+        feedbackProps.isClosed = true;
+        toggleFeedbackSticky(false);
+        setFeedbackInfo(null, feedbackProps.isClosed)
+    });
 
-            $('.feedabck-ab-send-buttons-container').hide();
-
-            $('.feedback-ab-yes-button').attr("disabled", true);
-            $('.feedback-ab-no-button').attr("disabled", true);
+    const hasVoted = () => {
+        let feedbackInfo = getFeedbackInfo();
+        if (feedbackInfo) {
+            const vote = JSON.parse(feedbackInfo).vote;
+            return vote && (vote.toLowerCase() === 'yes' || vote.toLowerCase() === 'no');
         }
-    }();
+
+        return false;
+    }
+
+    const hasClosed = () => {
+        let feedbackInfo = getFeedbackInfo();
+        if (feedbackInfo) {
+            return JSON.parse(feedbackInfo).closed;
+        }
+
+        return false;
+    }
+
+    const shouldRunFeedbackTimer = () => {
+        return !(hasVoted() || hasClosed());
+    }
+
+    const getElementTopOffset = (selector) => {
+        return $(selector)[0].getBoundingClientRect().top;
+    }
+
+    const isFeedbackBarInViewPort = () => {
+        return getElementTopOffset(feedbackProps.feedbackFormSelector) < window.innerHeight;
+    }
+
+    const shouldShowFeedbackPopup = () => {
+        return !feedbackProps.isVoting && !isFeedbackBarInViewPort();
+    }
+
+    const toggleFeedbackSticky = (isSticky) => {
+        if (isSticky) {
+            $(feedbackProps.feedbackFormSelector).addClass(feedbackProps.feedbackFixedClassName);
+        } else {
+            $(feedbackProps.feedbackFormSelector).removeClass(feedbackProps.feedbackFixedClassName);
+        }
+
+        feedbackProps.isSticky = isSticky;
+    }
+
+    const onWindowScrollOrResize = () => {
+        if (!feedbackProps.isClosed) {
+            const $window = $(window);
+            const scrollOffset = $window.height() + $window.scrollTop();
+            const footerHeight = $(feedbackProps.feedbackFormSelector).outerHeight() + $('#footer').outerHeight();
+            const feedbackOffsetTop = document.body.scrollHeight - footerHeight;
+
+            // Double the feedback form height in order to have sticky scroll when it is scrolled down to footer
+            toggleFeedbackSticky(scrollOffset - $(feedbackProps.feedbackFormSelector).outerHeight() * 2 < feedbackOffsetTop);
+        }
+        else {
+            window.removeEventListener('scroll', onWindowScrollOrResize);
+            window.removeEventListener('resize', onWindowScrollOrResize);
+        }
+    }
+
+    const init = () => {
+        if (!canVote()) {
+            $(feedbackProps.feedbackFormSelector).addClass(feedbackProps.feedbackDisabledClassName);
+        }
+        else {
+            if (shouldRunFeedbackTimer()) {
+                setTimeout(() => {
+                    if (shouldShowFeedbackPopup()) {
+                        $(feedbackProps.feedbackFormSelector).addClass(feedbackProps.feedbackFixedClassName);
+
+                        window.addEventListener('scroll', onWindowScrollOrResize);
+                        window.addEventListener('resize', onWindowScrollOrResize);
+                    }
+                }, 30000) // 30 sec
+            }
+        }
+    };
+
+    init();
 });

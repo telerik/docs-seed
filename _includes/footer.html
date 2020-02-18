@@ -1,6 +1,6 @@
 <div id="footer" class="container-fluid pb-40">
-  {% if page.is_search_page != true and page.is_main != true and site.feedback_ab != true %}
-  {% include feedback.html %}
+  {% if page.is_search_page != true and page.is_main != true %}
+  {% if site.feedback_ab %}{% include feedback_ab.html %}{% else %}{% include feedback.html %}{% endif %}
   {% endif %}
   <div class="row mt-60">
     <div class="col-lg-8 col-lg-offset-2">

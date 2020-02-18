@@ -1561,86 +1561,67 @@ $border-color: #d9d9d9;
     text-transform: none !important;
 }
 
-.feedback-ab {
-    .feedback-ab-title {
-        padding-bottom: 10px;
+.feedback-more-info {
+    max-height: 0;
+    overflow: hidden;
+    padding-left: 15px;
+
+    &.show {
+        display: block;
+        transition: max-height 0.2s ease-out;
+        max-height: 205px;
     }
 
-    .feedback-ab-no-button-container {
-        margin: 0;
-        padding: 0;
+    &.hide {
+        max-height: 50px;
+        overflow: hidden;
+        transition: max-height 0.2s ease-out;
     }
 
-    .feedback-ab-button {
-        background: transparent;
-        border: none;
-        outline: none;
-        padding: 0;
+    .feedback-other-text-input {
+        color: #000000;
+        font-size: 14px;
+        font-weight: 400;
+        margin: 10px 0;
+        padding: 10px;
+        width: 100%;
+        max-width: 100%;
+        min-width: 100%;
+        height: 120px;
 
-        svg {
-            &.voted {
-                display: none;
-            }
-
-            &.feedback-vote-up-button,
-            &.feedback-vote-down-button {
-                width: 18px;
-                height: 18px;
-                fill: $accent;
-            }
-
-            &.feedback-vote-down-button {
-                margin-top: 1px;
-            }
-        }
-
-        span {
-          vertical-align: text-bottom;
+        &:focus {
+            outline: none;
         }
     }
 
-    .feedback-ab-more-content {
-        display: none;
+    .feedback-skip-button {
+        padding: 6px 0;
+        margin-left: 15px;
+        text-transform: none;
+        font-size: 14px;
+        font-weight: 400;
+        display: inline-block;
 
-        &.show {
-            display: block;
-        }
-
-        .feedback-ab-input {
-            margin: 10px 0 5px 15px;
-            padding: 5px;
-            width: 80%;
-            max-width: 80%;
-            min-width: 80%;
-            height: 80px;
-        }
-
-        .feedback-ab-skip-button {
-            padding: 6px 0;
-            margin: 0 0 0 5px;
-            font-size: 14px;
-            display: block;
+        &:hover {
+            cursor: pointer;
             text-decoration: underline;
-
-            &:hover {
-                cursor: pointer;
-                text-decoration: none;
-            }
         }
+    }
 
-        .btn-action {
-            &.feedback-ab-submit-button {
-                padding: 6px 12px;
-                margin: 0;
-                background-color: $accent;
-                color: #FFFFFF;
+    .feedback-ab-submit-button {
+        padding: 6px 12px;
+        margin: 0;
+        background-color: $accent;
+        border: 1px solid #FFFFFF;
+        color: #FFFFFF;
+        font-size: 14px;
+        font-weight: 400;
+        text-transform: none;
 
-                &:hover,
-                &:active,
-                &:focus {
-                    background-color: $code-background-color;
-                }
-            }
+        &:hover,
+        &:active,
+        &:focus {
+            background-color: rgba(255, 255, 255, 0.2);
         }
     }
 }
@@ -2197,6 +2178,53 @@ article table tr {
     padding-bottom: 13px;
     font-size: 20px;
     font-weight: 500;
+    z-index: 1100;
+
+    .close-button-container {
+        display: none;
+        position: fixed;
+        bottom: 6px;
+        right: 16px;
+        padding: 8px;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    &.vote-disabled {
+        display: none;
+    }
+
+    &.vote-hide {
+        animation-name: hideFeedback;
+        animation-duration: 0.2s;
+        animation-timing-function: ease-out;
+        animation-fill-mode: forwards;
+    }
+
+    @keyframes hideFeedback {
+        from {
+            opacity: 1;
+        }
+
+        to {
+            opacity: 0;
+        }
+    }
+
+    &.feedback-fixed {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        margin: 0;
+        z-index: 1100;
+
+        .close-button-container {
+            display: block;
+        }
+    }
 
     h4 {
         color: $feedback-foreground !important;
