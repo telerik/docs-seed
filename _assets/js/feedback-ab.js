@@ -70,6 +70,19 @@ $(document).ready(function () {
         }, 2000)
     };
 
+    var scrollToFeedbackForm = function () {
+        var $window = $(window);
+        var $feedbackForm = $(feedbackProps.feedbackFormSelector);
+        var verticalOffset = $feedbackForm.offset().top + $feedbackForm.outerHeight() - ($window.height() + $window.scrollTop());
+        if (verticalOffset >= 0) {
+            window.scrollTo({
+                left: $window.scrollLeft(),
+                top: $window.scrollTop() + verticalOffset,
+                behavior: 'smooth'
+            });
+        }
+    }
+
     var getFeedbackData = function () {
         var otherFeedbackText = $('#feedback-other-text-input').val().trim();
         return {
@@ -100,6 +113,9 @@ $(document).ready(function () {
             moreContent.show();
             moreContent.addClass('show');
             $('.feedback .feedback-question').hide();
+            $('.feedback-more-info.show').one('transitionend webkitTransitionEnd oTransitionEnd', function () {
+                scrollToFeedbackForm();
+            });
             vote = 'no';
         } else {
             onAfterVote();
@@ -194,7 +210,6 @@ $(document).ready(function () {
             window.removeEventListener('resize', onWindowScrollOrResize);
         }
     }
-
     var init = function () {
         if (!canVote()) {
             $(feedbackProps.feedbackFormSelector).addClass(feedbackProps.feedbackDisabledClassName);
