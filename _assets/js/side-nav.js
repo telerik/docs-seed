@@ -13,35 +13,38 @@ function scrollNodeIntoView(li) {
 
 function expandNavigation(url) {
     return function expand(e) {
-        if (e.node) {
-            return;
-        }
-
-        var segments = url.split("/");
-
-        var dataSource = this.dataSource;
-        var node;
-
-        var isInNavigation = true;
-        for (var i = 0; i < segments.length; i++) {
-            node = dataSource.get(segments[i]);
-            if (!node) {
-                isInNavigation = false;
-                break;
+        var that = this;
+        $(document).ready(function () {
+            if (e.node) {
+                return;
             }
-            node.set("expanded", true);
-            dataSource = node.children;
-        }
 
-        if (isInNavigation) {
-            var li = this.element.find("li[data-uid='" + node.uid + "']");
-            scrollNodeIntoView(li);
-            this.select(li);
+            var segments = url.split("/");
 
-            $('.side-nav > #page-tree > .k-group > .k-item > div > span.k-i-collapse').closest('li').addClass('expanded');
+            var dataSource = that.dataSource;
+            var node;
 
-            this.unbind("dataBound", expand);
-        }
+            var isInNavigation = true;
+            for (var i = 0; i < segments.length; i++) {
+                node = dataSource.get(segments[i]);
+                if (!node) {
+                    isInNavigation = false;
+                    break;
+                }
+                node.set("expanded", true);
+                dataSource = node.children;
+            }
+
+            if (isInNavigation) {
+                var li = that.element.find("li[data-uid='" + node.uid + "']");
+                scrollNodeIntoView(li);
+                that.select(li);
+
+                $('.side-nav > #page-tree > .k-group > .k-item > div > span.k-i-collapse').closest('li').addClass('expanded');
+
+                that.unbind("dataBound", expand);
+            }
+        });
     };
 }
 
