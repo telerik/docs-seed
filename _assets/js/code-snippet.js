@@ -1,23 +1,70 @@
 var hasDataLang = false;
+var clipboard;
 const selectedLanguageKey = "Selected_TabStrip_Language_Key";
 // Necessary for the offline docs.
 const localStorageMock = {
-    getItem: function() {
+    getItem: function () {
         return null;
     },
-    setItem: function() {
+    setItem: function () {
     }
 };
 
+function usesClipboardJs() {
+    return window.ClipboardJS && !/\[native code\]/.test(window.ClipboardJS.toString());
+};
+
+function setTooltip(btn, message) {
+    $(btn).tooltip('hide')
+        .attr('data-original-title', message)
+        .tooltip('show');
+};
+
+function hideTooltip(btn) {
+    setTimeout(function () {
+        $(btn).tooltip('hide');
+    }, 1000);
+};
+
+function addCopyButton(element) {
+    $(element.parentNode.className.indexOf("k-content") >= 0 ? $(element).parent() : element)
+        .prepend('<span class="copy-code-btn" title="Copy Code."><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="16px" height="16px" viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve"><g><polygon points="3,2 6,2 6,3 8,3 6,1 2,1 2,12 5,12 5,11 3,11"/><path d="M10,4H6v11h8V8L10,4z M7,14V5h3v3h3v6H7z"/></g></svg></span>');
+
+    if (usesClipboardJs()) {
+        if (clipboard) {
+            clipboard.destroy();
+        }
+        clipboard = new ClipboardJS('.copy-code-btn', {
+            text: function () {
+                return $(element).text();
+            }
+        });
+
+        clipboard.on('success', function (e) {
+            setTooltip(e.trigger, 'Copied!');
+            hideTooltip(e.trigger);
+        });
+
+        $('.copy-code-btn').tooltip({
+            container: 'body',
+            trigger: 'manual',
+            placement: 'top',
+            title: 'Copy Code'
+        });
+    }
+}
+
 function handleDataLangCodeSnippets() {
-    $("pre[data-lang]").each(function() {
+    $("pre[data-lang]").each(function () {
+        addCopyButton(this);
+
         if (this.parentNode.className.indexOf("k-content") >= 0) {
             return;
         }
 
         var langs = $(this).nextUntil(":not(pre)", "pre").add(this);
 
-        var tabs = $.map(langs, function(item) {
+        var tabs = $.map(langs, function (item) {
             var title = $(item).attr("data-lang").replace("tab-", "");
             return $("<li>").text(title);
         });
@@ -29,9 +76,9 @@ function handleDataLangCodeSnippets() {
         tabs[0].addClass("k-state-active");
 
         var tabstrip = $("<div>")
-        .insertBefore(this)
-        .append($("<ul>").append(tabs))
-        .append(langs);
+            .insertBefore(this)
+            .append($("<ul>").append(tabs))
+            .append(langs);
 
         langs.wrap("<div>");
 
@@ -43,11 +90,11 @@ function handleDataLangCodeSnippets() {
 
 $(function () {
     $("pre").addClass("prettyprint");
-    
+
     function getStorage() {
         return localStorage !== undefined ? localStorage : localStorageMock;
     }
-    
+
     function saveLanguage(language) {
         getStorage().setItem(selectedLanguageKey, language);
     }
@@ -112,16 +159,17 @@ $(function () {
         'ASPNET': 'html',
         'XML': 'xml',
         'TypeScript': 'commonjs',
-        'C++' : 'cpp',
-        'C' : 'c',
-        'Objective-C' : 'm',
-        'Java' : 'java'
+        'C++': 'cpp',
+        'C': 'c',
+        'Objective-C': 'm',
+        'Java': 'java'
     };
 
     if (hasDataLang) {
         handleDataLangCodeSnippets();
     } else {
         $("pre").each(function (index) {
+            addCopyButton(this);
             var langExtension = codeSampleMapper[$(this).attr('lang')];
             $(this).addClass('lang-' + langExtension).addClass("prettyprint");
         });

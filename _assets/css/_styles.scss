@@ -4630,3 +4630,24 @@ div#sidetoc {
         display: none;
     }
 }
+
+div{
+  &.k-content {
+    &.k-state-active{
+      .copy-code-btn {
+        padding:7px 10px;
+      }      
+    }
+  }
+}
+.copy-code-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding:10px;
+    z-index: 100;
+
+    &:hover {
+      cursor: pointer;
+    }
+}
