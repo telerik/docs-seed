@@ -15,26 +15,25 @@ function usesClipboardJs() {
 };
 
 function setTooltip(btn, message) {
-    $(btn).tooltip('hide')
-        .attr('data-original-title', message)
-        .tooltip('show');
+    $(btn).attr('data-original-title', message)
+          .tooltip('show');
 };
 
 function hideTooltip(btn) {
-    setTimeout(function () {
-        $(btn).tooltip('hide');
-    }, 1000);
+    $(btn).tooltip('hide');
 };
 
 function addCopyButton(element) {
-    $(element.parentNode.className.indexOf("k-content") >= 0 ? $(element).parent() : element)
+    var isCopyButtonOutsideCode = element.parentNode.className.indexOf("k-content") >= 0;
+    $(isCopyButtonOutsideCode ? $(element).parent() : element)
         .prepend('<span class="copy-code-btn" title="Copy Code."><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="16px" height="16px" viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve"><g><polygon points="3,2 6,2 6,3 8,3 6,1 2,1 2,12 5,12 5,11 3,11"/><path d="M10,4H6v11h8V8L10,4z M7,14V5h3v3h3v6H7z"/></g></svg></span>');
 
     if (usesClipboardJs()) {
         if (clipboard) {
             clipboard.destroy();
         }
-        clipboard = new ClipboardJS('.copy-code-btn', {
+        var copyButtonSelector = '.copy-code-btn';
+        clipboard = new ClipboardJS(copyButtonSelector, {
             text: function () {
                 return $(element).text();
             }
@@ -42,21 +41,28 @@ function addCopyButton(element) {
 
         clipboard.on('success', function (e) {
             setTooltip(e.trigger, 'Copied!');
-            hideTooltip(e.trigger);
+            setTimeout(function () {
+                hideTooltip(e.trigger);
+            }, 1000);
         });
 
-        $('.copy-code-btn').tooltip({
+        var copyButton = isCopyButtonOutsideCode ? $(element).prev(copyButtonSelector) : $(element).children(copyButtonSelector);
+        $(copyButton).hover(function (e) {
+            setTooltip(e.target, 'Copy code')
+        }, function (e) {
+            hideTooltip(e.target);
+        });
+        $(copyButton).tooltip({
             container: 'body',
             trigger: 'manual',
             placement: 'top',
-            title: 'Copy Code'
+            title: 'Copy code'
         });
     }
 }
 
 function handleDataLangCodeSnippets() {
     $("pre[data-lang]").each(function () {
-        addCopyButton(this);
 
         if (this.parentNode.className.indexOf("k-content") >= 0) {
             return;
@@ -169,11 +175,15 @@ $(function () {
         handleDataLangCodeSnippets();
     } else {
         $("pre").each(function (index) {
-            addCopyButton(this);
             var langExtension = codeSampleMapper[$(this).attr('lang')];
             $(this).addClass('lang-' + langExtension).addClass("prettyprint");
         });
     }
+
+    $("pre").each(function () {
+        addCopyButton(this);
+    });
+
 
     prettyPrint();
 
