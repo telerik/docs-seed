@@ -16,7 +16,7 @@ function usesClipboardJs() {
 
 function setTooltip(btn, message) {
     $(btn).attr('data-original-title', message)
-          .tooltip('show');
+        .tooltip('show');
 };
 
 function hideTooltip(btn) {
@@ -31,10 +31,10 @@ function addCopyButton(element, index) {
 
     if (usesClipboardJs()) {
         var copyButtonSelector = '.copy-code-btn';
-        var id = `${copyButtonSelector.slice(1)}-${index}`;
+        var id = copyButtonSelector.slice(1) + "-" + index;
         var copyButton = isCopyButtonOutsideCode ? $(element).prev(copyButtonSelector) : $(element).children(copyButtonSelector);
         $(copyButton).attr('id', id)
-        clipboard = new ClipboardJS(`#${id}`, {
+        clipboard = new ClipboardJS("#" + id, {
             text: function () {
                 return $(element).text();
             }
