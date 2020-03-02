@@ -1,6 +1,7 @@
 //= require jquery.min
 //= require bootstrap.min
 //= require prettify
+//= require clipboard.min
 
 //= require kendo/kendo.core.min
 //= require kendo/kendo.data.min
