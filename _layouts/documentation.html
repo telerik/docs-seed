@@ -106,7 +106,7 @@ layout: default
         <a class="btn btn-action" href='https://www.telerik.com/account/support-tickets?pid={{ site.data.support_products[site.product] }}' target="_blank" onclick="trackItemFromCurrentPage('docs-contact-support', '{{ site.product }}')">Contact support</a>
       </div>
       {% if site.edit_repo_url and page.is_search_page != true and page.editable != false %}
-      <a class="btn-edit-article" href="{{ site.edit_repo_url }}/{{ page.path }}" target="_blank">Improve this article</a>
+      <a class="btn-edit-article" href="{{ site.edit_repo_url }}/{{ page.path | replace: '.md','' }}.md" target="_blank">Improve this article</a>
       {% endif %}
     </div>
   </div>
