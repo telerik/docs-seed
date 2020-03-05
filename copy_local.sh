@@ -8,7 +8,7 @@ copy_files() {
     dirs_to_exclude="`cat ./exclude_dirs.txt`"
     robocopy . "$destination" //XD $dirs_to_exclude //XF $files_to_exclude //E
   else
-    rsync -arv --exclude-from=./.exclude $(pwd)/ "$destination" 
+    rsync -avz --exclude-from=exclude.txt $(pwd)/ "$destination" 
   fi
 
   #shopt -s extglob
