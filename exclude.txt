@@ -1,9 +1,9 @@
-.git
-.vscode
-.asset-cache
-_site
-.github
-_buildApi
+.git/
+.vscode/
+.asset-cache/
+_site/
+.github/
+_buildApi/
 README.md
 .gitignore
 .contentignore
