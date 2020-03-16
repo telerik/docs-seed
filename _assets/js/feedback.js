@@ -1,231 +1,260 @@
-window.initFeedbackForm = function (options) {
-    var generateUUID = function () {
-      return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-        var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
-        return v.toString(16);
-      });
-    };
-  
-    var setCookieByName = function (name, value) {
-      document.cookie = name + "=" + value + ";";
-    };
-  
-    var getCookieByName = function (name) {
-      var match = document.cookie.match(new RegExp(name + '=([^;]+)'));
-      if (match) return match[1];
-    };
-  
-    var container = options.container;
-    var dialog = options.dialog;
-    var formIsProcessing = false;
-  
-    var defaultFormValues = {
-      email: "",
-      inaccurateContent: false,
-      inaccurateOutdatedContentText: "",
-      otherMoreInformation: false,
-      otherMoreInformationText: "",
-      textErrors: false,
-      typosLinksElementsText: "",
-      outdatedSample: false,
-      inaccurateOutdatedCodeSamplesText: "",
-      otherFeedback: false,
-      textFeedback: "",
-      acceptFeedbackContact: false
-    };
-    var feedbackForm = $('#feedback-form');
-    var formModel = kendo.observable(defaultFormValues);
-  
-    var isFormModelEmpty = function () {
-      var isModelDefault = true;
-      for (var key in defaultFormValues) {
-        if (key === 'email') {
-          continue;
-        }
-        var isValueEqual = formModel[key] === defaultFormValues[key];
-        if (!isValueEqual) {
-          isModelDefault = false;
-          break;
-        }
-      }
-      return isModelDefault;
-    };
-  
-    var isFormModelSatisfied = function (key, formValue) {
-      var value = formModel[key];
-      if (value) {
-        return formValue && formValue.length > 0;
-      } else {
-        return true;
-      }
-    }
-  
-    //Bind model to form
-    kendo.bind($("div.feedback-dialog"), formModel);
-    //Attach to form submit to adjust variables and send request
-    var emptyFormValidator = $("#feedback-checkbox-area").kendoValidator({
-      validateOnBlur: false,
-      messages: {
-        // defines a message for the custom validation rule
-        emptyForm: "You need to provide some feedback before submitting the form."
-      },
-      rules: {
-        emptyForm: function (input) {
-          return !isFormModelEmpty();
-        }
-      }
-  
-    }).data("kendoValidator");
-  
-    var emailValidator = $("#feedback-email-input").kendoValidator({
-      validateOnBlur: false,
-      messages: {
-        email: "Invalid email address."
-      },
-      rules: {
-        email: function (input) {
-          if (input.val().length > 0) {
-            var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-            return re.test(input.val());
-          }
-          return true;
-        }
-      }
-    }).data("kendoValidator");
-  
-    var textAreaValidator = function (selector, formModelKey) {
-      return $(selector).kendoValidator({
-        validateOnBlur: false,
-        messages: {
-          emptyValidation: "Please provide some additional information.",
-          htmlValidation: "HTML tags are not allowed in this field.",
-          messageLength: "The message length must not exceed 2500 characters.",
-          whiteSpaces: "Using only white spaces is not allowed in this field.",
-          feedbackValidation: "Please select a category and provide some additional information."
-        },
-        rules: {
-          emptyValidation: function (input) {
-            var text = input.val();
-            return isFormModelSatisfied(formModelKey, text);
-          },
-          htmlValidation: function (input) {
-            var text = input.val();
-            var matches = text.match(/(<([^>]+)>)/ig);
-            if (matches != null) {
-              return false;
-            }
-            return true;
-          },
-          messageLength: function (input) {
-            var text = input.val();
-            if (text.length > 2500) {
-              return false;
-            }
-            return true;
-          },
-          whiteSpaces: function (input) {
-            var text = input.val();
-            if (text.length > 0) {
-              return $.trim(text) !== "";
-            }
-            return true;
-          },
-          feedbackValidation: function (input) {
-            var text = input.val();
-            if (text.length > 0) {
-              return formModel[formModelKey];
-            }
-            return true;
-          }
-        }
-      }).data("kendoValidator");
-    };
-  
-  
-    var canSubmitFeedback = function () {
-      return textAreaValidator("#feedback-code-sample-text-input", "outdatedSample").validate() &&
-        textAreaValidator("#feedback-more-information-text-input", "otherMoreInformation").validate() &&
-        textAreaValidator("#feedback-text-errors-text-input", "textErrors").validate() &&
-        textAreaValidator("#feedback-inaccurate-content-text-input", "inaccurateContent").validate() &&
-        textAreaValidator("#feedback-other-text-input", "otherFeedback").validate() &&
-        emptyFormValidator.validate() &&
-        emailValidator.validate();
-    };
-  
-    var vote = function() {
-        setCookieByName("feedbackSubmitted", true);
-        $(container).html("<div class='col-xs-12'><h4>Your feedback was saved. Thank you!</h4></div>");
-    };
- 
-    var closeDialog = function() {
-        $(dialog).hide()
-        .find(".dialog").addClass("dialog-enter");
-    };
- 
-    $(container)
-      .on("click", "[data-value]", function (e) {
-        e.preventDefault();
- 
-        var status = $(e.target).attr("data-value");
- 
-        if (status == "yes") {
-          $(container).html("<div class='col-xs-12'><h4>Thank you for your feedback!</h4></div>");
-        } else {
-          $(dialog).show();
- 
-          kendo.animationFrame(function () {
-            $(dialog).find(".dialog-enter").removeClass("dialog-enter");
-          });
-        }
-      });
-  
-    $(dialog).on("click", options.closeButtons, function(e) {
-        e.preventDefault();
-        
-        if ($(e.target).attr("type") == "submit") {
-            if (formIsProcessing) {
-                return;
-            }
-
-            formIsProcessing = true;
-            var uuid = getCookieByName("uuid");
-        
-            if (!uuid) {
-                uuid = generateUUID();
-                document.cookie = "uuid=" + uuid + ";";
-            }
-        
-            if (canSubmitFeedback()) {
-                setCookieByName("submittingFeedback")
-                formModel.yesNoFeedback = getCookieByName("yesNoFeedback") || "Not submitted";
-                formModel.uuid = getCookieByName("uuid");
-                formModel.path = window.location.href;
-                formModel.hasPreviousFeedback = getCookieByName("feedbackSubmitted") || "false";
-                formModel.sheetId = $("#hidden-sheet-id").val();
-                formModel.email = formModel.acceptFeedbackContact ? formModel.email : '';
-                $.ajax({
-                    url: "https://baas.kinvey.com/rpc/kid_Hk57KwIFf/custom/saveFeedback",
-                    method: "POST",
-                    dataType: "json",
-                    contentType: "application/json; charset=utf-8",
-                    data: JSON.stringify(formModel),
-                    crossDomain: true,
-                    beforeSend: function (xhr) {
-                        xhr.setRequestHeader("Authorization", "Basic " + btoa("feedback:feedback"));
-                    },
-                success: function () {
-                    vote();
-                    formIsProcessing = false;
-                }
-                });
-
-                closeDialog();
-            } else {
-                formIsProcessing = false;
-            }
-        } else {
-            vote();
-            closeDialog();
-        }
-    });
+var feedbackProps = {
+    feedbackFixedClassName: 'feedback-fixed',
+    feedbackDisabledClassName: 'vote-disabled',
+    feedbackFormSelector: '.feedback-row',
+    feedbackMoreInfoSelector: '.feedback-more-info',
+    isVoting: false,
+    isClosed: false
 };
+
+$(document).ready(function () {
+
+    var localStorageFeedbackKey = function () {
+        return 'T_DOCUMENTATION_FEEDBACK_SUBMIT' + window.location.href;
+    };
+
+    var getFeedbackInfo = function () {
+        return localStorage.getItem(localStorageFeedbackKey());
+    };
+
+    var setFeedbackInfo = function (vote, closed) {
+        var feedbackInfo = getFeedbackInfo();
+
+        if (feedbackInfo) {
+            var currentFeedbackInfo = JSON.parse(feedbackInfo);
+            if (!vote) {
+                vote = currentFeedbackInfo.vote;
+            }
+            if (closed === undefined || closed === null) {
+                closed = currentFeedbackInfo.closed;
+            }
+
+        }
+
+        feedbackInfo = {
+            date: new Date(),
+            vote: vote,
+            closed: closed,
+            url: window.location.href
+        };
+
+        localStorage.setItem(localStorageFeedbackKey(), JSON.stringify(feedbackInfo));
+
+        submitToAnalytics(vote);
+    };
+
+    var canVote = function () {
+        var previousVote = getFeedbackInfo();
+        if (previousVote) {
+            var previousVoteData = JSON.parse(previousVote);
+            if (previousVoteData.url === window.location.href) {
+                // You can vote once per week for an article.
+                return Math.abs(new Date() - new Date(previousVoteData.date)) / 1000 / 60 / 60 >= 168;
+            }
+        }
+
+        return true;
+    };
+
+    var getCookieByName = function (name) {
+        var match = document.cookie.match(new RegExp(name + '=([^;]+)'));
+        if (match) return match[1];
+    };
+
+    var onAfterVote = function () {
+        setTimeout(function () {
+            $('.feedback').html("<div class='side-title uppercase-clear'>Thank you for your feedback!</div>");
+        }, 200);
+
+        setTimeout(function () {
+            $(feedbackProps.feedbackFormSelector).removeClass(feedbackProps.feedbackFixedClassName);
+            $(feedbackProps.feedbackFormSelector).addClass('vote-hide');
+        }, 2000)
+    };
+
+    var scrollToFeedbackForm = function () {
+        var $window = $(window);
+        var $feedbackForm = $(feedbackProps.feedbackFormSelector);
+        var verticalOffset = $feedbackForm.offset().top + $feedbackForm.outerHeight() - ($window.height() + $window.scrollTop());
+        if (verticalOffset >= 0) {
+            window.scrollTo({
+                left: $window.scrollLeft(),
+                top: $window.scrollTop() + verticalOffset,
+                behavior: 'smooth'
+            });
+        }
+    }
+
+    var getFeedbackComment = function() {
+        return $('#feedback-other-text-input').val().trim();
+    }
+
+    var getFeedbackData = function () {
+        var otherFeedbackText = getFeedbackComment();
+        return {
+            email: "",
+            inaccurateContent: false,
+            inaccurateOutdatedContentText: "",
+            otherMoreInformation: false,
+            otherMoreInformationText: "",
+            textErrors: false,
+            typosLinksElementsText: "",
+            outdatedSample: false,
+            inaccurateOutdatedCodeSamplesText: "",
+            acceptFeedbackContact: false,
+            otherFeedback: otherFeedbackText !== "",
+            textFeedback: otherFeedbackText,
+            yesNoFeedback: getCookieByName("yesNoFeedback") || "Not submitted",
+            uuid: getCookieByName("uuid"),
+            path: window.location.href,
+            hasPreviousFeedback: getCookieByName("feedbackSubmitted") || "false",
+            sheetId: $("#hidden-sheet-id").val()
+        };
+    };
+
+    $('.feedback .feedback-vote-button').on('click', function (e) {
+        var moreContent = $(feedbackProps.feedbackMoreInfoSelector);
+        var vote = '';
+        if ($(this).hasClass('feedback-no-button')) {
+            moreContent.show();
+            moreContent.addClass('show');
+            $('.feedback .feedback-question').hide();
+            $('.feedback-more-info.show').one('transitionend webkitTransitionEnd oTransitionEnd', function () {
+                scrollToFeedbackForm();
+            });
+            vote = 'no';
+        } else {
+            onAfterVote();
+            moreContent.hide();
+            vote = 'yes';
+        }
+
+        setFeedbackInfo(vote);
+    });
+
+    $('.feedback .feedback-send-data-button').on('click', function () {
+        $(feedbackProps.feedbackMoreInfoSelector).addClass('hide');
+
+        if (getFeedbackComment()) {
+            $.ajax({
+                url: "https://baas.kinvey.com/rpc/kid_Hk57KwIFf/custom/saveFeedback",
+                method: "POST",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(getFeedbackData()),
+                crossDomain: true,
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader("Authorization", "Basic " + btoa("feedback:feedback"));
+                }
+            });
+        }
+
+        onAfterVote();
+    });
+
+    $('.close-button-container').on('click', function () {
+        feedbackProps.isClosed = true;
+        toggleFeedbackSticky(false);
+        setFeedbackInfo(null, feedbackProps.isClosed)
+    });
+
+    var hasVoted = function () {
+        var feedbackInfo = getFeedbackInfo();
+        if (feedbackInfo) {
+            var vote = JSON.parse(feedbackInfo).vote;
+            return vote && (vote.toLowerCase() === 'yes' || vote.toLowerCase() === 'no');
+        }
+
+        return false;
+    }
+
+    var hasClosed = function () {
+        var feedbackInfo = getFeedbackInfo();
+        if (feedbackInfo) {
+            return JSON.parse(feedbackInfo).closed;
+        }
+
+        return false;
+    }
+
+    var shouldRunFeedbackTimer = function () {
+        return !(hasVoted() || hasClosed());
+    }
+
+    var getElementTopOffset = function (selector) {
+        return $(selector)[0].getBoundingClientRect().top;
+    }
+
+    var isFeedbackBarInViewPort = function () {
+        return getElementTopOffset(feedbackProps.feedbackFormSelector) < window.innerHeight;
+    }
+
+    var shouldShowFeedbackPopup = function () {
+        return !feedbackProps.isVoting && !isFeedbackBarInViewPort();
+    }
+
+    var toggleFeedbackSticky = function (isSticky) {
+        if (isSticky) {
+            $(feedbackProps.feedbackFormSelector).addClass(feedbackProps.feedbackFixedClassName);
+        } else {
+            $(feedbackProps.feedbackFormSelector).removeClass(feedbackProps.feedbackFixedClassName);
+        }
+
+        feedbackProps.isSticky = isSticky;
+    }
+
+    var submitToAnalytics = function (vote) {
+        var dataLayer = window.dataLayer || [];
+        dataLayer.push({
+            'event': 'virtualEvent',
+            'eventCategory': 'feedback',
+            'eventAction': toPascaleCase(vote),
+            'eventLabel': window.location.href
+        });
+    }
+
+    var toPascaleCase = function (str) {
+        if (!str || str.length === 0) {
+            return '';
+        }
+
+        var lower = str.toLowerCase();
+        var firstLetter = lower[0];
+        return firstLetter.toUpperCase() + lower.slice(1);
+    }
+
+    var onWindowScrollOrResize = function () {
+        if (!feedbackProps.isClosed) {
+            var $window = $(window);
+            var scrollOffset = $window.height() + $window.scrollTop();
+            var footerHeight = $(feedbackProps.feedbackFormSelector).outerHeight() + $('#footer').outerHeight();
+            var feedbackOffsetTop = document.body.scrollHeight - footerHeight;
+
+            // Double the feedback form height in order to have sticky scroll when it is scrolled down to footer
+            toggleFeedbackSticky(scrollOffset - $(feedbackProps.feedbackFormSelector).outerHeight() * 2 < feedbackOffsetTop);
+        }
+        else {
+            window.removeEventListener('scroll', onWindowScrollOrResize);
+            window.removeEventListener('resize', onWindowScrollOrResize);
+        }
+    }
+    var init = function () {
+        if (!canVote()) {
+            $(feedbackProps.feedbackFormSelector).addClass(feedbackProps.feedbackDisabledClassName);
+        }
+        else {
+            if (shouldRunFeedbackTimer()) {
+                setTimeout(function () {
+                    if (shouldShowFeedbackPopup()) {
+                        $(feedbackProps.feedbackFormSelector).addClass(feedbackProps.feedbackFixedClassName);
+
+                        window.addEventListener('scroll', onWindowScrollOrResize);
+                        window.addEventListener('resize', onWindowScrollOrResize);
+                    }
+                }, 30000) // 30 sec
+            }
+        }
+    };
+
+    init();
+});
