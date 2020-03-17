@@ -40,14 +40,14 @@ $(document).ready(function () {
 
         localStorage.setItem(localStorageFeedbackKey(), JSON.stringify(feedbackInfo));
 
-        submitToAnalytics(vote);
+        submitToAnalytics(closed && !vote ? 'close' : vote);
     };
 
     var canVote = function () {
         var previousVote = getFeedbackInfo();
         if (previousVote) {
             var previousVoteData = JSON.parse(previousVote);
-            if (previousVoteData.url === window.location.href) {
+            if (previousVoteData.url === window.location.href && previousVoteData.vote !== null) {
                 // You can vote once per week for an article.
                 return Math.abs(new Date() - new Date(previousVoteData.date)) / 1000 / 60 / 60 >= 168;
             }
@@ -85,7 +85,7 @@ $(document).ready(function () {
         }
     }
 
-    var getFeedbackComment = function() {
+    var getFeedbackComment = function () {
         return $('#feedback-other-text-input').val().trim();
     }
 
@@ -203,12 +203,12 @@ $(document).ready(function () {
         feedbackProps.isSticky = isSticky;
     }
 
-    var submitToAnalytics = function (vote) {
+    var submitToAnalytics = function (data) {
         var dataLayer = window.dataLayer || [];
         dataLayer.push({
             'event': 'virtualEvent',
             'eventCategory': 'feedback',
-            'eventAction': toPascaleCase(vote),
+            'eventAction': toPascaleCase(data),
             'eventLabel': window.location.href
         });
     }
