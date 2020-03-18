@@ -36,10 +36,9 @@
         {% if site.enable_dojo == true %}
         {% javascript "dojo" %}
         {% endif %}
-        <script src="https://cdn.cookielaw.org/consent/2fffb1c2-c64a-4fcc-bc19-a4adecbc5ebf.js" type="text/javascript" charset="UTF-8"></script> 
         <!-- Google Tag Manager -->
         {% if site.google_tag_manager %} {% assign gtm_id = site.google_tag_manager %} {% else %} {% assign gtm_id = 'GTM-6X92' %} {% endif %}
-        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        <script type="text/plain" className="optanon-category-1">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
         new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
         j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
@@ -108,7 +107,7 @@
 </div>
 
 {% include footer.html %}
-
+<script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" data-language="en" type="text/javascript" charset="UTF-8" {% if site.progress_hosting == true %} data-domain-script="f9397248-1dbe-47fc-9dbf-c50e7dd51096" {% else %} data-domain-script="3dfce4f2-dab6-4128-9f33-df7e0597da82" {%endif%}></script>
 <script src="https://da189i1jfloii.cloudfront.net/js/kinvey-html5-sdk-3.10.1.min.js"></script>
 </body>
 </html>
