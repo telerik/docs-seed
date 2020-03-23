@@ -36,7 +36,7 @@
         {% if site.enable_dojo == true %}
         {% javascript "dojo" %}
         {% endif %}
-        <script src="https://cdn.cookielaw.org/consent/2fffb1c2-c64a-4fcc-bc19-a4adecbc5ebf.js" type="text/javascript" charset="UTF-8"></script> 
+        <script {% if site.progress_hosting != true %} src="https://cdn.cookielaw.org/consent/2fffb1c2-c64a-4fcc-bc19-a4adecbc5ebf.js" {% else %} src="https://cdn.cookielaw.org/consent/8ebb7aa7-ac5d-4c35-99be-fc4ca685cb01.js" {% endif %} type="text/javascript" charset="UTF-8"></script> 
         <!-- Google Tag Manager -->
         {% if site.google_tag_manager %} {% assign gtm_id = site.google_tag_manager %} {% else %} {% assign gtm_id = 'GTM-6X92' %} {% endif %}
         <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
