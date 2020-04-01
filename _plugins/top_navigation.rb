@@ -25,7 +25,8 @@ Jekyll::Hooks.register :site, :after_init do |site|
     "php-ui" => "php",
     "jsp-ui" => "jsp",
     "blazor" => "blazor-ui",
-    "ar-vr" => "vr-lab"
+    "ar-vr" => "vr-lab",
+    "tech-style-guide" => "store"
   }
 
   html = ''
