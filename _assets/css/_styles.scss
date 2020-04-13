@@ -337,6 +337,37 @@ nav.TK-Nav, .PRGS-PairNav {
     margin-top: -95px;
 }
 
+// Ribbon Announcement
+
+.SiteRibbon-text,
+.SiteRibbon-CTA {
+    display: inline;
+    vertical-align: middle;
+}
+
+.SiteRibbon {
+    margin-top: -95px;
+    top: 0;
+    position: relative;
+    padding: 20px 0 18px 0;
+    font-family: FaktSlabPro,Arial,Helvetica,sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.2;
+    text-align: center;
+    z-index: 50000;
+    color: #000;
+    background-color: #ffda3f;
+
+    .container {
+        position: relative;
+    }
+
+    + nav.TK-Nav, + .PRGS-PairNav {
+        margin-top: 0;
+    }
+}
+
 /* Main Menu */
 
 $text-color: #4a4e52;
@@ -2708,6 +2739,10 @@ $callout-bg: #d7dfe3;
 
 // md size
 @media (min-width: 992px) {
+    .SiteRibbon {
+        font-size: 20px;
+    }
+
     .live-samples .callout-tabs {
         &::after {
             display: none;
@@ -3196,6 +3231,14 @@ span.all-components-expanded-icon {
         top: -40px;
         transform: translateZ(0);
         -webkit-transform: translateZ(0);
+    }
+
+    .SiteRibbon {
+        position: sticky;
+
+        + nav.TK-Nav, + .PRGS-PairNav {
+            top: 24px;
+        }
     }
 }
 
@@ -4631,23 +4674,24 @@ div#sidetoc {
     }
 }
 
-div{
-  &.k-content {
-    &.k-state-active{
-      .copy-code-btn {
-        padding:7px 10px;
-      }      
+div {
+    &.k-content {
+        &.k-state-active {
+            .copy-code-btn {
+                padding: 7px 10px;
+            }
+        }
     }
-  }
 }
+
 .copy-code-btn {
     position: absolute;
     top: 0;
     right: 0;
-    padding:10px;
+    padding: 10px;
     z-index: 100;
 
     &:hover {
-      cursor: pointer;
+        cursor: pointer;
     }
 }
