@@ -96,7 +96,7 @@
       apiColumnsCount = {{ site.api_columns_count }};
       {% endif %}
     </script>
-
+{% if page.announcement %}{% include announcement.html %}{% endif %}
 {% include nav.html %}
 
 <div id="content">

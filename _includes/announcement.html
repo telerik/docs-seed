@@ -1,79 +1,9 @@
-<style>
-  .SiteRibbon {
-    position: relative;
-    padding: 20px 0 18px 0;
-    font-family: FaktSlabPro,Arial,Helvetica,sans-serif;
-    font-weight: 300;
-    font-size: 16px;
-    line-height: 1.2;
-    text-align: center;
-    color: #000;
-    background-color: #ffda3f;
-  }
-
-  .SiteRibbon.is-hidden {
-    display: none;
-  }
-
-  .SiteRibbon .container {
-    position: relative;
-  }
-  .SiteRibbon-text,
-  .SiteRibbon-CTA {
-    display: inline-block;
-    vertical-align: middle;
-  }
-
-  .SiteRibbon-CTA a {
-    cursor: pointer;
-  }
-
-  .SiteRibbon-x {
-    position: absolute;
-    top: 50%;
-    right: 15px;
-    width: 44px;
-    padding: 0;
-    border: 0;
-    font-family: FaktSlabPro,Arial,Helvetica,sans-serif;
-    font-weight: 300;
-    font-size: 30px;
-    line-height: 1.2;
-    background: none;
-    cursor: pointer;
-    outline: 0;
-    opacity: 1;
-    margin-top: -.5em;
-  }
-
-  .SiteRibbon-x:hover {
-    opacity: .7;
-  }
-
-  @media (min-width: 992px) {
-    font-size: 20px;
-  }
-</style>
-
-<div class="SiteRibbon is-hidden" id="announcement">
-  <div class="container">
-    <div class="u-pr5">
-      <span class="SiteRibbon-text u-fs20">
-        Say ‘no’ to Ugly Apps. Modern UI with new React, Angular and Vue components.
-        <a href="https://www.telerik.com/support/whats-new/kendo-ui?utm_medium=telerik&utm_source=yellow-ribbon&utm_campaign=kendo-ui-awareness-r118release"><strong>See our New Release!</strong></a>
-      </span>
-    </div>
-    <button type="button" class="SiteRibbon-x">×</button>
-  </div>
-</div>
-
-{% javascript "ribbon" %}
-
+<div class="SiteRibbon js-r1dt" style="display:none;"><div class="container">
+<span class="SiteRibbon-text">
+  {{page.announcement}}
+</span></div></div>
 <script>
-    $(".SiteRibbon-x")
-        .click(function() {
-            $(document.documentElement).addClass("no-announcement");
-            $(this).closest(".SiteRibbon").slideUp();
-        });
-    $(document.documentElement).toggleClass("no-announcement", $(".SiteRibbon").hasClass("is-hidden"));
+  $(document).ready(function(){
+    $('.js-r1dt').insertBefore($('#js-tlrk-nav')).end().show();
+  });
 </script>
