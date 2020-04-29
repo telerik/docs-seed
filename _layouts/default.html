@@ -70,13 +70,10 @@
         <script src="https://kendo.cdn.telerik.com/{{ site.cdnVersion | default: '2018.3.1017' }}/js/kendo.web.min.js"></script>
     </head>
 
-{% if site.environment != 'production' %}
-  {% capture environment_class %}environment-{{ site.environment }}{% endcapture %}
-{% endif %}
 {% if page.brand %}
-<body role="document" class="layout-{{ page.layout }} brand brand-{{ page.brand }} {{ environment_class }}">
+<body role="document" class="layout-{{ page.layout }} brand brand-{{ page.brand }}">
 {% else %}
-<body role="document" class="layout-{{ page.layout }} brand {{ environment_class }}">
+<body role="document" class="layout-{{ page.layout }} brand">
 {% endif %}
 
     <!-- Google Tag Manager -->
@@ -85,6 +82,7 @@
     <!-- End Google Tag Manager -->
 
     <script>
+      kinveyAppKey = {% if site.environment == 'test' or site.environment == 'dev' %} "kid_ryN3aCy9M" {% else %} "kid_Hk57KwIFf" {% endif %};
       hasDataLang = {% if site.code_lang == true %} true {% else %} false {% endif %};
       {% if site.has_web_api == true or site.has_web_api_index == true %}
       {% if page.kind == 'api'%}

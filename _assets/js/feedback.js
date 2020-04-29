@@ -135,9 +135,10 @@ $(document).ready(function () {
     $('.feedback .feedback-send-data-button').on('click', function () {
         $(feedbackProps.feedbackMoreInfoSelector).addClass('hide');
 
+        var endpoint = "https://baas.kinvey.com/rpc/" + kinveyAppKey + "/custom/saveFeedback"
         if (getFeedbackComment()) {
             $.ajax({
-                url: "https://baas.kinvey.com/rpc/kid_Hk57KwIFf/custom/saveFeedback",
+                url: endpoint,
                 method: "POST",
                 dataType: "json",
                 contentType: "application/json; charset=utf-8",
