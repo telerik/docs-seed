@@ -3228,7 +3228,7 @@ span.all-components-expanded-icon {
     nav.TK-Nav {
         position: sticky;
         position: -webkit-sticky;
-        top: -40px;
+        top: 0;
         transform: translateZ(0);
         -webkit-transform: translateZ(0);
     }
@@ -3249,6 +3249,10 @@ span.all-components-expanded-icon {
 
     #navbar {
         select {
+            display: none;
+        }
+
+        .scroll & {
             display: none;
         }
 
