@@ -718,24 +718,24 @@ $hover-text: darken($text-color, 10%);
     }
 
     .search-icon {
-        height: $line-height + $selection-size;
-        cursor: pointer;
+      height: $line-height + $selection-size;
+      cursor: pointer;
 
-        path {
-            fill: $text-color;
-            transition: fill .2s;
-        }
+      path {
+          fill: $text-color;
+          transition: fill .2s;
+      }
 
-        &::after {
-            visibility: hidden;
-        }
+      &::after {
+          visibility: hidden;
+      }
 
-        &:hover path,
-        &:active path,
-        &:focus path {
-            fill: $accent;
-        }
-    }
+      &:hover path,
+      &:active path,
+      &:focus path {
+          fill: $accent;
+      }
+  }
 
     .nav-button a {
         background-color: $accent-solid;

@@ -108,12 +108,51 @@ function setSideNavPosition() {
     sideNavigation.css('bottom', bottom);
 }
 
+var isNavigationLoadRequested = false;
+function ensureNavigationLoaded() {
+    if (!isNavigationLoadRequested) {
+        isNavigationLoadRequested = true;
+        $("#page-tree").kendoTreeView({
+            dataSource: new kendo.data.HierarchicalDataSource({
+                transport: {
+                    read: {
+                        url: navigationPath,
+                        dataType: "json"
+                    }
+                },
+                schema: {
+                    model: {
+                        id: "path",
+                        children: "items",
+                        hasChildren: "items"
+                    }
+                }
+            }),
+            messages: {
+                loading: " "
+            },
+            select: preventParentSelection,
+            template: navigationTemplate(navigationTemplatePath),
+            dataBound: function () {
+                expandNavigation(navigationItemToExpand);
+                setSideNavPosition();
+            }
+        });
+    }
+}
+
+function shouldLoadNavigationOnLoad() {
+    return window.screen.width <= 768;
+}
+
 $(function () {
     $(window).scroll(setSideNavPosition)
         .resize(setSideNavPosition);
 
     $(document).ready(function () {
-        setSideNavPosition();
+        if (!shouldLoadNavigationOnLoad()) {
+            ensureNavigationLoaded();
+        }
     });
 });
 

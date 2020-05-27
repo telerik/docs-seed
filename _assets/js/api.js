@@ -10,9 +10,9 @@ var MINIMUM_CHILDREN_COUNT = 6;
 var COLUMN_HEIGHT_TOLLERANCE = 40;
 var filterControl = null;
 var previousSearch = "";
-var isMainApiPage = false;
-var hasWebApiData = false;
-var apiColumnsCount;
+isMainApiPage = false;
+hasWebApiData = false;
+apiColumnsCount;
 
 function getApiCategoryAndIndex(values) {
     var startIndex = -1;

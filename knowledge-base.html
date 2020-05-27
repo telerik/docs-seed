@@ -46,10 +46,10 @@ res_type: kb
             </div>
             
             <script>
-                var gcsInstance = '{{site.gcs_engine}}';
-                var gcsKey = '{{site.gcs_api_key}}';
+                gcsInstance = '{{site.gcs_engine}}';
+                gcsKey = '{{site.gcs_api_key}}';
+                var isKbPortalRoot = true;
                 siteHasKbPortal = true; 
-                isKbPortalRoot = true;
                 isKbPage = true;
                 hasApiReference = {% if site.has_api_reference != false %} true {% else %} false {% endif %};
             </script>

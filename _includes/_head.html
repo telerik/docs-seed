@@ -1,0 +1,24 @@
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="turbolinks-root" content="{{site.baseurl}}/">
+  <title>{% if page.title_prefix %}{{ page.title_prefix }} | {% endif %}{{ page.page_title | default: page.title }}{% if site.use_product_in_title != false %} | {{ site.product }} {% endif %}</title>
+  <meta name="description" content="{{ page.description | parse_front_matter }}" />
+  {% if page.res_type %}<meta name="restype" content="{{ page.res_type }}">{% else %}<meta name="restype" content="documentation">{% endif %}
+  <link rel="shortcut icon" href="{{site.baseurl}}/favicon.ico"/>
+
+  <link rel="preconnect" href="https://www.google-analytics.com" />
+  <link rel="preconnect" href="https://www.googletagmanager.com" />
+  <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+
+  {% if site.main_theme %}{% stylesheet "bundle-{{ site.main_theme }}" %}{% else %}{% stylesheet "bundle" %}{% endif %}
+  {% if site.enable_dojo == true %}{% stylesheet "dojo" %}{% endif %}
+  {% if page.kind == "api" %} 
+  {% if site.has_web_api == true or site.has_web_api_index == true %} {% stylesheet "api" %} {% endif %}
+  {% if page.has_api_toc == true %}{% stylesheet "api-toc" %}{% endif %}
+  {% endif %}
+  {% if site.platforms.size > 0 %} {% stylesheet "platform_styles" %} {% endif %}
+</head>

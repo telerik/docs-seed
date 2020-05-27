@@ -1,4 +1,4 @@
-var hasDataLang = false;
+hasDataLang = false;
 var clipboard;
 const selectedLanguageKey = "Selected_TabStrip_Language_Key";
 // Necessary for the offline docs.
