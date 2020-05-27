@@ -1,8 +1,8 @@
 module Reading
   class RegionCodeTabStripGenerator < Jekyll::Generator
 		def generate(site)					
-			@headerSearchPattern = /####\s{1,}(__|\*\*)?\[?(VB|VB.NET|C#|XAML|SQL|XML)\]?\s*.*/ 
-			@snippetSearchPattern = /####\s{1,}(__|\*\*)?\[?(VB|VB.NET|C#|XAML|SQL|XML)\]?\s*.*\s*(>\n*)*{{region\s.*}}\n*\r*((?!{{endregion}}).*\n*\r*\s*)+?(>?{{endregion}})/ # gets the whole snippet portion - header + region tags + code snippet 			
+			@headerSearchPattern = /####\s{1,}(__|\*\*)?\[?(VB|VB.NET|C#|F#|XAML|SQL|XML)\]?\s*.*/ 
+			@snippetSearchPattern = /####\s{1,}(__|\*\*)?\[?(VB|VB.NET|C#|F#|XAML|SQL|XML)\]?\s*.*\s*(>\n*)*{{region\s.*}}\n*\r*((?!{{endregion}}).*\n*\r*\s*)+?(>?{{endregion}})/ # gets the whole snippet portion - header + region tags + code snippet 			
 			@regionsPattern = /{{region\s.*}}(.*\n*\r*\s*)+?(>?{{endregion}})/ # gets the region tags and the content between them
 			@regionStartPattern = /{{region\s.*}}/
 			@regionEndPattern = /{{endregion}}/
@@ -89,7 +89,7 @@ module Reading
 		end
 		
 		def getLanguageFromHeader(header)			
-			headerLangPattern = /(__|\*\*)?\[?(VB.NET|VB|C#|XAML|SQL|XML)\]?/  # gets the language part of the header (no white spaces). Examples: '__[XAML]' or '__[C#]' or '__XAML', etc.
+			headerLangPattern = /(__|\*\*)?\[?(VB.NET|VB|C#|F#|XAML|SQL|XML)\]?/  # gets the language part of the header (no white spaces). Examples: '__[XAML]' or '__[C#]' or '__XAML', etc.
 			languageString = header[headerLangPattern];
 			if !languageString.nil?							
 				languageString = languageString.gsub("__", "")
@@ -102,7 +102,7 @@ module Reading
 		end
 		
 		def getTrimmedHeader(header)			
-			headerLangPattern = /####\s{1,}(__|\*\*)?\[?(VB.NET|VB|C#|XAML|SQL|XML)\]?\s*/ # gets the language part of the header (including white spaces). Examples: '__[XAML] ' or '__[C#] ' or '__XAML ', etc. 
+			headerLangPattern = /####\s{1,}(__|\*\*)?\[?(VB.NET|VB|C#|F#|XAML|SQL|XML)\]?\s*/ # gets the language part of the header (including white spaces). Examples: '__[XAML] ' or '__[C#] ' or '__XAML ', etc. 
 			languageString = header[headerLangPattern];
 			 if !languageString.nil?					
 				header = header.gsub(languageString, "")							
