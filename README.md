@@ -222,4 +222,4 @@ There is infrastructure that uses [DocFx](https://dotnet.github.io/docfx/) to ge
 
 ## New Documentation
 
-If you need to create new documentation (e.g. for a new product), please use ***docs-content-seed*** repository as an auxiliary part to this one.
+If you need to create new documentation (e.g. for a new product), please use [***docs-content-seed***](https://github.com/telerik/docs-content-seed) repository as an auxiliary part to this one.
