@@ -5,6 +5,7 @@ Contains the documentation site implementation.
 - [Troubleshooting :hankey:](#troubleshooting)
 - [Extra Features :moneybag:](#extra-features)
 - [Build API Reference](#build-api-reference)
+- [New Documentation](#new-documentation)
 
 ## Local Setup
 This section describes the best practices about what and how should be done in order to run the documentation locally.
@@ -219,4 +220,6 @@ There is infrastructure that uses [DocFx](https://dotnet.github.io/docfx/) to ge
           private protected string privateProtectedTest;
 
 
+## New Documentation
 
+If you need to create new documentation (e.g. for a new product), please use ***docs-content-seed*** repository as an auxiliary part to this one.
