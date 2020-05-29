@@ -87,7 +87,7 @@ function setSideNavPosition() {
     var $window = $(window);
     var windowHeight = $window.height();
     var scrollFold = $window.scrollTop() + windowHeight;
-    var topNavigationHeight = $('.SiteRibbon').outerHeight() + ($('nav.TK-Nav').height() || ($('.PRGS-Nav').height() + $('.PRGS-Bar').height()));
+    var topNavigationHeight = ($('.SiteRibbon').outerHeight() || 0) + ($('nav.TK-Nav').height() || ($('.PRGS-Nav').height() + $('.PRGS-Bar').height()))
     var progressBarHeight = $('aside.TK-Hat').height() || $('.PRGS-Bar').height();
 
     var top = window.scrollY > 0 ? topNavigationHeight - progressBarHeight : topNavigationHeight;
@@ -135,7 +135,6 @@ function ensureNavigationLoaded() {
             template: navigationTemplate(navigationTemplatePath),
             dataBound: function () {
                 expandNavigation(navigationItemToExpand);
-                setSideNavPosition();
             }
         });
     }
@@ -153,6 +152,7 @@ $(function () {
         if (!shouldLoadNavigationOnLoad()) {
             ensureNavigationLoaded();
         }
+        setSideNavPosition();
     });
 });
 
