@@ -52,7 +52,15 @@ $(function() {
         e.preventDefault();
         animateScrolling(this.hash);
     };
-
+    
+    // Detect hash on page load and readjust scroll offset
+    var initialHash = window.location.hash;
+    if (!!initialHash) {
+        setTimeout(function(){
+          animateScrolling(initialHash);
+        }, 100);
+    }
+    
     // animated scroll
     // Exclude the app inside the div.theme-preview since it's not in an <iframe/>,
     // leading to unwanted scrollTop when clicking on links inside the app.

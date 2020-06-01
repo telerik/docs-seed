@@ -47,7 +47,7 @@ article.api-reference {
     left: 14%;
     right: 0;
     background-color: #fff;
-    top: 100px;
+    top: 45px;
     height: 47px;
     width: 100%;
     max-width: 100%;
@@ -145,6 +145,13 @@ article.api-reference {
             }
         }
     }
+}
+
+
+@media (min-width: 1240px) {
+  .api-breadcrumbs-container {
+    top: 60px;
+  }
 }
 
 @media (min-width: 768px) and (max-width: 992px) {

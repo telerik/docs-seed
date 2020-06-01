@@ -7,7 +7,15 @@ $(function () {
         e.preventDefault();
         animateScrolling(this.hash);
     };
-
+    
+    // Detect hash on page load and readjust scroll offset
+    var initialHash = window.location.hash;
+    if (!!initialHash) {
+        setTimeout(function(){
+          animateScrolling(initialHash);
+        }, 100);
+    }
+    
     $("#markdown-toc")
         .on("click", "a", function () {
             $(".section > ul").hide();
