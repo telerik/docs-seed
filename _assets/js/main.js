@@ -11,3 +11,4 @@
 //= require side-nav
 //= require additional-content
 //= require search-results
+//= require handlers

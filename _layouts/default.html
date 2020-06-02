@@ -11,84 +11,23 @@
   {{ content }}
   <div id="push" class="pt-60 pb-40"></div> <!-- Sticky Footer -->
 </div>
-{% javascript jquery %}
-{% javascript kendo %}
-{% javascript main %}
+
+{% assign min = 65 %}
+{% assign max = 80 %}
+{% assign diff = max | minus: min %}
+{% assign randomNumber = "now" | date: "%N" %}
+<script src="{{site.baseurl}}/assets/jquery.js?{{randomNumber}}" async></script>
+<script src="{{site.baseurl}}/assets/kendo.js?{{randomNumber}}" defer></script>
+<script src="{{site.baseurl}}/assets/main.js?{{randomNumber}}" defer></script>
 {% if page.is_api %} {% javascript "api" %} {% endif %}
 {% if site.enable_dojo == true %} {% javascript "dojo" %} {% endif %}
 {% if page.kind == "api" %} {% javascript "api-toc" %}{% endif %}
 {% if site.sdk_examples %}{% stylesheet "sdk-browser" %}{% javascript sdk-browser %}{% endif %}
-{% include footer.html %}
 
-<script>
-
-  $(".read-prev").hover(function() {
-      $(".title-prev").show();
-  }, function() {
-      $(".title-prev").hide();
-  });
-
-  $(".read-next").hover(function() {
-      $(".title-next").show();
-  }, function() {
-      $(".title-next").hide();
-  });
-
-  $(".all-components").click(function() {
-    ensureNavigationLoaded();
-
-    var showComponentsClassName = 'show-components';
-    $(".all-components").toggleClass(showComponentsClassName);
-    
-    var sideNav = $('.side-nav');
-    sideNav.toggleClass(showComponentsClassName);
-    if (sideNav.hasClass(showComponentsClassName)) {
-      scrollNodeIntoView($('#page-tree').data('kendoTreeView').select());
-    }
-  });
-
-  $(".api-index").toggleClass(function() {
-    return $.grep(
-      $(this).find("ul"),
-      function(ul) { return $(ul).children().length > 20; }
-    ).length > 0 ? "api-columns" : "";
-  });
-
-  $(".api-columns > div").addClass("components pb-20 mb-20");
-
-  $(".all-components").click(function() {
-    var showComponentsClassName = 'show-components';
-    $(".all-components").toggleClass(showComponentsClassName);
-    
-    var sideNav = $('.side-nav');
-    sideNav.toggleClass(showComponentsClassName);
-    if (sideNav.hasClass(showComponentsClassName)) {
-      scrollNodeIntoView($('#page-tree').data('kendoTreeView').select());
-    }
-  });
-
-  $(".api-index").toggleClass(function() {
-    return $.grep(
-      $(this).find("ul"),
-      function(ul) { return $(ul).children().length > 20; }
-    ).length > 0 ? "api-columns" : "";
-  });
-
-  $(".api-columns > div").addClass("components pb-20 mb-20");
-  
-  $(".read-prev").hover(function() {
-      $(".title-prev").show();
-  }, function() {
-      $(".title-prev").hide();
-  });
-  $(".read-next").hover(function() {
-      $(".title-next").show();
-  }, function() {
-      $(".title-next").hide();
-  });
-</script>
-  <script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" data-language="en" type="text/javascript" charset="UTF-8" {% if site.progress_hosting == true %} data-domain-script="f9397248-1dbe-47fc-9dbf-c50e7dd51096" {% else %} data-domain-script="3dfce4f2-dab6-4128-9f33-df7e0597da82" {%endif%}></script>
+  {% include footer.html %}
+  <script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" data-language="en" type="text/javascript" charset="UTF-8" {% if site.progress_hosting == true %} data-domain-script="f9397248-1dbe-47fc-9dbf-c50e7dd51096" {% else %} data-domain-script="3dfce4f2-dab6-4128-9f33-df7e0597da82" {%endif%} async></script>
   {% include _gtm.html %}
-  {% javascript "kinvey"%}
+  <!-- {% javascript "kinvey"%} -->
+  <script src="{{site.baseurl}}/assets/kinvey.js?{{randomNumber}}" defer></script>
 </body>
 </html>
