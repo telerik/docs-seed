@@ -1,3 +1,4 @@
+{% assign randomNumber = "now" | date: "%N" %}
 <!DOCTYPE html>
 <html class="no-js">
    {% include _head.html %}
@@ -12,22 +13,17 @@
   <div id="push" class="pt-60 pb-40"></div> <!-- Sticky Footer -->
 </div>
 
-{% assign min = 65 %}
-{% assign max = 80 %}
-{% assign diff = max | minus: min %}
-{% assign randomNumber = "now" | date: "%N" %}
-<script src="{{site.baseurl}}/assets/jquery.js?{{randomNumber}}" async></script>
+<script src="{{site.baseurl}}/assets/jquery.js?{{randomNumber}}" defer></script>
 <script src="{{site.baseurl}}/assets/kendo.js?{{randomNumber}}" defer></script>
 <script src="{{site.baseurl}}/assets/main.js?{{randomNumber}}" defer></script>
-{% if page.is_api %} {% javascript "api" %} {% endif %}
-{% if site.enable_dojo == true %} {% javascript "dojo" %} {% endif %}
-{% if page.kind == "api" %} {% javascript "api-toc" %}{% endif %}
-{% if site.sdk_examples %}{% stylesheet "sdk-browser" %}{% javascript sdk-browser %}{% endif %}
+{% if page.is_api %} <script src="{{site.baseurl}}/assets/api.js?{{randomNumber}}" defer></script> {% endif %}
+{% if site.enable_dojo == true %} <script src="{{site.baseurl}}/assets/dojo.js?{{randomNumber}}" defer></script> {% endif %}
+{% if page.kind == "api" %} <script src="{{site.baseurl}}/assets/api-toc.js?{{randomNumber}}" defer></script>{% endif %}
+{% if site.sdk_examples %}<script src="{{site.baseurl}}/assets/sdk-browser.js?{{randomNumber}}" defer></script>{% stylesheet "" %}{% javascript sdk-browser %}{% endif %}
 
   {% include footer.html %}
   <script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" data-language="en" type="text/javascript" charset="UTF-8" {% if site.progress_hosting == true %} data-domain-script="f9397248-1dbe-47fc-9dbf-c50e7dd51096" {% else %} data-domain-script="3dfce4f2-dab6-4128-9f33-df7e0597da82" {%endif%} async></script>
   {% include _gtm.html %}
-  <!-- {% javascript "kinvey"%} -->
   <script src="{{site.baseurl}}/assets/kinvey.js?{{randomNumber}}" defer></script>
 </body>
 </html>
