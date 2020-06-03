@@ -31,7 +31,6 @@ npm/*
 cacert.pem
 
 /*.log
-/*.md
 /*.svg
 
 bin/

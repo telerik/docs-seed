@@ -4,22 +4,21 @@
    {% include _head.html %}
 
 <body role="document" class="layout-{{ page.layout }} brand">
-  {% include _variables.html %}
   {% if page.announcement %}{% include announcement.html %}{% endif %}
   {% include nav.html %}
-
+  {% include _variables.html %}
 <div id="content">
   {{ content }}
   <div id="push" class="pt-60 pb-40"></div> <!-- Sticky Footer -->
 </div>
 
-<script src="{{site.baseurl}}/assets/jquery.js?{{randomNumber}}" defer></script>
+<script src="{{site.baseurl}}/assets/{{'jquery.js' | asset_url}}?{{randomNumber}}" defer></script>
 <script src="{{site.baseurl}}/assets/kendo.js?{{randomNumber}}" defer></script>
 <script src="{{site.baseurl}}/assets/main.js?{{randomNumber}}" defer></script>
 {% if page.is_api %} <script src="{{site.baseurl}}/assets/api.js?{{randomNumber}}" defer></script> {% endif %}
 {% if site.enable_dojo == true %} <script src="{{site.baseurl}}/assets/dojo.js?{{randomNumber}}" defer></script> {% endif %}
 {% if page.kind == "api" %} <script src="{{site.baseurl}}/assets/api-toc.js?{{randomNumber}}" defer></script>{% endif %}
-{% if site.sdk_examples %}<script src="{{site.baseurl}}/assets/sdk-browser.js?{{randomNumber}}" defer></script>{% stylesheet "" %}{% javascript sdk-browser %}{% endif %}
+{% if site.sdk_examples %}<script src="{{site.baseurl}}/assets/sdk-browser.js?{{randomNumber}}" defer></script>{% endif %}
 
   {% include footer.html %}
   <script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" data-language="en" type="text/javascript" charset="UTF-8" {% if site.progress_hosting == true %} data-domain-script="f9397248-1dbe-47fc-9dbf-c50e7dd51096" {% else %} data-domain-script="3dfce4f2-dab6-4128-9f33-df7e0597da82" {%endif%} async></script>
