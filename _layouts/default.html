@@ -9,6 +9,40 @@
         <title>{% if page.title_prefix %}{{ page.title_prefix }} | {% endif %}{{ page.page_title | default: page.title }}{% if site.use_product_in_title != false %} | {{ site.product }} {% endif %}</title>
         <meta name="description" content="{{ page.description | parse_front_matter }}" />
         {% if page.res_type %}<meta name="restype" content="{{ page.res_type }}">{% else %}<meta name="restype" content="documentation">{% endif %}
+        {% if site.progress_hosting != true %}
+        <script type="application/ld+json">
+          {
+            "@context": "https://schema.org",
+            "@type": "TechArticle",
+            "mainEntityOfPage": {
+              "@type": "WebPage",
+              "@id": "https://docs.telerik.com{{site.baseurl}}{{page.url | replace: '.html',''}}"
+            },
+            "headline": "{% if page.title_prefix %}{{ page.title_prefix }} | {% endif %}{{ page.page_title | default: page.title }}{% if site.use_product_in_title != false %} | {{ site.product }} {% endif %}",
+            "author":{
+            "@type":"Organization",
+            "name":"Telerik"},
+            "publisher": {
+              "@type": "Organization",
+              "name": "Telerik",
+              "alternateName":"Телерик",
+              "url":"https://www.telerik.com/",
+              "sameAs":["https://www.facebook.com/Telerik",
+              "https://twitter.com/Telerik",
+              "https://plus.google.com/+Telerik",
+              "https://www.linkedin.com/company/telerik",
+              "https://github.com/telerik","https://www.youtube.com/user/TelerikInc"],
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://telerik-media.s3.amazonaws.com/assets/progress-telerik-logo-black.png"
+              }
+            },
+            "description": "{{ page.description | parse_front_matter }}",
+            "about": "{{ site.product }}",
+            "isPartOf": "https://docs.telerik.com{{site.baseurl}}"
+          }
+          </script>
+          {% endif %}
         <link rel="shortcut icon" href="{{site.baseurl}}/favicon.ico"/>
 
         {% if page.needs_canonical %}
