@@ -39,7 +39,7 @@
             },
             "description": "{{ page.description | parse_front_matter }}",
             "about": "{{ site.product }}",
-            "isPartOf": "https://docs.telerik.com{{site.baseurl}}"
+            "isPartOf": "{% if site.product_url %}{{ site.product_url }}{% else %}https://www.telerik.com{% endif %}"
           }
           </script>
           {% endif %}
