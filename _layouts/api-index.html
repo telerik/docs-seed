@@ -117,8 +117,8 @@ layout: default
     <div class="support-info-area">
       <span class="additional-info-content">Not finding the help you need?</span>
       <div>
-        {% if site.support_url %}
-        <a class="btn btn-action" href='{{ site.support_url }}' target="_blank" onclick="trackItemFromCurrentPage('docs-contact-support', '{{ site.product }}')">Contact support</a>
+        {% if site.contact_support_url %}
+        <a class="btn btn-action" href='{{ site.contact_support_url }}' target="_blank" onclick="trackItemFromCurrentPage('docs-contact-support', '{{ site.product }}')">Contact support</a>
         {% else %}
         <a class="btn btn-action" href='https://www.telerik.com/account/support-tickets?pid={{ site.data.support_products[site.product] }}' target="_blank" onclick="trackItemFromCurrentPage('docs-contact-support', '{{ site.product }}')">Contact support</a>
         {% endif %}
