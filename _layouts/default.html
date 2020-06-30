@@ -6,8 +6,8 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="turbolinks-root" content="{{site.baseurl}}/">
         {% if page.title_content_format %} {% assign title_content = page.title_content_format %} {% else %} {% assign title_content = {% if page.title_prefix %}{{ page.title_prefix }} | {% endif %}{{ page.page_title | default: page.title }}{% if site.use_product_in_title != false %} | {{ site.product }} {% endif %} %} {% endif %}
-        <title>{{ title_content }}</title>
-        <meta name="description" content="{{ page.description | parse_front_matter }}" />
+        <title>{% if page.title_prefix %}{{ page.title_prefix }}{% if page.title_prefix_separator %}{{ page.title_prefix_separator }}{% else %} | {% endif %}{% endif %}{{ page.page_title | default: page.title }}{% if site.use_product_in_title != false %} | {{ site.product }} {% endif %}</title>
+        <meta name="description" content="{{ page.description | parse_front_matter }}{% if page.description_suffix %} {{ page.description_suffix }}{% endif %}" />
         {% if page.res_type %}<meta name="restype" content="{{ page.res_type }}">{% else %}<meta name="restype" content="documentation">{% endif %}
         {% if site.progress_hosting != true %}
         <script type="application/ld+json">
