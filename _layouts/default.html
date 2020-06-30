@@ -2,11 +2,11 @@
 <html class="no-js">
     <head>
         <meta charset="UTF-8">
-
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="turbolinks-root" content="{{site.baseurl}}/">
-        <title>{% if page.title_prefix %}{{ page.title_prefix }} | {% endif %}{{ page.page_title | default: page.title }}{% if site.use_product_in_title != false %} | {{ site.product }} {% endif %}</title>
+        {% if page.title_content_format %} {% assign title_content = page.title_content_format %} {% else %} {% assign title_content = {% if page.title_prefix %}{{ page.title_prefix }} | {% endif %}{{ page.page_title | default: page.title }}{% if site.use_product_in_title != false %} | {{ site.product }} {% endif %} %} {% endif %}
+        <title>{{ title_content }}</title>
         <meta name="description" content="{{ page.description | parse_front_matter }}" />
         {% if page.res_type %}<meta name="restype" content="{{ page.res_type }}">{% else %}<meta name="restype" content="documentation">{% endif %}
         {% if site.progress_hosting != true %}
@@ -18,7 +18,7 @@
               "@type": "WebPage",
               "@id": "https://docs.telerik.com{{site.baseurl}}{{page.url | replace: '.html',''}}"
             },
-            "headline": "{% if page.title_prefix %}{{ page.title_prefix }} | {% endif %}{{ page.page_title | default: page.title }}{% if site.use_product_in_title != false %} | {{ site.product }} {% endif %}",
+            "headline": "{{ title_content }}",
             "author":{
             "@type":"Organization",
             "name":"Telerik"},
