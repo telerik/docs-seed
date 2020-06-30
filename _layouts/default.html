@@ -18,7 +18,7 @@
               "@type": "WebPage",
               "@id": "https://docs.telerik.com{{site.baseurl}}{{page.url | replace: '.html',''}}"
             },
-            "headline": "{{ title_content }}",
+            "headline": "{% if page.title_prefix %}{{ page.title_prefix }}{% if page.title_prefix_separator %}{{ page.title_prefix_separator }}{% else %} | {% endif %}{% endif %}{{ page.page_title | default: page.title }}{% if site.use_product_in_title != false %} | {{ site.product }} {% endif %}",
             "author":{
             "@type":"Organization",
             "name":"Telerik"},
