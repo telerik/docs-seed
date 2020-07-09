@@ -1,13 +1,15 @@
 function scrollNodeIntoView(li) {
-    var top = li.offset().top;
-    var bottom = top + li.find(">div").outerHeight();
-
-    var container = $(".side-nav")[0];
-    var containerTop = container.scrollTop;
-    var containerHeight = container.clientHeight + parseInt(container.style.bottom, 10);
-
-    if (top < containerTop || bottom > containerHeight + containerTop) {
-        container.scrollTop = top - containerHeight / 2;
+    if(li.length) {
+        var top = li.offset().top;
+        var bottom = top + li.find(">div").outerHeight();
+        
+        var container = $(".side-nav")[0];
+        var containerTop = container.scrollTop;
+        var containerHeight = container.clientHeight + parseInt(container.style.bottom, 10);
+        
+        if (top < containerTop || bottom > containerHeight + containerTop) {
+            container.scrollTop = top - containerHeight / 2;
+        }
     }
 }
 
@@ -145,8 +147,8 @@ function shouldLoadNavigationOnLoad() {
 }
 
 $(function () {
-    $(window).scroll(setSideNavPosition)
-        .resize(setSideNavPosition);
+    window.addEventListener('scroll', setSideNavPosition, {passive: true});
+    $(window).resize(setSideNavPosition);
 
     $(document).ready(function () {
         if (!shouldLoadNavigationOnLoad()) {

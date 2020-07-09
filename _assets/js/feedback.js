@@ -249,8 +249,8 @@ $(document).ready(function () {
                     if (shouldShowFeedbackPopup()) {
                         $(feedbackProps.feedbackFormSelector).addClass(feedbackProps.feedbackFixedClassName);
 
-                        window.addEventListener('scroll', onWindowScrollOrResize);
-                        window.addEventListener('resize', onWindowScrollOrResize);
+                        window.addEventListener('scroll', onWindowScrollOrResize, {passive: true});
+                        window.addEventListener('resize', onWindowScrollOrResize, {passive: true});
                     }
                 }, 30000) // 30 sec
             }

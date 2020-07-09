@@ -1,4 +1,3 @@
-//= require jquery.min
 //= require toc-base
 
 $(function () {
