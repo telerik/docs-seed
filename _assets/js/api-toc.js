@@ -13,7 +13,7 @@ $(function () {
     if (!!initialHash) {
         setTimeout(function(){
           animateScrolling(initialHash);
-        }, 100);
+        }, 200);
     }
     
     $("#markdown-toc")

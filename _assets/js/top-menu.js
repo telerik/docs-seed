@@ -1,4 +1,4 @@
-var HEADER_HEIGHT = 100;
+var HEADER_HEIGHT = 81;
 var TELERIKBAR_HEIGHT = 70;
 var NAVBAR_HEIGHT = 76;
 var SCROLLSPY_OFFSET = TELERIKBAR_HEIGHT + 10; // 10 compensates for the space above the anchored heading
