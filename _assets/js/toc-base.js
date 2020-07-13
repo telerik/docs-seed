@@ -1,6 +1,7 @@
 function animateScrolling(hash) {
     var isApiSection = $("article.api-reference").length == 1;
-    var hasBreadCrumbs = $("p.breadcrumbs").length == 1 && $("p.breadcrumbs").text().trim() != "";
+    var breadCrumbsElement = $("p.breadcrumbs");
+    var hasBreadCrumbs = breadCrumbsElement.length == 1 && breadCrumbsElement.text().trim() != "";
     var currentScrollTop = $(window).scrollTop();
     var offset = $(hash).offset() || { top: currentScrollTop };
 
