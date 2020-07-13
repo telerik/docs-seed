@@ -1,15 +1,13 @@
 function scrollNodeIntoView(li) {
-    if(li.length) {
-        var top = li.offset().top;
-        var bottom = top + li.find(">div").outerHeight();
-        
-        var container = $(".side-nav")[0];
-        var containerTop = container.scrollTop;
-        var containerHeight = container.clientHeight + parseInt(container.style.bottom, 10);
-        
-        if (top < containerTop || bottom > containerHeight + containerTop) {
-            container.scrollTop = top - containerHeight / 2;
-        }
+    var top = li.offset().top;
+    var bottom = top + li.find(">div").outerHeight();
+
+    var container = $(".side-nav")[0];
+    var containerTop = container.scrollTop;
+    var containerHeight = container.clientHeight + parseInt(container.style.bottom, 10);
+
+    if (top < containerTop || bottom > containerHeight + containerTop) {
+        container.scrollTop = top - containerHeight / 2;
     }
 }
 
@@ -135,9 +133,7 @@ function ensureNavigationLoaded() {
             },
             select: preventParentSelection,
             template: navigationTemplate(navigationTemplatePath),
-            dataBound: function () {
-                expandNavigation(navigationItemToExpand);
-            }
+            dataBound: expandNavigation(navigationItemToExpand)
         });
     }
 }
@@ -147,7 +143,7 @@ function shouldLoadNavigationOnLoad() {
 }
 
 $(function () {
-    window.addEventListener('scroll', setSideNavPosition, {passive: true});
+    window.addEventListener('scroll', setSideNavPosition, { passive: true });
     $(window).resize(setSideNavPosition);
 
     $(document).ready(function () {
