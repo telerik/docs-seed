@@ -1,4 +1,5 @@
-//= require search-base
+//= require search-popup
+//= require kendo/kendo.treeview.min
 
 function attachToEvents() {
     $('form input[name="q"]').keydown(function (e) {
@@ -79,3 +80,43 @@ function getDataSource() {
         }
     });
 }
+
+$(function () {
+    // init(true);
+
+    var searchDataSource = getDataSource();
+
+    $("#results").kendoListView({
+        dataSource: searchDataSource,
+        template: $("#results-template").html(),
+        dataBound: function () {
+            window.scrollTo(0, 0);
+            setSideNavPosition();
+        }
+    });
+
+    $(".site-pager").kendoPager({
+        dataSource: searchDataSource,
+        buttonCount: 5,
+        responsive: false,
+        messages: {
+            previous: "Previous",
+            next: "Next",
+            display: "",
+            empty: ""
+        }
+    });
+
+    $(".results-message").kendoPager({
+        dataSource: searchDataSource,
+        numeric: false,
+        previousNext: false,
+        responsive: false,
+        messages: {
+            display: "{0}-{1} of {2} results",
+            empty: "Sorry, there were no results found. Maybe try a broader search."
+        }
+    });
+
+    setSideNavPosition();
+});

@@ -53,8 +53,7 @@ res_type: kb
                 isKbPage = true;
                 hasApiReference = {% if site.has_api_reference != false %} true {% else %} false {% endif %};
             </script>
-
-            {% javascript "knowledge-base" %}
+            <script src="{{site.baseurl}}/assets/knowledge-base.js?{{randomNumber}}" async></script>
         </div>
       </article>
     </div>

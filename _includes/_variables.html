@@ -8,6 +8,7 @@
   {% endif %}
   {% endif %}
   {% if site.api_columns_count %}var apiColumnsCount = {{ site.api_columns_count }};{% endif %}
+  var assetsFolderPath = '{{site.baseurl}}/assets';
   var mainSdkExamples = {{ site.sdk_examples | prepend: '"' | append: '"' }};
   var sdkRepoPath = {{ site.sdk_repo_path | prepend: '"' | append: '"' }};
   var sdkCdnRepoPath = {{ site.sdk_cdn_path | prepend: '"' | append: '"' }};

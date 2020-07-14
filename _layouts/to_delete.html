@@ -6,10 +6,14 @@ in this case, this file is necessary as a workaround.  -->
 
 <body>
   {% javascript jquery %}
+  {% javascript bootstrap.min %}
   {% javascript main %}
   {% javascript feedback %}
   {% javascript kinvey %}
+  {% javascript kendo %}
   {% javascript knowledge-base %}
+  {% javascript search-popup %}
+  {% javascript search-results %}
   {% if site.main_theme %}{% stylesheet "bundle-{{ site.main_theme }}" %}{% else %}{% stylesheet "bundle" %}{% endif %}
   {% if site.enable_dojo == true %}{% javascript dojo %}{% stylesheet "dojo" %}{% endif %}
   {% if site.has_web_api == true or site.has_web_api_index == true %}

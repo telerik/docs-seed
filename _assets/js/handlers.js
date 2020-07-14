@@ -1,3 +1,14 @@
+loadSearchPopup = function() {
+    var script = document.createElement('script');
+    script.setAttribute('src', assetsFolderPath + '/search-popup.js');
+    script.setAttribute('type', 'text/javascript');
+    script.setAttribute('async', 'true');
+    
+    document.getElementsByTagName("head")[0].appendChild(script);
+
+    $('#refine-search-container').off('click', loadSearchPopup);
+};
+
 $(document).ready(function () {
 
     $(".read-prev").hover(function () {
@@ -33,4 +44,6 @@ $(document).ready(function () {
     });
 
     $(".api-columns > div").addClass("components pb-20 mb-20");
+
+    $('#refine-search-container').on('click', loadSearchPopup);
 })
