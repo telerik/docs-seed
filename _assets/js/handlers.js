@@ -53,7 +53,7 @@ $(document).ready(function () {
 
   var feedbackNoButton = $('.feedback-no-button');
   if (feedbackNoButton.length) {
-    feedbackNoButton.on('click', loadScript('https://da189i1jfloii.cloudfront.net/js/kinvey-html5-sdk-3.10.1.min.js', function () {
+    feedbackNoButton.on('click', loadScript(assetsFolderPath + '/kinvey.js', function () {
       $('.feedback-no-button').off('click', loadScript);
     }));
   }
