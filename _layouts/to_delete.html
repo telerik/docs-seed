@@ -1,11 +1,10 @@
-<!-- We use hash/version cachebusting (with parameter *.js/*.css?HASH) in order
-to be able to define js scripts as async or defer. Since the jekyll doesn't output the assets
-in this case, this file is necessary as a workaround.  -->
 <!DOCTYPE html>
 <html>
-
-<body>
-  {% javascript jquery %}
+<head>
+  <!-- We use hash/version cachebusting (with parameter *.js/*.css?HASH) in order
+to be able to define js scripts as async or defer. Since the jekyll doesn't output the assets
+in this case, this file is necessary as a workaround.  -->
+{% javascript jquery %}
   {% javascript bootstrap.min %}
   {% javascript main %}
   {% javascript feedback %}
@@ -21,6 +20,9 @@ in this case, this file is necessary as a workaround.  -->
     {% stylesheet "api-toc" %}{% javascript "api-toc" %}
   {% endif %}
   {% if site.platforms.size > 0 %} {% stylesheet "platform_styles" %} {% endif %}
+</head>
+<body>
+  
 </body>
 
 </html>
