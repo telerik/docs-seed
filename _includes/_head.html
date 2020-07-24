@@ -4,9 +4,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="turbolinks-root" content="{{site.baseurl}}/">
-  <title>{% if page.title_prefix %}{{ page.title_prefix }} | {% endif %}{{ page.page_title | default: page.title }}{% if site.use_product_in_title != false %} | {{ site.product }} {% endif %}</title>
-  <meta name="description" content="{{ page.description | parse_front_matter }}" />
+  <title>{% if page.title_prefix %}{{ page.title_prefix }}{% if page.title_prefix_separator %}{{ page.title_prefix_separator }}{% else %} | {% endif %}{% endif %}{{ page.page_title | default: page.title }}{% if site.use_product_in_title != false %} | {{ site.product }} {% endif %}</title>
+  <meta name="description" content="{{ page.description | parse_front_matter }}{% if page.description_suffix %} {{ page.description_suffix }}{% endif %}" />
   {% if page.res_type %}<meta name="restype" content="{{ page.res_type }}">{% else %}<meta name="restype" content="documentation">{% endif %}
+  {% if site.progress_hosting != true %}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://docs.telerik.com{{site.baseurl}}{{page.url | replace: '.html',''}}"
+      },
+      "headline": "{% if page.title_prefix %}{{ page.title_prefix }}{% if page.title_prefix_separator %}{{ page.title_prefix_separator }}{% else %} | {% endif %}{% endif %}{{ page.page_title | default: page.title }}{% if site.use_product_in_title != false %} | {{ site.product }} {% endif %}",
+      "author":{
+      "@type":"Organization",
+      "name":"Telerik"},
+      "publisher": {
+        "@type": "Organization",
+        "name": "Telerik",
+        "alternateName":"Телерик",
+        "url":"https://www.telerik.com/",
+        "sameAs":["https://www.facebook.com/Telerik",
+        "https://twitter.com/Telerik",
+        "https://plus.google.com/+Telerik",
+        "https://www.linkedin.com/company/telerik",
+        "https://github.com/telerik","https://www.youtube.com/user/TelerikInc"],
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://telerik-media.s3.amazonaws.com/assets/progress-telerik-logo-black.png"
+        }
+      },
+      "description": "{{ page.description | parse_front_matter }}{% if page.description_suffix %} {{ page.description_suffix }}{% endif %}",
+      "about": "{{ site.product }}",
+      "isPartOf": "{% if site.product_url %}{{ site.product_url }}{% else %}https://docs.telerik.com{{site.baseurl}}{% endif %}"
+    }
+  </script>
+  {% endif %}
   <link rel="shortcut icon" href="{{site.baseurl}}/favicon.ico"/>
   <link rel="preconnect" href="https://stats.g.doubleclick.net" />
   <link rel="preconnect" href="https://www.google-analytics.com" />

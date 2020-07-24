@@ -101,10 +101,16 @@ layout: default
     {% include related-articles.html %}
 
     <div class="support-info-area">
+      {% unless site.hide_contact_support == true %}
       <span class="additional-info-content">Not finding the help you need?</span>
       <div>
+        {% if site.contact_support_url %}
+        <a class="btn btn-action" href='{{ site.contact_support_url }}' target="_blank" onclick="trackItemFromCurrentPage('docs-contact-support', '{{ site.product }}')">Contact support</a>
+        {% else %}
         <a class="btn btn-action" href='https://www.telerik.com/account/support-tickets?pid={{ site.data.support_products[site.product] }}' target="_blank" onclick="trackItemFromCurrentPage('docs-contact-support', '{{ site.product }}')">Contact support</a>
+        {% endif %}  
       </div>
+      {% endunless %}
       {% if site.edit_repo_url and page.is_search_page != true and page.editable != false %}
       <a class="btn-edit-article" href="{{ site.edit_repo_url }}/{{ page.path | replace: '.md','' }}.md" target="_blank">Improve this article</a>
       {% endif %}

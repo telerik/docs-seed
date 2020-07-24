@@ -6,7 +6,7 @@ module Jekyll
       @site = site
       @site.pages << sitemap unless file_exists?("sitemap.xml")
     end
-
+    
     #override the method from the original Jekyll-sitemap gem so it always uses our template instead of using their built-in template
     def source_path
         File.expand_path('sitemap.xml', File.dirname(__FILE__))

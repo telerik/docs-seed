@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width">
   <meta name="restype" content="api">
   <meta name="generator" content="docfx {{_docfxVersion}}">
-  {{#_description}}<meta name="description" content="{{_description}}">{{/_description}}
+  <meta name="description" content="{{>partials/description.content}}">
   <link rel="shortcut icon" href="{{_rel}}{{{_appFaviconPath}}}{{^_appFaviconPath}}favicon.ico{{/_appFaviconPath}}">
   <link rel="stylesheet" href="{{_rel}}styles/docfx.vendor.css">
   <link rel="stylesheet" href="{{_rel}}styles/docfx.css">
@@ -14,9 +14,9 @@
   <link rel="stylesheet" href="{{_rel}}styles/main.css">
  
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://cdn.cookielaw.org/consent/2fffb1c2-c64a-4fcc-bc19-a4adecbc5ebf.js" type="text/javascript" charset="UTF-8"></script> 
+  <script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" data-language="en" type="text/javascript" charset="UTF-8" data-domain-script="3dfce4f2-dab6-4128-9f33-df7e0597da82"></script>
   <!-- Google Tag Manager -->
-        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        <script type="text/plain" class="optanon-category-1">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
         new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
         j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
