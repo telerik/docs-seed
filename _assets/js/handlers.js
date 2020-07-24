@@ -1,11 +1,12 @@
 var loadedScripts = [];
 
-var loadScript = function (url, onAfterLoad) {
+var loadScript = function (url) {
     if (loadedScripts.indexOf(url) > -1) {
         return;
     }
-    console.log(url);
+
     loadedScripts.push(url);
+    
     var script = document.createElement('script');
     script.setAttribute('src', url);
     script.setAttribute('type', 'text/javascript');
@@ -15,7 +16,6 @@ var loadScript = function (url, onAfterLoad) {
 };
 
 $(document).ready(function () {
-
     $(".read-prev").hover(function () {
         $(".title-prev").show();
     }, function () {

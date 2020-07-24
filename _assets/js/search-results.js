@@ -82,8 +82,6 @@ function getDataSource() {
 }
 
 $(function () {
-    // init(true);
-
     var searchDataSource = getDataSource();
 
     $("#results").kendoListView({
