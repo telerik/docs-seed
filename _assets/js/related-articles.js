@@ -1,5 +1,6 @@
 $(function () {
     var relatedArticlesMarker = $('h1#see-also, h2#see-also, h3#see-also');
+    var isEmpty = true;
     if (relatedArticlesMarker.length) {
         var relatedArticlesList = relatedArticlesMarker.nextAll('ul').first();
         if (relatedArticlesList.length) {
@@ -7,8 +8,9 @@ $(function () {
 
             relatedArticlesMarker.remove();
             relatedArticlesList.remove();
+            isEmpty = false;
         }
-    } else {
-        $('.related-articles').toggleClass('empty', true);
-    }
+    } 
+
+    $('.related-articles').toggleClass('empty', isEmpty);
 });

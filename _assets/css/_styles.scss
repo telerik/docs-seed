@@ -1,3 +1,14 @@
+$fw-bold: 600;
+$fw-semibold: 500;
+$fw-normal: 400;
+$text-primary-color: #1F1F1F;
+$text-headings-color: #454545;
+$text-default-color: #656565;
+$btn-support-bg: transparent;
+$btn-support-color: $text-primary-color;
+$btn-support-border: #C8E2F2;
+$btn-support-border-hover: #94D7FF;
+
 html,
 body {
     text-rendering: optimizeLegibility;
@@ -19,8 +30,7 @@ blockquote,
 
 html {
     height: 100%;
-    font-size: 14px;
-    background-color: #f8f8f8;
+    background-color: #FFFFFF;
 }
 
 body {
@@ -29,7 +39,7 @@ body {
     position: relative;
     font-family: $font-regular;
     background-color: transparent;
-    color: #4f5d6c;
+    color: $text-default-color;
     transition: padding-top .1s;
     padding-top: 95px; // navbar-fixed-top height + 20px margin
 
@@ -41,10 +51,6 @@ body {
     &.scroll-small-page {
         height: auto !important;
     }
-}
-
-.turbolinks-progress-bar {
-    background-color: $accent;
 }
 
 label {
@@ -187,35 +193,32 @@ h3, .h3,
 h4, .h4,
 h5, .h5,
 h6, .h6 {
-    margin-top: 20px;
-    margin-bottom: 10px;
-    font-weight: 400;
-    color: #000000;
-    letter-spacing: -0.02em;
+    color: $text-headings-color;
+    font-family: $font-heading;
 }
 
 h1, .h1 {
-    font-size: 40px;
-    font-family: $font-heading;
-    line-height: .95em;
-    font-weight: $heading-fw;
+    font-size: 60px;
+    font-weight: $fw-semibold;
+    line-height: 54px;
 }
 
 h2, .h2 {
-    font-size: 26px;
-    font-family: $font-heading;
-    font-weight: $heading-fw;
+    font-size: 45px;
+    font-weight: $fw-semibold;
+    line-height: 44px;
 }
 
 h3, .h3 {
-    font-size: 22px;
-    font-family: $font-heading;
+    font-size: 35px;
+    font-weight: $fw-normal;
+    line-height: 34px;
 }
 
 h4, .h4 {
-    font-size: 16px;
-    font-weight: 500;
-    font-family: $font-heading;
+    font-size: 23px;
+    font-weight: $fw-bold;
+    line-height: 27px;
 }
 
 h5, .h5 {
@@ -424,7 +427,6 @@ $hover-text: darken($text-color, 10%);
         position: static;
     }
 
-    
     select {
         position: absolute;
         top: 54px;
@@ -459,24 +461,24 @@ $hover-text: darken($text-color, 10%);
     }
 
     .search-icon {
-      height: $line-height + $selection-size;
-      cursor: pointer;
+        height: $line-height + $selection-size;
+        cursor: pointer;
 
-      path {
-          fill: $text-color;
-          transition: fill .2s;
-      }
+        path {
+            fill: $text-color;
+            transition: fill .2s;
+        }
 
-      &::after {
-          visibility: hidden;
-      }
+        &::after {
+            visibility: hidden;
+        }
 
-      &:hover path,
-      &:active path,
-      &:focus path {
-          fill: $accent;
-      }
-  }
+        &:hover path,
+        &:active path,
+        &:focus path {
+            fill: $accent;
+        }
+    }
 
     .nav-button a {
         background-color: $accent-solid;
@@ -611,7 +613,7 @@ $nav-icon-color: #979797;
     white-space: normal;
     word-break: break-word;
     overflow: hidden;
-    font-family: "Roboto", Helvetica, Arial, sans-serif;
+    font-family: "Metric", Helvetica, Arial, sans-serif;
     outline: none;
 }
 
@@ -731,6 +733,7 @@ $nav-icon-color: #979797;
             }
         }
 
+        // Side navigation root items
         > div {
             .k-in, span > a {
                 text-transform: uppercase;
@@ -962,6 +965,8 @@ $nav-icon-color: #979797;
 /* Article Styles */
 
 article {
+    font-size: 20px;
+    line-height: 26px;
     position: relative;
 
     b,
@@ -976,60 +981,49 @@ article {
 
         a {
             cursor: pointer;
-            color: inherit;
+            color: $text-primary-color;
         }
     }
 
     h1, .h1 {
-        margin-top: 20px;
-        margin-bottom: 10px;
-        line-height: .95em;
+        margin-top: 40px;
+        margin-bottom: 40px;
     }
 
     h2, .h2 {
-        line-height: .95em;
-        margin-top: 20px;
-        margin-bottom: 10px;
+        margin-top: 40px;
+        margin-bottom: 24px;
     }
 
-    h3, .h3,
-    &.api-reference .editor h3 {
-        font-size: 22px;
-        line-height: 1em;
-        font-weight: 400;
-        letter-spacing: -0.02em;
-        margin-top: 20px;
-        margin-bottom: 10px;
+    h3, .h3 {
+        margin-top: 40px;
+        margin-bottom: 8px;
     }
 
     &.api-reference .editor h3 {
         margin: 0;
+        font-size: 22px;
+        line-height: 1em;
+        font-weight: 400;
+        letter-spacing: -0.02em;
     }
 
     h4, .h4 {
-        font-size: 16px;
-        line-height: 1.222em;
-        font-weight: 500;
-        letter-spacing: -0.02em;
-        margin-top: 20px;
-        margin-bottom: 10px;
+        margin-top: 24px;
+        margin-bottom: 8px;
     }
 
     h5, .h5 {
-        font-size: 13px;
-        line-height: 1.231em;
-        font-weight: 500;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        margin-top: 20px; /* 16 + 24 = 40px */
-        margin-bottom: 10px;
+        margin-top: 24px;
+        margin-bottom: 8px;
     }
 
     p {
         max-width: 1200px;
-        margin-top: 1em;
-        margin-bottom: 1em;
-        font-size: 14;
+        font-size: 20px;
+        line-height: 26px;
+        margin-top: 8px;
+        margin-bottom: 8px;
 
         a:hover,
         a:focus {
@@ -1044,11 +1038,12 @@ article {
 
     &:not(.api-reference) > p:first-child,
     &:not(.api-reference) h1 + p {
-        font-size: 16px;
-        font-weight: 400;
-        margin-top: 10px;
-        margin-bottom: 15px;
+        font-size: 22px;
+        line-height: 26px;
+        font-weight: $fw-normal;
         font-family: $font-regular;
+        margin-top: 16px;
+        margin-bottom: 16px;
     }
 
     h3 + p,
@@ -1061,7 +1056,7 @@ article {
     ul, ol {
         max-width: 1200px;
         margin: 1em 0;
-        padding: 0 0 0 2em;
+        padding: 0 0 0 12px;
 
         li {
             margin-bottom: 3px;
@@ -1081,10 +1076,11 @@ article {
     &:not(.api-reference) ul:not(.docs-tabstrip):not(.k-reset) > li:before {
         content: "";
         position: absolute;
-        top: .7em;
-        left: -20px;
-        width: 14px;
-        height: 1px;
+        top: 12px;
+        left: -10px;
+        width: 5px;
+        height: 5px;
+        border-radius: 5px;
         background-color: currentColor;
     }
 
@@ -1283,11 +1279,28 @@ $border-color: #d9d9d9;
         }
     }
 
+    .btn-contact-support {
+        color: $btn-support-color;
+        background-color: $btn-support-bg;
+        border: 1px solid $btn-support-border;
+        border-radius: 30px;
+        padding: 5px 10px;
+        font-size: 16px;
+        margin: 10px 0;
+        display: block;
+        text-align: center;
+
+        &:hover,
+        &:focus,
+        &:active {
+            border-color: $btn-support-border-hover;
+        }
+    }
+
     .btn-edit-article {
-        font-size: 14px;
+        font-size: 16px;
         position: relative;
         padding-left: 20px;
-        color: $accent;
 
         &::before {
             content: "";
@@ -1401,6 +1414,8 @@ $border-color: #d9d9d9;
 .article-toc, .related-articles, .feedback-ab {
     font-size: 14px;
     margin-bottom: 30px;
+    padding-left: 10px;
+    border-left: 1px solid rgba(101, 101, 101, 0.2);
 
     .side-title {
         padding-top: 10px;
@@ -1414,7 +1429,6 @@ $border-color: #d9d9d9;
         top: 160px;
     }
 
-    .no-js &,
     &.empty {
         display: none !important;
     }
@@ -1425,7 +1439,7 @@ $border-color: #d9d9d9;
         a {
             display: block;
             margin: 14px 0 5px;
-            border-left: 2px solid transparent;
+            border-left: 5px solid transparent;
             line-height: 1em;
             padding: 2px 0 2px 14px;
             text-decoration: none;
@@ -3088,7 +3102,7 @@ span.all-components-expanded-icon {
 
     article {
         ul, ol {
-            padding: 0 0 0 3em;
+            padding: 0 0 0 12px;
         }
     }
 
@@ -3100,15 +3114,6 @@ span.all-components-expanded-icon {
 /* ####################################################################################################### */
 
 @media (min-width: 1025px) { /* Styles for width > 1024px */
-    body,
-    article,
-    blockquote,
-    #results > div,
-    .side-nav,
-    .components {
-        font-size: 14px;
-    }
-
     #navbar {
         a {
             font-size: 13px;
@@ -3237,11 +3242,10 @@ span.all-components-expanded-icon {
     }
 
     .side-nav {
-        font-size: 14px;
-        line-height: 1.2em;
+        font-size: 16px;
 
         ul {
-            font-size: 14px;
+            font-size: 16px;
         }
 
         #page-tree > .k-group > .k-item,
@@ -3249,56 +3253,54 @@ span.all-components-expanded-icon {
             > div {
                 .k-in, span > a {
                     font-weight: 500;
-                    font-size: 14px;
-                    line-height: 1.2em;
+                    font-size: 16px;
                 }
             }
         }
     }
 
-    article {
-        h1 {
-            font-size: 56px;
-        }
+    // article {
+    //     h1 {
+    //         font-size: 56px;
+    //     }
 
-        h2 {
-            font-size: 36px;
-        }
+    //     h2 {
+    //         font-size: 36px;
+    //     }
 
-        h3 {
-            font-size: 28px;
-        }
+    //     h3 {
+    //         font-size: 28px;
+    //     }
 
-        h4 {
-            font-size: 18px;
-            font-weight: 500;
-        }
+    //     h4 {
+    //         font-size: 18px;
+    //         font-weight: 500;
+    //     }
 
-        h5 {
-            font-size: 13px;
-            font-weight: 500;
-        }
+    //     h5 {
+    //         font-size: 13px;
+    //         font-weight: 500;
+    //     }
 
-        &:not(.api-reference) > p:first-child,
-        &:not(.api-reference) h1 + p {
-            font-size: 18px;
-            font-weight: 400;
-            font-weight: 400;
-            margin-top: 15px;
-            margin-bottom: 20px;
-            font-family: $font-regular;
-        }
+    // &:not(.api-reference) > p:first-child,
+    // &:not(.api-reference) h1 + p {
+    //     font-size: 18px;
+    //     font-weight: 400;
+    //     margin-top: 15px;
+    //     margin-bottom: 20px;
+    //     font-family: $font-regular;
+    // }
 
-        h1, .h1,
-        h2, .h2,
-        h3, .h3,
-        h4, .h4,
-        h5, .h5,
-        h6, .h6 {
-            margin-top: 20px;
-            margin-bottom: 16px;
-        }
-    }
+    // h1, .h1,
+    // h2, .h2,
+    // h3, .h3,
+    // h4, .h4,
+    // h5, .h5,
+    // h6, .h6 {
+    //     margin-top: 20px;
+    //     margin-bottom: 16px;
+    // }
+    // }
 
     .components {
         font-size: 16px;
@@ -3308,7 +3310,7 @@ span.all-components-expanded-icon {
         .anchor-h1,
         .anchor-h2 {
             font-family: $font-medium;
-            font-size: 15px;
+            font-size: 16px;
         }
     }
 

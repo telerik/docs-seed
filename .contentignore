@@ -19,7 +19,6 @@
 Dockerfile
 Gemfile
 Gemfile.lock
-bs-config.js
 build-docs.sh
 copy_content.sh
 copy_local.sh
