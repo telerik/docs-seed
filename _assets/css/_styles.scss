@@ -1,13 +1,18 @@
 $fw-bold: 600;
 $fw-semibold: 500;
 $fw-normal: 400;
+
 $text-primary-color: #1F1F1F;
 $text-headings-color: #454545;
 $text-default-color: #656565;
 $btn-support-bg: transparent;
+
 $btn-support-color: $text-primary-color;
 $btn-support-border: #C8E2F2;
 $btn-support-border-hover: #94D7FF;
+
+$border-separator-color: #DEDEDE;
+$border-horizontal-color: #E6E6E6;
 
 html,
 body {
@@ -640,8 +645,17 @@ $nav-icon-color: #979797;
             outline: none;
         }
 
-        ul li span {
-            font-size: 13px;
+        ul li ul li {
+            span {
+                font-size: 16px;
+                line-height: 20px;
+            }
+
+            ul li {
+                span {
+                    font-size: 15px;
+                }
+            }
         }
     }
 
@@ -700,16 +714,13 @@ $nav-icon-color: #979797;
         display: none;
     }
 
-    .article {
-        top: 6px;
-        width: 14px;
-        height: 16px;
-        background: url(image_path("article.svg")) no-repeat 50% 50%;
-        z-index: 10;
-    }
-
     #page-tree > .k-group > .k-item,
     #page-tree-api > .k-group > .k-item {
+        > .k-last {
+            border-bottom: 1px solid $border-separator-color;
+            margin-right: 5px;
+        }
+
         div {
             position: relative;
 
@@ -735,14 +746,21 @@ $nav-icon-color: #979797;
 
         // Side navigation root items
         > div {
+            border-bottom: 1px solid $border-separator-color;
+            margin-right: 5px;
+
+            > .k-icon {
+                display: none;
+            }
+
             .k-in, span > a {
                 text-transform: uppercase;
                 transition: background-color .1s, padding .1s, font-weight .1s;
-                font-weight: 500;
+                font-weight: $fw-semibold;
                 color: $text-active-color !important;
-                font-size: 14px;
-                font-family: $font-light;
-                line-height: 1.2em;
+                font-size: 16px;
+                font-family: $font-regular;
+                line-height: 28px;
             }
 
             .k-icon {
@@ -778,7 +796,6 @@ $nav-icon-color: #979797;
 
         .k-in {
             padding-left: 48px;
-            font-weight: 500;
 
             a {
                 padding-left: 48px;
@@ -1076,7 +1093,7 @@ article {
     &:not(.api-reference) ul:not(.docs-tabstrip):not(.k-reset) > li:before {
         content: "";
         position: absolute;
-        top: 12px;
+        top: 11px;
         left: -10px;
         width: 5px;
         height: 5px;
@@ -1415,7 +1432,7 @@ $border-color: #d9d9d9;
     font-size: 14px;
     margin-bottom: 30px;
     padding-left: 10px;
-    border-left: 1px solid rgba(101, 101, 101, 0.2);
+    border-left: 1px solid $border-separator-color;
 
     .side-title {
         padding-top: 10px;
@@ -1895,29 +1912,6 @@ article table tr {
     }
 }
 
-/* Reading Status */
-
-.reading-status {
-    display: block;
-    position: fixed;
-    z-index: 1025;
-    top: -50px;
-    left: 0;
-    right: 0;
-    height: 40px;
-    padding-top: 10px;
-    font-size: 13px;
-    color: #898c92;
-    background-color: rgba(19, 21, 27, 0.94);
-    transition: top .2s;
-    transition-delay: .2s;
-
-    &.scroll {
-        top: 0px;
-        transition-delay: 0s;
-    }
-}
-
 .toc-prev-next {
     float: right;
 
@@ -2042,22 +2036,6 @@ article table tr {
 
     div.feedback > div {
         line-height: 23px;
-    }
-}
-
-.feedback-dialog {
-    position: absolute;
-    width: 500px;
-    height: 560px;
-    top: 50%;
-    left: 50%;
-    margin: -290px auto auto -250px;
-    padding: 20px;
-    background-color: #f7f7f8;
-    box-shadow: 0 2px 25px rgba(0, 0, 0, 0.2);
-
-    h3 + p {
-        color: #8a959f;
     }
 }
 
@@ -2955,19 +2933,6 @@ span.all-components-expanded-icon {
     #refine-search-label {
         display: none;
     }
-
-    .feedback-dialog {
-        position: static;
-        width: 100%;
-        height: 100%;
-        top: auto;
-        left: auto;
-        margin: 100px;
-
-        .scroll & {
-            margin-top: 0;
-        }
-    }
 }
 
 @media (max-width: 1444px) {
@@ -3043,7 +3008,6 @@ span.all-components-expanded-icon {
         display: block;
         padding-bottom: 40px;
         position: fixed;
-        box-shadow: 6px 2px 8px -6px rgba(0, 0, 0, 0.2);
 
         &.affix {
             position: fixed;
