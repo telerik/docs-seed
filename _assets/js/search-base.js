@@ -3,7 +3,7 @@ var GCSE_ELEMENT_NAME = "google-search";
 var GCSE_API_URL = "https://www.googleapis.com/customsearch/v1";
 var searchTerms = "";
 var searchItemsStorageKey = "searchItemsStorageKey";
-var searchDataSource;
+var searchDataSource, isKbPortalRoot;
 
 var searchViewModel = kendo.observable({
     isInitialized: false,
