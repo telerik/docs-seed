@@ -85,7 +85,7 @@ div#footer {
 }
 
 div#footer {
-    color: #898c92;
+    color: #000;
     background-color: $footer-bg;
     font-size: 11px;
     line-height: 1.3em;
@@ -95,7 +95,7 @@ div#footer {
     position: relative;
 
     h1, h2, h3, h4, h5, h6 {
-        color: #898c92;
+        color: #616161;
     }
 
     h6 {
@@ -111,12 +111,12 @@ div#footer {
     }
 
     a {
-        color: #fff;
+        color: #000;
         transition: color .2s;
 
         &:hover,
         &:focus {
-            color: #83dbfd;
+            opacity: 0.7;
         }
     }
 
@@ -154,27 +154,27 @@ div#footer {
     padding: 0 15px;
     text-align: center;
     transition: opacity .2s;
+
+    &:last-child {
+        padding-right: 0;
+    }
 }
 
-#footer .social-icon:last-child {
-    padding-right: 0;
-}
+.social-icon {
+    &:hover {
+        opacity: 0.5;
+    }
 
-.social-icon:hover {
-    opacity: 0.5;
-}
+    svg {
+        width: 24px;
+        height: 24px;
+        vertical-align: middle;
+    }
 
-.social-icon svg {
-    width: 24px;
-    height: 24px;
-    vertical-align: middle;
+    path {
+        fill: #1f1f1f;
+    }
 }
-
-.social-icon path {
-    fill: #fff;
-}
-
-/* Generic Styles */
 
 h1, .h1,
 h2, .h2,
@@ -1355,7 +1355,7 @@ $border-color: #d9d9d9;
     &.show {
         display: block;
         transition: max-height 0.2s ease-out;
-        max-height: 205px;
+        max-height: 240px;
     }
 
     &.hide {
@@ -1366,7 +1366,7 @@ $border-color: #d9d9d9;
 
     .feedback-other-text-input {
         color: #000000;
-        font-size: 14px;
+        font-size: 16px;
         font-weight: 400;
         margin: 10px 0;
         padding: 10px;
@@ -1381,16 +1381,27 @@ $border-color: #d9d9d9;
     }
 
     .feedback-skip-button {
-        padding: 6px 0;
+        display: inline-block;
+        border-radius: 2px;
+        text-align: center;
+        cursor: pointer;
+        text-decoration: none;
+        border-width: 2px;
+        border-style: solid;
+        transition: color .2s ease, background-color .2s ease, border-color .2s ease;
+        padding: 5px 24px;
+        font-weight: 400;
+        font-size: 19px;
+        line-height: 32px;
         margin-left: 15px;
         text-transform: none;
-        font-size: 14px;
-        font-weight: 400;
-        display: inline-block;
+        background-color: transparent;
+        border-color: #C8E2F2;
+        color: #000;
 
         &:hover {
             cursor: pointer;
-            text-decoration: underline;
+            border-color: #94D7FF;
         }
     }
 
@@ -1936,13 +1947,78 @@ article table tr {
 /* Feedback Styles */
 
 .feedback-row {
-    background-color: $feedback-background;
-    color: $feedback-foreground;
+    background-image: url(image_path("feedback-bgr.svg"));
+    background-size: cover;
+    background-repeat: repeat-x;
     padding-top: 14px;
     padding-bottom: 13px;
     font-size: 20px;
     font-weight: 500;
     z-index: 1100;
+
+    .feedback-button {
+        display: inline-block;
+        border-radius: 2px;
+        text-align: center;
+        cursor: pointer;
+        text-decoration: none;
+        border-width: 2px;
+        border-style: solid;
+        transition: color .2s ease, background-color .2s ease, border-color .2s ease;
+    }
+
+    .feedback-button-md {
+        padding: 5px 24px;
+        font-weight: 400;
+        font-size: 19px;
+        line-height: 32px;
+    }
+
+    .feedback-button-sm {
+        padding: 6.5px 17px;
+        font-weight: 500;
+        font-size: 13px;
+        line-height: 1;
+        letter-spacing: 0.13px;
+    }
+
+    .feedback-button-secondary {
+        background-color: #2E64D6;
+        color: #fff;
+        border-color: transparent;
+    }
+
+    .feedback-button-secondary:hover {
+        background-color: #2456BE;
+        color: #fff;
+    }
+
+    .feedback-no-button {
+        margin-left: 20px;
+    }
+
+    .feedback-vote-button {
+        display: inline-block;
+        border-radius: 2px;
+        text-align: center;
+        cursor: pointer;
+        text-decoration: none;
+        border-width: 2px;
+        border-style: solid;
+        transition: color .2s ease, background-color .2s ease, border-color .2s ease;
+        padding: 5px 24px;
+        font-weight: 400;
+        font-size: 19px;
+        line-height: 32px;
+        background-color: #2E64D6;
+        color: #fff;
+        border-color: transparent;
+
+        &:hover {
+            background-color: #2456BE;
+            color: #fff;
+        }
+    }
 
     .close-button-container {
         display: none;
@@ -1990,11 +2066,14 @@ article table tr {
         }
     }
 
+    h3 {
+        color: #1f1f1f !important;
+        margin: 5px 0;
+        font-weight: 500;
+    }
+
     h4 {
-        color: $feedback-foreground !important;
-        margin-top: 0;
-        margin-bottom: 0;
-        font-size: 21px;
+      color: #1f1f1f !important;
     }
 
     button {
@@ -2021,125 +2100,6 @@ article table tr {
     div.feedback > div {
         line-height: 23px;
     }
-}
-
-#feedback-container {
-    h3 {
-        color: #000000;
-    }
-
-    p {
-        font-size: 16px;
-        line-height: 1.44em;
-    }
-}
-
-#feedback-form {
-    -webkit-flex: 1;
-    -moz-flex: 1;
-    overflow: auto;
-
-    label, p {
-        font-size: 16px;
-        color: #4f5d6c;
-        line-height: 1.44em;
-    }
-
-    span.required-field:after {
-        content: "* required";
-        font-size: 11px;
-        float: right;
-    }
-
-    textarea {
-        margin: 12px 0 0px !important;
-        margin-top: 2px !important;
-    }
-
-    .checkbox__input {
-        float: left;
-    }
-
-    .checkbox__text {
-        line-height: 18px;
-        margin-left: 5px;
-    }
-
-    .feedback-extw__textarea,
-    .feedback-extw__input {
-        padding: 10px;
-        border: 1px solid #d9d9d9;
-        width: 100%;
-        box-sizing: border-box;
-        font: inherit;
-        font-style: italic;
-    }
-
-    .feedback-extw__textarea {
-        resize: none;
-    }
-
-    .feedback-extw__input,
-    .feedback-extw__textarea {
-        margin: 12px 0 6px;
-    }
-
-    span.k-tooltip {
-        border: 0;
-        color: #ff0000;
-        font-style: italic;
-        font-size: 12px;
-        padding: 0 0 6px !important;
-    }
-}
-
-#feedback-checkbox-area {
-    label {
-        display: -webkit-flex;
-        display: flex;
-        flex-direction: row;
-        align-items: flex-start;
-        margin: 5px 0 0;
-        padding: 5px 0 0;
-    }
-
-    #feedback-email-input {
-        margin-top: 20px !important;
-    }
-}
-
-#feedback-form-window {
-    height: 510px !important;
-    display: -webkit-flex;
-    display: flex;
-    font-size: 16px;
-    -webkit-flex-direction: column;
-    flex-direction: column;
-
-    h3 + p {
-        color: #8a959f;
-    }
-
-    input::-webkit-input-placeholder,
-    textarea::-webkit-input-placeholder,
-    input:-moz-placeholder,
-    textarea:-moz-placeholder,
-    input::-moz-placeholder,
-    textarea::-moz-placeholder,
-    input:-ms-input-placeholder,
-    textarea:-ms-input-placeholder {
-        color: #d9d9d9;
-    }
-}
-
-#feedback-form-window > * {
-    padding-right: 15px;
-}
-
-#feedback-extw__checkbox:after {
-    content: "";
-    display: block;
-    clear: both;
 }
 
 .button-close {
@@ -2224,7 +2184,6 @@ article table tr {
 }
 
 /* Temp styles */
-
 [data-code-language] {
     position: relative;
 
