@@ -1,7 +1,20 @@
 function animateScrolling(hash) {
+    var isApiSection = $("article.api-reference").length == 1;
+    var breadCrumbsElement = $("p.breadcrumbs");
+    var hasBreadCrumbs = breadCrumbsElement.length == 1 && breadCrumbsElement.text().trim() != "";
     var currentScrollTop = $(window).scrollTop();
     var offset = $(hash).offset() || { top: currentScrollTop };
-    var scrollOffsetCorrection = currentScrollTop == 0 ? HEADER_HEIGHT + NAVBAR_HEIGHT : NAVBAR_HEIGHT;
+
+    var scrollOffsetCorrection = NAVBAR_HEIGHT;
+    if (currentScrollTop == 0) {
+      scrollOffsetCorrection += HEADER_HEIGHT;
+      if (hasBreadCrumbs) {
+        scrollOffsetCorrection += BREADCRUMBS_HEIGHT;
+      }
+      if (isApiSection) {
+        scrollOffsetCorrection += API_SCROLL_FIX;
+      }
+    }
 
     $('html, body').animate({
         scrollTop: offset.top - scrollOffsetCorrection
