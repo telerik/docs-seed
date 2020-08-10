@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono|Roboto:300,400,500,700" />
   <link rel="stylesheet" href="{{_rel}}styles/main.css">
   <link rel="stylesheet" href="{{_rel}}styles/feedback.css">
+  <link rel="stylesheet" href="{{_rel}}styles/footer.css">
  
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" data-language="en" type="text/javascript" charset="UTF-8" data-domain-script="3dfce4f2-dab6-4128-9f33-df7e0597da82"></script>
