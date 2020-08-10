@@ -1,6 +1,7 @@
 //= require kendo
 //= require search-base
 
+var showSearchPopup;
 function initPopup(open) {
     var popup = $("#refine-search-popup").kendoPopup({
         anchor: $("#refine-search-container"),
@@ -49,5 +50,5 @@ function updateSearchLayout() {
 function getDataSource() { }
 
 $(function () {
-    initPopup(true);
+    initPopup(showSearchPopup);
 });
