@@ -187,7 +187,7 @@ $(document).ready(function () {
     }
 
     var isFeedbackBarInViewPort = function () {
-        return getElementTopOffset(feedbackProps.feedbackFormSelector) < window.innerHeight;
+        return $(feedbackProps.feedbackFormSelector).length && getElementTopOffset(feedbackProps.feedbackFormSelector) < window.innerHeight;
     }
 
     var shouldShowFeedbackPopup = function () {
