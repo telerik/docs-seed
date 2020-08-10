@@ -82,6 +82,7 @@ a.all-components {
   padding-left: 15px;
   margin-left: 15px;
   margin-right: 10px;
+  margin-top: 10px;
   background-color: #fff;
   background-repeat: no-repeat;
   background-position: left 11px top 50%;
@@ -89,7 +90,7 @@ a.all-components {
 
 span.all-components-expanded-icon {
   position: absolute;
-  top: 10px;
+  top: 20px;
   left: 80px;
   background-repeat: no-repeat;
 }
@@ -125,6 +126,65 @@ a.all-components::after {
   border-bottom-right-radius: 0;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+}
+
+
+#navbar {
+  -webkit-transition: padding-top .1s;
+  transition: padding-top .1s;
+  padding-top: 20px;
+  margin-left: 0px !important;
+  padding-right: 30px;
+  margin-bottom: 20px; }
+  .scroll #navbar {
+    background-color: #FFFFFF;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+    box-shadow: 0 4px 10px -3px rgba(0, 0, 0, 0.2); }
+
+#navbar a {
+  font-size: 15px;
+  padding: 1px 10px 0;
+  transition: line-height .1s;
+  line-height: 35px;
+  color: #4a4e52;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  letter-spacing: 0;
+  background-color: transparent;
+}
+
+#navbar li {
+  position: static;
+}
+
+#navbar select {
+  position: absolute;
+  top: 54px;
+  transition: top .1s;
+  right: 15px;
+  max-width: 45%;
+  padding: 3px 10px 4px;
+  border: 1px solid #f1f1f1;
+  background: #ffffff;
+  box-shadow: 0 1px 1px 0 transparent;
+  font-family: inherit;
+  font-size: inherit;
+  outline: none;
+}
+
+.scroll #navbar select {
+  top: 5px;
+  max-width: 30%;
+}
+
+#navbar .main-menu {
+  display: none;
 }
 
 /* Clickability fix for selector on sm devices */
