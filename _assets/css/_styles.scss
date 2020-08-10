@@ -1481,6 +1481,10 @@ $border-color: #d9d9d9;
         border: none;
     }
 
+    .k-pager-numbers-wrap select.k-dropdown {
+      display: none;
+    }
+
     .k-pager-wrap {
         background-color: transparent;
         justify-content: space-between;
