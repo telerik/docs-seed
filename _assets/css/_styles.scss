@@ -1074,7 +1074,7 @@ article {
         list-style: none;
     }
 
-    &:not(.api-reference) ul:not(.docs-tabstrip):not(.k-reset) > li:before {
+    &:not(.api-reference) ul:not(.docs-tabstrip):not(.k-reset):not(.k-pager-numbers) > li:before {
         content: "";
         position: absolute;
         top: 11px;
