@@ -58,7 +58,7 @@ $(function() {
     if (!!initialHash) {
         setTimeout(function(){
           animateScrolling(initialHash);
-        }, 100);
+        }, 200);
     }
     
     // animated scroll

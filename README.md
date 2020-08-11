@@ -13,8 +13,10 @@ This section describes the best practices about what and how should be done in o
 ### Prerequisites
 - Install Docker (Community Edititon(CE) is enough) - please use the [official Docker installation guide](https://docs.docker.com/install/). Accept the default installation instructions (use Linux containers, etc.)    
   - From the Docker Settings window, share the drive where the documentation repos reside with Docker.
-- Choose a repo you want to contribute to (e.g. [https://github.com/telerik/xaml-docs.git](https://github.com/telerik/xaml-docs.git), we will refer to that repo later as 'MY-REPO')
-- Pull the repo onto your hard drive (e.g. `"D:\Work\xaml-docs"`)
+- Choose a repo you want to contribute to (e.g. [https://github.com/telerik/xaml-docs.git](https://github.com/telerik/xaml-docs.git), we will refer to that repo later as **'MY-REPO'**)
+- Pull the documentation repo onto your hard drive (e.g. `"D:\Work\xaml-docs"`). We will refer to the local path, where the documentation repo is cloned, as **'DOCS-PATH'**.
+
+> IMPORTANT: For products such as Kendo UI for jQuery, UI for ASP.NET MVC and UI for ASP.NET Core, the documentation is part of source code repo. For these products, **'DOCS-PATH' is actually a nested folder** in the cloned repo, e.g. `"D:\Work\kendo-ui-core\docs"`.
 
 > IMPORTANT: In case you are not able to install and use Docker, please go to [Instructions (without Docker)](#instructions-without-docker), otherwise continue to the next section.
 
@@ -26,14 +28,14 @@ git clone git@github.com:telerik/docs-seed.git
 
 - Go to the directory in which you've pulled it (e.g. `D:\Work\docs-seed`)
 - Open a terminal of your choice (e.g., gitBash)
-- Run the following command by passing the MY-REPO path (the **quotes** are mandatory):
+- Run the following command by passing the **DOCS-PATH** path (the **quotes** are mandatory):
 ```bash
 sh copy_local.sh "D:\Work\xaml-docs"
 ```
 
 > If you are running the documentation on a MacOS or another OS where the *robocopy* command is unavailable, you have to pass a second  parameter to the copy_local.sh script: `sh copy_local.sh "D:\Work\xaml-docs" true`
 
-- Go to the MY-REPO directory
+- Go to the **DOCS-PATH** directory
 - Open a terminal of your choice (e.g., gitBash)
 - Execute the following bash command in the root folder (where the **Dockerfile** is located)
 ```bash
@@ -60,14 +62,14 @@ sh start-docs.sh
 git clone git@github.com:telerik/docs-seed.git
 ```
 
-- Go to the directory in which you've pulled it (e.g. `D:\Work\docs-seed`)
+- Go to the directory in which you've pulled the current (seed) repo (e.g. `D:\Work\docs-seed`)
 - Open a terminal of your choice (e.g., gitBash)
-- Run the following command by passing the MY-REPO path (the **quotes** are mandatory):
+- Run the following command by passing the **DOCS-PATH** path (the **quotes** are mandatory):
 ```bash
 sh copy_local.sh "D:\Work\xaml-docs"
 ```
 
-- Go to the MY-REPO directory
+- Go to the **DOCS-PATH** directory
 - Open a terminal of your choice (e.g., gitBash)
 - Install gems by executing `bundle install`
 - Execute the following bash command in the root folder
@@ -104,7 +106,7 @@ When you want to stop serving the docs, you may have to **repeat** the `Ctrl+C` 
 
 ### .gitignore is Always Modified
 
-The scripts that copy the seed repo to the content repo (MY-REPO), also update the `.gitignore` file so as to avoid creating unstanged changes with work files that must not be commited. If you keep getting the `.gitignore` checked out, see what the change is with the original and commit to your repo the version that matches what the tool generates.
+The scripts that copy the seed repo to the content repo (**MY-REPO**), also update the `.gitignore` file so as to avoid creating unstanged changes with work files that must not be commited. If you keep getting the `.gitignore` checked out, see what the change is with the original and commit to your repo the version that matches what the tool generates.
 
 ### Performance
 
