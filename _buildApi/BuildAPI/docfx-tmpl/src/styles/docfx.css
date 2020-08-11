@@ -10,7 +10,7 @@ body {
 
 html,
 body {
-  font-family: 'Segoe UI', Tahoma, Helvetica, sans-serif;
+  font-family: 'Metric', Tahoma, Helvetica, sans-serif;
 }
 
 /* Overrides the default which is from width 1240px, because to match our side-navigation behavior. */
@@ -1021,7 +1021,7 @@ div.embeddedvideo iframe {
   }
 }
 
-
 div.subnav {
   display: none !important;
 }
+

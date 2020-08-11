@@ -80,7 +80,7 @@ var htmlTemplate = kendo.template(
     <link rel="stylesheet" href="#: data.npmUrl #/@progress/kendo-theme-#: data.theme || "default" #/dist/all.css" />\
     <style>\
         html, body { overflow: hidden; }\
-        body { font-family: "RobotoRegular",Helvetica,Arial,sans-serif; font-size: 14px; margin: 0; }\
+        body { font-family: "Metric",Helvetica,Arial,sans-serif; font-size: 14px; margin: 0; }\
     </style>\
 </head>\
 <body>\
@@ -97,7 +97,7 @@ var plunkerTemplate = kendo.template(
     <link rel="stylesheet" href="#: data.npmUrl #/@progress/kendo-theme-#: data.theme || "default" #/dist/all.css" />\
     <style>\
         html, body { overflow: hidden; }\
-        body { font-family: "RobotoRegular",Helvetica,Arial,sans-serif; font-size: 14px; margin: 0; }\
+        body { font-family: "Metric",Helvetica,Arial,sans-serif; font-size: 14px; margin: 0; }\
         my-app { display: block; width: 100%; overflow: hidden; min-height: 80px; box-sizing: border-box; padding: 30px; }\
         my-app > .k-icon.k-i-loading { font-size: 64px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }\
         .example-wrapper { min-height: 280px; align-content: flex-start; }\

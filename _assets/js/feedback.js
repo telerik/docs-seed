@@ -187,7 +187,7 @@ $(document).ready(function () {
     }
 
     var isFeedbackBarInViewPort = function () {
-        return getElementTopOffset(feedbackProps.feedbackFormSelector) < window.innerHeight;
+        return $(feedbackProps.feedbackFormSelector).length && getElementTopOffset(feedbackProps.feedbackFormSelector) < window.innerHeight;
     }
 
     var shouldShowFeedbackPopup = function () {
@@ -249,8 +249,8 @@ $(document).ready(function () {
                     if (shouldShowFeedbackPopup()) {
                         $(feedbackProps.feedbackFormSelector).addClass(feedbackProps.feedbackFixedClassName);
 
-                        window.addEventListener('scroll', onWindowScrollOrResize);
-                        window.addEventListener('resize', onWindowScrollOrResize);
+                        window.addEventListener('scroll', onWindowScrollOrResize, {passive: true});
+                        window.addEventListener('resize', onWindowScrollOrResize, {passive: true});
                     }
                 }, 30000) // 30 sec
             }

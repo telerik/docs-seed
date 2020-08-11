@@ -4,37 +4,15 @@ layout: default
 
 <div class="container-fluid">
   <div class="row">
+    <script>
+      {% if site.has_web_api_index == true %}
+      navigationItemToExpand = "{{page.url | remove_first: '/' }}";
+      {% else %}
+      navigationItemToExpand = "{{page.parent_path}}.html";
+      {% endif %}
+    </script>
   <div class="side-nav col-sm-4 col-md-3 col-lg-2">
       <div id="page-tree"></div>
-      <script>
-      $("#page-tree").kendoTreeView({
-          dataSource: {
-              transport: {
-                  read: {
-                      url: "{{site.baseurl}}/{{page.category}}.json",
-                      dataType: "json"
-                  }
-              },
-              schema: {
-                  model: {
-                      id: "path",
-                      children: "items",
-                      hasChildren: "items"
-                  }
-              }
-          },
-          messages: {
-              loading: " "
-          },
-          select: preventParentSelection,
-          template: navigationTemplate("{{site.baseurl}}/"),
-          {% if site.has_web_api_index == true %}
-          dataBound: expandNavigation("{{page.url | remove_first: '/' }}")
-          {% else %}
-          dataBound: expandNavigation("{{page.parent_path}}.html")
-          {% endif %}
-      });
-      </script>
   </div>
   <div class="content-wrapper col-sm-8 col-sm-offset-4 col-md-offset-3 col-lg-8 col-lg-offset-2">
     <div class="row" style="overflow: hidden;">
@@ -119,9 +97,9 @@ layout: default
       <span class="additional-info-content">Not finding the help you need?</span>
       <div>
         {% if site.contact_support_url %}
-        <a class="btn btn-action" href='{{ site.contact_support_url }}' target="_blank" onclick="trackItemFromCurrentPage('docs-contact-support', '{{ site.product }}')">Contact support</a>
+        <a class="btn-contact-support" href='{{ site.contact_support_url }}' target="_blank" onclick="trackItemFromCurrentPage('docs-contact-support', '{{ site.product }}')">Contact Support</a>
         {% else %}
-        <a class="btn btn-action" href='https://www.telerik.com/account/support-tickets?pid={{ site.data.support_products[site.product] }}' target="_blank" onclick="trackItemFromCurrentPage('docs-contact-support', '{{ site.product }}')">Contact support</a>
+        <a class="btn-contact-support" href='https://www.telerik.com/account/support-tickets?pid={{ site.data.support_products[site.product] }}' target="_blank" onclick="trackItemFromCurrentPage('docs-contact-support', '{{ site.product }}')">Contact Support</a>
         {% endif %}
       </div>
       {% endunless %}
@@ -132,40 +110,3 @@ layout: default
   </div>
 </div>
 </div>
-
-<script>
-    var mainSdkExamples = {{ site.sdk_examples | prepend: '"' | append: '"' }};
-    var sdkRepoPath = {{ site.sdk_repo_path | prepend: '"' | append: '"' }};
-    var sdkCdnRepoPath = {{ site.sdk_cdn_path | prepend: '"' | append: '"' }};
-    $(".read-prev").hover(function() {
-        $(".title-prev").show();
-    }, function() {
-        $(".title-prev").hide();
-    });
-
-    $(".read-next").hover(function() {
-        $(".title-next").show();
-    }, function() {
-        $(".title-next").hide();
-    });
-
-    $(".all-components").click(function() {
-      var showComponentsClassName = 'show-components';
-      $(".all-components").toggleClass(showComponentsClassName);
-      
-      var sideNav = $('.side-nav');
-      sideNav.toggleClass(showComponentsClassName);
-      if (sideNav.hasClass(showComponentsClassName)) {
-        scrollNodeIntoView($('#page-tree').data('kendoTreeView').select());
-      }
-    });
-
-    $(".api-index").toggleClass(function() {
-      return $.grep(
-        $(this).find("ul"),
-        function(ul) { return $(ul).children().length > 20; }
-      ).length > 0 ? "api-columns" : "";
-    });
-
-    $(".api-columns > div").addClass("components pb-20 mb-20");
-</script>

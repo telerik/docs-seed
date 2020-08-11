@@ -87,7 +87,7 @@ function setSideNavPosition() {
     var $window = $(window);
     var windowHeight = $window.height();
     var scrollFold = $window.scrollTop() + windowHeight;
-    var topNavigationHeight = $('.SiteRibbon').outerHeight() + ($('nav.TK-Nav').height() || ($('.PRGS-Nav').height() + $('.PRGS-Bar').height()));
+    var topNavigationHeight = ($('.SiteRibbon').outerHeight() || 0) + ($('nav.TK-Nav').height() || ($('.PRGS-Nav').height() + $('.PRGS-Bar').height()))
     var progressBarHeight = $('aside.TK-Hat').height() || $('.PRGS-Bar').height();
 
     var top = window.scrollY > 0 ? topNavigationHeight - progressBarHeight : topNavigationHeight;
@@ -108,11 +108,48 @@ function setSideNavPosition() {
     sideNavigation.css('bottom', bottom);
 }
 
+var isNavigationLoadRequested = false;
+function ensureNavigationLoaded() {
+    if (!isNavigationLoadRequested) {
+        isNavigationLoadRequested = true;
+        $("#page-tree").kendoTreeView({
+            dataSource: new kendo.data.HierarchicalDataSource({
+                transport: {
+                    read: {
+                        url: navigationPath,
+                        dataType: "json"
+                    }
+                },
+                schema: {
+                    model: {
+                        id: "path",
+                        children: "items",
+                        hasChildren: "items"
+                    }
+                }
+            }),
+            messages: {
+                loading: " "
+            },
+            select: preventParentSelection,
+            template: navigationTemplate(navigationTemplatePath),
+            dataBound: expandNavigation(navigationItemToExpand)
+        });
+    }
+}
+
+function shouldLoadNavigationOnLoad() {
+    return window.screen.width <= 768;
+}
+
 $(function () {
-    $(window).scroll(setSideNavPosition)
-        .resize(setSideNavPosition);
+    window.addEventListener('scroll', setSideNavPosition, { passive: true });
+    $(window).resize(setSideNavPosition);
 
     $(document).ready(function () {
+        if (!shouldLoadNavigationOnLoad()) {
+            ensureNavigationLoaded();
+        }
         setSideNavPosition();
     });
 });

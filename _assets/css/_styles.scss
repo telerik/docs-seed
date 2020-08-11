@@ -19,8 +19,7 @@ blockquote,
 
 html {
     height: 100%;
-    font-size: 14px;
-    background-color: #f8f8f8;
+    background-color: #FFFFFF;
 }
 
 body {
@@ -29,7 +28,7 @@ body {
     position: relative;
     font-family: $font-regular;
     background-color: transparent;
-    color: #4f5d6c;
+    color: $text-default-color;
     transition: padding-top .1s;
     padding-top: 95px; // navbar-fixed-top height + 20px margin
 
@@ -41,10 +40,6 @@ body {
     &.scroll-small-page {
         height: auto !important;
     }
-}
-
-.turbolinks-progress-bar {
-    background-color: $accent;
 }
 
 label {
@@ -90,7 +85,7 @@ div#footer {
 }
 
 div#footer {
-    color: #898c92;
+    color: #000;
     background-color: $footer-bg;
     font-size: 11px;
     line-height: 1.3em;
@@ -100,7 +95,7 @@ div#footer {
     position: relative;
 
     h1, h2, h3, h4, h5, h6 {
-        color: #898c92;
+        color: #616161;
     }
 
     h6 {
@@ -116,12 +111,12 @@ div#footer {
     }
 
     a {
-        color: #fff;
+        color: #000;
         transition: color .2s;
 
         &:hover,
         &:focus {
-            color: #83dbfd;
+            opacity: 0.7;
         }
     }
 
@@ -159,27 +154,27 @@ div#footer {
     padding: 0 15px;
     text-align: center;
     transition: opacity .2s;
+
+    &:last-child {
+        padding-right: 0;
+    }
 }
 
-#footer .social-icon:last-child {
-    padding-right: 0;
-}
+.social-icon {
+    &:hover {
+        opacity: 0.5;
+    }
 
-.social-icon:hover {
-    opacity: 0.5;
-}
+    svg {
+        width: 24px;
+        height: 24px;
+        vertical-align: middle;
+    }
 
-.social-icon svg {
-    width: 24px;
-    height: 24px;
-    vertical-align: middle;
+    path {
+        fill: #1f1f1f;
+    }
 }
-
-.social-icon path {
-    fill: #fff;
-}
-
-/* Generic Styles */
 
 h1, .h1,
 h2, .h2,
@@ -187,35 +182,33 @@ h3, .h3,
 h4, .h4,
 h5, .h5,
 h6, .h6 {
-    margin-top: 20px;
-    margin-bottom: 10px;
-    font-weight: 400;
-    color: #000000;
-    letter-spacing: -0.02em;
+    color: $text-headings-color;
+    font-family: $font-heading;
 }
 
 h1, .h1 {
-    font-size: 40px;
-    font-family: $font-heading;
-    line-height: .95em;
-    font-weight: $heading-fw;
+    font-size: 60px;
+    font-weight: $fw-semibold;
+    line-height: 54px;
+    word-break: break-word;
 }
 
 h2, .h2 {
-    font-size: 26px;
-    font-family: $font-heading;
-    font-weight: $heading-fw;
+    font-size: 45px;
+    font-weight: $fw-semibold;
+    line-height: 44px;
 }
 
 h3, .h3 {
-    font-size: 22px;
-    font-family: $font-heading;
+    font-size: 35px;
+    font-weight: $fw-normal;
+    line-height: 34px;
 }
 
 h4, .h4 {
-    font-size: 16px;
-    font-weight: 500;
-    font-family: $font-heading;
+    font-size: 23px;
+    font-weight: $fw-bold;
+    line-height: 27px;
 }
 
 h5, .h5 {
@@ -424,266 +417,6 @@ $hover-text: darken($text-color, 10%);
         position: static;
     }
 
-    .navbar-brand {
-        padding: 0;
-        width: 220px;
-        height: 39px;
-        max-width: 20%;
-        margin-top: -3px;
-        display: block;
-
-        &.brand-platform-wpf {
-            background: transparent url(image_path("logo-wpf.svg")) no-repeat 0 50%;
-        }
-
-        &.brand-platform-silverlight {
-            background: transparent url(image_path("logo-silverlight.svg")) no-repeat 0 50%;
-        }
-
-        &.brand-platform-dpl {
-            background: transparent url(image_path("logo-dpl.svg")) no-repeat 0 50%;
-        }
-
-        &.brand-platform-aspnet-ajax {
-            background: transparent url(image_path("logo-aspnet-ajax.svg")) no-repeat 0 50%;
-        }
-
-        &.brand-platform-winforms {
-            background: transparent url(image_path("logo-winforms.svg")) no-repeat 0 50%;
-        }
-
-        &.brand-platform-reporting {
-            background: transparent url(image_path("logo-reporting.svg")) no-repeat 0 50%;
-        }
-
-        &.brand-platform-report-server {
-            background: transparent url(image_path("logo-report-server.svg")) no-repeat 0 50%;
-        }
-
-        &.brand-platform-uwp {
-            background: transparent url(image_path("logo-uwp.svg")) no-repeat 0 50%;
-        }
-
-        &.brand-platform-xamarin {
-            background: transparent url(image_path("logo-xamarin.svg")) no-repeat 0 50%;
-        }
-
-        &.brand-platform-fiddler-everywhere {
-            background: transparent url(image_path("logo-fiddler-everywhere.svg")) no-repeat 0 50%;
-        }
-
-        &.brand-platform-aspnet-mvc {
-            background: transparent url(image_path("logo-aspnet-mvc.svg")) no-repeat 0 50%;
-        }
-
-        &.brand-platform-aspnet-core {
-            background: transparent url(image_path("logo-aspnet-core.svg")) no-repeat 0 50%;
-        }
-
-        &.brand-platform-fiddler {
-            background: transparent url(image_path("logo-fiddler.svg")) no-repeat 0 50%;
-        }
-
-        &.brand-platform-kendo-ui {
-            background: transparent url(image_path("logo-kendo-ui.svg")) no-repeat 0 50%;
-        }
-
-        &.brand-platform-teststudio {
-            background: transparent url(image_path("logo-teststudio.svg")) no-repeat 0 50%;
-        }
-
-        &.brand-platform-teststudiodev {
-            background: transparent url(image_path("logo-teststudiodev.svg")) no-repeat 0 50%;
-        }
-
-        &.brand-platform-teststudio-apis {
-            background: transparent url(image_path("logo-teststudio-apis.svg")) no-repeat 0 50%;
-        }
-
-        &.brand-platform-justdecompile {
-            background: transparent url(image_path("logo-justdecompile.svg")) no-repeat 0 50%;
-        }
-
-        &.brand-platform-justmock {
-            background: transparent url(image_path("logo-justmock.svg")) no-repeat 0 50%;
-        }
-
-        &::before {
-            // preload scroll logo
-            content: " ";
-            position: absolute;
-            top: -100px;
-            visibility: hidden;
-
-            &.brand-platform-wpf {
-                background-image: url(image_path("logo-scroll-wpf.svg"));
-            }
-
-            &.brand-platform-silverlight {
-                background-image: url(image_path("logo-scroll-silverlight.svg"));
-            }
-
-            &.brand-platform-dpl {
-                background-image: url(image_path("logo-scroll-dpl.svg"));
-            }
-
-            &.brand-platform-aspnet-ajax {
-                background-image: url(image_path("logo-scroll-aspnet-ajax.svg"));
-            }
-
-            &.brand-platform-winforms {
-                background-image: url(image_path("logo-scroll-winforms.svg"));
-            }
-
-            &.brand-platform-reporting {
-                background-image: url(image_path("logo-scroll-reporting.svg"));
-            }
-
-            &.brand-platform-report-server {
-                background-image: url(image_path("logo-scroll-report-server.svg"));
-            }
-
-            &.brand-platform-uwp {
-                background-image: url(image_path("logo-scroll-uwp.svg"));
-            }
-
-            &.brand-platform-xamarin {
-                background-image: url(image_path("logo-scroll-xamarin.svg"));
-            }
-
-            &.brand-platform-fiddler-everywhere {
-                background-image: url(image_path("logo-scroll-fiddler-everywhere.svg"));
-            }
-
-            &.brand-platform-aspnet-mvc {
-                background-image: url(image_path("logo-scroll-aspnet-mvc.svg"));
-            }
-
-            &.brand-platform-aspnet-core {
-                background-image: url(image_path("logo-scroll-aspnet-core.svg"));
-            }
-
-            &.brand-platform-fiddler {
-                background-image: url(image_path("logo-scroll-fiddler.svg"));
-            }
-
-            &.brand-platform-kendo-ui {
-                background-image: url(image_path("logo-scroll-kendo-ui.svg"));
-            }
-
-            &.brand-platform-teststudio {
-                background-image: url(image_path("logo-scroll-teststudio.svg"));
-            }
-
-            &.brand-platform-teststudiodev {
-                background-image: url(image_path("logo-scroll-teststudiodev.svg"));
-            }
-
-            &.brand-platform-teststudio-apis {
-                background-image: url(image_path("logo-scroll-teststudio-apis.svg"));
-            }
-
-            &.brand-platform-justdecompile {
-                background-image: url(image_path("logo-scroll-justdecompile.svg"));
-            }
-
-            &.brand-platform-justmock {
-                background-image: url(image_path("logo-scroll-justmock.svg"));
-            }
-        }
-
-        .scroll & {
-            margin-top: 0;
-            height: 36px;
-            display: block;
-            max-width: 40%;
-
-            &.brand-platform-wpf {
-                background: transparent url(image_path("logo-scroll-wpf.svg")) no-repeat 0 8px;
-            }
-
-            &.brand-platform-silverlight {
-                background: transparent url(image_path("logo-scroll-silverlight.svg")) no-repeat 0 8px;
-            }
-
-            &.brand-platform-dpl {
-                background: transparent url(image_path("logo-scroll-dpl.svg")) no-repeat 0 8px;
-            }
-
-            &.brand-platform-aspnet-ajax {
-                background: transparent url(image_path("logo-scroll-aspnet-ajax.svg")) no-repeat 0 8px;
-            }
-
-            &.brand-platform-winforms {
-                background: transparent url(image_path("logo-scroll-winforms.svg")) no-repeat 0 8px;
-            }
-
-            &.brand-platform-reporting {
-                background: transparent url(image_path("logo-scroll-reporting.svg")) no-repeat 0 8px;
-            }
-
-            &.brand-platform-report-server {
-                background: transparent url(image_path("logo-scroll-report-server.svg")) no-repeat 0 8px;
-            }
-
-            &.brand-platform-uwp {
-                background: transparent url(image_path("logo-scroll-uwp.svg")) no-repeat 0 8px;
-            }
-
-            &.brand-platform-xamarin {
-                background: transparent url(image_path("logo-scroll-xamarin.svg")) no-repeat 0 8px;
-            }
-
-            &.brand-platform-fiddler-everywhere {
-                background: transparent url(image_path("logo-scroll-fiddler-everywhere.svg")) no-repeat 0 8px;
-            }
-
-            &.brand-platform-aspnet-mvc {
-                background: transparent url(image_path("logo-scroll-aspnet-mvc.svg")) no-repeat 0 8px;
-            }
-
-            &.brand-platform-aspnet-core {
-                background: transparent url(image_path("logo-scroll-aspnet-core.svg")) no-repeat 0 8px;
-            }
-
-            &.brand-platform-fiddler {
-                background: transparent url(image_path("logo-scroll-fiddler.svg")) no-repeat 0 8px;
-            }
-
-            &.brand-platform-kendo-ui {
-                background: transparent url(image_path("logo-scroll-kendo-ui.svg")) no-repeat 0 4px;
-            }
-
-            &.brand-platform-teststudio {
-                background: transparent url(image_path("logo-scroll-teststudio.svg")) no-repeat 0 4px;
-            }
-
-            &.brand-platform-teststudiodev {
-                background: transparent url(image_path("logo-scroll-teststudiodev.svg")) no-repeat 0 8px;
-            }
-
-            &.brand-platform-teststudio-apis {
-                background: transparent url(image_path("logo-scroll-teststudio-apis.svg")) no-repeat 0 8px;
-            }
-
-            &.brand-platform-justdecompile {
-                background: transparent url(image_path("logo-scroll-justdecompile.svg")) no-repeat 0 8px;
-            }
-
-            &.brand-platform-justmock {
-                background: transparent url(image_path("logo-scroll-justmock.svg")) no-repeat 0 8px;
-            }
-        }
-
-        .alt-text {
-            visibility: hidden;
-        }
-
-        &::after {
-            display: none;
-        }
-    }
-
     select {
         position: absolute;
         top: 54px;
@@ -870,7 +603,7 @@ $nav-icon-color: #979797;
     white-space: normal;
     word-break: break-word;
     overflow: hidden;
-    font-family: "Roboto", Helvetica, Arial, sans-serif;
+    font-family: "Metric", Helvetica, Arial, sans-serif;
     outline: none;
 }
 
@@ -897,8 +630,17 @@ $nav-icon-color: #979797;
             outline: none;
         }
 
-        ul li span {
-            font-size: 13px;
+        ul li ul li {
+            span {
+                font-size: 16px;
+                line-height: 20px;
+            }
+
+            ul li {
+                span {
+                    font-size: 15px;
+                }
+            }
         }
     }
 
@@ -957,16 +699,13 @@ $nav-icon-color: #979797;
         display: none;
     }
 
-    .article {
-        top: 6px;
-        width: 14px;
-        height: 16px;
-        background: url(image_path("article.svg")) no-repeat 50% 50%;
-        z-index: 10;
-    }
-
     #page-tree > .k-group > .k-item,
     #page-tree-api > .k-group > .k-item {
+        > .k-last {
+            border-bottom: 1px solid $border-separator-color;
+            margin-right: 5px;
+        }
+
         div {
             position: relative;
 
@@ -990,15 +729,23 @@ $nav-icon-color: #979797;
             }
         }
 
+        // Side navigation root items
         > div {
+            border-bottom: 1px solid $border-separator-color;
+            margin-right: 5px;
+
+            > .k-icon {
+                display: none;
+            }
+
             .k-in, span > a {
                 text-transform: uppercase;
                 transition: background-color .1s, padding .1s, font-weight .1s;
-                font-weight: 500;
+                font-weight: $fw-semibold;
                 color: $text-active-color !important;
-                font-size: 14px;
-                font-family: $font-light;
-                line-height: 1.2em;
+                font-size: 16px;
+                font-family: $font-regular;
+                line-height: 28px;
             }
 
             .k-icon {
@@ -1034,7 +781,6 @@ $nav-icon-color: #979797;
 
         .k-in {
             padding-left: 48px;
-            font-weight: 500;
 
             a {
                 padding-left: 48px;
@@ -1221,6 +967,8 @@ $nav-icon-color: #979797;
 /* Article Styles */
 
 article {
+    font-size: 20px;
+    line-height: 26px;
     position: relative;
 
     b,
@@ -1235,60 +983,49 @@ article {
 
         a {
             cursor: pointer;
-            color: inherit;
+            color: $text-primary-color;
         }
     }
 
     h1, .h1 {
-        margin-top: 20px;
-        margin-bottom: 10px;
-        line-height: .95em;
+        margin-top: 40px;
+        margin-bottom: 40px;
     }
 
     h2, .h2 {
-        line-height: .95em;
-        margin-top: 20px;
-        margin-bottom: 10px;
+        margin-top: 40px;
+        margin-bottom: 24px;
     }
 
-    h3, .h3,
-    &.api-reference .editor h3 {
-        font-size: 22px;
-        line-height: 1em;
-        font-weight: 400;
-        letter-spacing: -0.02em;
-        margin-top: 20px;
-        margin-bottom: 10px;
+    h3, .h3 {
+        margin-top: 40px;
+        margin-bottom: 8px;
     }
 
     &.api-reference .editor h3 {
         margin: 0;
+        font-size: 22px;
+        line-height: 1em;
+        font-weight: 400;
+        letter-spacing: -0.02em;
     }
 
     h4, .h4 {
-        font-size: 16px;
-        line-height: 1.222em;
-        font-weight: 500;
-        letter-spacing: -0.02em;
-        margin-top: 20px;
-        margin-bottom: 10px;
+        margin-top: 24px;
+        margin-bottom: 8px;
     }
 
     h5, .h5 {
-        font-size: 13px;
-        line-height: 1.231em;
-        font-weight: 500;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        margin-top: 20px; /* 16 + 24 = 40px */
-        margin-bottom: 10px;
+        margin-top: 24px;
+        margin-bottom: 8px;
     }
 
     p {
         max-width: 1200px;
-        margin-top: 1em;
-        margin-bottom: 1em;
-        font-size: 14;
+        font-size: 20px;
+        line-height: 26px;
+        margin-top: 8px;
+        margin-bottom: 8px;
 
         a:hover,
         a:focus {
@@ -1303,11 +1040,12 @@ article {
 
     &:not(.api-reference) > p:first-child,
     &:not(.api-reference) h1 + p {
-        font-size: 16px;
-        font-weight: 400;
-        margin-top: 10px;
-        margin-bottom: 15px;
+        font-size: 22px;
+        line-height: 26px;
+        font-weight: $fw-normal;
         font-family: $font-regular;
+        margin-top: 16px;
+        margin-bottom: 16px;
     }
 
     h3 + p,
@@ -1320,7 +1058,7 @@ article {
     ul, ol {
         max-width: 1200px;
         margin: 1em 0;
-        padding: 0 0 0 2em;
+        padding: 0 0 0 12px;
 
         li {
             margin-bottom: 3px;
@@ -1337,13 +1075,14 @@ article {
         list-style: none;
     }
 
-    &:not(.api-reference) ul:not(.docs-tabstrip):not(.k-reset) > li:before {
+    &:not(.api-reference) ul:not(.docs-tabstrip):not(.k-reset):not(.k-pager-numbers) > li:before {
         content: "";
         position: absolute;
-        top: .7em;
-        left: -20px;
-        width: 14px;
-        height: 1px;
+        top: 11px;
+        left: -10px;
+        width: 5px;
+        height: 5px;
+        border-radius: 5px;
         background-color: currentColor;
     }
 
@@ -1542,11 +1281,28 @@ $border-color: #d9d9d9;
         }
     }
 
+    .btn-contact-support {
+        color: $btn-support-color;
+        background-color: $btn-support-bg;
+        border: 1px solid $btn-support-border;
+        border-radius: 30px;
+        padding: 5px 10px;
+        font-size: 16px;
+        margin: 10px 0;
+        display: block;
+        text-align: center;
+
+        &:hover,
+        &:focus,
+        &:active {
+            border-color: $btn-support-border-hover;
+        }
+    }
+
     .btn-edit-article {
-        font-size: 14px;
+        font-size: 16px;
         position: relative;
         padding-left: 20px;
-        color: $accent;
 
         &::before {
             content: "";
@@ -1592,74 +1348,11 @@ $border-color: #d9d9d9;
     text-transform: none !important;
 }
 
-.feedback-more-info {
-    max-height: 0;
-    overflow: hidden;
-    padding-left: 15px;
-
-    &.show {
-        display: block;
-        transition: max-height 0.2s ease-out;
-        max-height: 205px;
-    }
-
-    &.hide {
-        max-height: 50px;
-        overflow: hidden;
-        transition: max-height 0.2s ease-out;
-    }
-
-    .feedback-other-text-input {
-        color: #000000;
-        font-size: 14px;
-        font-weight: 400;
-        margin: 10px 0;
-        padding: 10px;
-        width: 100%;
-        max-width: 100%;
-        min-width: 100%;
-        height: 120px;
-
-        &:focus {
-            outline: none;
-        }
-    }
-
-    .feedback-skip-button {
-        padding: 6px 0;
-        margin-left: 15px;
-        text-transform: none;
-        font-size: 14px;
-        font-weight: 400;
-        display: inline-block;
-
-        &:hover {
-            cursor: pointer;
-            text-decoration: underline;
-        }
-    }
-
-    .feedback-ab-submit-button {
-        padding: 6px 12px;
-        margin: 0;
-        background-color: $accent;
-        border: 1px solid #FFFFFF;
-        color: #FFFFFF;
-        font-size: 14px;
-        font-weight: 400;
-        text-transform: none;
-
-        &:hover,
-        &:active,
-        &:focus {
-            background-color: rgba(255, 255, 255, 0.2);
-        }
-    }
-}
-
 .article-toc, .related-articles, .feedback-ab {
     font-size: 14px;
     margin-bottom: 30px;
+    padding-left: 10px;
+    border-left: 1px solid $border-separator-color;
 
     .side-title {
         padding-top: 10px;
@@ -1673,7 +1366,6 @@ $border-color: #d9d9d9;
         top: 160px;
     }
 
-    .no-js &,
     &.empty {
         display: none !important;
     }
@@ -1684,7 +1376,7 @@ $border-color: #d9d9d9;
         a {
             display: block;
             margin: 14px 0 5px;
-            border-left: 2px solid transparent;
+            border-left: 5px solid transparent;
             line-height: 1em;
             padding: 2px 0 2px 14px;
             text-decoration: none;
@@ -1709,7 +1401,7 @@ $border-color: #d9d9d9;
     .anchor-h3 {
         margin: 5px 0;
         font-family: $font-light;
-        font-size: 12px;
+        font-size: 14px;
         padding-left: 30px;
     }
 
@@ -1788,6 +1480,10 @@ $border-color: #d9d9d9;
 #search-container {
     .results-message {
         border: none;
+    }
+
+    .k-pager-numbers-wrap select.k-dropdown {
+      display: none;
     }
 
     .k-pager-wrap {
@@ -1957,6 +1653,7 @@ article table tr {
         label {
             padding: 15px;
             cursor: pointer;
+            font-size: 12px;
         }
 
         .k-icon {
@@ -1989,6 +1686,7 @@ article table tr {
 
 .search-input-container {
     position: relative;
+    padding: 0 2px 2px 2px;
 }
 
 #refine-search-container {
@@ -2005,16 +1703,17 @@ article table tr {
     cursor: pointer;
     padding: 7px;
     line-height: 36px;
+
+    .k-icon {
+      margin-left: 10px;
+      margin-right: 10px;
+      vertical-align: middle;
+  }
 }
 
 #refine-search-label {
-    font-size: 11px;
+    font-size: 13px;
     vertical-align: middle;
-}
-
-#refine-search-button .k-icon {
-    margin-left: 10px;
-    margin-right: 10px;
 }
 
 .unselectable {
@@ -2140,29 +1839,6 @@ article table tr {
     }
 }
 
-/* Reading Status */
-
-.reading-status {
-    display: block;
-    position: fixed;
-    z-index: 1025;
-    top: -50px;
-    left: 0;
-    right: 0;
-    height: 40px;
-    padding-top: 10px;
-    font-size: 13px;
-    color: #898c92;
-    background-color: rgba(19, 21, 27, 0.94);
-    transition: top .2s;
-    transition-delay: .2s;
-
-    &.scroll {
-        top: 0px;
-        transition-delay: 0s;
-    }
-}
-
 .toc-prev-next {
     float: right;
 
@@ -2202,19 +1878,160 @@ article table tr {
 
 /* Feedback Styles */
 
+.feedback-more-info {
+  max-height: 0;
+  overflow: hidden;
+  padding-left: 15px;
+
+  &.show {
+      display: block;
+      transition: max-height 0.2s ease-out;
+      max-height: 240px;
+  }
+
+  &.hide {
+      max-height: 50px;
+      overflow: hidden;
+      transition: max-height 0.2s ease-out;
+  }
+
+  .feedback-other-text-input {
+      color: #000000;
+      font-size: 16px;
+      font-weight: 400;
+      margin: 10px 0;
+      padding: 10px;
+      width: 100%;
+      max-width: 100%;
+      min-width: 100%;
+      height: 120px;
+
+      &:focus {
+          outline: none;
+      }
+  }
+
+  .feedback-skip-button {
+      display: inline-block;
+      border-radius: 2px;
+      text-align: center;
+      cursor: pointer;
+      text-decoration: none;
+      border-width: 2px;
+      border-style: solid;
+      transition: color .2s ease, background-color .2s ease, border-color .2s ease;
+      padding: 5px 24px;
+      font-weight: 400;
+      font-size: 19px;
+      line-height: 32px;
+      margin-left: 15px;
+      text-transform: none;
+      background-color: transparent;
+      border-color: #C8E2F2;
+      color: #000;
+
+      &:hover {
+          cursor: pointer;
+          border-color: #94D7FF;
+      }
+  }
+
+  .feedback-ab-submit-button {
+      padding: 6px 12px;
+      margin: 0;
+      background-color: $accent;
+      border: 1px solid #FFFFFF;
+      color: #FFFFFF;
+      font-size: 14px;
+      font-weight: 400;
+      text-transform: none;
+
+      &:hover,
+      &:active,
+      &:focus {
+          background-color: rgba(255, 255, 255, 0.2);
+      }
+  }
+}
+
 .feedback-row {
-    background-color: $feedback-background;
-    color: $feedback-foreground;
+    background-image: url(image_path("feedback-bgr.svg"));
+    background-size: cover;
+    background-repeat: repeat-x;
     padding-top: 14px;
     padding-bottom: 13px;
     font-size: 20px;
     font-weight: 500;
     z-index: 1100;
 
+    .feedback-button {
+        display: inline-block;
+        border-radius: 2px;
+        text-align: center;
+        cursor: pointer;
+        text-decoration: none;
+        border-width: 2px;
+        border-style: solid;
+        transition: color .2s ease, background-color .2s ease, border-color .2s ease;
+    }
+
+    .feedback-button-md {
+        padding: 5px 24px;
+        font-weight: 400;
+        font-size: 19px;
+        line-height: 32px;
+    }
+
+    .feedback-button-sm {
+        padding: 6.5px 17px;
+        font-weight: 500;
+        font-size: 13px;
+        line-height: 1;
+        letter-spacing: 0.13px;
+    }
+
+    .feedback-button-secondary {
+        background-color: #2E64D6;
+        color: #fff;
+        border-color: transparent;
+    }
+
+    .feedback-button-secondary:hover {
+        background-color: #2456BE;
+        color: #fff;
+    }
+
+    .feedback-no-button {
+        margin-left: 20px;
+    }
+
+    .feedback-vote-button {
+        display: inline-block;
+        border-radius: 2px;
+        text-align: center;
+        cursor: pointer;
+        text-decoration: none;
+        border-width: 2px;
+        border-style: solid;
+        transition: color .2s ease, background-color .2s ease, border-color .2s ease;
+        padding: 5px 24px;
+        font-weight: 400;
+        font-size: 19px;
+        line-height: 32px;
+        background-color: #2E64D6;
+        color: #fff;
+        border-color: transparent;
+
+        &:hover {
+            background-color: #2456BE;
+            color: #fff;
+        }
+    }
+
     .close-button-container {
         display: none;
         position: fixed;
-        bottom: 6px;
+        bottom: 10px;
         right: 16px;
         padding: 8px;
 
@@ -2251,17 +2068,21 @@ article table tr {
         width: 100%;
         margin: 0;
         z-index: 1100;
+        background-color: #e7ebf5;
 
         .close-button-container {
             display: block;
         }
     }
 
+    h3 {
+        color: #1f1f1f !important;
+        margin: 5px 0;
+        font-weight: 500;
+    }
+
     h4 {
-        color: $feedback-foreground !important;
-        margin-top: 0;
-        margin-bottom: 0;
-        font-size: 21px;
+        color: #1f1f1f !important;
     }
 
     button {
@@ -2288,141 +2109,6 @@ article table tr {
     div.feedback > div {
         line-height: 23px;
     }
-}
-
-.feedback-dialog {
-    position: absolute;
-    width: 500px;
-    height: 560px;
-    top: 50%;
-    left: 50%;
-    margin: -290px auto auto -250px;
-    padding: 20px;
-    background-color: #f7f7f8;
-    box-shadow: 0 2px 25px rgba(0, 0, 0, 0.2);
-
-    h3 + p {
-        color: #8a959f;
-    }
-}
-
-#feedback-container {
-    h3 {
-        color: #000000;
-    }
-
-    p {
-        font-size: 16px;
-        line-height: 1.44em;
-    }
-}
-
-#feedback-form {
-    -webkit-flex: 1;
-    -moz-flex: 1;
-    overflow: auto;
-
-    label, p {
-        font-size: 16px;
-        color: #4f5d6c;
-        line-height: 1.44em;
-    }
-
-    span.required-field:after {
-        content: "* required";
-        font-size: 11px;
-        float: right;
-    }
-
-    textarea {
-        margin: 12px 0 0px !important;
-        margin-top: 2px !important;
-    }
-
-    .checkbox__input {
-        float: left;
-    }
-
-    .checkbox__text {
-        line-height: 18px;
-        margin-left: 5px;
-    }
-
-    .feedback-extw__textarea,
-    .feedback-extw__input {
-        padding: 10px;
-        border: 1px solid #d9d9d9;
-        width: 100%;
-        box-sizing: border-box;
-        font: inherit;
-        font-style: italic;
-    }
-
-    .feedback-extw__textarea {
-        resize: none;
-    }
-
-    .feedback-extw__input,
-    .feedback-extw__textarea {
-        margin: 12px 0 6px;
-    }
-
-    span.k-tooltip {
-        border: 0;
-        color: #ff0000;
-        font-style: italic;
-        font-size: 12px;
-        padding: 0 0 6px !important;
-    }
-}
-
-#feedback-checkbox-area {
-    label {
-        display: -webkit-flex;
-        display: flex;
-        flex-direction: row;
-        align-items: flex-start;
-        margin: 5px 0 0;
-        padding: 5px 0 0;
-    }
-
-    #feedback-email-input {
-        margin-top: 20px !important;
-    }
-}
-
-#feedback-form-window {
-    height: 510px !important;
-    display: -webkit-flex;
-    display: flex;
-    font-size: 16px;
-    -webkit-flex-direction: column;
-    flex-direction: column;
-
-    h3 + p {
-        color: #8a959f;
-    }
-
-    input::-webkit-input-placeholder,
-    textarea::-webkit-input-placeholder,
-    input:-moz-placeholder,
-    textarea:-moz-placeholder,
-    input::-moz-placeholder,
-    textarea::-moz-placeholder,
-    input:-ms-input-placeholder,
-    textarea:-ms-input-placeholder {
-        color: #d9d9d9;
-    }
-}
-
-#feedback-form-window > * {
-    padding-right: 15px;
-}
-
-#feedback-extw__checkbox:after {
-    content: "";
-    display: block;
-    clear: both;
 }
 
 .button-close {
@@ -2507,7 +2193,6 @@ article table tr {
 }
 
 /* Temp styles */
-
 [data-code-language] {
     position: relative;
 
@@ -2830,7 +2515,6 @@ $callout-bg: #d7dfe3;
 /* Global Search */
 
 .global-search {
-    border-bottom: 2px solid #00b5dc;
     display: block;
     right: 30px;
     overflow: hidden;
@@ -2847,18 +2531,35 @@ $callout-bg: #d7dfe3;
 
     input {
         width: 100%;
-        height: 34px;
+        height: 48px;
         padding-left: 40px;
         padding-right: 15px;
-        border: 0;
-        font-size: 14px;
-        font-family: $font-light;
-        outline: none;
+        border-radius: 2px;
+        border: 1px solid transparent;
+        box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.15);
+        font: 300 22px/26px Metric,Arial,sans-serif;
+        outline: 0;
+        color: #555555;
         background-image: url(image_path("search.svg"));
         background-repeat: no-repeat;
         background-position: 10px 50%;
         background-size: 16px;
         background-color: transparent;
+        transition: border-color .2s, box-shadow .2s;
+
+        &:hover {
+            border: 1px solid #2D2DB2;
+            font-weight: 400;
+            color: #000;
+            transition: border 200ms ease-in;
+        }
+
+        &:focus {
+            border: 1px solid #2D2DB2;
+            font-weight: 400;
+            color: #000;
+            transition: border 200ms ease-in;
+        }
     }
 
     #refine-search-container {
@@ -2866,7 +2567,8 @@ $callout-bg: #d7dfe3;
     }
 
     #refine-search-button {
-        line-height: 24px;
+        line-height: 30px;
+        font-size: 16px;
     }
 }
 
@@ -3029,7 +2731,8 @@ span.all-components-expanded-icon {
     }
 
     h2 {
-        margin-top: 20px;
+        margin-top: 10px;
+        margin-bottom: 10px;
         font-size: 26px;
         font-weight: 400;
         word-break: break-word;
@@ -3200,19 +2903,6 @@ span.all-components-expanded-icon {
     #refine-search-label {
         display: none;
     }
-
-    .feedback-dialog {
-        position: static;
-        width: 100%;
-        height: 100%;
-        top: auto;
-        left: auto;
-        margin: 100px;
-
-        .scroll & {
-            margin-top: 0;
-        }
-    }
 }
 
 @media (max-width: 1444px) {
@@ -3288,7 +2978,6 @@ span.all-components-expanded-icon {
         display: block;
         padding-bottom: 40px;
         position: fixed;
-        box-shadow: 6px 2px 8px -6px rgba(0, 0, 0, 0.2);
 
         &.affix {
             position: fixed;
@@ -3347,7 +3036,7 @@ span.all-components-expanded-icon {
 
     article {
         ul, ol {
-            padding: 0 0 0 3em;
+            padding: 0 0 0 12px;
         }
     }
 
@@ -3359,15 +3048,6 @@ span.all-components-expanded-icon {
 /* ####################################################################################################### */
 
 @media (min-width: 1025px) { /* Styles for width > 1024px */
-    body,
-    article,
-    blockquote,
-    #results > div,
-    .side-nav,
-    .components {
-        font-size: 14px;
-    }
-
     #navbar {
         a {
             font-size: 13px;
@@ -3410,40 +3090,6 @@ span.all-components-expanded-icon {
 /* ####################################################################################################### */
 
 @media (min-width: 1199px) { /* Styles for width > 1199px */
-    article {
-        h1 {
-            font-size: 44px;
-        }
-
-        h2 {
-            font-size: 28px;
-        }
-
-        h3 {
-            font-size: 22px;
-        }
-
-        h4 {
-            font-size: 16px;
-            font-weight: 500;
-        }
-
-        h5 {
-            font-size: 13px;
-            font-weight: 500;
-        }
-
-        h1, .h1,
-        h2, .h2,
-        h3, .h3,
-        h4, .h4,
-        h5, .h5,
-        h6, .h6 {
-            margin-top: 20px;
-            margin-bottom: 14px;
-        }
-    }
-
     .component-item {
         padding-left: 0;
         padding-top: 36px;
@@ -3496,11 +3142,10 @@ span.all-components-expanded-icon {
     }
 
     .side-nav {
-        font-size: 14px;
-        line-height: 1.2em;
+        font-size: 16px;
 
         ul {
-            font-size: 14px;
+            font-size: 16px;
         }
 
         #page-tree > .k-group > .k-item,
@@ -3508,54 +3153,9 @@ span.all-components-expanded-icon {
             > div {
                 .k-in, span > a {
                     font-weight: 500;
-                    font-size: 14px;
-                    line-height: 1.2em;
+                    font-size: 16px;
                 }
             }
-        }
-    }
-
-    article {
-        h1 {
-            font-size: 56px;
-        }
-
-        h2 {
-            font-size: 36px;
-        }
-
-        h3 {
-            font-size: 28px;
-        }
-
-        h4 {
-            font-size: 18px;
-            font-weight: 500;
-        }
-
-        h5 {
-            font-size: 13px;
-            font-weight: 500;
-        }
-
-        &:not(.api-reference) > p:first-child,
-        &:not(.api-reference) h1 + p {
-            font-size: 18px;
-            font-weight: 400;
-            font-weight: 400;
-            margin-top: 15px;
-            margin-bottom: 20px;
-            font-family: $font-regular;
-        }
-
-        h1, .h1,
-        h2, .h2,
-        h3, .h3,
-        h4, .h4,
-        h5, .h5,
-        h6, .h6 {
-            margin-top: 20px;
-            margin-bottom: 16px;
         }
     }
 
@@ -3567,7 +3167,7 @@ span.all-components-expanded-icon {
         .anchor-h1,
         .anchor-h2 {
             font-family: $font-medium;
-            font-size: 15px;
+            font-size: 16px;
         }
     }
 
@@ -4264,41 +3864,6 @@ code {
         width: 100%;
         height: 640px !important;
         border: 0;
-    }
-}
-
-.theme-preview {
-    position: relative;
-    background-color: #fff;
-    min-height: 600px;
-    padding: 2em;
-    font-size: 14px;
-
-    > app-root > .k-i-loading {
-        font-size: 64px;
-        top: 50%;
-        left: 50%;
-        position: absolute;
-    }
-
-    /* hacks for overriding docs styles */
-    h5 {
-        text-transform: none;
-        letter-spacing: normal;
-        font-weight: 400;
-    }
-
-    th {
-        background-color: transparent;
-    }
-
-    li {
-        margin: 0;
-        padding: 0;
-
-        &::before {
-            display: none;
-        }
     }
 }
 
