@@ -190,6 +190,7 @@ h1, .h1 {
     font-size: 60px;
     font-weight: $fw-semibold;
     line-height: 54px;
+    word-break: break-word;
 }
 
 h2, .h2 {
@@ -3089,40 +3090,6 @@ span.all-components-expanded-icon {
 /* ####################################################################################################### */
 
 @media (min-width: 1199px) { /* Styles for width > 1199px */
-    // article {
-    //     h1 {
-    //         font-size: 44px;
-    //     }
-
-    //     h2 {
-    //         font-size: 28px;
-    //     }
-
-    //     h3 {
-    //         font-size: 22px;
-    //     }
-
-    //     h4 {
-    //         font-size: 16px;
-    //         font-weight: 500;
-    //     }
-
-    //     h5 {
-    //         font-size: 13px;
-    //         font-weight: 500;
-    //     }
-
-    //     h1, .h1,
-    //     h2, .h2,
-    //     h3, .h3,
-    //     h4, .h4,
-    //     h5, .h5,
-    //     h6, .h6 {
-    //         margin-top: 20px;
-    //         margin-bottom: 14px;
-    //     }
-    // }
-
     .component-item {
         padding-left: 0;
         padding-top: 36px;
@@ -3191,49 +3158,6 @@ span.all-components-expanded-icon {
             }
         }
     }
-
-    // article {
-    //     h1 {
-    //         font-size: 56px;
-    //     }
-
-    //     h2 {
-    //         font-size: 36px;
-    //     }
-
-    //     h3 {
-    //         font-size: 28px;
-    //     }
-
-    //     h4 {
-    //         font-size: 18px;
-    //         font-weight: 500;
-    //     }
-
-    //     h5 {
-    //         font-size: 13px;
-    //         font-weight: 500;
-    //     }
-
-    // &:not(.api-reference) > p:first-child,
-    // &:not(.api-reference) h1 + p {
-    //     font-size: 18px;
-    //     font-weight: 400;
-    //     margin-top: 15px;
-    //     margin-bottom: 20px;
-    //     font-family: $font-regular;
-    // }
-
-    // h1, .h1,
-    // h2, .h2,
-    // h3, .h3,
-    // h4, .h4,
-    // h5, .h5,
-    // h6, .h6 {
-    //     margin-top: 20px;
-    //     margin-bottom: 16px;
-    // }
-    // }
 
     .components {
         font-size: 16px;
