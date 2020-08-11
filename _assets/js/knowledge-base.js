@@ -1,4 +1,7 @@
+//= require kendo
 //= require search-base
+//= require kendo/kendo.treeview.min
+
 var DEFAULT_KB_QUERY = "knowledge base";
 
 function trackSearchResult(link) {
