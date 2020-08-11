@@ -3,10 +3,12 @@ var trackItemFromCurrentPage = function (category, action) {
 };
 
 var trackItem = function (category, action, label) {
-    dataLayer.push({
-        'event': 'virtualEvent',
-        'eventCategory': category,
-        'eventAction': action,
-        'eventLabel': label,
-    });
+    if (window.dataLayer) {
+        dataLayer.push({
+            'event': 'virtualEvent',
+            'eventCategory': category,
+            'eventAction': action,
+            'eventLabel': label,
+        });
+    }
 };
