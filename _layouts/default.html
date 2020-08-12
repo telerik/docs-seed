@@ -15,6 +15,7 @@
 {% if page.is_search_page != true %}
 <script src="{{site.baseurl}}/assets/jquery.js?{{randomNumber}}" defer></script>
 <script src="{{site.baseurl}}/assets/bootstrap.min.js?{{randomNumber}}" defer></script>
+<script src="https://kendo.cdn.telerik.com/{{ site.cdnVersion | default: '2018.3.1017' }}/js/kendo.web.min.js" defer></script>
 <script src="{{site.baseurl}}/assets/main.js?{{randomNumber}}" defer></script>
 {% endif %}
 {% if page.is_api %} <script src="{{site.baseurl}}/assets/api.js?{{randomNumber}}" defer></script> {% endif %}
