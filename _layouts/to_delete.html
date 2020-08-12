@@ -13,6 +13,7 @@ in this case, this file is necessary as a workaround.  -->
 {% javascript kendo %}
 {% javascript knowledge-base %}
 {% javascript search-popup %}
+{% javascript sdk-browser %}
 {% javascript search-results %}
 {% if site.main_theme %}{% stylesheet "bundle-{{ site.main_theme }}" %}{% else %}{% stylesheet "bundle" %}{% endif %}
 {% if site.enable_dojo == true %}{% javascript dojo %}{% stylesheet "dojo" %}{% endif %}
@@ -22,3 +23,4 @@ in this case, this file is necessary as a workaround.  -->
 {% endif %}
 {% if site.platforms.size > 0 %} {% stylesheet "platform_styles" %} {% endif %}
 {% stylesheet icon-font %}
+{% stylesheet sdk-browser %}
