@@ -3,4 +3,6 @@
 @import "_base-variables.scss";
 
 @import "_bundle-main.scss";
+@import "codemirror/codemirror.scss";
+@import "codemirror/theme.scss";
 @import "theme/prettify-web.scss";
