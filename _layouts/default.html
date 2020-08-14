@@ -15,14 +15,13 @@
 {% if page.is_search_page != true %}
 <script src="{{site.baseurl}}/assets/jquery.js?{{randomNumber}}" defer></script>
 <script src="{{site.baseurl}}/assets/bootstrap.min.js?{{randomNumber}}" defer></script>
-<script src="https://kendo.cdn.telerik.com/{{ site.cdnVersion | default: '2018.3.1017' }}/js/kendo.web.min.js" defer></script>
+{% if site.enable_dojo == true %} <script src="https://kendo.cdn.telerik.com/{{ site.cdnVersion | default: '2018.3.1017' }}/js/kendo.web.min.js" defer></script> {% endif %}
 <script src="{{site.baseurl}}/assets/main.js?{{randomNumber}}" defer></script>
 {% endif %}
 {% if page.is_api %} <script src="{{site.baseurl}}/assets/api.js?{{randomNumber}}" defer></script> {% endif %}
 {% if site.enable_dojo == true %} <script src="{{site.baseurl}}/assets/dojo.js?{{randomNumber}}" defer></script> {% endif %}
 {% if page.kind == "api" %} <script src="{{site.baseurl}}/assets/api-toc.js?{{randomNumber}}" defer></script>{% endif %}
 {% if site.sdk_examples %}<script src="{{site.baseurl}}/assets/sdk-browser.js?{{randomNumber}}" defer></script>{% endif %}
-<link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/icon-font.css?{{randomNumber}}" media="print" onload="this.media='all'">
   {% include footer.html %}
   <script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" data-language="en" type="text/javascript" charset="UTF-8" {% if site.progress_hosting == true %} data-domain-script="f9397248-1dbe-47fc-9dbf-c50e7dd51096" {% else %} data-domain-script="3dfce4f2-dab6-4128-9f33-df7e0597da82" {%endif%} async></script>
   {% include _gtm.html %}

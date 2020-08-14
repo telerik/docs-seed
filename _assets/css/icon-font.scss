@@ -4,6 +4,7 @@
   src: url(font_path("WebComponentsIcons.eot")), url(font_path("WebComponentsIcons.woff")), url(font_path("WebComponentsIcons.ttf")), url(font_path("WebComponentsIcons.svg"));
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -12,6 +13,7 @@
   src: url(font_path("TelerikWebUI.eot")), url(font_path("TelerikWebUI.woff")), url(font_path("TelerikWebUI.ttf")), url(font_path("TelerikWebUI.svg"));
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 /* WebComponentsIcons start */

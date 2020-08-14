@@ -1,4 +1,5 @@
 //= require codemirror/codemirror.min.js
+//= require tabstrip-base
 
 var dojoApi = (function($) {
     var dojoApi = {
