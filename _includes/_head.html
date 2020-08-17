@@ -51,7 +51,8 @@
   {% if site.main_theme %}<link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/bundle-{{site.main_theme}}.css?{{randomNumber}}">{% else %}
   <link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/bundle.css?{{randomNumber}}">{% endif %}
   {% if site.enable_dojo == true %}<link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/dojo.css?{{randomNumber}}" media="print" onload="this.media='all'">{% endif %}
-  {% if page.glyphs_reference_sheet == true %}<link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/icon-font.css?{{randomNumber}}" media="print" onload="this.media='all'">{% endif %}
+  <link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/icon-font.css?{{randomNumber}}" media="print" onload="this.media='all'">
+  {% if page.glyphs_reference_sheet == true %}<link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/telerik-web-ui-font.css?{{randomNumber}}" media="print" onload="this.media='all'">{% endif %}
   {% if page.kind == "api" %} 
   {% if site.has_web_api == true or site.has_web_api_index == true %}<link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/api.css?{{randomNumber}}" media="print" onload="this.media='all'">{% endif %}
   {% if page.has_api_toc == true %}{% endif %}
