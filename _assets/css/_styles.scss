@@ -3700,7 +3700,7 @@ pre {
     margin: 5px 0 20px;
     padding: 15px;
     overflow: auto;
-    background-color: #fff;
+    background-color: #f8f8f8;
     border: 1px solid #ececec;
     border-radius: 0;
     -webkit-transform: translateZ(0);
@@ -3776,7 +3776,7 @@ code {
     padding: 0 5px 0 4px;
     color: inherit;
     word-break: normal;
-    background-color: #fff; /*rgba(138,149,159,.1)*/
+    background-color: #ededed;
     font-family: inherit;
     font-size: 90%;
     line-height: 1.40em;
@@ -4217,7 +4217,7 @@ code {
 }
 
 .k-tabstrip-wrapper {
-    background-color: #ffffff;
+    background-color: #f8f8f8;
     margin-bottom: 20px;
 
     ul {
@@ -4246,7 +4246,7 @@ code {
     }
 
     .k-content {
-        background: #ffffff;
+        background: #f8f8f8;
         max-height: 40vh;
     }
 

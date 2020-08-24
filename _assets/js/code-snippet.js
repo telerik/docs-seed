@@ -1,4 +1,3 @@
-hasDataLang = false;
 var loadKendoTabstrip = function (url) {
     var script = document.createElement('script');
     script.setAttribute('src', url);
@@ -8,7 +7,7 @@ var loadKendoTabstrip = function (url) {
 };
 
 $(function () {
-    if($("div.tabbedCode").length) {
+    if($("div.tabbedCode").length || (!dojoEnabled && $("pre > code").length)) {
         loadKendoTabstrip(assetsFolderPath + '/tabstrip.js');
     }
 });

@@ -1,4 +1,3 @@
-hasDataLang = false;
 var clipboard;
 const selectedLanguageKey = "Selected_TabStrip_Language_Key";
 // Necessary for the offline docs.
@@ -115,7 +114,6 @@ $(function () {
         }
     };
 
-    var isLoadedKendoTabstrip = false;
     $("div.tabbedCode").each(function () {
         var container = $(this);
         var langs = container.find("pre");
