@@ -57,6 +57,9 @@
   {% if site.has_web_api == true or site.has_web_api_index == true %}<link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/api.css?{{randomNumber}}" media="print" onload="this.media='all'">{% endif %}
   {% if page.has_api_toc == true %}{% endif %}
   {% endif %}
-  {% if site.sdk_examples %}<link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/sdk-browser.css?{{randomNumber}}" media="print" onload="this.media='all'">{% endif %}
+  {% if page.sdk_example == true %}
+  <link rel="stylesheet" href="https://kendo.cdn.telerik.com/{{ site.cdnVersion | default: '2018.3.1017' }}/styles/kendo.common.min.css" />
+  <link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/sdk-browser.css?{{randomNumber}}" media="print" onload="this.media='all'">
+  {% endif %}
   {% if site.platforms.size > 0 %}<link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/platform_styles.css?{{randomNumber}}" media="print" onload="this.media='all'"> {% endif %}
 </head>
