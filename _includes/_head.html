@@ -48,6 +48,7 @@
   <link rel="preconnect" href="https://www.googletagmanager.com" />
   <link rel="dns-prefetch" href="https://www.google-analytics.com" />
   <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+  {% if page.sdk_example == true %} <link rel="stylesheet" href="https://kendo.cdn.telerik.com/{{ site.cdnVersion | default: '2018.3.1017' }}/styles/kendo.common.min.css" />{% endif %}
   {% if site.main_theme %}<link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/bundle-{{site.main_theme}}.css?{{randomNumber}}">{% else %}
   <link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/bundle.css?{{randomNumber}}">{% endif %}
   {% if site.enable_dojo == true %}<link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/dojo.css?{{randomNumber}}" media="print" onload="this.media='all'">{% endif %}
@@ -57,9 +58,6 @@
   {% if site.has_web_api == true or site.has_web_api_index == true %}<link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/api.css?{{randomNumber}}" media="print" onload="this.media='all'">{% endif %}
   {% if page.has_api_toc == true %}{% endif %}
   {% endif %}
-  {% if page.sdk_example == true %}
-  <link rel="stylesheet" href="https://kendo.cdn.telerik.com/{{ site.cdnVersion | default: '2018.3.1017' }}/styles/kendo.common.min.css" />
-  <link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/sdk-browser.css?{{randomNumber}}" media="print" onload="this.media='all'">
-  {% endif %}
+  {% if page.sdk_example == true %} <link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/sdk-browser.css?{{randomNumber}}" media="print" onload="this.media='all'"> {% endif %}
   {% if site.platforms.size > 0 %}<link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/platform_styles.css?{{randomNumber}}" media="print" onload="this.media='all'"> {% endif %}
 </head>
