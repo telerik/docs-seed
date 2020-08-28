@@ -139,7 +139,7 @@ function ensureNavigationLoaded() {
 }
 
 function shouldLoadNavigationOnLoad() {
-    return window.screen.width <= 768;
+    return window.screen.width < 768;
 }
 
 $(function () {
