@@ -5,7 +5,7 @@ var dojoApi = (function($) {
     var dojoApi = {
         configuration: {
             url: "https://dojo.telerik.com/",
-            currentKendoVersion: kendo.version
+            currentKendoVersion: kendoCdnVersion
         },
         post: function (snippet) {
             if (!snippet.match(/<html>/i)) {
@@ -53,7 +53,7 @@ var dojoApi = (function($) {
                 '<body>\n  \n'+
                 snippet+ '\n' +
                 '</body>\n'+
-            '</html>').replace(/kendo-version/g, kendo.version);
+            '</html>').replace(/kendo-version/g, kendoCdnVersion);
         return result;
         },
 
@@ -113,7 +113,7 @@ var dojoApi = (function($) {
 
             snippet = snippet.replace(/<script>(.*?)<\/script>/, "<script>try { $1 } catch(e) { document.write(e.toString()); }</script>");
 
-            var html = template({ version: kendo.version, snippet: snippet, html: /<html>/i.test(snippet) });
+            var html = template({ version: kendoCdnVersion, snippet: snippet, html: /<html>/i.test(snippet) });
 
             var contents = iframe.contents();
 
