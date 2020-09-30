@@ -52,6 +52,7 @@
   {% if site.main_theme %}<link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/bundle-{{site.main_theme}}.css?{{randomNumber}}">{% else %}
   <link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/bundle.css?{{randomNumber}}">{% endif %}
   {% if site.enable_dojo == true %}<link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/dojo.css?{{randomNumber}}" media="print" onload="this.media='all'">{% endif %}
+  <link rel="preload" href="{{site.baseurl}}/assets/WebComponentsIcons.woff" as="font" type="font/woff" crossorigin>
   <link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/icon-font.css?{{randomNumber}}" media="print" onload="this.media='all'">
   {% if page.glyphs_reference_sheet == true %}<link rel="stylesheet" type="text/css" href="{{site.baseurl}}/assets/telerik-web-ui-font.css?{{randomNumber}}" media="print" onload="this.media='all'">{% endif %}
   {% if page.kind == "api" %} 
