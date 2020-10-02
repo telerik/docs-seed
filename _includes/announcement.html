@@ -3,7 +3,8 @@
   {{page.announcement}}
 </span></div></div>
 <script>
-  $(document).ready(function(){
-    $('.js-r1dt').insertBefore($('#js-tlrk-nav')).end().show();
-  });
+    var announcementContainer = document.getElementsByClassName('js-r1dt');
+    var tlrkNav = document.getElementById('js-tlrk-nav');
+    var insertedNode = tlrkNav.parentNode.insertBefore(announcementContainer, tlrkNav);
+    insertedNode.style.display = 'block';
 </script>
