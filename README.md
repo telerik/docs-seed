@@ -13,6 +13,7 @@ This section describes the best practices about what and how should be done in o
 ### Prerequisites
 - Install Docker (Community Edititon(CE) is enough) - please use the [official Docker installation guide](https://docs.docker.com/install/). Accept the default installation instructions (use Linux containers, etc.)    
   - From the Docker Settings window, share the drive where the documentation repos reside with Docker.
+- Install [Node.js](https://nodejs.org/en/) and restart the machine.
 - Choose a repo you want to contribute to (e.g. [https://github.com/telerik/xaml-docs.git](https://github.com/telerik/xaml-docs.git), we will refer to that repo later as **'MY-REPO'**)
 - Pull the documentation repo onto your hard drive (e.g. `"D:\Work\xaml-docs"`). We will refer to the local path, where the documentation repo is cloned, as **'DOCS-PATH'**.
 
@@ -118,6 +119,7 @@ Also, it tends to require a lot of HDD space, which may be an issue if you are r
 
 When you try to build the documentation site, you could see an error including the following `incomplete "\n" on UTF-16LE` message. It might be caused because of different things. Use the following steps to try to fix or workaround it:
 
+1. Ensure [Node.js](https://nodejs.org/en/) is installed by typing `node -v` in a command prompt. The machine must be restarted after a `Node.js` installation.
 1. Allow [files with long path](https://confluence.atlassian.com/bamkb/git-checkouts-fail-on-windows-with-filename-too-long-error-unable-to-create-file-errors-867363792.html) using the following command:
 ```bash
 git config --system core.longpaths true
