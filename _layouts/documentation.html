@@ -40,6 +40,10 @@ layout: default
           {% endif %}
         </p>
         {% endif %}
+       
+        {% if page.isRestOfPages == true %} 
+          {% include cta-panel-small.html %} 
+         {% endif %} 
 
         {% if page.kind == "api" and page.position != 1 %}
         <article class="api-reference">
