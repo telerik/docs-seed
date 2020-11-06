@@ -4356,3 +4356,134 @@ div {
         cursor: pointer;
     }
 }
+
+/* CTA Panels styles */
+.kd-cta {
+    padding: 15px 30px;
+    margin-top: 32px;
+    display: inline-flex;
+    align-items: center;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #5777EA;
+    border-radius: 2px
+}
+.kd-cta-panel .container{
+    width: auto;
+}
+
+.kd-cta-content-wrapper {
+    display: flex;
+    -ms-flex-direction: row;
+    align-items: center
+}
+
+.kd-cta-image {
+    margin-right: 30px
+}
+
+.kd-cta-image img {
+    width: 50px;
+    margin: 0;
+}
+
+h5.kd-cta-title {
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-size: 28px;
+    font-weight: 700;
+    text-transform: none;
+}
+
+.kd-cta-title {
+    margin-bottom: 5px
+}
+
+.kd-cta-button-wrapper {
+    flex: none;
+    margin-left: 50px
+}
+.kd-button-primary {
+    background-color: #F46147;
+    color: #fff;
+    border-color: transparent;
+}
+.kd-button-md {
+    padding: 5px 24px;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 32px;
+}
+.kd-button {
+    display: inline-block;
+    border-radius: 2px;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+    border-width: 2px;
+    border-style: solid;
+    transition: color .2s ease,background-color .2s ease,border-color .2s ease;
+}
+.kd-cta-lg {
+    padding: 16px 28px;
+    width: 1000px;
+    max-width: 100%
+}
+
+.kd-cta-full-width {
+    width: 100%
+}
+
+.kd-cta-lg .kd-cta-image img {
+    width: 100px
+}
+
+.kd-cta-title-desc {
+    flex: 1 0 0
+}
+
+.kd-cta .kd-link {
+    font-weight: 700
+}
+
+.kd-cta-sm {
+    padding: 11px 32px
+}
+
+.kd-cta-sm .kd-link,.kd-cta-sm .kd-text {
+    margin: 0;
+    font-weight: 500;
+    font-size: 28px
+}
+
+.kd-cta-sm .kd-text {
+    color: #1F1F1F
+}
+
+@media only screen and (max-width: 1440px) {
+    h5.kd-cta-title {
+        font-size:18px;
+        line-height: 22px
+    }
+}
+
+@media (max-width: 1064px) {
+    .kd-cta,.kd-cta-content-wrapper {
+        display:block;
+    }
+
+    .kd-cta-image {
+        margin-right: 0;
+        margin-bottom: 20px
+    }
+
+    .kd-cta-button-wrapper {
+        margin-left: 0;
+        margin-top: 20px
+    }
+
+    .kd-cta:not(.kd-cta-lg) .kd-cta-image {
+        display: none
+    }
+}
+/* END CTA Panels styles*/
