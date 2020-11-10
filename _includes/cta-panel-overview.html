@@ -1,12 +1,11 @@
 {% assign product = site.product %}
 {% if page.product != blank %}
-{% assign product = page.product %}
+{% assign product = site.data.cta_panels_data.product_map[page.product] %}
 {% endif %}
 {% assign message = site.data.cta_panels_data[product].message %}
 {% assign product_url = site.data.cta_panels_data[product].product_url %}
 {% assign trial_url = site.data.cta_panels_data[product].trial_url %}
 {% assign icon = site.data.cta_panels_data[product].avatar %}
-
 
 <section class="kd-cta-panel">
     <div class="container flex-center">
