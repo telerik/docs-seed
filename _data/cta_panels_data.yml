@@ -60,6 +60,7 @@
   trial_url: "https://www.telerik.com/download-login-v2-kendoui/thank-you-for-downloading" 
   product_url: "https://www.telerik.com/kendo-jquery-ui"
   avatar: "Kendoka"
+  overview_regex: '(jsp\/tags\/|php\/widgets\/|controls\/).*\/overview\.md$'
 "Telerik UI for ASP.NET Core":
   message: "professional grade UI library with 90+ components for building modern and feature-rich applications."  
   trial_url: "https://www.telerik.com/download-trial-file/v2/aspnet-core-ui" 
@@ -95,3 +96,7 @@
   trial_url: "https://www.telerik.com/download-trial-file/v2-b/test-studio-ultimate" 
   product_url: "https://www.telerik.com/teststudio"
   avatar: "Ninja"
+product_map: 
+  "kendo-ui": "Kendo UI for jQuery"
+  "jsp-ui": "Telerik UI for JSP"
+  "php-ui": "Telerik UI for PHP"

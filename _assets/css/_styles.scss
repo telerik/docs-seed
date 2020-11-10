@@ -4358,6 +4358,20 @@ div {
 }
 
 /* CTA Panels styles */
+
+/* Make sure CTA avatars are included */
+.kd-Kendoka-avatar {
+    background: url(image_path("Avatar-Kendoka-big.svg")) no-repeat 50% 50%;
+}
+
+.kd-DevCraft-avatar {
+    background: url(image_path("Avatar-DevCraft-big.svg")) no-repeat 50% 50%;
+}
+
+.kd-Ninja-avatar {
+    background: url(image_path("Avatar-Ninja-big.svg")) no-repeat 50% 50%;
+}
+
 .kd-cta {
     padding: 15px 30px;
     margin-top: 32px;

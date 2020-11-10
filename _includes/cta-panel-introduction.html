@@ -1,6 +1,6 @@
 {% assign product = site.product %}
 {% if page.product != blank %}
-{% assign product = page.product %}
+{% assign product = site.data.cta_panels_data.product_map[page.product] %}
 {% endif %}
 {% assign message = site.data.cta_panels_data[product].message %}
 {% assign product_url = site.data.cta_panels_data[product].product_url %}
