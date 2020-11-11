@@ -10,7 +10,7 @@ module Reading
             product = @config['product']
             
             cta_panels_data = site.data["cta_panels_data"][product]
-            overview_regex = cta_panels_data["overview_regex"] || 'controls\/[^\/]*\/overview\.md'
+            overview_regex = cta_panels_data["overview_regex"] || '(^controls\/).*\/overview\.md$'
             introduction_regex = cta_panels_data["introduction_regex"] || 'introduction\.md$'
             
 
@@ -23,6 +23,8 @@ module Reading
             
             site.pages.each do |p|	
                 shouldCreateCTA = false
+                
+                next if p.content.match(/\{%.*include.*cta-panel-.*%\}/)
                 
                 if p.path.match(Regexp.new(introduction_regex))
                     p.data["isIntroduction"] = true
@@ -37,10 +39,10 @@ module Reading
 
                     if controlName.nil? || controlName.empty?
                         Jekyll.logger.warn "ERROR:", "No title for `#{controlPath}` path. Consider fixing in _config.yml - navigation."
-                        puts "cannot find ControlName for ", p.path
+                        
                         p.data["isIntroduction"] = true
                     else
-                        p.data["CTAControlName"] = controlName["title"]
+                        p.data["CTAControlName"] = controlName ["title"]
                     end
                     
                     shouldCreateCTA = true
@@ -48,7 +50,7 @@ module Reading
                     p.data["isRestOfPages"] = true
                 end
 
-                if shouldCreateCTA	&& p.content.scan(/\{%.*include.*cta-panel-.*%\}/).count == 0
+                if shouldCreateCTA
                     createCtaPanel(p.content, p, site)
                 end
             end
