@@ -4382,8 +4382,13 @@ div {
     border-color: #5777EA;
     border-radius: 2px
 }
+
 .kd-cta-panel .container{
     width: auto;
+}
+
+.kd-cta-panel.cta-small {
+    text-align: center;
 }
 
 .kd-cta-content-wrapper {
