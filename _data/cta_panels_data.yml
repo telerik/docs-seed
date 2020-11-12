@@ -105,3 +105,4 @@ product_map:
   "php-ui": "Telerik UI for PHP"
   "aspnet-mvc": "Telerik UI for ASP.NET MVC"
   "aspnet-core": "Telerik UI for ASP.NET Core"
+  "xamarin-ui": "Telerik UI for Xamarin"
