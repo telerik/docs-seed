@@ -6,6 +6,7 @@
 {% assign product_url = site.data.cta_panels_data[product].product_url %}
 {% assign trial_url = site.data.cta_panels_data[product].trial_url %}
 {% assign icon = site.data.cta_panels_data[product].avatar %}
+{% assign component_suffix = site.data.cta_panels_data[product].component_suffix %}
 
 <section class="kd-cta-panel">
     <div class="container flex-center">
@@ -18,7 +19,7 @@
                 <div class="kd-cta-title-desc">
                     <div class="kd-cta-desc">
                         <p class="text-small m-0">
-                          The {{ page.CTAControlName }} is part of <a
+                          The {{ page.CTAControlName }}{{component_suffix}} is part of <a
                                 href="{{ product_url }}"
                                 class="kd-link text-bold">{{ product }}</a>, a 
                             {{ message }} To try it out sign up for a free 30-day trial.

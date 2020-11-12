@@ -3,12 +3,6 @@
   trial_url: "https://www.telerik.com/download-trial-file/v2-b/ui-for-asp.net-ajax" 
   product_url: "https://www.telerik.com/products/aspnet-ajax.aspx"
   avatar: "Ninja"
-  overview_articles:
-    "controls/radbinaryimage.md": "RadBinaryImage"
-    "controls/radcompression.md": "RadCompression"
-    "controls/raddevicedetectionframework.md": "RadDeviceDetectionFramework"
-    "controls/radskinmanager.md": "RadSkinManager"
-  introduction_articles:  
   overview_regex: (^controls\/)[^\/]*\/overview\.md$
 "Telerik UI for Blazor":
   message: "professional grade UI library with 50+ components for building modern and feature-rich applications."  
@@ -16,6 +10,7 @@
   product_url: "https://www.telerik.com/blazor-ui"
   avatar: "Ninja"
   overview_regex: '(^components\/)[^\/]*\/overview\.md$'
+  component_suffix: " component"
 "Telerik UI for WPF":
   message: "professional grade UI library with 140+ components for building modern and feature-rich applications."  
   trial_url: "https://www.telerik.com/download-trial-file/v2-b/ui-for-wpf" 
