@@ -10,7 +10,7 @@ module Reading
             product = @config['product']
             
             cta_panels_data = site.data["cta_panels_data"][product]
-            overview_regex = cta_panels_data["overview_regex"] || '(^controls\/).*\/overview\.md$' # (^controls\/)[^\/]*\/overview\.md$ - seach only one subfolder
+            overview_regex = cta_panels_data["overview_regex"] || '(^controls\/).*\/overview\.md$' # '(^controls\/)[^\/]*\/overview\.md$' - seach only one subfolder
             introduction_regex = cta_panels_data["introduction_regex"] || 'introduction\.md$'
             
 
