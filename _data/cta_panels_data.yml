@@ -90,6 +90,7 @@
   trial_url: "https://www.telerik.com/download-trial-file/v2-b/devcraft-ultimate" 
   product_url: "https://www.telerik.com/document-processing-libraries"
   avatar: "Ninja"
+  overview_regex: '(^libraries\/).*\/overview\.md$'
 "Telerik JustMock":
   message: "professional grade mocking library that help you easily craft unit tests even for complex scenarios by isolating dependencies."  
   trial_url: "https://www.telerik.com/download-trial-file/v2-b/justmock" 

@@ -67,7 +67,7 @@ module Reading
             headingFound = false
 
             content.each_line do |line| 
-                hasMatch = line.match(/^\**\w/)
+                hasMatch = line.match(/^\**(\w|`\w)/)
 
                 if headingFound && hasMatch
                     matchLine = line
