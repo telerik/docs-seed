@@ -64,7 +64,7 @@
   avatar: "Kendoka"
   overview_regex: '(jsp\/tags\/|php\/widgets\/|controls\/|framework\/).*\/overview\.md$'
 "Telerik UI for ASP.NET Core":
-  message: "professional grade UI library with 90+ components for building modern and feature-rich applications."  
+  message: "professional grade UI library with 100+ components for building modern and feature-rich applications."  
   trial_url: "https://www.telerik.com/download-trial-file/v2/aspnet-core-ui" 
   product_url: "https://www.telerik.com/aspnet-core-ui"
   avatar: "Ninja"
