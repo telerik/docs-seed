@@ -76,12 +76,12 @@
   avatar: "Ninja"
   overview_regex: '(^html-helpers\/).*\/overview\.md$'
 "Telerik UI for JSP":
-  message: "professional grade UI library for building modern and feature-rich applications."  
+  message: "professional grade UI library with 90+ components for building modern and feature-rich applications."  
   trial_url: "https://www.telerik.com/download-trial-file/v2/ui-for-jsp" 
   product_url: "http://www.telerik.com/jsp-ui"
   avatar: "DevCraft"
 "Telerik UI for PHP":
-  message: "professional grade UI library for building modern and feature-rich applications."  
+  message: "professional grade UI library with 90+ components for building modern and feature-rich applications."  
   trial_url: "https://www.telerik.com/download-trial-file/v2/ui-for-php" 
   product_url: "https://www.telerik.com/php-ui"
   avatar: "DevCraft"
