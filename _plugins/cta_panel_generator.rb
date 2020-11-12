@@ -10,7 +10,7 @@ module Reading
             product = @config['product']
             
             cta_panels_data = site.data["cta_panels_data"][product]
-            overview_regex = cta_panels_data["overview_regex"] || '(^controls\/).*\/overview\.md$'
+            overview_regex = cta_panels_data["overview_regex"] || '(^controls\/).*\/overview\.md$' # (^controls\/)[^\/]*\/overview\.md$ - seach only one subfolder
             introduction_regex = cta_panels_data["introduction_regex"] || 'introduction\.md$'
             
 
@@ -67,7 +67,7 @@ module Reading
             headingFound = false
 
             content.each_line do |line| 
-                hasMatch = line.match(/^[A-Za-z0-9]/)
+                hasMatch = line.match(/^\**\w/)
 
                 if headingFound && hasMatch
                     matchLine = line
