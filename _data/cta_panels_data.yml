@@ -104,5 +104,5 @@ product_map:
   "aspnet-core": "Telerik UI for ASP.NET Core"
   "xamarin-ui": "Telerik UI for Xamarin"
   "blazor": "Telerik UI for Blazor"
-  "reporting": "Telerik Reporting",
+  "reporting": "Telerik Reporting"
   "justmock": "Telerik JustMock"
