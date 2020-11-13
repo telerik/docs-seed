@@ -31,6 +31,7 @@
   trial_url: "https://www.telerik.com/download-trial-file/v2-b/ui-for-winui" 
   product_url: "https://www.telerik.com/winui"
   avatar: "Ninja"
+  overview_regex: '(^controls\/)[^\/]*\/[^\/]*overview\.md$'
 "Telerik Reporting":
   message: "complete .NET embedded reporting tool for web and desktop applications."
   trial_url: "https://www.telerik.com/download-trial-file/v2-b/reporting" 
