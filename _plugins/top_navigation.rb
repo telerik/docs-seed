@@ -27,16 +27,12 @@ Jekyll::Hooks.register :site, :after_init do |site|
     "blazor" => "blazor-ui",
     "ar-vr" => "vr-lab",
     "tech-style-guide" => "store",
-    "winui" => "win-ui"
+    "winui" => "win-ui",
+    "unite-ux" => "unite-ux"
   }
 
-  html = ''
-  platform = site.config['platform']
-  if platform == 'unite-ux'
-    html = open("http://cdn.telerik-web-assets.com/progress-navigation/latest/pair-unite-ux-fluid-rel.html").read
-  else
-    html = open("http://cdn.telerik-web-assets.com/telerik-navigation/stable/nav-%s-csa-abs-component.html" % [navigations_map[platform]]).read
-  end
+  platform = site.config['platform']  
+  html = open("http://cdn.telerik-web-assets.com/telerik-navigation/stable/nav-%s-csa-abs-component.html" % [navigations_map[platform]]).read
   File.write('./_includes/top-nav.html', html)
 
   if site.config['other_platforms']
