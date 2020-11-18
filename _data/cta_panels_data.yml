@@ -93,10 +93,14 @@
   product_url: "https://www.telerik.com/products/mocking.aspx"
   avatar: "Ninja"
 "Progress Test Studio":
-  message: "TODO."  
   trial_url: "https://www.telerik.com/download-trial-file/v2-b/test-studio-ultimate" 
   product_url: "https://www.telerik.com/teststudio"
-  avatar: "Ninja"
+"Progress Telerik TestStudio Dev":
+  trial_url: "https://www.telerik.com/download-trial-file/v2-b/test-studio-dev-edition" 
+  product_url: "https://www.telerik.com/teststudio-dev"
+"Progress Telerik Test Studio for APIs":
+  trial_url: "https://www.telerik.com/download-trial-file/v2/teststudio-apis" 
+  product_url: "https://www.telerik.com/teststudio-apis"
 product_map: 
   "kendo-ui": "Kendo UI for jQuery"
   "jsp-ui": "Telerik UI for JSP"

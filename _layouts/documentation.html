@@ -42,8 +42,12 @@ layout: default
         {% endif %}
        
         {% if page.isRestOfPages == true %} 
-          {% include cta-panel-small.html %} 
-         {% endif %} 
+          {% if site.platform contains "teststudio" %} 
+            {% include cta-panel-teststudio-small.html %} 
+          {% else %} 
+            {% include cta-panel-small.html %} 
+          {% endif %} 
+        {% endif %} 
 
         {% if page.kind == "api" and page.position != 1 %}
         <article class="api-reference">
