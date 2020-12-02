@@ -2,7 +2,22 @@
 //= require search-base
 
 var showSearchPopup;
+var isSearchPopupInitialized;
+var searchPopupScriptUrl = assetsFolderPath + '/search-popup.js'
+if (loadedScripts && loadedScripts.indexOf(searchPopupScriptUrl) <0) {
+    loadedScripts.push(searchPopupScriptUrl);
+}
+
 function initPopup(open) {
+    if(isSearchPopupInitialized){
+        if (open){
+            $("#refine-search-popup").getKendoPopup().open();
+        }
+        return;
+    }
+
+    isSearchPopupInitialized = true;
+
     var popup = $("#refine-search-popup").kendoPopup({
         anchor: $("#refine-search-container"),
         origin: "bottom right",
