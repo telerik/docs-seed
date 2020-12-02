@@ -4,6 +4,7 @@ var GCSE_API_URL = "https://www.googleapis.com/customsearch/v1";
 var searchTerms = "";
 var searchItemsStorageKey = "searchItemsStorageKey";
 var searchDataSource, isKbPortalRoot;
+var isSearchBaseInitialized;
 
 var searchViewModel = kendo.observable({
     isInitialized: false,
@@ -65,6 +66,9 @@ var searchViewModel = kendo.observable({
 
     },
     init: function () {
+        if (searchViewModel.isInitialized){
+            return;
+        }
         var propertyNames = JSON.parse(localStorage.getItem(this.getLocalStorageKey()));
         if (!propertyNames || isKbPortalRoot) {
             propertyNames = [];
@@ -92,16 +96,24 @@ var searchViewModel = kendo.observable({
         }
 
         searchViewModel.updateLabel();
+        searchViewModel.isInitialized = true;
     }
 });
 
 function init() {
+    if(isSearchBaseInitialized){
+        return;
+    }
     searchViewModel.init();
     
     kendo.bind($(".search-input-container"), searchViewModel);
-    $(".custom-checkbox input[type='checkbox']").change(function () {
-        searchViewModel.update();
+    searchViewModel.bind("change", function (e) {
+        if (["api", "documentation", "kb"].indexOf(e.field)>-1){
+            searchViewModel.update();
+        }
     });
+    
+    isSearchBaseInitialized = true
 }
 
 function updateSearchLayout() {
