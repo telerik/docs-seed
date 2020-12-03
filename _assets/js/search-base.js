@@ -4,9 +4,9 @@ var GCSE_API_URL = "https://www.googleapis.com/customsearch/v1";
 var searchTerms = "";
 var searchItemsStorageKey = "searchItemsStorageKey";
 var searchDataSource, isKbPortalRoot;
-var isSearchBaseInitialized;
 
-var searchViewModel = kendo.observable({
+
+window.searchViewModel = window.searchViewModel || kendo.observable({
     isInitialized: false,
     kb: false,
     documentation: false,
@@ -101,7 +101,7 @@ var searchViewModel = kendo.observable({
 });
 
 function init() {
-    if(isSearchBaseInitialized){
+    if(window.isSearchBaseInitialized){
         return;
     }
     searchViewModel.init();
@@ -113,7 +113,7 @@ function init() {
         }
     });
     
-    isSearchBaseInitialized = true
+    window.isSearchBaseInitialized = true
 }
 
 function updateSearchLayout() {

@@ -1,22 +1,18 @@
-//= require kendo
-//= require search-base
+//= require kendo/kendo.popup.min
 
-var showSearchPopup;
-var isSearchPopupInitialized;
 var searchPopupScriptUrl = assetsFolderPath + '/search-popup.js'
 if (loadedScripts && loadedScripts.indexOf(searchPopupScriptUrl) <0) {
     loadedScripts.push(searchPopupScriptUrl);
 }
-
 function initPopup(open) {
-    if(isSearchPopupInitialized){
+    if(window.isSearchPopupInitialized){
         if (open){
             $("#refine-search-popup").getKendoPopup().open();
         }
         return;
     }
 
-    isSearchPopupInitialized = true;
+    window.isSearchPopupInitialized = true;
 
     var popup = $("#refine-search-popup").kendoPopup({
         anchor: $("#refine-search-container"),
@@ -27,7 +23,6 @@ function initPopup(open) {
     $("#refine-search-button").on("click", function () {
         popup.toggle();
     });
-
     kendo.bind($("#refine-search-popup"), searchViewModel);
 
     updateSearchLayout();
@@ -65,5 +60,5 @@ function updateSearchLayout() {
 function getDataSource() { }
 
 $(function () {
-    initPopup(showSearchPopup);
+    initPopup(window.showSearchPopup);
 });

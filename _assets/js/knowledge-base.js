@@ -98,23 +98,29 @@ var searchViewModel = kendo.observable({
 });
 
 function init() {
-    var popup = $("#refine-search-popup").kendoPopup({
-        anchor: $("#refine-search-container"),
-        origin: "bottom right",
-        position: "top right",
-    }).data("kendoPopup");
-
-    $("#refine-search-button").on("click", function () {
-        popup.toggle();
-    });
+    if(window.isSearchPopupInitialized != true){
+        
+        var popup = $("#refine-search-popup").kendoPopup({
+            anchor: $("#refine-search-container"),
+            origin: "bottom right",
+            position: "top right",
+        }).data("kendoPopup");
+        
+        $("#refine-search-button").on("click", function () {
+            popup.toggle();
+        });
+        window.isSearchPopupInitialized = true;
+    }
 
     searchViewModel.init();
 
     kendo.bind($(".search-input-container"), searchViewModel);
     kendo.bind($("#refine-search-popup"), searchViewModel);
 
-    $(".custom-checkbox input[type='checkbox']").change(function () {
-        searchViewModel.update();
+    searchViewModel.bind("change", function (e) {
+        if (["api", "documentation", "kb"].indexOf(e.field)>-1){
+            searchViewModel.update();
+        }
     });
 
     attachToEvents();
@@ -196,6 +202,9 @@ function getSearchQuery() {
 }
 
 function attachToEvents() {
+    if(window.isAttachToEventsFired){
+        return;
+    }
     $('input[name="q"].kb-search').keydown(function (e) {
         if (e.keyCode == 13) { // Enter
             var $this = $(this);
@@ -208,6 +217,7 @@ function attachToEvents() {
     $("div#results").on("click", "a", function (e) {
         trackSearchResult($(this).attr("href"));
     });
+    window.isAttachToEventsFired = true;
 }
 
 function getSearchCategory() {
