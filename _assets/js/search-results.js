@@ -1,12 +1,15 @@
-//= require search-popup
-//= require kendo/kendo.treeview.min
+//= require kendo/kendo.pager.min
+//= require kendo/kendo.listview.min
 
 function attachToEvents() {
+    if (window.isAttachToEventsFired){
+        return;
+    }
     $('form input[name="q"]').keydown(function (e) {
         if (e.keyCode == 13) { // Enter
             var $this = $(this);
             searchInternal($this);
-            $this.parents('form').submit();
+            $("#results").data('kendoListView').dataSource.read();
             return false;
         }
     });
@@ -14,6 +17,26 @@ function attachToEvents() {
     $("div#results").on("click", "a", function (e) {
         trackSearchResult($(this).attr("href"));
     });
+    window.isAttachToEventsFired = true;
+}
+
+function search(input) {
+    searchTerms = input.val();
+    trackSearchQuery(searchTerms);
+}
+
+function trackSearchQuery(query) {
+    trackItem(getSearchCategory(), prd, query);
+}
+
+function searchInternal(input) {
+    closePopup();
+    search(input);
+}
+
+function closePopup() {
+    var popup = $("#refine-search-popup").data("kendoPopup");
+    popup.close();
 }
 
 function getSearchCategory() {
@@ -117,4 +140,5 @@ $(function () {
     });
 
     setSideNavPosition();
+    attachToEvents();
 });

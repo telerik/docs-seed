@@ -51,6 +51,9 @@ $(document).ready(function () {
     $(".api-columns > div").addClass("components pb-20 mb-20");
 
     $('#refine-search-container').on('click', function () {
+        if(!window.isSearchPopupInitialized){
+            window.showSearchPopup = true;
+        }
         loadScript(assetsFolderPath + '/search-popup.js')
     });
 
