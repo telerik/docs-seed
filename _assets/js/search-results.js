@@ -55,6 +55,13 @@ function toKV(n) {
     return this;
 }
 
+function getSearchQuery() {
+    var params = location.search.replace(/(^\?)/, '').split("&").map(toKV.bind({}))[0];
+    searchTerms = decodeURIComponent(params.q ? params.q.replace(/\+/g,' ') : '');
+
+    return $('input[name="q"]').val() || searchTerms;
+}
+
 function getDataSource() {
     var params = location.search.replace(/(^\?)/, '').split("&").map(toKV.bind({}))[0];
     searchTerms = decodeURIComponent(params.q ? params.q.replace(/\+/g,' ') : '');
@@ -68,7 +75,7 @@ function getDataSource() {
                     num: data.pageSize,
                     cx: gcsInstance,
                     key: gcsKey,
-                    q: params.q + searchViewModel.getFilterExpression(),
+                    q: getSearchQuery() + searchViewModel.getFilterExpression(),
                 };
             },
             read: {
