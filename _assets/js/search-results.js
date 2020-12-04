@@ -36,7 +36,9 @@ function searchInternal(input) {
 
 function closePopup() {
     var popup = $("#refine-search-popup").data("kendoPopup");
-    popup.close();
+    if(popup){
+        popup.close();
+    }
 }
 
 function getSearchCategory() {
