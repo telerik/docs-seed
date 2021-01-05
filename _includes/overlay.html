@@ -1,0 +1,117 @@
+<div class="RedirectBox-overlay"></div>
+<div class="RedirectBox">
+  <div class="container">
+    <h1>Unite UX direction is evolving!</h1>
+    <p class="-ff-title -fs28 -fw3 -mb4">Dear friends, after gaining plenty of great experience and feedback through
+      working with you, our direction evolves to better serve your needs. Our mission to bridge the design to
+      development gap remains unchanged. The way to solve it, though is new. Visit our webpage to meet the new Unite
+      UX: The collaborative design to development UI components builder.</p>
+    <a href="https://www.telerik.com/unite-ux" class="RedirectBox-btn">Explore the New Unite UX</a>
+  </div>
+</div>
+
+<style>
+  /* scroll is disabled on all pages with the overlay */
+  html,
+  body {
+    overflow: hidden;
+    position: relative;
+    height: 100%;
+  }
+
+  @keyframes slideDown {
+    0% {
+      transform: translateY(-100%);
+    }
+
+    100% {
+      transform: translateY(0);
+    }
+  }
+
+  .RedirectBox,
+  .RedirectBox-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 99998;
+  }
+
+  .RedirectBox-overlay {
+    bottom: 0;
+    background: #000;
+    opacity: 0.8;
+  }
+
+  .RedirectBox {
+    max-height: 100vh;
+    max-width: 1460px;
+    margin: 0 auto;
+    padding: 100px 0;
+    animation: slideDown 0.8s forwards;
+    background-color: #c9e8fc;
+    background-image: url('https://d117h1jjiq768j.cloudfront.net/images/default-source/products/unite-ux/unite-ux-overlay-bg.svg?v=2');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 66% 50%;
+  }
+
+  .RedirectBox .container {
+    max-height: calc(100vh - 60px);
+    overflow: auto;
+  }
+
+  .RedirectBox h1 {
+    margin-bottom: 25px;
+    line-height: 1.25;
+  }
+
+  .RedirectBox p {
+    width: 66.66%;
+    font: 300 28px/1.35 'Metric', Arial, Helvetica, sans-serif;
+    margin-bottom: 30px;
+  }
+
+  .RedirectBox-btn {
+    width: 33%;
+    display: inline-block;
+    background-color: #ff4500;
+    padding: .8em .4em;
+    font: 500 20px/1 'Metric', Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    text-align: center;
+    transition: .2s ease;
+    border-radius: 2px;
+    color: #fff;
+  }
+
+  @media screen and (max-width: 960px) {
+    .RedirectBox {
+      padding: 60px 0 40px;
+    }
+
+    .RedirectBox-btn {
+      width: 66%;
+    }
+
+    .RedirectBox h1 {
+      font-size: 34px;
+    }
+
+    .RedirectBox p {
+      font-size: 20px;
+    }
+  }
+
+  @media screen and (max-width: 590px) {
+    .RedirectBox {
+      background-position: 0 0;
+    }
+
+    .RedirectBox p,
+    .RedirectBox-btn {
+      width: 100%;
+    }
+  }
+</style>
