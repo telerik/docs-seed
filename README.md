@@ -8,7 +8,7 @@ Contains the documentation site implementation.
   * [live sync](#livesync)
   * [build without serve](#only-build)
   * [build site partially](#build-site-partially)
-  * [exclude articles from navigation tree](#exclude-articles-from-navigaton-tree)
+  * [exclude articles from navigation tree](#exclude-articles-from-navigation-tree)
 - [Build API Reference](#build-api-reference)
 - [New Documentation](#new-documentation)
 
@@ -142,7 +142,7 @@ You can benefit from the following features:
 * [live sync](#livesync)
 * [build without serve](#only-build)
 * [build site partially](#build-site-partially)
-* [exclude articles from navigation tree](#exclude-articles-from-navigaton-tree)
+* [exclude articles from navigation tree](#exclude-articles-from-navigation-tree)
 
 ### Additional Config File
 
