@@ -4,6 +4,11 @@ Contains the documentation site implementation.
 - [Local Setup :computer:](#local-setup)
 - [Troubleshooting :hankey:](#troubleshooting)
 - [Extra Features :moneybag:](#extra-features)
+  * [additional config file](#additional-config-file)
+  * [live sync](#livesync)
+  * [build without serve](#only-build)
+  * [build site partially](#build-site-partially)
+  * [exclude articles from navigation tree](#exclude-articles-from-navigaton-tree)
 - [Build API Reference](#build-api-reference)
 - [New Documentation](#new-documentation)
 
@@ -137,6 +142,7 @@ You can benefit from the following features:
 * [live sync](#livesync)
 * [build without serve](#only-build)
 * [build site partially](#build-site-partially)
+* [exclude articles from navigation tree](#exclude-articles-from-navigaton-tree)
 
 ### Additional Config File
 
@@ -177,6 +183,16 @@ This could be achieved by executing the `sh modify-config.sh` script with passin
 EXAMPLE: Let's say that you want to build only the documentation for 2 controls - Barcode and Chart, you are using Docker and you have an extra config YAML file. Then you have to open a terminal and execute the following:
 
 `sh modify-config.sh --include=controls/barcode,controls/Chart --docker=true --config=_extra.yml`
+
+
+### Exclude Articles from Navigation Tree
+
+If you have some obsolete articles or whole folders that you need to hide from the Navigation tree, you can use the `exclude_navigation` array in the settings of your repository's `config.yml` file. The example below shows how to exclude listing all articles in `knowledge-base` folder as well as `sharepoint` folder.
+
+EXAMPLE from https://github.com/telerik/ajax-docs/blob/master/_config.yml#L6
+
+`exclude_navigation: ["sharepoint/2007/*" ,"knowledge-base/*"]`
+
 
 ## Build API Reference
 
