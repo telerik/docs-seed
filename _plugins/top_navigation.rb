@@ -9,6 +9,7 @@ Jekyll::Hooks.register :site, :after_init do |site|
     "fiddler" => "fiddler", 
     "fiddler-core" => "fiddler-core",
     "fiddler-everywhere" => "fiddler-everywhere", 
+    "fiddler-jam" => "fiddler-everywhere", 
     "justdecompile" => "just-decompile", 
     "justmock" => "just-mock", 
     "kendo-ui" => "kendo-ui-jquery", 
