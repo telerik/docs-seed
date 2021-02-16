@@ -3026,7 +3026,7 @@ span.all-components-expanded-icon {
     .SiteRibbon {
         position: sticky;
 
-        + nav.TK-Nav, + .PRGS-PairNav {
+        + .PRGS-PairNav {
             top: 64px;
         }
     }
