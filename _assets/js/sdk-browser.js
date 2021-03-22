@@ -159,7 +159,7 @@ function createKendoGrid(containerId, dataSourceUrl) {
 
     kendoDiv.kendoGrid({
         toolbar: kendo.template($("#toolBarTemplate").html()),
-        height: 450,
+        height: 600,
         columns: [{
             field: "Name",
             width: 300,
