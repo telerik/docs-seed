@@ -252,7 +252,7 @@ $(document).ready(function () {
                         window.addEventListener('scroll', onWindowScrollOrResize, {passive: true});
                         window.addEventListener('resize', onWindowScrollOrResize, {passive: true});
                     }
-                }, 50000) // 50 sec
+                }, 30000) // 30 sec
             }
         }
     };
