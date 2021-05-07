@@ -1886,15 +1886,38 @@ article table tr {
 
 /* Feedback Styles */
 
+@media screen and (min-width: 768px){
+    .feedback-more-info.show {
+        flex: 0 0 79.1667%;
+        max-width: 79.1667%;
+        margin-left: 20.8333%;
+        padding-left: 16px
+    }
+}
+
+@media screen and (min-width: 576px){
+    .feedback-more-info.show {
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin-left: 0%;
+    }
+}
+
 .feedback-more-info {
+    width: 100%;
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin-left: 0%;
     max-height: 0;
     overflow: hidden;
-    padding-left: 15px;
-
+    padding-left: 35px;
+    padding-right: 16px;
+    
     &.show {
         display: block;
         transition: max-height 0.2s ease-out;
         max-height: 240px;
+        padding-bottom: 10px;
     }
 
     &.hide {
@@ -1935,7 +1958,7 @@ article table tr {
         margin-left: 15px;
         text-transform: none;
         background-color: transparent;
-        border-color: #C8E2F2;
+        border-color: #C1E8FF;
         color: #000;
 
         &:hover {
@@ -1966,12 +1989,26 @@ article table tr {
     background-image: url(image_path("feedback-bgr.svg"));
     background-size: cover;
     background-repeat: repeat-x;
-    padding-top: 14px;
-    padding-bottom: 13px;
-    font-size: 20px;
+    font-size: 19px;
     font-weight: 500;
     z-index: 1100;
 
+    .feedback-question>div{
+        display: flex;
+        padding: 10px 0px;
+        align-items: center;
+        flex-wrap: nowrap;
+        justify-content: center;
+    }
+    
+    @media screen and (max-width: 768px)
+    {
+      .feedback-question>div {
+          flex-wrap: nowrap;
+          justify-content: space-between;
+        }
+    }
+   
     .feedback-button {
         display: inline-block;
         border-radius: 2px;
@@ -1983,20 +2020,21 @@ article table tr {
         transition: color .2s ease, background-color .2s ease, border-color .2s ease;
     }
 
-    .feedback-button-md {
-        padding: 5px 24px;
-        font-weight: 400;
+    .feedback-send-data-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        outline: none;
+        cursor: pointer;
+        user-select: none;
+        border-radius: 2px;
+        font-weight: 500;
         font-size: 19px;
-        line-height: 32px;
+        padding: 9px 14px;
+        line-height: 12px;
+        min-width: 60px;
     }
 
-    .feedback-button-sm {
-        padding: 6.5px 17px;
-        font-weight: 500;
-        font-size: 13px;
-        line-height: 1;
-        letter-spacing: 0.13px;
-    }
 
     .feedback-button-secondary {
         background-color: #2E64D6;
@@ -2009,26 +2047,43 @@ article table tr {
         color: #fff;
     }
 
-    .feedback-no-button {
-        margin-left: 20px;
+    .feedback-vote-buttons{
+        display: flex;   
+    }
+    
+    @media screen and (min-width: 768px){
+        .feedback-vote-buttons{
+            margin-top: 0px;
+        }
+    }
+
+    @media screen and (max-width: 380px){
+        .feedback-question > div{
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+        .feedback-vote-buttons{
+            flex-wrap: wrap;
+            row-gap: 5px;
+        }
     }
 
     .feedback-vote-button {
-        display: inline-block;
-        border-radius: 2px;
-        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        outline: none;
         cursor: pointer;
-        text-decoration: none;
-        border-width: 2px;
-        border-style: solid;
-        transition: color .2s ease, background-color .2s ease, border-color .2s ease;
-        padding: 5px 24px;
-        font-weight: 400;
+        user-select: none;
+        border: 0px;
+        border-radius: 2px;
+        font-weight: 500;
+        color: white;
+        background-color: rgb(46, 100, 214);
         font-size: 19px;
-        line-height: 32px;
-        background-color: #2E64D6;
-        color: #fff;
-        border-color: transparent;
+        padding: 9px 14px;
+        line-height: 12px;
+        min-width: 60px;
 
         &:hover {
             background-color: #2456BE;
@@ -2038,10 +2093,13 @@ article table tr {
 
     .close-button-container {
         display: none;
-        position: fixed;
-        bottom: 10px;
-        right: 16px;
-        padding: 8px;
+        position: absolute;
+        top: 50%;
+        right: 20px;
+        transform: translateY(-50%);
+        background: none;
+        outline: none;
+        border: 0px;
 
         &:hover {
             cursor: pointer;
@@ -2084,9 +2142,21 @@ article table tr {
     }
 
     h3 {
-        color: #1f1f1f !important;
-        margin: 5px 0;
         font-weight: 500;
+        font-size: 26px;
+        line-height: 1;
+        display: inline-block;
+        color: rgb(31, 31, 31) !important;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        width: 100%;
+        text-align: center;
+    }
+
+    @media screen and (min-width: 768px){
+        h3{
+            text-align: left;
+        }
     }
 
     h4 {
@@ -2114,8 +2184,25 @@ article table tr {
         }
     }
 
-    div.feedback > div {
+    .feedback > div {
         line-height: 23px;
+    }
+
+    .feedback > div.side-title{
+        line-height: 50px;
+        font-size: 26px;
+    }
+
+    @media screen and (max-width: 384px){
+        .feedback > div.side-title {
+            line-height: 30px;
+        }
+    }
+
+    @media screen and (max-width: 768px){
+        .feedback > div.side-title {
+            text-align: center;
+        }
     }
 }
 
