@@ -1,26 +1,20 @@
 <div class="row feedback-row">
   <input id="hidden-sheet-id" type="hidden" value="{{site.ff-sheet-id}}">
-  <div class="col-sm-8 col-sm-offset-4 col-md-offset-3 col-lg-8 col-lg-offset-2">
+  <div class="col-xs-10 col-sm-7 col-sm-offset-4 col-md-offset-3 col-lg-8 col-lg-offset-2">
     <div class="row">
       <div class="col-md-10 col-md-offset-1">
         <div class="row feedback">
           <div class="feedback-question">
-            <div class="col-xs-8">
+            <div>
               <h3>Was this article helpful?</h3>
+              <div class="feedback-vote-buttons">
+                <button class="feedback-vote-button">Yes</button>
+                &nbsp;
+                <button class="feedback-vote-button feedback-no-button">No</button>
+              </div>
             </div>
-            <div class="col-xs-4 text-right">
-              <button class="feedback-vote-button">Yes</button>
-              <button class="feedback-vote-button feedback-no-button">No</button>
-            </div>
-            <div class="close-button-container">
-              <svg version="1.1"  xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="20px" height="20px"
-                viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve">
-                <path fill="#1f1f1f"
-                  d="M8.7,8l6.1,6.1l-0.7,0.7L8,8.7l-6.1,6.1l-0.7-0.7L7.3,8L1.2,1.9l0.7-0.7L8,7.3l6.1-6.1l0.7,0.7L8.7,8z" />
-              </svg></div>
           </div>
-
+          
           <div class="feedback-more-info">
             <div class="row">
               <h4>Tell us how we can improve this article</h4>
@@ -34,9 +28,16 @@
               <span class="feedback-skip-button feedback-send-data-button">Skip</span>
             </div>
           </div>
-        </div>
+        </div> 
       </div>
     </div>
+  </div>
+  <div class="close-button-container">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 27.23 26.588">
+      <g fill="none" stroke="rgba(0,0,0,0.5)" stroke-linecap="round" stroke-width="2">
+        <path d="M1.414 1.414l23.759 23.759M25.815 1.414L2.056 25.173"></path>
+      </g>
+    </svg>
   </div>
 </div>
 
