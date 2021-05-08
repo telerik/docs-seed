@@ -13,6 +13,30 @@ $(document).ready(function () {
         return 'T_DOCUMENTATION_FEEDBACK_SUBMIT' + window.location.href;
     };
 
+    var localStorageFeedbackSnoozeKey = function () {
+        return 'T_DOCUMENTATION_FEEDBACK_SNOOZE_' + prd;
+    };
+
+    var isSnoozed = function (){
+        var snoozeDate = localStorage.getItem(localStorageFeedbackSnoozeKey());
+        if (snoozeDate){
+            snoozeDate = new Date(snoozeDate);
+            var isValidDate = !isNaN(snoozeDate.getTime());
+            
+            function areDatesOnSameDay(first, second){
+               return first.getFullYear() === second.getFullYear() &&
+                first.getMonth() === second.getMonth() &&
+                first.getDate() === second.getDate();
+            }
+        
+            if(isValidDate && areDatesOnSameDay(snoozeDate, new Date())){
+                return true;
+            }
+        }
+
+        return false;
+    } 
+
     var getFeedbackInfo = function () {
         return localStorage.getItem(localStorageFeedbackKey());
     };
@@ -155,6 +179,8 @@ $(document).ready(function () {
 
     $('.close-button-container').on('click', function () {
         feedbackProps.isClosed = true;
+        // snooze popup per product until the end of the day
+        localStorage.setItem(localStorageFeedbackSnoozeKey(), new Date());
         toggleFeedbackSticky(false);
         setFeedbackInfo(null, feedbackProps.isClosed)
     });
@@ -179,7 +205,7 @@ $(document).ready(function () {
     }
 
     var shouldRunFeedbackTimer = function () {
-        return !(hasVoted() || hasClosed());
+        return !(hasVoted() || isSnoozed());
     }
 
     var getElementTopOffset = function (selector) {
@@ -225,7 +251,7 @@ $(document).ready(function () {
     }
 
     var onWindowScrollOrResize = function () {
-        if (!feedbackProps.isClosed) {
+        if (!isSnoozed() && canVote()) {
             var $window = $(window);
             var scrollOffset = $window.height() + $window.scrollTop();
             var footerHeight = $(feedbackProps.feedbackFormSelector).outerHeight() + $('#footer').outerHeight();
