@@ -9,6 +9,7 @@ Contains the documentation site implementation.
   * [build without serve](#only-build)
   * [build site partially](#build-site-partially)
   * [exclude articles from navigation tree](#exclude-articles-from-navigation-tree)
+  * [webinar banner](#webinar-banner)
 - [Build API Reference](#build-api-reference)
 - [New Documentation](#new-documentation)
 
@@ -143,6 +144,7 @@ You can benefit from the following features:
 * [build without serve](#only-build)
 * [build site partially](#build-site-partially)
 * [exclude articles from navigation tree](#exclude-articles-from-navigation-tree)
+* [webinar banner](#webinar-banner)
 
 ### Additional Config File
 
@@ -192,6 +194,23 @@ If you have some obsolete articles or whole folders that you need to hide from t
 EXAMPLE from https://github.com/telerik/ajax-docs/blob/master/_config.yml#L6
 
 `exclude_navigation: ["sharepoint/2007/*" ,"knowledge-base/*"]`
+
+
+### Webinar Banner
+
+You can add a yellow banner at the top of all your docs pages from the `_config.yml` file.
+
+Add the desired HTML markup in the `_config.yml` file as a variable near its end, for example use the following (see also [this sample commit that has the code commented out](https://github.com/telerik/blazor-docs/commit/608177be173a7f9ed90c414de5eeacce5aa92e44)). Note the dash in the beginning and the scope setting - the syntax for that must be exact. Make sure to add an empty line before and after your content. Use only spaces for indentation. The HTML content must be in one single line.
+
+```yml
+- 
+    scope:
+        path: ""
+    values:
+        announcement: |
+             Learn how to build Full-Stack C# apps with Telerik UI for Blazor and Entity Framework in no time. <a href="https://www.telerik.com/campaigns/blazor/wb-blazor-in-depth-webinar?utm_medium=internal&utm_source=yellowribbon&utm_campaign=blazor-webinar-weekofblazor" target="_blank">Save your seat</a>!
+
+```
 
 
 ## Build API Reference
