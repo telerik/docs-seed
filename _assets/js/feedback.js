@@ -205,7 +205,7 @@ $(document).ready(function () {
     }
 
     var shouldRunFeedbackTimer = function () {
-        return !(hasVoted() || isSnoozed());
+        return canVote() && !isSnoozed();
     }
 
     var getElementTopOffset = function (selector) {
