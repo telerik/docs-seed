@@ -351,6 +351,17 @@ nav.TK-Nav, .PRGS-PairNav {
     }
 }
 
+
+@media screen and (max-width: 1240px){
+    #announcement-banner {
+        top: 45px;
+
+        #announcement-content > * {
+            padding-right: 40px;
+        }
+    }
+}
+
 /* Main Menu */
 
 $text-color: #4a4e52;
