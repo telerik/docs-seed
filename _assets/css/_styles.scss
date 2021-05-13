@@ -332,32 +332,22 @@ nav.TK-Nav, .PRGS-PairNav {
 
 // Ribbon Announcement
 
-.SiteRibbon-text,
-.SiteRibbon-CTA {
-    display: inline;
-    vertical-align: middle;
-}
+#announcement-banner {
+    width: 100%;
+    position: fixed;
+    z-index: 40000;
+    left: 0;
+    top: 61px;
 
-.SiteRibbon {
-    margin-top: -95px;
-    top: 0;
-    position: relative;
-    padding: 20px 0 18px 0;
-    font-family: FaktSlabPro,Arial,Helvetica,sans-serif;
-    font-weight: 300;
-    font-size: 16px;
-    line-height: 1.2;
-    text-align: center;
-    z-index: 50000;
-    color: #000;
-    background-color: #ffda3f;
+    .close-button-container {
+        position: absolute;
+        top: 19px;
+        right: 16px;
+        z-index: 100000;
 
-    .container {
-        position: relative;
-    }
-
-    + nav.TK-Nav, + .PRGS-PairNav {
-        margin-top: 0;
+        &:hover {
+            cursor: pointer;
+        }
     }
 }
 
