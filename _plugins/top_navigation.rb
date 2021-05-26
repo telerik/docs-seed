@@ -23,6 +23,7 @@ Jekyll::Hooks.register :site, :after_init do |site|
     "winforms" => "winforms", 
     "wpf" => "wpf", 
     "xamarin" => "xamarin",
+    "maui" => "maui-ui", 
     "php-ui" => "php",
     "jsp-ui" => "jsp",
     "blazor" => "blazor-ui",
