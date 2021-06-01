@@ -6,7 +6,7 @@ Jekyll::Hooks.register :site, :after_init do |site|
     "aspnet-core" => "asp-net-core",
     "aspnet-mvc" => "asp-net-mvc", 
     "dpl" => "document-processing", 
-    "fiddler" => "fiddler", 
+    "fiddler" => "fiddler-classic", 
     "fiddler-core" => "fiddler-core",
     "fiddler-everywhere" => "fiddler-everywhere",
     "fiddler-jam" => "fiddler-jam",
