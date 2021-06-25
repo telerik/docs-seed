@@ -76,6 +76,8 @@ git clone git@github.com:telerik/docs-seed.git
 sh copy_local.sh "D:\Work\xaml-docs"
 ```
 
+> If you are running the documentation on a MacOS or another OS where the *robocopy* command is unavailable, you have to pass a second  parameter to the copy_local.sh script: `sh copy_local.sh "D:\Work\xaml-docs" true`
+
 - Go to the **DOCS-PATH** directory
 - Open a terminal of your choice (e.g., gitBash)
 - Install gems by executing `bundle install`
