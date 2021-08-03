@@ -30,3 +30,5 @@ start-docs.sh
 watch.sh
 knowledge-base.html
 _tempconfig.yml
+CODEOWNERS
+exclude.txt
