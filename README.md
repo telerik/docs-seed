@@ -138,6 +138,11 @@ git config --system core.longpaths true
     * LANG: en_GB.UTF-8
 3. Modify the `runtimes.rb` file in the execJs gem by changing `UTF-16LE` with `UTF-8` values - [see detailed instructions here](https://stackoverflow.com/questions/25830561/incomplete-n-on-utf-16le-error) or [here](https://stackoverflow.com/questions/12520456/execjsruntimeerror-on-windows-trying-to-follow-rubytutorial). The `runtimes.rb` file is located in `[Ruby Installation folder]\lib\ruby\gems\2.3.0\gems\execjs-2.7.0\lib\execjs`
 
+
+### Known error messages
+
+* _jekyll 3.3.1 | Error:  [prev_next plugin] Comparing the pages notes.md and sitemap.xml failed_ - Usually happens when a new article does not have `position` property in the front-matter. Solution: add the `position` property to a number. If you want some articles to sort alphabetically, they need to have the same `position` value.
+
 ## Extra Features
 
 You can benefit from the following features:
