@@ -54,19 +54,19 @@
   avatar: "Ninja"
   overview_regex: '(^controls\/|^blazormobilecontrols\/|^nativecontrols\/).*overview\.md$'
 "Kendo UI for jQuery":
-  message: "professional grade UI library with 100+ components for building modern and feature-rich applications."
+  message: "professional grade UI library with 110+ components for building modern and feature-rich applications."
   trial_url: "https://www.telerik.com/download-login-v2-kendoui/thank-you-for-downloading"
   product_url: "https://www.telerik.com/kendo-jquery-ui"
   avatar: "Kendoka"
   overview_regex: '(jsp\/tags\/|php\/widgets\/|controls\/|framework\/).*\/overview\.md$'
 "Telerik UI for ASP.NET Core":
-  message: "professional grade UI library with 100+ components for building modern and feature-rich applications."
+  message: "professional grade UI library with 110+ components for building modern and feature-rich applications."
   trial_url: "https://www.telerik.com/download-trial-file/v2/aspnet-core-ui"
   product_url: "https://www.telerik.com/aspnet-core-ui"
   avatar: "Ninja"
   overview_regex: '(^tag-helpers\/|^html-helpers\/).*\/overview\.md$'
 "Telerik UI for ASP.NET MVC":
-  message: "professional grade UI library with 100+ components for building modern and feature-rich applications."
+  message: "professional grade UI library with 110+ components for building modern and feature-rich applications."
   trial_url: "https://www.telerik.com/download-trial-file/v2-b/ui-for-asp.net-mvc"
   product_url: "https://www.telerik.com/aspnet-mvc"
   avatar: "Ninja"
