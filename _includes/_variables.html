@@ -24,5 +24,6 @@
   var hasApiReference = {% if site.has_api_reference != false %} true {% else %} false {% endif %};
   var prd = '{{ site.product }}';
   var dojoEnabled = '{{ site.enable_dojo }}';
+  var blazorReplEnabled = '{{ site.enable_blazorRepl }}';
   var kendoCdnVersion = "{{ site.cdnVersion | default: '2020.2.617' }}";
 </script>

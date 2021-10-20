@@ -15,11 +15,12 @@
 {% if page.is_search_page != true %}
 <script src="{{site.baseurl}}/assets/jquery.js?{{randomNumber}}" defer></script>
 <script src="{{site.baseurl}}/assets/bootstrap.min.js?{{randomNumber}}" defer></script>
-{% if site.enable_dojo == true or page.sdk_example == true %} <script src="https://kendo.cdn.telerik.com/{{ site.cdnVersion | default: '2018.3.1017' }}/js/kendo.web.min.js" defer></script> {% endif %}
+{% if site.enable_dojo == true or site.enable_blazorRepl or page.sdk_example == true %} <script src="https://kendo.cdn.telerik.com/{{ site.cdnVersion | default: '2018.3.1017' }}/js/kendo.web.min.js" defer></script> {% endif %}
 <script src="{{site.baseurl}}/assets/main.js?{{randomNumber}}" defer></script>
 {% endif %}
 {% if page.is_api %} <script src="{{site.baseurl}}/assets/api.js?{{randomNumber}}" defer></script> {% endif %}
 {% if site.enable_dojo == true %} <script src="{{site.baseurl}}/assets/dojo.js?{{randomNumber}}" defer></script> {% endif %}
+{% if site.enable_blazorRepl == true %} <script src="{{site.baseurl}}/assets/blazorRepl.js?{{randomNumber}}" defer></script> {% endif %}
 {% if page.kind == "api" %} <script src="{{site.baseurl}}/assets/api-toc.js?{{randomNumber}}" defer></script>{% endif %}
 {% if page.sdk_example == true %}<script src="{{site.baseurl}}/assets/sdk-browser.js?{{randomNumber}}" defer></script>{% endif %}
 <script src="{{site.baseurl}}/assets/announcement.js?{{randomNumber}}" defer></script>

@@ -19,6 +19,7 @@ in this case, this file is necessary as a workaround.  -->
 {% javascript announcement %}
 {% if site.main_theme %}{% stylesheet "bundle-{{ site.main_theme }}" %}{% else %}{% stylesheet "bundle" %}{% endif %}
 {% if site.enable_dojo == true %}{% javascript dojo %}{% stylesheet "dojo" %}{% endif %}
+{% if site.enable_blazorRepl == true %}{% javascript blazorRepl %}{% stylesheet "blazorRepl" %}{% endif %}
 {% if site.has_web_api == true or site.has_web_api_index == true %}
   {% javascript api %}{% stylesheet "api" %}
   {% stylesheet "api-toc" %}{% javascript "api-toc" %}
