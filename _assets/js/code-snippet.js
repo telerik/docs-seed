@@ -7,7 +7,7 @@ var loadKendoTabstrip = function (url) {
 };
 
 $(function () {
-    if($("div.tabbedCode").length || (!dojoEnabled && $("pre > code").length)) {
+    if($("div.tabbedCode").length || (!(dojoEnabled||blazorReplEnabled) && $("pre > code").length)) {
         loadKendoTabstrip(assetsFolderPath + '/tabstrip.js');
     }
 });
