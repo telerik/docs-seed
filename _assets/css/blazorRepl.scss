@@ -3,7 +3,19 @@
 article {
     .action-buttons {
         background-color: #EFEFEF;
-        button.btn {
+
+        .btn.btn-repl {
+            float: right;
+            border-right: 0;
+            border-left: 1px solid #e8ebef;
+            padding-left: 2.7em;
+            background: transparent url(image_path("external.png")) no-repeat 1.4em 50%;
+
+            &:hover{
+                background-color: #e8ebef;
+            }
+        }
+        button.btn, a.btn {
             position: relative;
             padding: 14px 20px;
 
