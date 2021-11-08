@@ -10,7 +10,10 @@ var blazorReplApi = (function($) {
         },
 
         addButtons: function(element) {
-            if (!$(element).parent().prev().is(".action-buttons")) {
+            var $element = $(element);
+            var skipRepl = $element.parent().prev().hasClass("skip-repl") || $element.prev().hasClass("skip-repl");
+
+            if (!$element.parent().prev().is(".action-buttons") && !skipRepl) {
                 $('<div class="action-buttons">' +
                     '<button class="btn btn-edit track--edit-repl" title="Edit example">Edit</button>' +
                     '<button class="btn btn-run track--preview-repl" title="Run example">Preview</button>' +
