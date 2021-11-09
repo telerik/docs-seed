@@ -1039,6 +1039,10 @@ article {
         }
     }
 
+    li {
+        font-size: 20px;
+    }
+
     &:not(.api-reference) > p:first-child,
     &:not(.api-reference) h1 + p {
         font-size: 22px;
