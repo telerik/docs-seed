@@ -4,11 +4,39 @@ module Reading
             @config = config
         end
         
+        def overwriteCtaPanelsData(site, product)
+            configOverwrites = @config["cta_panels_data_overwrites"]
+            if configOverwrites
+                if configOverwrites["message"]
+                    site.data["cta_panels_data"][product]["message"] = configOverwrites["message"]
+                end
+                if configOverwrites["trial_url"]
+                    site.data["cta_panels_data"][product]["trial_url"] = configOverwrites["trial_url"]
+                end
+                if configOverwrites["product_url"]
+                    site.data["cta_panels_data"][product]["product_url"] = configOverwrites["product_url"]
+                end
+                if configOverwrites["avatar"]
+                    site.data["cta_panels_data"][product]["avatar"] = configOverwrites["avatar"]
+                end
+                if configOverwrites["overview_regex"]
+                    site.data["cta_panels_data"][product]["overview_regex"] = configOverwrites["overview_regex"]
+                end
+                if configOverwrites["component_suffix"]
+                    site.data["cta_panels_data"][product]["component_suffix"] = configOverwrites["component_suffix"]
+                end
+                if configOverwrites["introduction_regex"]
+                    site.data["cta_panels_data"][product]["introduction_regex"] = configOverwrites["introduction_regex"]
+                end
+            end
+        end
+
         def generate(site)	
             return if @config["has_cta_panels"] != true
             
             product = @config['product']
-            
+            overwriteCtaPanelsData(site, product)
+
             cta_panels_data = site.data["cta_panels_data"][product]
             overview_regex = cta_panels_data["overview_regex"] || '(^controls\/).*\/overview\.md$' # '(^controls\/)[^\/]*\/overview\.md$' - seach only one subfolder
             introduction_regex = cta_panels_data["introduction_regex"] || 'introduction\.md$'
