@@ -1062,12 +1062,15 @@ article {
 
     ul, ol {
         max-width: 1200px;
-        margin: 1em 0;
+        margin: 8px 22px;
         padding: 0 0 0 12px;
+
+        &.k-tabstrip-items{
+            margin: 1em 0;
+        }
 
         li {
             margin-bottom: 3px;
-            padding-left: .3em;
             position: relative;
         }
 
@@ -1076,19 +1079,11 @@ article {
         }
     }
 
-    ul {
+    &.api-reference ul,
+    ul.docs-tabstrip,
+    ul.k-reset,
+    ul.k-pager-numbers {
         list-style: none;
-    }
-
-    &:not(.api-reference) ul:not(.docs-tabstrip):not(.k-reset):not(.k-pager-numbers) > li:before {
-        content: "";
-        position: absolute;
-        top: 11px;
-        left: -10px;
-        width: 5px;
-        height: 5px;
-        border-radius: 5px;
-        background-color: currentColor;
     }
 
     ul.list-unstyled li {
