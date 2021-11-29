@@ -142,21 +142,71 @@ div#footer {
 }
 
 .social-icons {
-    padding-bottom: 30px;
+    padding-bottom: 50px;
+
+    @media screen and (max-width: 1820px){
+        padding-bottom: 30px;
+    }
+
+    @media screen and (max-width: 768px){
+        padding-bottom: 10px;
+    }
 }
 
-#footer .social-icon {
-    display: inline-block;
-    text-align: center;
-    height: 30px;
-    line-height: 26px;
-    margin: 0;
-    padding: 0 15px;
-    text-align: center;
-    transition: opacity .2s;
+#footer { 
+    .social-icon {
+        text-align: center;
+        height: 30px;
+        line-height: 26px;
+        margin: 0;
+        padding: 0 15px;
+        text-align: center;
+        transition: opacity .2s;
 
-    &:last-child {
-        padding-right: 0;
+        &:last-child {
+            padding-right: 0;
+        }
+    }
+
+    .progress-logo {
+        p {
+            margin-top:10px;
+        }
+    }
+
+    .legal-links-container{
+        text-align: right;
+
+        @media screen and (max-width: 768px){
+            text-align: center;
+        }
+
+        .legal-links {
+            padding:0;
+
+            li {
+                list-style-type: none;
+                display: inline-block;
+                font-weight: 500;
+                font-size: 12px;
+
+                &:not(:first-child) {
+                    padding-left: 3px;
+                    border-left: 1px solid #ccc;
+                }
+            }
+        }
+
+        .dnsmpi {
+            border: 2px solid rgba(148, 216, 255, 0.533);
+            padding: 8px 16px;
+
+            &:hover {
+                text-decoration: none;
+                opacity: 1;
+                border-color: rgb(148, 216, 255)
+            }
+        }
     }
 }
 
@@ -3216,8 +3266,6 @@ span.all-components-expanded-icon {
     }
 
     .social-icons {
-        padding-bottom: 0;
-        float: right;
         text-align: right;
     }
 
