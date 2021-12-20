@@ -148,6 +148,8 @@ git config --system core.longpaths true
 
 * _jekyll 3.3.1 | Error:  [prev_next plugin] Comparing the pages notes.md and sitemap.xml failed_ - Usually happens when a new article does not have `position` property in the front-matter. Solution: add the `position` property to a number. If you want some articles to sort alphabetically, they need to have the same `position` value.
 
+  * It might happen if a folder or a file is magically added to the docs repo folder. A solution is cleaning the folder and make a fresh clone of the docs repo.
+
 * _jekyll 3.3.1 | Error: 404 Not Found_ - This is often observed when creating new documentations and there is no entry for the product in the Top Navigation list. Add an entry for your documentation as in this commit for file `/_plugins/top_navigation.rb` - [feat: add MAUI to top navigation](https://github.com/telerik/docs-seed/commit/454d3178dbe65caa1e84b248206a514e4227d995#diff-96a33d63722834501d92ed56323571da7dd726397623401a2a25f4ac6610a553). If Telerik Web Team do not have the Top Navigation ready yet, you can temporarily reuse the top navigation value property from another product to make the build successful. 
 
 ## Extra Features
