@@ -30,7 +30,8 @@ Jekyll::Hooks.register :site, :after_init do |site|
     "ar-vr" => "vr-lab",
     "tech-style-guide" => "store",
     "winui" => "win-ui",
-    "unite-ux" => "unite-ux"
+    "unite-ux" => "unite-ux",    
+    "unity-xr" => "vr-lab"
   }
 
   platform = site.config['platform']  
