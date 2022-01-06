@@ -115,7 +115,7 @@ layout: default
         {% if site.contact_support_url %}
         <a class="btn-contact-support" href='{{ site.contact_support_url }}' target="_blank" onclick="trackItemFromCurrentPage('docs-contact-support', '{{ site.product }}')">Contact Support</a>
         {% else %}
-        <a class="btn-contact-support" href='https://www.telerik.com/account/support-tickets?pid={{ site.data.support_products[site.product] }}' target="_blank" onclick="trackItemFromCurrentPage('docs-contact-support', '{{ site.product }}')">Contact Support</a>
+        <a class="btn-contact-support" href='https://www.telerik.com/account/support-center/contact-us/technical-support?supcId={{ site.data.support_products[site.product] }}' target="_blank" onclick="trackItemFromCurrentPage('docs-contact-support', '{{ site.product }}')">Contact Support</a>
         {% endif %}  
       </div>
       {% endunless %}
