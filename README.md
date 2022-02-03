@@ -57,8 +57,8 @@ sh start-docs.sh
 > For WPF and Silverlight, see how to pass an [additional config file](#additional-config-file).
 
 ### Instructions (without Docker)
-- Install ruby 2.3.3 ([64bit](https://dl.bintray.com/oneclick/rubyinstaller/rubyinstaller-2.3.3-x64.exe) or [32bit](https://dl.bintray.com/oneclick/rubyinstaller/rubyinstaller-2.3.3-x64.exe))
-- Install Ruby DevKit ([64bit](https://dl.bintray.com/oneclick/rubyinstaller/DevKit-mingw64-64-4.7.2-20130224-1432-sfx.exe) or [32bit](https://dl.bintray.com/oneclick/rubyinstaller/DevKit-mingw64-32-4.7.2-20130224-1151-sfx.exe)), see the [instructions](https://github.com/oneclick/rubyinstaller/wiki/Development-Kit#installation-instructions)
+- Install ruby 2.3.3 ([64bit](https://github.com/oneclick/rubyinstaller/releases/download/ruby-2.3.3/rubyinstaller-2.3.3-x64.exe) or [32bit](https://github.com/oneclick/rubyinstaller/releases/download/ruby-2.3.3/rubyinstaller-2.3.3.exe))
+- Install Ruby DevKit ([64bit](https://github.com/oneclick/rubyinstaller/releases/download/devkit-4.7.2/DevKit-mingw64-64-4.7.2-20130224-1432-sfx.exe) or [32bit](https://github.com/oneclick/rubyinstaller/releases/download/devkit-4.7.2/DevKit-mingw64-32-4.7.2-20130224-1151-sfx.exe)), see the [Development Kit - Installation instructions](https://github.com/oneclick/rubyinstaller/wiki/Development-Kit#installation-instructions)
 - Ensure everything is correctly installed, especially if you have previous versions installed on the machine (e.g. check whether the 'config.yml' file in the DevKit root folder contains the correct path to the ruby folder and check whether the system environmnet variables are correctly set).
 
 > For more info on the above you can read the following article - http://jekyll-windows.juthilo.com/1-ruby-and-devkit/.
