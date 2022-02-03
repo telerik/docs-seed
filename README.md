@@ -64,6 +64,9 @@ sh start-docs.sh
 > For more info on the above you can read the following article - http://jekyll-windows.juthilo.com/1-ruby-and-devkit/.
 
 - Install bundler (if you have already installed, continue to the next step) by executing `gem install bundler`
+
+> If you encounter SSL errors with Bundler, similar to the one described in [RubyGems SSL Certificate Update](https://guides.rubygems.org/ssl-certificate-update/), then follow the solution steps shared in [Bundler.io - Installing new RubyGems certificates](https://bundler.io/v2.0/guides/rubygems_tls_ssl_troubleshooting_guide.html#installing-new-rubygems-certificates)
+
 - Clone the current (seed) repo 
 ```bash
 git clone git@github.com:telerik/docs-seed.git
