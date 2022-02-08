@@ -4419,31 +4419,24 @@ code {
 /* END TabStrip styles */
 
 /* START Introduction page all controls table styles */
-article table#allcontrols-table {
+
+article #allcontrols-table {
     border: none;
-    word-break: break-word;
+    word-wrap: break-word;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+    overflow-wrap: break-word;
     font-size: 15px;
-
-    tr {
-        vertical-align: top;
-        background-color: transparent;
-
-        td:first-child {
-            padding-left: 0;
-        }
-    }
-
-    td {
-        background: none;
-        border: none;
-    }
+    margin: 15px 0 20px;
 
     ul {
         list-style-type: none;
-        padding-left: 0px;
+        padding: 5px 0px;
+        margin: 0;
 
         li {
-            padding: 5px 5px;
+            padding: 5px 0px;
         }
     }
 
@@ -4453,7 +4446,7 @@ article table#allcontrols-table {
         font-weight: bold;
         margin-top: 15px;
         margin-bottom: 5px;
-        padding: 3px 5px;
+        padding: 3px 0px;
     }
 
     ul:not(.docs-tabstrip) li:before {
