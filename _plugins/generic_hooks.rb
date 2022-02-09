@@ -7,6 +7,6 @@ end
 
 STYLE_GUIDE_TEXT = "\n" + "=" * 107  + "\n"\
 "|" + " " * 105  + "|\n"\
-"| Need help with the docs? Go to the Style Guide (https://testdocs.telerik.com/style-guide/introduction). |"\
+"| Need help with the docs? Go to the Style Guide (https://docs.telerik.com/style-guide/introduction). |"\
 "\n|" + " " * 105  + "|"\
 "\n" + "=" * 107  + "\n"
