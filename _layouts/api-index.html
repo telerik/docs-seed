@@ -2,6 +2,19 @@
 layout: default
 ---
 
+<div id="navbar" class="nav">
+  <a class="mobile-menu all-components" >
+      {% include icons/menu.svg %}
+  </a>
+  {% if site.has_search != false %}
+    <div class="global-search">
+      {% include search.html %}
+    </div>
+  {% endif %}
+  <div class="switch-btn">
+      <span class="switch-icon"></span>
+  </div>
+</div>
 <div class="container-fluid">
   <div class="row">
     <script>
@@ -17,19 +30,6 @@ layout: default
   <div class="content-wrapper col-sm-8 col-sm-offset-4 col-md-offset-3 col-lg-8 col-lg-offset-2">
     <div class="row" style="overflow: hidden;">
       <div class="col-md-10 col-md-offset-1 mb-40">
-          <div id="navbar" class="nav navbar-collapse row">
-              <div class="col-xs-2">
-                <span class="k-icon all-components-expanded-icon"></span>
-                <a class="button all-components" ><span class="item-expanded"></span></a>
-              </div>
-                {% if site.has_search != false %}
-                {% if page.is_search_page != true  %}
-                  <div class="global-search">
-                    {% include search.html %}
-                  </div>
-                {% endif %}
-                {% endif %}
-            </div>
             {% if site.has_web_api_index != true %}
             <div class="breadcrumbs api-breadcrumbs-container"></div>
             {% endif %}
@@ -85,7 +85,7 @@ layout: default
     </div><!-- /row right content -->
   </div>
 
-  <div class="additional-content-column col-md-2 visible-lg">
+  <div class="additional-content-column side-nav-secondary col-md-2 visible-lg">
     {% if page.toc != false %}
     {% include article-toc.html %}
     {% endif %}
@@ -104,7 +104,10 @@ layout: default
       </div>
       {% endunless %}
       {% if site.edit_repo_url and page.is_search_page != true and page.editable != false %}
-      <a class="btn-edit-article" href="{{ site.edit_repo_url }}/{{ page.parent_path | replace: '.html','' }}.md" target="_blank">Improve this article</a>
+      <a class="btn-edit-article" href="{{ site.edit_repo_url }}/{{ page.parent_path | replace: '.html','' }}.md" target="_blank">
+        {% include icons/edit.svg %}
+        <span>Improve this article</span>
+      </a>
       {% endif %}
     </div>
   </div>

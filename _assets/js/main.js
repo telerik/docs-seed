@@ -8,6 +8,7 @@
 
 //= require tracking
 //= require top-menu
+//= require theme-mode
 //= require related-articles
 //= require toc
 //= require code-snippet

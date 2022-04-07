@@ -38,6 +38,9 @@
       "isPartOf": "{% if site.product_url %}{{ site.product_url }}{% else %}https://docs.telerik.com{{site.baseurl}}{% endif %}"
     }
   </script>
+  <script>
+    if (localStorage.isDark) document.documentElement.setAttribute("data-is-dark", localStorage.isDark);
+  </script>
   {% endif %}
   <link rel="shortcut icon" href="{{site.baseurl}}/favicon.ico"/>
   <link rel="preconnect" href="https://stats.g.doubleclick.net" />
