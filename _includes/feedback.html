@@ -1,4 +1,8 @@
+{% if site.data.cta_panels_data[site.product].avatar %}
 {% assign icon = site.data.cta_panels_data[site.product].avatar %}
+{% else %}
+{% assign icon = "DevCraft" %}
+{% endif %}
 <script src="https://d3fu8oi3wk1rz4.cloudfront.net/kendo-docs-demos-assets/dev/scripts/feedback-form/index.min.js?{{randomNumber}}" defer></script>
 <feedback-form sheet-id="{{site.ff-sheet-id}}"  
                 kinvey-app-key="{% if site.environment == 'test' or site.environment == 'dev' %}kid_ryLIO7OtI{% else %}kid_Hk57KwIFf{% endif %}" 
