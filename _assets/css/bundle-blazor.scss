@@ -1,6 +1,11 @@
 // https://github.com/rails/sass-rails/issues/363
-@import "theme/blazor-theme.scss";
-@import "_base-variables.scss";
-
 @import "_bundle-main.scss";
-@import "theme/prettify-default.scss";
+
+// product specific
+@import "products/blazor-variables.scss";
+@import "products/product-specific";
+
+[data-is-dark='true'] {
+    @import "products/blazor-variables-dark.scss";
+    @import "products/product-specific";
+}

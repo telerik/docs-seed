@@ -111,13 +111,14 @@ function buildApiBreadcrumbs(data) {
         var backStepsCount = breadcrumbsInfo.categoryIndex - i + 1;
         var relativePathBackPath = backStepsCount >= 0 ? repeat("../", backStepsCount) : "";
         var breadcrumb = breadcrumbs[i];
+        var expandIconElement = '<svg width="10" height="7" viewBox="0 0 10 7" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.9375 0.9375L5 4.875L1.0625 0.9375L0 2L5 7L10 2L8.9375 0.9375Z" fill="black"/></svg>';
         href = breadcrumb === breadcrumbsInfo.category ?
             lastHref + '#' + breadcrumb :
             relativePathBackPath + breadcrumb;
 
         href = href.replace(' ', '-');
         var linkText = i === 0 ? data.public_name : breadcrumb;
-        links += '<a href="' + href.toLowerCase() + '">' + linkText + '</a>';
+        links += '<a href="' + href.toLowerCase() + '"><span class="text">' + linkText + '</span>' + ((i == 0) ? '' :  expandIconElement) + '</a>';
         if (i > 0) {
             links += getBreadcrumbDropDownContent(data, breadcrumbsInfo, i - 1, lastHref);
         }
