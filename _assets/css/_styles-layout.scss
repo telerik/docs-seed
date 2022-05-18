@@ -128,7 +128,6 @@ div#footer {
     }
 
     .environment-develop & {
-        background-color: $env-develop-bg;
 
         h1, h2, h3, h4, h5, h6,
         a:hover,
@@ -458,13 +457,6 @@ $hover-text: darken($text-color, 10%);
         }
     }
 
-    a:hover::after,
-    a:focus::after,
-    a:active::after,
-    .active a::after {
-        background-color: $accent;
-    }
-
     li {
         position: static;
     }
@@ -514,12 +506,6 @@ $hover-text: darken($text-color, 10%);
         &::after {
             visibility: hidden;
         }
-
-        &:hover path,
-        &:active path,
-        &:focus path {
-            fill: $accent;
-        }
     }
     
     .switch-btn {
@@ -545,15 +531,6 @@ $hover-text: darken($text-color, 10%);
             width: 16px;
             height: 16px;
             background: url(image_path("switcher-light.png")) no-repeat 50% 50%; //remove after creating variables for the light theme
-        }
-    }
-
-    .nav-button a {
-        background-color: $accent-solid;
-
-        &:hover,
-        &:active {
-            background-color: darken($accent-solid, 10%);
         }
     }
 
@@ -619,7 +596,6 @@ $hover-text: darken($text-color, 10%);
 
 .brand-getting-started {
     .call-to-action {
-        background-color: $accent;
         color: #fff;
         padding: 15px 24px;
         margin-right: 2em;
@@ -628,7 +604,6 @@ $hover-text: darken($text-color, 10%);
 
         &:hover,
         &:active {
-            background-color: darken($accent, 10%);
             color: #fff;
         }
     }
@@ -662,10 +637,6 @@ $hover-text: darken($text-color, 10%);
     color: $link-color;
     font-family: $font-medium;
     outline: none;
-
-    &:hover {
-        color: $accent;
-    }
 
     option {
         color: #000;
@@ -743,19 +714,14 @@ $nav-icon-color: #979797;
     }
 
     .k-state-selected {
-        color: $side-nav-link-color;
 
         a {
-            color: $side-nav-link-color;
-            font-weight: $side-nav-selected-fw;
-
             &:hover {
                 background-color: $link-background-color;
             }
 
             &:active {
                 background-color: transparent;
-                color: $side-nav-link-color;
             }
         }
     }
@@ -983,7 +949,6 @@ $nav-icon-color: #979797;
     }
 
     a.active {
-        color: $accent !important;
         font-family: $font-medium;
     }
 
@@ -1341,28 +1306,20 @@ $border-color: #d9d9d9;
 }
 
 .additional-content-column {
-    position: absolute;
+    position: fixed;
     right: 0;
-    top: 100px;
+    top: 180px;
     margin-right: 40px;
+    z-index: 1015;
 
     .btn-action {
-        color: $btn-action-foreground;
-        background-color: $btn-action-background;
         text-transform: uppercase;
         padding: 10px 20px;
         margin: 10px 0;
-        border: 1px solid $accent;
+        border: 1px solid transparent;
         border-radius: 0;
         font-size: 14px;
         font-weight: 500;
-
-        &:hover,
-        &:focus,
-        &:active {
-            color: $btn-action-active-color;
-            background-color: $btn-action-active;
-        }
     }
 
     .btn-contact-support {
@@ -1406,13 +1363,6 @@ $border-color: #d9d9d9;
         font-size: 17px;
         font-weight: 500;
         color: $text-active-color;
-    }
-
-    &.affix {
-        margin-top: 85px;
-        position: fixed;
-        top: 75px;
-        z-index: 1015;
     }
 
     &.empty {
@@ -1464,13 +1414,6 @@ $border-color: #d9d9d9;
             text-decoration: none;
             transition: color .1s, border-color .1s;
             color: $navigation-link-color;
-
-            &:hover,
-            &:active,
-            &:focus {
-                background-color: transparent;
-                color: $accent;
-            }
         }
     }
 
@@ -1495,7 +1438,6 @@ $border-color: #d9d9d9;
 
     .active a {
         color: $text-active-color;
-        border-color: $accent;
         font-weight: 500;
     }
 
@@ -2046,7 +1988,6 @@ article table tr {
     .feedback-ab-submit-button {
         padding: 6px 12px;
         margin: 0;
-        background-color: $accent;
         border: 1px solid #FFFFFF;
         color: #FFFFFF;
         font-size: 14px;
@@ -2245,7 +2186,6 @@ article table tr {
         text-transform: uppercase;
         background: transparent;
         border: none;
-        color: $feedback-button-foreground;
         cursor: pointer;
         transition-property: background-color, color;
         transition-duration: 0.2s;
@@ -2255,7 +2195,6 @@ article table tr {
         &:focus,
         &:active,
         &:visited {
-            color: $feedback-foreground;
             outline: none;
         }
     }
@@ -2422,7 +2361,6 @@ article table tr {
         &::after {
             content: '';
             display: block;
-            background-color: $accent;
             width: 100%;
             transform: scaleX(0.4);
             transition: transform .25s ease-in-out;
@@ -2517,10 +2455,6 @@ article table tr {
         width: 24px;
         height: auto;
         vertical-align: top;
-
-        > path {
-            fill: $accent;
-        }
     }
 }
 
@@ -2737,6 +2671,10 @@ $callout-bg: #d7dfe3;
         line-height: 30px;
         font-size: 16px;
     }
+
+    path {
+        fill: currentColor;
+    }
 }
 
 
@@ -2917,7 +2855,6 @@ span.all-components-expanded-icon {
     h4 ~ p {
         code,
         .code {
-            background-color: $code-background-color;
             color: #ffffff;
             margin-top: 3px;
             padding: 3px 4px;
@@ -2960,7 +2897,6 @@ span.all-components-expanded-icon {
 
         code,
         .code {
-            background-color: $code-background-color;
             color: #ffffff;
             padding: 1px 3px 2px;
             font-size: 13px;
@@ -3037,10 +2973,6 @@ span.all-components-expanded-icon {
             box-shadow: 0 1px 6px rgba(0, 0, 0, 0.08), 0 3px 15px rgba(0, 0, 0, 0.04), 0 10px 30px rgba(0, 0, 0, 0.04);
             position: relative;
             z-index: 1;
-
-            a {
-                color: $accent;
-            }
         }
 
         &:before {
@@ -3971,10 +3903,6 @@ code {
     border: 0;
     border-radius: 0;
 
-    a & {
-        color: $accent;
-    }
-
     a:hover &,
     a:focus &,
     a:active & {
@@ -3987,9 +3915,6 @@ code {
     }
 
     blockquote {
-        a & {
-            color: $accent;
-        }
 
         a:hover &,
         a:focus &,
@@ -4502,7 +4427,6 @@ article #allcontrols-table {
     }
 
     .control-category {
-        color: $accent;
         text-transform: uppercase;
         font-size: 20px;
         font-weight: bold;
