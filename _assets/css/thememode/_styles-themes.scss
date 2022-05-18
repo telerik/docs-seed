@@ -232,10 +232,6 @@ a.kd-button-primary {
 
     a {
         color: $hyperlink-text;
-
-        &:hover {
-            color: $accent;
-        }
     }
 }
 
@@ -343,8 +339,12 @@ div.caption {
 }
 
 code {
-    color: $hyperlink-text;
+    color: $text-headline;
     background-color: $bg-primary;
+}
+
+a code {
+    color: inherit;
 }
 
 .prettyprint {
@@ -361,8 +361,7 @@ code {
     }
 
     .dec,
-    .tag,
-    .atn {
+    .tag {
         color: inherit;
     }
 
@@ -371,7 +370,8 @@ code {
     }
 
     .pln,
-    .typ {
+    .typ,
+    .atn {
         color: $text-headline;
     }
 
