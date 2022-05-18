@@ -71,12 +71,20 @@
     }
 }
 
-.article-toc, .related-articles, .feedback-ab {
+.article-toc,
+.related-articles,
+.feedback-ab {
 
     ul a {
         &:hover,
         &:active,
         &:focus {
+            color: $accent;
+        }
+    }
+    
+    a {
+        &:hover {
             color: $accent;
         }
     }
@@ -161,19 +169,6 @@ code {
 article #allcontrols-table {
     .control-category {
         color: $accent;
-    }
-}
-
-.feedback-row {
-    button {
-        color: $feedback-button-foreground;
-
-        &:hover,
-        &:focus,
-        &:active,
-        &:visited {
-            color: $feedback-foreground;
-        }
     }
 }
 
