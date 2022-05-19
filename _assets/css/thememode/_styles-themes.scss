@@ -207,14 +207,22 @@ a.kd-button-primary {
     }
 }
 
+.article-toc,
+.related-articles,
+.feedback-ab {
+    border-color: $border-color;
+
+}
+
+.article-toc a,
+.side-title,
+.related-articles a,
+.additional-info-content {
+    color: inherit;
+}
+
 .side-nav-secondary {
     color: $text-headline;
-
-    .article-toc a,
-    .side-title,
-    .additional-info-content {
-        color: inherit;
-    }
 
     .btn-edit-article {
         color: $hyperlink-text;
@@ -222,16 +230,6 @@ a.kd-button-primary {
         &:hover {
             color: $hyperlink-hover-text;
         }
-    }
-}
-
-.article-toc,
-.related-articles,
-.feedback-ab {
-    border-color: $border-color;
-
-    a {
-        color: $hyperlink-text;
     }
 }
 

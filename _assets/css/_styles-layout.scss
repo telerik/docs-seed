@@ -1414,6 +1414,12 @@ $border-color: #d9d9d9;
             text-decoration: none;
             transition: color .1s, border-color .1s;
             color: $navigation-link-color;
+
+            &:hover,
+            &:active,
+            &:focus {
+                background-color: transparent;
+            }
         }
     }
 
