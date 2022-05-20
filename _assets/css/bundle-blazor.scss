@@ -2,10 +2,11 @@
 @import "_bundle-main.scss";
 
 // product specific
+@import "products/prettify-default.scss";
 @import "products/blazor-variables.scss";
-@import "products/product-specific";
+@import "products/product-specific.scss";
 
 [data-is-dark='true'] {
     @import "products/blazor-variables-dark.scss";
-    @import "products/product-specific";
+    @import "products/product-specific.scss";
 }
