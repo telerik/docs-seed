@@ -12,7 +12,7 @@
   overview_regex: '(^components\/)[^\/]*\/overview\.md$'
   component_suffix: " component"
 "Telerik UI for WPF":
-  message: "professional grade UI library with 140+ components for building modern and feature-rich applications."
+  message: "professional grade UI library with 150+ components for building modern and feature-rich applications."
   trial_url: "https://www.telerik.com/download-trial-file/v2-b/ui-for-wpf"
   product_url: "https://www.telerik.com/products/wpf/overview.aspx"
   avatar: "Ninja"
