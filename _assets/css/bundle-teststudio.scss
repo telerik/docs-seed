@@ -2,5 +2,6 @@
 @import "_bundle-main.scss";
 
 // product specific
+@import "./products/prettify-default.scss";
 @import "products/teststudio-variables.scss";
-@import "products/product-specific";
+@import "products/product-specific.scss";
