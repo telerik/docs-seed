@@ -11,7 +11,8 @@ Contains the documentation site implementation.
   * [Exclude Articles from Navigation Tree](#exclude-articles-from-navigation-tree)
   * [Webinar Banner](#webinar-banner)
 - [Build API Reference](#build-api-reference)
-- [New Documentation](#new-documentation)
+- [Documentation Best Practices](#documentation-best-practices)
+- [docs-seed Syntax Gudelines](#docs-seed-syntax-guidelines)
 
 ## Local Setup
 This section describes the best practices about what and how needs to be done to run the documentation locally.
@@ -254,8 +255,12 @@ There is an infrastructure that uses [DocFx](https://dotnet.github.io/docfx/) to
           private protected string privateProtectedTest;
 
 
-## New Documentation
+## Documentation Best Practices
 
 If you need to create new documentation (for example, for a new product), use [`docs-content-seed`](https://github.com/telerik/docs-content-seed) repository as an auxiliary part to this one. 
 
 For best practices and industry standards on creating and maintaining documentation, go to the public [Progress DevTools Style Guide](https://docs.telerik.com/style-guide/introduction).   
+
+## docs-seed Syntax Guidelines  
+
+To ensure the syntax you use when you add or edit the documentation will properly render the content, read the [syntax guidelines in the docs-seed Wiki](https://github.com/telerik/docs-seed/wiki/Handling-Redirects). 
