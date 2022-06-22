@@ -91,6 +91,10 @@ module Reading
                 panel = "\n{% include cta-panel-introduction.html %}\n"
             end
 
+            if @config["platform"] == "maui"
+                panel.gsub!("cta-panel-", "cta-panel-maui-")
+            end
+
             matchLine = ""
             headingFound = false
 

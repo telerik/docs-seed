@@ -43,6 +43,8 @@ layout: default
         {% if page.isRestOfPages == true %} 
           {% if site.platform contains "teststudio" %} 
             {% include cta-panel-teststudio-small.html %} 
+          {% elsif site.platform == "maui" %}
+            {% include cta-panel-maui-small.html %} 
           {% else %} 
             {% include cta-panel-small.html %} 
           {% endif %} 
