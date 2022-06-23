@@ -101,6 +101,10 @@
 "Progress Telerik Test Studio for APIs":
   trial_url: "https://www.telerik.com/download-trial-file/v2/teststudio-apis"
   product_url: "https://www.telerik.com/teststudio-apis"
+"Telerik UI for .NET MAUI":
+  trial_url: "https://www.telerik.com/try/ui-for-maui"
+  product_url: "https://www.telerik.com/maui-ui"
+
 product_map:
   "kendo-ui": "Kendo UI for jQuery"
   "jsp-ui": "Telerik UI for JSP"
@@ -113,3 +117,4 @@ product_map:
   "justmock": "Telerik JustMock"
   "report-server": "Telerik Report Server"
   "teststudiodev": "Progress Telerik TestStudio Dev"
+  "maui": "Telerik UI for .NET MAUI"

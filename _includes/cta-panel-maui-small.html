@@ -1,0 +1,15 @@
+{% assign product = site.product %}
+{% if page.product != blank %}
+{% assign product = site.data.cta_panels_data.product_map[page.product] %}
+{% endif %}
+
+<section class="kd-cta-panel cta-small">
+    <div>
+        <div class="kd-cta kd-cta-sm">
+            <p class="kd-text">
+                New to Telerik UI for .NET MAUI? 
+                <a class="kd-link" href="{{ site.data.cta_panels_data[product].trial_url }}">Start a free 30-day trial</a>
+            </p>
+        </div>
+    </div>
+</section>
