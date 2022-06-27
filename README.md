@@ -228,8 +228,13 @@ There is an infrastructure that uses [DocFx](https://dotnet.github.io/docfx/) to
 * An `MSBuild` step in your content repo builds that will take the binaries, xml files and content repo, build the HTML files for the API ref, and copy them to the `_site/api` folder in your content repo.
 
     This build is executed through the [`_buildApi/BuildApiReference.proj`](https://github.com/telerik/docs-seed/blob/master/_buildApi/BuildApiReference.proj) file. For example, in the VS command prompt: `msbuild.exe BuildApiReference.proj /p:LatestBinariesPath=\\\\someNetworkServer\MySourceFiles;DocsRepoName=blazor-docs;DocumentationBaseUrl=https://docs.telerik.com/blazor-ui;DocsRepoApiAssetsFolder=_assetsApi;HasApiFilter=true`.
-                
-            
+     
+     >note Depending on the machine culture, you might need to use a comma `,` instead of a semi-colon `;` otherwise you will get a _DocsRepoName is not defined_ error
+           ```
+           (CheckRequiredProperties target) ->
+              D:\DocsSeed\_buildApi\BuildApiReference.proj(26,5): error : DocsRepoName is not defined (Ex. winforms-docs)
+           ```
+           
     Here is a list of the build parameters and their purpose:
     
     * `LatestBinariesPath`&mdash;The path to where you have the `.dll`+`.xml` pairs of code you want documented. The format is usually something like `\\\\someNetworkServer\MySourceFiles` or `C:\work\myFolder`. The escaping of the backslashes is an example for using this as a build parameter.
