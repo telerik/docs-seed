@@ -5,8 +5,8 @@ Jekyll::Hooks.register :site, :after_reset do |site, payload|
 end
 
 
-STYLE_GUIDE_TEXT = "\n" + "=" * 107  + "\n"\
-"|" + " " * 105  + "|\n"\
+STYLE_GUIDE_TEXT = "\n" + "=" * 103  + "\n"\
+"|" + " " * 101  + "|\n"\
 "| Need help with the docs? Go to the Style Guide (https://docs.telerik.com/style-guide/introduction). |"\
-"\n|" + " " * 105  + "|"\
-"\n" + "=" * 107  + "\n"
+"\n|" + " " * 101  + "|"\
+"\n" + "=" * 103  + "\n"
