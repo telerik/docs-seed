@@ -4,9 +4,22 @@
    {% include _head.html %}
 
 <body role="document" class="layout-{{ page.layout }} brand">
+  {% include announcement.html %}
   {% include nav.html %}
   {% include _variables.html %}
-  {% include announcement.html %}
+  <div id="navbar" class="nav">
+    <a class="mobile-menu all-components" >
+        {% include icons/menu.svg %}
+    </a>
+    {% if site.has_search != false %}
+      <div class="global-search">
+        {% include search.html %}
+      </div>
+    {% endif %}
+  <div class="switch-btn">
+      <span class="switch-icon"></span>
+  </div>
+</div>
 <div id="content">
   {{ content }}
   <div id="push" class="pt-60 pb-40"></div> <!-- Sticky Footer -->

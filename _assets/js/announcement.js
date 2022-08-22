@@ -31,14 +31,7 @@ $(document).ready(function () {
         if (!checkStorage(hash($(html).text()))) {
             content.append(html);
             banner.show();
-            button.one("click", hideAnnouncement);
         }
-    }
-
-    function hideAnnouncement () {
-        saveStorage(hash(content.text()));
-        content.html("");
-        banner.hide();
     }
 
     function checkStorage (hash) {

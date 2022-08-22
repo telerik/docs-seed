@@ -29,7 +29,6 @@ body {
     background-color: transparent;
     color: $text-default-color;
     transition: padding-top .1s;
-    padding-top: 95px; // navbar-fixed-top height + 20px margin
 
     &.scroll {
         padding-top: 70px;
@@ -74,7 +73,6 @@ div#content {
     height: auto !important;
     height: 100%;
     margin: 0 auto -340px;
-    padding-top: 88px;
     position: relative;
     overflow: hidden;
 }
@@ -376,44 +374,6 @@ strong {
     padding-right: 0;
 }
 
-// Hat menu
-nav.TK-Nav, .PRGS-PairNav {
-    width: 100%;
-    margin-top: -95px;
-}
-
-// Ribbon Announcement
-
-#announcement-banner {
-    width: 100%;
-    position: fixed;
-    z-index: 40000;
-    left: 0;
-    top: 61px;
-
-    .close-button-container {
-        position: absolute;
-        top: 19px;
-        right: 16px;
-        z-index: 100000;
-
-        &:hover {
-            cursor: pointer;
-        }
-    }
-}
-
-
-@media screen and (max-width: 1240px){
-    #announcement-banner {
-        top: 45px;
-
-        #announcement-content > * {
-            padding-right: 40px;
-        }
-    }
-}
-
 /* Main Menu */
 
 $text-color: #4a4e52;
@@ -427,7 +387,7 @@ $hover-text: darken($text-color, 10%);
     align-items: center;
     width: 100%;
     padding: 20px;
-    position: fixed;
+    position: sticky;
     top: 60px;
     background-color: rgba(219,219,219,.4);
     backdrop-filter: blur(45px);
