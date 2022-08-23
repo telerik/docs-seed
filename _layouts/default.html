@@ -4,9 +4,9 @@
    {% include _head.html %}
 
 <body role="document" class="layout-{{ page.layout }} brand">
+  {% include announcement.html %}
   {% include nav.html %}
   {% include _variables.html %}
-  {% include announcement.html %}
 <div id="content">
   {{ content }}
   <div id="push" class="pt-60 pb-40"></div> <!-- Sticky Footer -->

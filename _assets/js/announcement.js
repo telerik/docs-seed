@@ -2,16 +2,9 @@ $(document).ready(function () {
     var banner = $("#announcement-banner");
     var fallbackContent = $("#announcement-fallback").html();
     var content = $("#announcement-content");
-    var button = $("#announcement-banner .close-button-container");
     var url = content.data("url");
-    var storageKey = "T_DOCUMENTATION_announcement".toUpperCase();
 
-    // detect any user interaction
-    $("body").one("mousemove scroll touchstart", onUserInteraction);
-
-    function onUserInteraction () {
-        fetchAnnouncement();
-    }
+    $(document).ready(fetchAnnouncement);
 
     function fetchAnnouncement () {
         $.get(url).done(onSuccess).fail(onFail);
@@ -28,30 +21,37 @@ $(document).ready(function () {
     }
 
     function tryRenderAnnouncement (html) {
-        if (!checkStorage(hash($(html).text()))) {
-            content.append(html);
-            banner.show();
-            button.one("click", hideAnnouncement);
+        content.append(html);
+        banner.show();
+        
+        fixTopPositions();
+        $(window).on("scroll resize", fixTopPositions);
+    }
+
+    function fixTopPositions () {
+        var body = $(document.body);
+        var scrollTop = body.scrollTop() || $('html').scrollTop();
+        var availWidth = document.body.offsetWidth;
+        var height = (banner.outerHeight() || 0) - scrollTop;
+        
+        var TNav = $("nav.TK-Nav");
+        var navBar = $("#navbar");
+        var content = $("#content");
+        var sideNav = $(".additional-content-column");
+
+        if (height >= 0) {
+            TNav.css("top", height + (availWidth <= 766 ? 4 : 0));
+            navBar.css("top", (availWidth <= 766 ? 4 : TNav[0].offsetHeight) + height);
+            content.css("padding-top", availWidth <= 766 ? 0 : navBar[0].offsetHeight + height);
+            sideNav.css("top", 180 + height);
+        } else {
+            TNav.css("top", 0);
+            navBar.css("top", availWidth <= 766 ? 0 : TNav[0].offsetHeight);
+            content.css("padding-top", availWidth <= 766 ? 0 : navBar[0].offsetHeight);
         }
+
+        setSideNavPosition();
     }
-
-    function hideAnnouncement () {
-        saveStorage(hash(content.text()));
-        content.html("");
-        banner.hide();
-    }
-
-    function checkStorage (hash) {
-        var item = localStorage.getItem(storageKey);
-
-        return hash === item;
-    }
-
-    function saveStorage (hash) {
-        localStorage.setItem(storageKey, hash);
-    }
-
-    function hash (content) {return  "announcement-" + content.trim().split("").reduce(function(a,b){a=((a<<5)-a)+b.charCodeAt(0);return a&a},0) };
 });
 
 
