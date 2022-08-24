@@ -38,16 +38,19 @@ $(document).ready(function () {
         var navBar = $("#navbar");
         var content = $("#content");
         var sideNav = $(".additional-content-column");
+        var apiBreadcrumb = $(".api-breadcrumbs-container, #markdown-toc");
 
         if (height >= 0) {
             TNav.css("top", height + (availWidth <= 766 ? 4 : 0));
             navBar.css("top", (availWidth <= 766 ? 4 : TNav[0].offsetHeight) + height);
             content.css("padding-top", availWidth <= 766 ? 0 : navBar[0].offsetHeight + height);
+            apiBreadcrumb.css("top", navBar[0].offsetHeight + TNav[0].offsetHeight + height);
             sideNav.css("top", 180 + height);
         } else {
             TNav.css("top", 0);
             navBar.css("top", availWidth <= 766 ? 0 : TNav[0].offsetHeight);
             content.css("padding-top", availWidth <= 766 ? 0 : navBar[0].offsetHeight);
+            apiBreadcrumb.css("top", availWidth <= 766 ? 0 : navBar[0].offsetHeight + TNav[0].offsetHeight);
         }
 
         setSideNavPosition();
