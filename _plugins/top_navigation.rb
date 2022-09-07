@@ -29,6 +29,7 @@ Jekyll::Hooks.register :site, :after_init do |site|
     "blazor" => "blazor-ui",
     "ar-vr" => "vr-lab",
     "tech-style-guide" => "store",
+    "themebuilder" => "themebuilder",
     "winui" => "win-ui",
     "unite-ux" => "unite-ux",    
     "unity-xr" => "vr-lab"
