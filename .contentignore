@@ -11,6 +11,7 @@
 /fonts/
 /_build/
 /_buildApi/
+/_tools/RemoveHtmlExtensionFromApiRefSitemap/
 
 .dockerignore
 .editorconfig
