@@ -2,7 +2,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>{% if page.title_prefix %}{{ page.title_prefix }}{% if page.title_prefix_separator %}{{ page.title_prefix_separator }}{% else %} | {% endif %}{% endif %}{{ page.page_title | default: page.title }}{% if site.use_product_in_title != false %} | {{ site.page_title_product | default: site.product }} {% endif %}</title>
+  <title>{% if page.title_prefix %}{{ page.title_prefix }}{% if page.title_prefix_separator %}{{ page.title_prefix_separator }}{% else %} - {% endif %}{% endif %}{{ page.page_title | default: page.title }}{% if site.use_product_in_title != false %} - {{ site.page_title_product | default: site.product }} {% endif %}</title>
   <meta name="description" content="{{ page.description | parse_front_matter }}{% if page.description_suffix %} {{ page.description_suffix }}{% endif %}" />
   {% if page.res_type %}<meta name="restype" content="{{ page.res_type }}">{% else %}<meta name="restype" content="documentation">{% endif %}
   {% if site.progress_hosting != true %}
@@ -14,7 +14,7 @@
         "@type": "WebPage",
         "@id": "https://docs.telerik.com{{site.baseurl}}{{page.url | replace: '.html',''}}"
       },
-      "headline": "{% if page.title_prefix %}{{ page.title_prefix }}{% if page.title_prefix_separator %}{{ page.title_prefix_separator }}{% else %} | {% endif %}{% endif %}{{ page.page_title | default: page.title }}{% if site.use_product_in_title != false %} | {{ site.product }} {% endif %}",
+      "headline": "{% if page.title_prefix %}{{ page.title_prefix }}{% if page.title_prefix_separator %}{{ page.title_prefix_separator }}{% else %} - {% endif %}{% endif %}{{ page.page_title | default: page.title }}{% if site.use_product_in_title != false %} - {{ site.product }} {% endif %}",
       "author":{
       "@type":"Organization",
       "name":"Telerik"},
