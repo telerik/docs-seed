@@ -13,6 +13,7 @@
       RestoreNugetAPISolution;
       BuildAPISolution;
       ProcessSitemap;
+      ProcessHtmlFiles;
       DeleteDocFxFavicon;
       CopyAPIHtmlFilesToSiteFolder
     </BuildApiReferenceDependsOn>
@@ -145,8 +146,17 @@
     <Message Text="DEBUG INFO: SitemapFile=$(SitemapFile)" />
 
     <FileUpdate Files="$(SitemapFile)" Regex="(&lt;lastmod&gt;)(\d{4}-\d{2}-\d{2})(.*?)(&lt;\/lastmod&gt;)" ReplacementText="$1$2$4" />
+    <FileUpdate Files="$(SitemapFile)" Regex="\.html(&lt;/loc&gt;)" ReplacementText="$1" />
 
     <Copy SourceFiles='$(SitemapFile)' DestinationFolder='$(ApiOutputFolder)' />
+
+  </Target>
+
+  <Target Name="ProcessHtmlFiles">
+    <ItemGroup>
+      <HtmlApiFiles Include="$(ApiOutputFolder)\*.html" />
+    </ItemGroup>
+    <FileUpdate Files="@(HtmlApiFiles)" Regex="href=&quot;([^&quot;]+)\.html([^&quot;]*)&quot;" ReplacementText="href=&quot;$1$2&quot;" />
 
   </Target>
 
