@@ -156,7 +156,7 @@
     <ItemGroup>
       <HtmlApiFiles Include="$(ApiOutputFolder)\*.html" />
     </ItemGroup>
-    <FileUpdate Files="@(HtmlApiFiles)" Regex="href=&quot;([^&quot;]+)\.html([^&quot;]*)&quot;" ReplacementText="href=&quot;$1$2&quot;" />
+    <FileUpdate Files="@(HtmlApiFiles)" Regex="href=&quot;(?!http(s)?:)([^&quot;]+)\.html([?#][^&quot;]*)?&quot;" ReplacementText="href=&quot;$2$3&quot;" />
 
   </Target>
 
