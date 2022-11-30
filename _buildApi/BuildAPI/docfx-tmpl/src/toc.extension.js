@@ -18,7 +18,7 @@ exports.postTransform = function (model) {
         var item = nodes.pop();
 
         if (item.topicHref) {
-            item.topicHref = item.topicHref.replace(/\.html$/i,"");
+            item.topicHref = item.topicHref.replace(/\.html$/i,"").toLowerCase();
         }
 
         if (!!item.items) {

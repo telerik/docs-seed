@@ -211,7 +211,7 @@ class TreeNode < Liquid::Drop
             if level > 0
                 @parent.bread_crumb(
                     baseurl,
-                    "<a href='#{baseurl}#{url.gsub(/\.html(?![^?#])/, '')}'>#{format_title(title)}</a>#{so_far}"
+                    "<a href='#{baseurl}#{url}'>#{format_title(title)}</a>#{so_far}"
                 )
             else
                 so_far

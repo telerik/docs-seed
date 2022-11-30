@@ -2,6 +2,33 @@
 <Project ToolsVersion="14.0" DefaultTargets="BuildApiReference" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <UsingTask TaskName="MSBuild.Community.Tasks.FileUpdate" AssemblyFile="Tools\MSBuildCommunityTasks\MSBuild.Community.Tasks.dll" />
 
+  <UsingTask TaskName="ReplaceAndLowerUrls" TaskFactory="CodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.v4.0.dll" >
+  <ParameterGroup>
+    <Files ParameterType="Microsoft.Build.Framework.ITaskItem[]" Required="true" />
+  </ParameterGroup>
+  <Task>
+    <Using Namespace="System.Text.RegularExpressions"/>
+    <Using Namespace="System.IO"/>
+    <Code Type="Fragment" Language="cs">
+        <![CDATA[
+              for (int i = 0; i < this.Files.Length; i++)
+              {
+                ITaskItem item = this.Files[i];
+                string path = item.GetMetadata("FullPath");
+                string text = File.ReadAllText(path);
+                text = Regex.Replace(
+                          text,
+                          "href=\"(?!http(s)?:)([^\"]+)\\.html([?#][^\"]*)?\"",
+                          m => "href=\"" + m.Groups[2].Value.ToLower() + m.Groups[3].Value + "\"",
+                          RegexOptions.Singleline | RegexOptions.IgnoreCase);
+                File.WriteAllText(path, text);
+                this.Log.LogMessage(MessageImportance.Normal, string.Format("Updated urls in file '{0}'", path));
+              }
+        ]]>
+    </Code>
+  </Task>
+</UsingTask>
+
   <PropertyGroup>
     <BuildApiReferenceDependsOn>
       CheckRequiredProperties;
@@ -156,8 +183,7 @@
     <ItemGroup>
       <HtmlApiFiles Include="$(ApiOutputFolder)\*.html" />
     </ItemGroup>
-    <FileUpdate Files="@(HtmlApiFiles)" Regex="href=&quot;(?!http(s)?:)([^&quot;]+)\.html([?#][^&quot;]*)?&quot;" ReplacementText="href=&quot;$2$3&quot;" />
-
+    <ReplaceAndLowerUrls Files="@(HtmlApiFiles)" />
   </Target>
 
   <Target Name="CopyAPIHtmlFilesToSiteFolder">
