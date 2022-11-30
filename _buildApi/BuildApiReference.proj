@@ -2,7 +2,7 @@
 <Project ToolsVersion="14.0" DefaultTargets="BuildApiReference" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <UsingTask TaskName="MSBuild.Community.Tasks.FileUpdate" AssemblyFile="Tools\MSBuildCommunityTasks\MSBuild.Community.Tasks.dll" />
 
-  <UsingTask TaskName="ReplaceAndLowerUrls" TaskFactory="CodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.v4.0.dll" >
+<UsingTask TaskName="ReplaceAndLowerUrls" TaskFactory="CodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.v4.0.dll" >
   <ParameterGroup>
     <Files ParameterType="Microsoft.Build.Framework.ITaskItem[]" Required="true" />
   </ParameterGroup>
@@ -23,6 +23,32 @@
                           RegexOptions.Singleline | RegexOptions.IgnoreCase);
                 File.WriteAllText(path, text);
                 this.Log.LogMessage(MessageImportance.Normal, string.Format("Updated urls in file '{0}'", path));
+              }
+        ]]>
+    </Code>
+  </Task>
+</UsingTask>
+<UsingTask TaskName="ReplaceAndLowerSitemapUrls" TaskFactory="CodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.v4.0.dll" >
+  <ParameterGroup>
+    <Files ParameterType="Microsoft.Build.Framework.ITaskItem[]" Required="true" />
+  </ParameterGroup>
+  <Task>
+    <Using Namespace="System.Text.RegularExpressions"/>
+    <Using Namespace="System.IO"/>
+    <Code Type="Fragment" Language="cs">
+        <![CDATA[
+              for (int i = 0; i < this.Files.Length; i++)
+              {
+                ITaskItem item = this.Files[i];
+                string path = item.GetMetadata("FullPath");
+                string text = File.ReadAllText(path);
+                text = Regex.Replace(
+                          text,
+                          "<loc>([^<]+\\.html)</loc>",
+                          m => "<loc>" + m.Groups[1].Value.ToLower() + "</loc>",
+                          RegexOptions.Singleline | RegexOptions.IgnoreCase);
+                File.WriteAllText(path, text);
+                this.Log.LogMessage(MessageImportance.Normal, string.Format("Updated sitemap urls in file '{0}'", path));
               }
         ]]>
     </Code>
@@ -173,7 +199,7 @@
     <Message Text="DEBUG INFO: SitemapFile=$(SitemapFile)" />
 
     <FileUpdate Files="$(SitemapFile)" Regex="(&lt;lastmod&gt;)(\d{4}-\d{2}-\d{2})(.*?)(&lt;\/lastmod&gt;)" ReplacementText="$1$2$4" />
-    <FileUpdate Files="$(SitemapFile)" Regex="\.html(&lt;/loc&gt;)" ReplacementText="$1" />
+    <ReplaceAndLowerSitemapUrls Files="$(SitemapFile)" />
 
     <Copy SourceFiles='$(SitemapFile)' DestinationFolder='$(ApiOutputFolder)' />
 
