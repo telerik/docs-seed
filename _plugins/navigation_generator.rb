@@ -27,6 +27,7 @@ module Jekyll
               next if @exclude_navigation.any? { |regex| regex.match(url) }
 
               segments = url.split('/')
+              pathSegments = page.path.split('/')
 
               segments.each_with_index do |segment, index|
                   item = node.find { |n| n['path'] == segment && n['items'] }
@@ -43,7 +44,7 @@ module Jekyll
                           path = segments[0..index].join('/')
                           navigation_entry =  @navigation.find { |key, value| path =~ key }
                           mapping = navigation_entry ? navigation_entry[1] : {}
-                          item['text'] = mapping['title'] || segment
+                          item['text'] = mapping['title'] || pathSegments[index]
                           item['items'] = []
                           item['isNew'] = mapping['isNew'] if mapping.has_key?('isNew')
                           item['position'] = mapping['position'] if mapping.has_key?('position')
