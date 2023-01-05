@@ -24,9 +24,37 @@
 {% if page.kind == "api" %} <script src="{{site.baseurl}}/assets/api-toc.js?{{randomNumber}}" defer></script>{% endif %}
 {% if page.sdk_example == true %}<script src="{{site.baseurl}}/assets/sdk-browser.js?{{randomNumber}}" defer></script>{% endif %}
 <script src="{{site.baseurl}}/assets/announcement.js?{{randomNumber}}" defer></script>
-  {% include footer.html %}
-  <script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" data-language="en" type="text/javascript" charset="UTF-8" {% if site.progress_hosting == true %} data-domain-script="f9397248-1dbe-47fc-9dbf-c50e7dd51096" {% else %} data-domain-script="3dfce4f2-dab6-4128-9f33-df7e0597da82" {%endif%} async></script>
-  {% include _gtm.html %}
+{% include footer.html %}
+
+<script>
+  function oneTrustFallback() {
+    document.querySelectorAll('script.optanon-category-1')
+    .forEach(n => {
+      var scriptNode = n.cloneNode(true);
+      scriptNode.classList.remove('optanon-category-1');
+      scriptNode.type = 'text/javascript';
+      n.parentNode.insertBefore(scriptNode, n);
+      n.remove();
+    });
+  }
+
+  function oneTrustError() {
+    if (document.readyState !== 'loading') {
+      oneTrustFallback();
+      return;
+    }
+
+    document.addEventListener('readystatechange', oneTrustFallback, { once: true });
+  }
+</script>
+
+{% if site.progress_hosting == true %}
+  <script src="https://cdn.cookielaw.org/consent/f9397248-1dbe-47fc-9dbf-c50e7dd51096/otSDKStub.js" onerror="oneTrustError()" data-language="en"  type="text/javascript" charset="UTF-8" data-domain-script="f9397248-1dbe-47fc-9dbf-c50e7dd51096" async></script> 
+{% else %}
+  <script src="https://cdn.cookielaw.org/consent/3dfce4f2-dab6-4128-9f33-df7e0597da82/otSDKStub.js" onerror="oneTrustError()" data-language="en"  type="text/javascript" charset="UTF-8" data-domain-script="3dfce4f2-dab6-4128-9f33-df7e0597da82" async></script> 
+{% endif %}
+
+{% include _gtm.html %}
 </body>
 {% if site.progress_hosting == true %}
 <script>
