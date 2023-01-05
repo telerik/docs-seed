@@ -30,9 +30,8 @@
   function oneTrustFallback() {
     document.querySelectorAll('script.optanon-category-1')
     .forEach(n => {
-      var scriptNode = n.cloneNode(true);
-      scriptNode.classList.remove('optanon-category-1');
-      scriptNode.type = 'text/javascript';
+      var scriptNode = document.createElement('script');
+      scriptNode.text = n.text;
       n.parentNode.insertBefore(scriptNode, n);
       n.remove();
     });
