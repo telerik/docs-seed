@@ -17,18 +17,39 @@
   <link rel="stylesheet" href="{{_rel}}styles/footer.css">
  
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" data-language="en" type="text/javascript" charset="UTF-8" data-domain-script="3dfce4f2-dab6-4128-9f33-df7e0597da82"></script>
+
+  <script>
+    function oneTrustFallback() {
+      document.querySelectorAll('script.optanon-category-1')
+      .forEach(n => {
+        var scriptNode = document.createElement('script');
+        scriptNode.text = n.text;
+        n.parentNode.insertBefore(scriptNode, n);
+        n.remove();
+      });
+    }
+
+    function oneTrustError() {
+      if (document.readyState !== 'loading') {
+        oneTrustFallback();
+        return;
+      }
+
+      document.addEventListener('readystatechange', oneTrustFallback, { once: true });
+    }
+  </script>
+  <script src="https://cdn.cookielaw.org/consent/3dfce4f2-dab6-4128-9f33-df7e0597da82/otSDKStub.js" onerror="oneTrustError()" data-language="en"  type="text/javascript" charset="UTF-8" data-domain-script="3dfce4f2-dab6-4128-9f33-df7e0597da82" async></script>
   <!-- Google Tag Manager -->
-        <script type="text/plain" class="optanon-category-1">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','GTM-6X92');</script>
-        <!-- End Google Tag Manager -->
-        <script>	
-            var e = document.documentElement;	
-            e.className = e.className.replace(/(^|\s)no-js(\s|$)/i, "$2");	
-        </script>
+  <script type="text/plain" class="optanon-category-1">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-6X92');</script>
+  <!-- End Google Tag Manager -->
+  <script>	
+      var e = document.documentElement;	
+      e.className = e.className.replace(/(^|\s)no-js(\s|$)/i, "$2");	
+  </script>
   <script src="//kendo.cdn.telerik.com/2017.3.1026/js/kendo.web.min.js"></script>
   <meta property="docfx:navrel" content="{{_navRel}}">
   <meta property="docfx:tocrel" content="{{_tocRel}}">
