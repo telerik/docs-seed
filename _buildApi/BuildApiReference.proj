@@ -44,7 +44,7 @@
                 string text = File.ReadAllText(path);
                 text = Regex.Replace(
                           text,
-                          "<loc>([^<]+\\.html)</loc>",
+                          "<loc>([^<]+)\\.html</loc>",
                           m => "<loc>" + m.Groups[1].Value.ToLower() + "</loc>",
                           RegexOptions.Singleline | RegexOptions.IgnoreCase);
                 File.WriteAllText(path, text);
