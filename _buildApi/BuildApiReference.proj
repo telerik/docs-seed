@@ -18,7 +18,7 @@
                 string text = File.ReadAllText(path);
                 text = Regex.Replace(
                           text,
-                          "href=\"(?!http(s)?:)([^\"]+)\\.html([?#][^\"]*)?\"",
+                          "href=\"(?!http(s)?:)([^\"]+)\\.+html([?#][^\"]*)?\"",
                           m => "href=\"" + m.Groups[2].Value.ToLower() + m.Groups[3].Value + "\"",
                           RegexOptions.Singleline | RegexOptions.IgnoreCase);
                 File.WriteAllText(path, text);
@@ -44,7 +44,7 @@
                 string text = File.ReadAllText(path);
                 text = Regex.Replace(
                           text,
-                          "<loc>([^<]+)\\.html</loc>",
+                          "<loc>([^<]+)\\.+html</loc>",
                           m => "<loc>" + m.Groups[1].Value.ToLower() + "</loc>",
                           RegexOptions.Singleline | RegexOptions.IgnoreCase);
                 File.WriteAllText(path, text);
