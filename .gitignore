@@ -6,6 +6,10 @@ _site
 _src/*
 _data/components/*.yml
 _assets/js/module-directives.js
+_buildAPI/BuildAPI/obj*
+_buildAPI/BuildAPI/src*
+_buildAPI/BuildAPI/log.txt
+_buildAPI/packages/*
 
 /controls/
 /styling-and-appearance/

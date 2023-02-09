@@ -3,8 +3,8 @@
   {% capture site_url %}{% if site.url %}{{ site.url }}{% else %}{{ site.github.url }}{% endif %}{% endcapture %}
   {% for post in site.html_pages %}{% unless post.sitemap == false %}
   <url>
-    <loc>{{ site_url }}{{ post.url | replace:'.html','' }}</loc>
-    <lastmod>{% timestamp %}{{ post.url | replace_first:'/' | replace:'.html','.md' }}{% endtimestamp %}</lastmod>
+    <loc>{{ site_url }}{{ post.url}}</loc>
+    <lastmod>{% timestamp %}{{ post.dir | replace_first:'/' }}{{post.name}}{% endtimestamp %}</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   {% endunless %}{% endfor %}
