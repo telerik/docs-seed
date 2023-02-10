@@ -2,7 +2,12 @@
 <Project ToolsVersion="14.0" DefaultTargets="BuildApiReference" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <UsingTask TaskName="MSBuild.Community.Tasks.FileUpdate" AssemblyFile="Tools\MSBuildCommunityTasks\MSBuild.Community.Tasks.dll" />
 
-<UsingTask TaskName="ReplaceAndLowerUrls" TaskFactory="CodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.Core.dll" >
+  <PropertyGroup>
+    <CodeFactoryLocation>$(MSBuildToolsPath)\Microsoft.Build.Tasks.Core.dll</CodeFactoryLocation>
+    <CodeFactoryLocation Condition="Exists('$(MSBuildToolsPath)\Microsoft.Build.Tasks.v4.0.dll')">$(MSBuildToolsPath)\Microsoft.Build.Tasks.v4.0.dll</CodeFactoryLocation>
+  </PropertyGroup>
+
+<UsingTask TaskName="ReplaceAndLowerUrls" TaskFactory="CodeTaskFactory" AssemblyFile="$(CodeFactoryLocation)" >
   <ParameterGroup>
     <Files ParameterType="Microsoft.Build.Framework.ITaskItem[]" Required="true" />
   </ParameterGroup>
@@ -28,7 +33,7 @@
     </Code>
   </Task>
 </UsingTask>
-<UsingTask TaskName="ReplaceAndLowerSitemapUrls" TaskFactory="CodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.Core.dll" >
+<UsingTask TaskName="ReplaceAndLowerSitemapUrls" TaskFactory="CodeTaskFactory" AssemblyFile="$(CodeFactoryLocation)" >
   <ParameterGroup>
     <Files ParameterType="Microsoft.Build.Framework.ITaskItem[]" Required="true" />
   </ParameterGroup>
