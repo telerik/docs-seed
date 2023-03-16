@@ -47,7 +47,7 @@ var dojoApi = (function($) {
                 '    <meta charset="utf-8"/>\n'+
                 '    <title>Kendo UI Snippet</title>\n\n'+
                 '    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/themes/themes-version/default/default-ocean-blue.css"/>\n\n'+
-                '    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>\n'+
+                '    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>\n'+
                 angular + jszip +
                 '    <script src="https://kendo.cdn.telerik.com/kendo-version/js/kendo.all.min.js"></script>\n'+
                 '</head>\n'+
@@ -150,7 +150,7 @@ var dojoApi = (function($) {
             '<meta charset="utf-8"/>' +
             '<meta http-equiv="X-UA-Compatible" content="IE=edge"/>' +
             '<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width"/>' +
-            '<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>' +
+            '<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>' +
             '<style>' +
             'body {' +
                 'font-family: Helvetica, Arial, sans-serif;' +
