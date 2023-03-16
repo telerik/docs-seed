@@ -5,7 +5,8 @@ var dojoApi = (function($) {
     var dojoApi = {
         configuration: {
             url: "https://dojo.telerik.com/",
-            currentKendoVersion: kendoCdnVersion
+            currentKendoVersion: kendoCdnVersion,
+            currentThemesVersion: themesCdnVersion
         },
         post: function (snippet) {
             if (!snippet.match(/<html>/i)) {
@@ -45,7 +46,7 @@ var dojoApi = (function($) {
                 '<head>\n'+
                 '    <meta charset="utf-8"/>\n'+
                 '    <title>Kendo UI Snippet</title>\n\n'+
-                '    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/kendo-version/styles/kendo.default-v2.min.css"/>\n\n'+
+                '    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/themes/themes-version/default/default-ocean-blue.css"/>\n\n'+
                 '    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>\n'+
                 angular + jszip +
                 '    <script src="https://kendo.cdn.telerik.com/kendo-version/js/kendo.all.min.js"></script>\n'+
@@ -53,7 +54,7 @@ var dojoApi = (function($) {
                 '<body>\n  \n'+
                 snippet+ '\n' +
                 '</body>\n'+
-            '</html>').replace(/kendo-version/g, kendoCdnVersion);
+            '</html>').replace(/kendo-version/g, kendoCdnVersion).replace(/themes-version/g, themesCdnVersion);
         return result;
         },
 
@@ -113,7 +114,7 @@ var dojoApi = (function($) {
 
             snippet = snippet.replace(/<script>(.*?)<\/script>/, "<script>try { $1 } catch(e) { document.write(e.toString()); }</script>");
 
-            var html = template({ version: kendoCdnVersion, snippet: snippet, html: /<html>/i.test(snippet) });
+            var html = template({ version: kendoCdnVersion, themesVersion: themesCdnVersion, snippet: snippet, html: /<html>/i.test(snippet) });
 
             var contents = iframe.contents();
 
@@ -156,7 +157,7 @@ var dojoApi = (function($) {
             'font-size: 14px' +
             '}' +
             '</style>' +
-            '<link rel="stylesheet" href="https://kendo.cdn.telerik.com/${version}/styles/kendo.default-v2.min.css">' +
+            '<link rel="stylesheet" href="https://kendo.cdn.telerik.com/themes/${themesVersion}/default/default-ocean-blue.css">' +
             '<script src="https://kendo.cdn.telerik.com/${version}/js/jszip.min.js"></script>' +
             '# if ((/ng-app/i).test(snippet)) { # <script src="https://kendo.cdn.telerik.com/${version}/js/angular.min.js"></script> # } #' +
             '<script src="https://kendo.cdn.telerik.com/${version}/js/kendo.all.min.js"></script>' +
@@ -229,12 +230,12 @@ $(function(){
             dojoApi.addButtons(this);
         }
     });
-    
+
     // Add Dojo to all API javascript reference code-snippets
     $("body article.api-reference.javascript").find(".prettyprint").not("[data-lang=pseudo]").each(function() {
         dojoApi.addButtons(this);
     });
-        
+
 
     $("body").on("click", ".btn-edit", function(e) {
         e.preventDefault();
