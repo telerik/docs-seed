@@ -20,7 +20,6 @@ This section describes the best practices about what and how needs to be done to
 ### Prerequisites
 - Install Docker (Community Edititon(CE) is enough): 
   - Use the [official Docker installation guide](https://docs.docker.com/install/). Accept the default installation instructions (use Linux containers, and so on).     
-  - From the Docker **Settings** window, share the drive where the documentation repos reside with Docker.
 - Install [Node.js](https://nodejs.org/en/) and restart the machine.
 - Choose a repo you want to contribute to (for example, [https://github.com/telerik/xaml-docs.git](https://github.com/telerik/xaml-docs.git). We will refer to that repo later on as **'MY-REPO'**.
 - Pull the documentation repo onto your hard drive (for example, `"D:\Work\xaml-docs"`). We will refer to the local path, where the documentation repo is cloned, as **'DOCS-PATH'**.
@@ -44,8 +43,19 @@ This section describes the best practices about what and how needs to be done to
   > If you are running the documentation on a MacOS or another OS where the `robocopy` command is unavailable, pass a second parameter to the `copy_local.sh` script: `sh copy_local.sh "D:\Work\xaml-docs" true`.
 
 1. Go to the **DOCS-PATH** directory.
-1. Open a terminal of your choice (for example, `gitBash`).
-1. Execute the following bash command in the root folder (where the `Dockerfile` is located).
+2. Open the Dockerfile with an editor
+3. Delete the following two rows:
+```
+ADD Gemfile ${APP_ROOT}/
+ADD Gemfile.lock ${APP_ROOT}/
+```
+4. Add the following row:
+```
+ENV BUNDLER_VERSION=2.1.4
+```
+5. Delete the GemFile.lock file
+6. Open a terminal of your choice (for example, `gitBash`).
+7. Execute the following bash command in the root folder (where the `Dockerfile` is located).
   ```bash
   sh start-docs.sh
   ```
