@@ -53,7 +53,7 @@ ADD Gemfile.lock ${APP_ROOT}/
 ```
 ENV BUNDLER_VERSION=2.1.4
 ```
-5. Delete the GemFile.lock file
+5. Delete the `GemFile.lock` file
 6. Open a terminal of your choice (for example, `gitBash`).
 7. Execute the following bash command in the root folder (where the `Dockerfile` is located).
   ```bash
