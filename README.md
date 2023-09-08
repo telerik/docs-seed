@@ -43,7 +43,7 @@ This section describes the best practices about what and how needs to be done to
   > If you are running the documentation on a MacOS or another OS where the `robocopy` command is unavailable, pass a second parameter to the `copy_local.sh` script: `sh copy_local.sh "D:\Work\xaml-docs" true`.
 
 1. Go to the **DOCS-PATH** directory.
-2. Open the Dockerfile with an editor
+2. Open the `Dockerfile` with an editor
 3. Delete the following two rows:
 ```
 ADD Gemfile ${APP_ROOT}/
