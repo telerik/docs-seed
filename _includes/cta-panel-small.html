@@ -2,9 +2,9 @@
 {% if page.product != blank %}
 {% assign product = site.data.cta_panels_data.product_map[page.product] %}
 {% endif %}
-{% assign hasCtaPanel = site.data.cta_panels_data[product].has_cta_panels %}
+{% assign hasCtaPanel = site.data.cta_panels_data[product] %}
 
-{%if hasCtaPanel != false%}
+{%if hasCtaPanel %}
 <section class="kd-cta-panel">
     <div>
         <div class="kd-cta kd-cta-sm">
