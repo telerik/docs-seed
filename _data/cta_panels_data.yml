@@ -76,11 +76,13 @@
   trial_url: "https://www.telerik.com/download-trial-file/v2/ui-for-jsp"
   product_url: "http://www.telerik.com/jsp-ui"
   avatar: "DevCraft"
+  has_cta_panels: false
 "Telerik UI for PHP":
   message: "professional grade UI library with 90+ components for building modern and feature-rich applications."
   trial_url: "https://www.telerik.com/download-trial-file/v2/ui-for-php"
   product_url: "https://www.telerik.com/php-ui"
   avatar: "DevCraft"
+  has_cta_panels: false
 "Telerik Document Processing":
   message: "professional grade .NET library for creating and manipulating PDF, Word, XLSX and HTML files."
   trial_url: "https://www.telerik.com/download-trial-file/v2-b/devcraft-ultimate"

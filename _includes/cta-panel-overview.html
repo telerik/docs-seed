@@ -7,7 +7,9 @@
 {% assign trial_url = site.data.cta_panels_data[product].trial_url %}
 {% assign icon = site.data.cta_panels_data[product].avatar %}
 {% assign component_suffix = site.data.cta_panels_data[product].component_suffix %}
+{% assign hasCtaPanel = site.data.cta_panels_data[product].has_cta_panels %}
 
+{%if hasCtaPanel != false%}
 <section class="kd-cta-panel">
     <div class="container flex-center">
         <div class="kd-cta kd-cta-lg kd-cta-full-width">
@@ -34,3 +36,4 @@
         </div>
     </div>
 </section>
+{% endif %}
