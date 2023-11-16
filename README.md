@@ -26,7 +26,7 @@ This section describes the best practices about what and how needs to be done to
     git clone git@github.com:telerik/docs-seed.git
     ```
 1. Choose a repo you want to contribute to (for example, [https://github.com/telerik/xaml-docs.git](https://github.com/telerik/xaml-docs.git). We will refer to that repo later on as **'MY-REPO'**.
-1. Clone the documentation repo (for example, in `"D:\Work\xaml-docs"`). We will refer to the local path, where the documentation repo is cloned, as **'DOCS-PATH'**.
+1. Clone **'MY-REPO'**, for example in `"D:\Work\xaml-docs"`. We will refer to the local path, where the documentation repo is cloned, as **'DOCS-PATH'**.
     > For products such as Kendo UI for jQuery, UI for ASP.NET MVC, and UI for ASP.NET Core, the documentation is part of source code repo. For these products, **'DOCS-PATH' is actually a nested folder** in the cloned repo, for example, `"D:\Work\kendo-ui-core\docs"`.
 1. Open a terminal of your choice (for example, `Git Bash`).
 1. Go to **DOCS-SEED-PATH** in the terminal.
@@ -35,14 +35,14 @@ This section describes the best practices about what and how needs to be done to
     sh copy_local.sh "D:\Work\xaml-docs"
     ```
 
-    > If you are running the documentation on a MacOS or another OS where the `robocopy` command is unavailable, pass a second parameter to the `copy_local.sh` script: `sh copy_local.sh "D:\Work\xaml-docs" true`.
+    > If you are running the documentation on a macOS or another OS where the `robocopy` command is unavailable, pass a second `true` parameter to the `copy_local.sh` script: `sh copy_local.sh "D:\Work\xaml-docs" true`.
 
 ### Instructions Without Docker
 
 1. Install Ruby 2.7.8
   * On Windows, use the [Ruby 2.7.8 and the Ruby DevKit installer](https://rubyinstaller.org/downloads/) for [x64](https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-2.7.8-1/rubyinstaller-devkit-2.7.8-1-x64.exe) or [x86](https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-2.7.8-1/rubyinstaller-devkit-2.7.8-1-x86.exe) machines. Ensure that everything is correctly installed especially if you have previous versions installed on the machine (for example, check whether the `config.yml` file in the DevKit root folder contains the correct path to the ruby folder and check whether the system environmnet variables are correctly set). For more information, refer to [this article](http://jekyll-windows.juthilo.com/1-ruby-and-devkit/).
   * On Mac, follow the [tutorial by Moncef Belyamani](https://www.moncefbelyamani.com/how-to-install-xcode-homebrew-git-rvm-ruby-on-mac/). Consider making Ruby 2.7.8 the default one for the Terminal.
-1. Open a terminal of your choice (for example, `gitBash`).
+1. Open a terminal of your choice (for example, `Git Bash`).
 1. Go to the **DOCS-PATH** directory.
 1. Install bundler if you don't have it, by executing `gem install bundler`.
     > If you encounter SSL errors with Bundler, similar to the one described in [RubyGems SSL Certificate Update](https://guides.rubygems.org/ssl-certificate-update/), then follow the solution steps shared in [Bundler.io - Installing new RubyGems certificates](https://bundler.io/v2.0/guides/rubygems_tls_ssl_troubleshooting_guide.html#installing-new-rubygems-certificates).
