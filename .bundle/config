@@ -1,0 +1,2 @@
+---
+BUNDLE_BUILD__GITHUB___MARKDOWN: "--with-cflags=-Wno-error=implicit-function-declaration"

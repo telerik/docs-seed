@@ -38,5 +38,6 @@ cacert.pem
 /*.svg
 
 bin/
-.bundle
 .vscode
+
+.DS_Store
