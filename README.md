@@ -57,39 +57,13 @@ This section describes the best practices about what and how needs to be done to
 
 ### Instructions With Docker
 
-1. Install Docker if you don't have it. Community Edititon(CE) is enough. 
-    * Use the [official Docker installation guide](https://docs.docker.com/install/). Accept the default installation instructions (use Linux containers, and so on).
-1. Run Docker.
-1. Open a terminal of your choice (for example, `Git Bash`).
-1. Execute the following bash command in the root folder (where the `Dockerfile` is located).
-    ```bash
-    sh start-docs.sh
-    ```
-
-1. Open the documentation site on the server address which is written in the terminal: `http://0.0.0.0:4000/`. If you can't open the URL, replace the `0.0.0.0` with `localhost`: `http://localhost:4000`. For example, for the WPF documentation, this will be `http://0.0.0.0:4000/devtools/wpf/`.
-
-1. To stop the web site and the container in which it has been served, navigate to the terminal in which you've executed the previous command, and press `CTRL+C`. On passing an additional `config` file for the WPF and Silverlight documentation, refer to [this section](#additional-config-file).
+Building docs sites with this `docs-seed` branch doesn't work with Docker. The purpose of this branch is to work with Macs with Apple silicon and users who prefer not to use Docker.
 
 ## Troubleshooting
 
 ### Get More Detailed Error Message
 
 To get more information and a full stacktrace of the error, add `--trace` after your jekyll command. For example, `bundle exec jekyll build --trace`.
-
-
-### Does Not Serve
-
-You executed `sh start-docs.sh` but you did not see any Jekyll output. Instead, the command ended with `the input device is not a TTY. If you are using mintty, try prefixing the command with 'winpty'`.
-
-This happens whtn using Git Bash with the MinTTY console. This console does not allow combinations such as `Ctrl+C` to pass to the Docker container and that's why you get such an error.
-
-To solve this issue, prefix the command with `winpty`:
-
-```bash
-winpty sh start-docs.sh
-```
-
-Aa an alternative, re-install Git Bash and choose the default Windows terminal this time. For more detailes, refer to the [Docker for Windows: Interactive Sessions in MinTTY Git Bash](https://willi.am/blog/2016/08/08/docker-for-windows-interactive-sessions-in-mintty-git-bash/) post.
 
 ### Ctrl+C Does Not Work
 
