@@ -2,6 +2,9 @@
 Contains the documentation site implementation.
 
 - [Local Setup :computer:](#local-setup)
+  * [Prerequisites](#prerequisites)
+  * [Instructions without Docker](#instructions-without-docker)
+  * [Instructions with Docker](#instructions-with-docker)
 - [Troubleshooting :hankey:](#troubleshooting)
 - [Extra Features :moneybag:](#extra-features)
   * [Additional config File](#additional-config-file)
@@ -18,85 +21,54 @@ Contains the documentation site implementation.
 This section describes the best practices about what and how needs to be done to run the documentation locally.
 
 ### Prerequisites
-- Install Docker (Community Edititon(CE) is enough): 
-  - Use the [official Docker installation guide](https://docs.docker.com/install/). Accept the default installation instructions (use Linux containers, and so on).     
-- Install [Node.js](https://nodejs.org/en/) and restart the machine.
-- Choose a repo you want to contribute to (for example, [https://github.com/telerik/xaml-docs.git](https://github.com/telerik/xaml-docs.git). We will refer to that repo later on as **'MY-REPO'**.
-- Pull the documentation repo onto your hard drive (for example, `"D:\Work\xaml-docs"`). We will refer to the local path, where the documentation repo is cloned, as **'DOCS-PATH'**.
-
-> * For products such as Kendo UI for jQuery, UI for ASP.NET MVC, and UI for ASP.NET Core, the documentation is part of source code repo. For these products, **'DOCS-PATH' is actually a nested folder** in the cloned repo, for example, `"D:\Work\kendo-ui-core\docs"`.
-> * If you are not able to install and use Docker, go to [Instructions (without Docker)](#instructions-without-docker). Otherwise, continue to the next section.
-
-### Instructions (with Docker)
-1. Clone the current (seed) repo.
-  ```bash
-  git clone git@github.com:telerik/docs-seed.git
-  ```
-
-1. Go to the directory in which you've pulled it (for example, `D:\Work\docs-seed`).
-1. Open a terminal of your choice (for example, `gitBash`).
+1. Clone the current `docs-seed` repo, for example in `"D:\Work\docs-seed\"`. We will refer to this folder later on as **'DOCS-SEED-PATH'**.
+    ```bash
+    git clone git@github.com:telerik/docs-seed.git
+    ```
+1. Choose a repo you want to contribute to (for example, [https://github.com/telerik/xaml-docs.git](https://github.com/telerik/xaml-docs.git). We will refer to that repo later on as **'MY-REPO'**.
+1. Clone the documentation repo (for example, in `"D:\Work\xaml-docs"`). We will refer to the local path, where the documentation repo is cloned, as **'DOCS-PATH'**.
+    > For products such as Kendo UI for jQuery, UI for ASP.NET MVC, and UI for ASP.NET Core, the documentation is part of source code repo. For these products, **'DOCS-PATH' is actually a nested folder** in the cloned repo, for example, `"D:\Work\kendo-ui-core\docs"`.
+1. Open a terminal of your choice (for example, `Git Bash`).
+1. Go to **DOCS-SEED-PATH** in the terminal.
 1. Run the following command by passing the **DOCS-PATH** path (the **quotes** are mandatory):
-  ```bash
-  sh copy_local.sh "D:\Work\xaml-docs"
-  ```
+    ```bash
+    sh copy_local.sh "D:\Work\xaml-docs"
+    ```
 
-  > If you are running the documentation on a MacOS or another OS where the `robocopy` command is unavailable, pass a second parameter to the `copy_local.sh` script: `sh copy_local.sh "D:\Work\xaml-docs" true`.
+    > If you are running the documentation on a MacOS or another OS where the `robocopy` command is unavailable, pass a second parameter to the `copy_local.sh` script: `sh copy_local.sh "D:\Work\xaml-docs" true`.
 
+### Instructions Without Docker
+
+1. Install Ruby 2.7.8
+  * On Windows, use the [Ruby 2.7.8 and the Ruby DevKit installer](https://rubyinstaller.org/downloads/) for [x64](https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-2.7.8-1/rubyinstaller-devkit-2.7.8-1-x64.exe) or [x86](https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-2.7.8-1/rubyinstaller-devkit-2.7.8-1-x86.exe) machines. Ensure that everything is correctly installed especially if you have previous versions installed on the machine (for example, check whether the `config.yml` file in the DevKit root folder contains the correct path to the ruby folder and check whether the system environmnet variables are correctly set). For more information, refer to [this article](http://jekyll-windows.juthilo.com/1-ruby-and-devkit/).
+  * On Mac, follow the [tutorial by Moncef Belyamani](https://www.moncefbelyamani.com/how-to-install-xcode-homebrew-git-rvm-ruby-on-mac/). Consider making Ruby 2.7.8 the default one for the Terminal.
+1. Open a terminal of your choice (for example, `gitBash`).
 1. Go to the **DOCS-PATH** directory.
-2. Open the `Dockerfile` with an editor
-3. Delete the following two rows:
-```
-ADD Gemfile ${APP_ROOT}/
-ADD Gemfile.lock ${APP_ROOT}/
-```
-4. Add the following row:
-```
-ENV BUNDLER_VERSION=2.1.4
-```
-5. Delete the `GemFile.lock` file
-6. Open a terminal of your choice (for example, `gitBash`).
-7. Execute the following bash command in the root folder (where the `Dockerfile` is located).
-  ```bash
-  sh start-docs.sh
-  ```
+1. Install bundler if you don't have it, by executing `gem install bundler`.
+    > If you encounter SSL errors with Bundler, similar to the one described in [RubyGems SSL Certificate Update](https://guides.rubygems.org/ssl-certificate-update/), then follow the solution steps shared in [Bundler.io - Installing new RubyGems certificates](https://bundler.io/v2.0/guides/rubygems_tls_ssl_troubleshooting_guide.html#installing-new-rubygems-certificates).
+1. Install gems by executing `bundle install`.
+1. Execute the following bash command in the root folder:
+    ```bash
+    bundle exec jekyll serve
+    ```
+1. Open the documentation site on the server address which is written in the terminal: `http://0.0.0.0:4000/`. If you can't open the URL, replace the `0.0.0.0` with `localhost`: `http://localhost:4000`. For example, for the WPF documentation, this will be `http://0.0.0.0:4000/devtools/wpf/`.
+
+1. To change the host or port, pass the `--host` or `--port` arguments to the command above as an addition (for example, `bundle exec jekyll serve --host=0.0.0.0 --port=1234`).
+
+### Instructions With Docker
+
+1. Install Docker if you don't have it. Community Edititon(CE) is enough. 
+    * Use the [official Docker installation guide](https://docs.docker.com/install/). Accept the default installation instructions (use Linux containers, and so on).
+1. Run Docker.
+1. Open a terminal of your choice (for example, `Git Bash`).
+1. Execute the following bash command in the root folder (where the `Dockerfile` is located).
+    ```bash
+    sh start-docs.sh
+    ```
 
 1. Open the documentation site on the server address which is written in the terminal: `http://0.0.0.0:4000/`. If you can't open the URL, replace the `0.0.0.0` with `localhost`: `http://localhost:4000`. For example, for the WPF documentation, this will be `http://0.0.0.0:4000/devtools/wpf/`.
 
 1. To stop the web site and the container in which it has been served, navigate to the terminal in which you've executed the previous command, and press `CTRL+C`. On passing an additional `config` file for the WPF and Silverlight documentation, refer to [this section](#additional-config-file).
-
-### Instructions (without Docker)
-1. Install ruby 2.3.3 ([64bit](https://github.com/oneclick/rubyinstaller/releases/download/ruby-2.3.3/rubyinstaller-2.3.3-x64.exe) or [32bit](https://github.com/oneclick/rubyinstaller/releases/download/ruby-2.3.3/rubyinstaller-2.3.3.exe)).
-1. Install Ruby DevKit 4.7.2 ([64bit](https://github.com/oneclick/rubyinstaller/releases/download/devkit-4.7.2/DevKit-mingw64-64-4.7.2-20130224-1432-sfx.exe) or [32bit](https://github.com/oneclick/rubyinstaller/releases/download/devkit-4.7.2/DevKit-mingw64-32-4.7.2-20130224-1151-sfx.exe)). For more informatin, see the [Development Kit - Installation instructions](https://github.com/oneclick/rubyinstaller/wiki/Development-Kit#installation-instructions).
-1. Ensure that everything is correctly installed especially if you have previous versions installed on the machine (for example, check whether the `config.yml` file in the DevKit root folder contains the correct path to the ruby folder and check whether the system environmnet variables are correctly set). For more information, refer to [this article](http://jekyll-windows.juthilo.com/1-ruby-and-devkit/).
-1. Install bundler (if you have already installed, continue to the next step) by executing `gem install bundler`.
-
-  > If you encounter SSL errors with Bundler, similar to the one described in [RubyGems SSL Certificate Update](https://guides.rubygems.org/ssl-certificate-update/), then follow the solution steps shared in [Bundler.io - Installing new RubyGems certificates](https://bundler.io/v2.0/guides/rubygems_tls_ssl_troubleshooting_guide.html#installing-new-rubygems-certificates).
-
-1. Clone the current (seed) repo.
-  ```bash
-  git clone git@github.com:telerik/docs-seed.git
-  ```
-
-1. Go to the directory in which you've pulled the current (seed) repo (for example, `D:\Work\docs-seed`).
-1. Open a terminal of your choice (for example, `gitBash`).
-1. Run the following command by passing the **DOCS-PATH** path (the **quotes** are mandatory):
-  ```bash
-  sh copy_local.sh "D:\Work\xaml-docs"
-  ```
-
-  > If you are running the documentation on a MacOS or another OS where the `robocopy` command is unavailable, pass a second parameter to the `copy_local.sh script`: `sh copy_local.sh "D:\Work\xaml-docs" true`.
-
-1. Go to the **DOCS-PATH** directory.
-1. Open a terminal of your choice (for example, `gitBash`).
-1. Install gems by executing `bundle install`.
-1. Execute the following bash command in the root folder:
-  ```bash
-  bundle exec jekyll serve
-  ```
-
-1. Open the documentation site on the server address which is written in the terminal: `http://127.0.0.1:4000/`. If you can't open the URL, replace the `127.0.0.1` with `localhost`: `http://localhost:4000`. For example, for the WPF documentation, this will be `http://127.0.0.1:4000/devtools/wpf/`.
-
-1. To change the host or port, pass the `--host` or `--port` arguments to the command above as an addition (for example, `bundle exec jekyll serve --host=0.0.0.0 --port=1234`).
 
 ## Troubleshooting
 
