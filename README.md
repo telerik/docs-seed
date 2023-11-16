@@ -3,8 +3,10 @@ Contains the documentation site implementation.
 
 - [Local Setup :computer:](#local-setup)
   * [Prerequisites](#prerequisites)
-  * [Instructions without Docker](#instructions-without-docker)
-  * [Instructions with Docker](#instructions-with-docker)
+  * [Copy Build Scripts](#copy-build-scripts)
+  * [Install Build Dependencies](#install-build-dependencies)
+  * [Run the Documentation Site](#run-the-documentation-site)
+  * [Update Build Scripts](#update-build-scripts)
 - [Troubleshooting :hankey:](#troubleshooting)
 - [Extra Features :moneybag:](#extra-features)
   * [Additional config File](#additional-config-file)
@@ -18,13 +20,26 @@ Contains the documentation site implementation.
 - [docs-seed Syntax Gudelines](#docs-seed-syntax-guidelines)
 
 ## Local Setup
+
 This section describes the best practices about what and how needs to be done to run the documentation locally.
 
+> Building docs sites with this `docs-seed` branch doesn't work with Docker. The purpose of this branch is to work with Macs with Apple silicon and users who prefer not to use Docker.
+
 ### Prerequisites
+
+1. Install [Node.js](https://nodejs.org/en/) and restart the machine.
+1. Install Ruby 2.7.8
+    * On Windows, use the [Ruby 2.7.8 and the Ruby DevKit installer](https://rubyinstaller.org/downloads/) for [x64](https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-2.7.8-1/rubyinstaller-devkit-2.7.8-1-x64.exe) or [x86](https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-2.7.8-1/rubyinstaller-devkit-2.7.8-1-x86.exe) machines. Ensure that everything is correctly installed especially if you have previous versions installed on the machine (for example, check whether the `config.yml` file in the DevKit root folder contains the correct path to the ruby folder and check whether the system environmnet variables are correctly set). For more information, refer to [this article](http://jekyll-windows.juthilo.com/1-ruby-and-devkit/).
+    * On Mac, follow the [tutorial by Moncef Belyamani](https://www.moncefbelyamani.com/how-to-install-xcode-homebrew-git-rvm-ruby-on-mac/). Consider making Ruby 2.7.8 the default one for the Terminal.
 1. Clone the current `docs-seed` repo, for example in `"D:\Work\docs-seed\"`. We will refer to this folder later on as **'DOCS-SEED-PATH'**.
     ```bash
     git clone git@github.com:telerik/docs-seed.git
     ```
+1. Install bundler if you don't have it, by executing `gem install bundler`.
+    > If you encounter SSL errors with Bundler, similar to the one described in [RubyGems SSL Certificate Update](https://guides.rubygems.org/ssl-certificate-update/), then follow the solution steps shared in [Bundler.io - Installing new RubyGems certificates](https://bundler.io/v2.0/guides/rubygems_tls_ssl_troubleshooting_guide.html#installing-new-rubygems-certificates).
+
+### Copy Build Scripts
+
 1. Choose a repo you want to contribute to (for example, [https://github.com/telerik/xaml-docs.git](https://github.com/telerik/xaml-docs.git). We will refer to that repo later on as **'MY-REPO'**.
 1. Clone **'MY-REPO'**, for example in `"D:\Work\xaml-docs"`. We will refer to the local path, where the documentation repo is cloned, as **'DOCS-PATH'**.
     > For products such as Kendo UI for jQuery, UI for ASP.NET MVC, and UI for ASP.NET Core, the documentation is part of source code repo. For these products, **'DOCS-PATH' is actually a nested folder** in the cloned repo, for example, `"D:\Work\kendo-ui-core\docs"`.
@@ -37,16 +52,15 @@ This section describes the best practices about what and how needs to be done to
 
     > If you are running the documentation on a macOS or another OS where the `robocopy` command is unavailable, pass a second `true` parameter to the `copy_local.sh` script: `sh copy_local.sh "D:\Work\xaml-docs" true`.
 
-### Instructions Without Docker
+### Install Build Dependencies
 
-1. Install Ruby 2.7.8
-  * On Windows, use the [Ruby 2.7.8 and the Ruby DevKit installer](https://rubyinstaller.org/downloads/) for [x64](https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-2.7.8-1/rubyinstaller-devkit-2.7.8-1-x64.exe) or [x86](https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-2.7.8-1/rubyinstaller-devkit-2.7.8-1-x86.exe) machines. Ensure that everything is correctly installed especially if you have previous versions installed on the machine (for example, check whether the `config.yml` file in the DevKit root folder contains the correct path to the ruby folder and check whether the system environmnet variables are correctly set). For more information, refer to [this article](http://jekyll-windows.juthilo.com/1-ruby-and-devkit/).
-  * On Mac, follow the [tutorial by Moncef Belyamani](https://www.moncefbelyamani.com/how-to-install-xcode-homebrew-git-rvm-ruby-on-mac/). Consider making Ruby 2.7.8 the default one for the Terminal.
+1. Go to the **DOCS-PATH** directory.
+1. Install gems by executing `bundle install`.
+
+### Run the Documentation Site
+
 1. Open a terminal of your choice (for example, `Git Bash`).
 1. Go to the **DOCS-PATH** directory.
-1. Install bundler if you don't have it, by executing `gem install bundler`.
-    > If you encounter SSL errors with Bundler, similar to the one described in [RubyGems SSL Certificate Update](https://guides.rubygems.org/ssl-certificate-update/), then follow the solution steps shared in [Bundler.io - Installing new RubyGems certificates](https://bundler.io/v2.0/guides/rubygems_tls_ssl_troubleshooting_guide.html#installing-new-rubygems-certificates).
-1. Install gems by executing `bundle install`.
 1. Execute the following bash command in the root folder:
     ```bash
     bundle exec jekyll serve
@@ -55,9 +69,11 @@ This section describes the best practices about what and how needs to be done to
 
 1. To change the host or port, pass the `--host` or `--port` arguments to the command above as an addition (for example, `bundle exec jekyll serve --host=0.0.0.0 --port=1234`).
 
-### Instructions With Docker
+### Update Build Scripts
 
-Building docs sites with this `docs-seed` branch doesn't work with Docker. The purpose of this branch is to work with Macs with Apple silicon and users who prefer not to use Docker.
+1. Pull the latest changes from this `docs-seed` repo.
+1. Execute the last three steps from section [Copy Build Scripts](#copy-build-scripts)
+1. You may also need to [reinstall the build dependencies](#install-build-dependencies).
 
 ## Troubleshooting
 
