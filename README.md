@@ -35,7 +35,10 @@ This section describes the best practices about what and how needs to be done to
     ```bash
     git clone git@github.com:telerik/docs-seed.git
     ```
-1. Install bundler if you don't have it, by executing `gem install bundler`.
+1. Install or update bundler. You need 2.4.22 or newer for the `.bundle/config` file to work when installing the build dependencies:
+    ```bash
+    gem install bundler
+    ```
     > If you encounter SSL errors with Bundler, similar to the one described in [RubyGems SSL Certificate Update](https://guides.rubygems.org/ssl-certificate-update/), then follow the solution steps shared in [Bundler.io - Installing new RubyGems certificates](https://bundler.io/v2.0/guides/rubygems_tls_ssl_troubleshooting_guide.html#installing-new-rubygems-certificates).
 
 ### Copy Build Scripts
@@ -55,7 +58,10 @@ This section describes the best practices about what and how needs to be done to
 ### Install Build Dependencies
 
 1. Go to the **DOCS-PATH** directory.
-1. Install gems by executing `bundle install`.
+1. Install the required gems:
+    ```bash
+    bundle install
+    ```
 
 ### Run the Documentation Site
 
@@ -67,7 +73,7 @@ This section describes the best practices about what and how needs to be done to
     ```
 1. Open the documentation site on the server address which is written in the terminal: `http://0.0.0.0:4000/`. If you can't open the URL, replace the `0.0.0.0` with `localhost`: `http://localhost:4000`. For example, for the WPF documentation, this will be `http://0.0.0.0:4000/devtools/wpf/`.
 
-1. To change the host or port, pass the `--host` or `--port` arguments to the command above as an addition (for example, `bundle exec jekyll serve --host=0.0.0.0 --port=1234`).
+1. To change the host or port, pass the `--host` or `--port` arguments to the command above as an addition, for example:
 
 ### Update Build Scripts
 
@@ -79,7 +85,10 @@ This section describes the best practices about what and how needs to be done to
 
 ### Get More Detailed Error Message
 
-To get more information and a full stacktrace of the error, add `--trace` after your jekyll command. For example, `bundle exec jekyll build --trace`.
+To get more information and a full stacktrace of the error, add `--trace` after your jekyll command. For example:
+    ```bash
+    bundle exec jekyll build --trace
+    ```
 
 ### Ctrl+C Does Not Work
 
