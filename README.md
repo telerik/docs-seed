@@ -72,8 +72,10 @@ This section describes the best practices about what and how needs to be done to
     bundle exec jekyll serve
     ```
 1. Open the documentation site on the server address which is written in the terminal: `http://0.0.0.0:4000/`. If you can't open the URL, replace the `0.0.0.0` with `localhost`: `http://localhost:4000`. For example, for the WPF documentation, this will be `http://0.0.0.0:4000/devtools/wpf/`.
-
 1. To change the host or port, pass the `--host` or `--port` arguments to the command above as an addition, for example:
+    ```bash
+    bundle exec jekyll serve --host=0.0.0.0 --port=1234
+    ```
 
 ### Update Build Scripts
 
@@ -83,12 +85,16 @@ This section describes the best practices about what and how needs to be done to
 
 ## Troubleshooting
 
+### Cannot Install github-markdown gem
+
+Update bundler. See [Prerequisites](#prerequisites)
+
 ### Get More Detailed Error Message
 
 To get more information and a full stacktrace of the error, add `--trace` after your jekyll command. For example:
-    ```bash
-    bundle exec jekyll build --trace
-    ```
+```bash
+bundle exec jekyll build --trace
+```
 
 ### Ctrl+C Does Not Work
 
