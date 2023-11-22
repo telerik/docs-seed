@@ -13,7 +13,7 @@ gem "uglifier", "~> 3.0.4"
 gem "autoprefixer-rails"
 gem "bootstrap-sass"
 gem "oga", "~> 2.3"
-gem 'html-pipeline'
+gem 'html-pipeline', "2.4.2"
 gem 'github-markdown'
 gem 'execjs'
 gem "sprockets", "~> 3.6.3"
