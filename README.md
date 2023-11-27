@@ -30,7 +30,7 @@ This section describes the best practices about what and how needs to be done to
 1. Install [Node.js](https://nodejs.org/en/) and restart the machine.
 1. Install Ruby 2.7.8
     * On Windows, use the [Ruby 2.7.8 and the Ruby DevKit installer](https://rubyinstaller.org/downloads/) for [x64](https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-2.7.8-1/rubyinstaller-devkit-2.7.8-1-x64.exe) or [x86](https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-2.7.8-1/rubyinstaller-devkit-2.7.8-1-x86.exe) machines. Ensure that everything is correctly installed especially if you have previous versions installed on the machine (for example, check whether the `config.yml` file in the DevKit root folder contains the correct path to the ruby folder and check whether the system environmnet variables are correctly set). For more information, refer to [this article](http://jekyll-windows.juthilo.com/1-ruby-and-devkit/).
-    * On Mac, follow the [tutorial by Moncef Belyamani](https://www.moncefbelyamani.com/how-to-install-xcode-homebrew-git-rvm-ruby-on-mac/). Consider making Ruby 2.7.8 the default one for the Terminal.
+    * On Mac, follow the [tutorial by Moncef Belyamani](https://www.moncefbelyamani.com/how-to-install-xcode-homebrew-git-rvm-ruby-on-mac/). Consider making Ruby 2.7.8 the default one for the Terminal. Note that Ruby 2.7.8 depends on obsolete `openssl@1.1` and you will get warnings about this when you execute `brew doctor` afterwards.
 1. Clone the current `docs-seed` repo, for example in `"D:\Work\docs-seed\"`. We will refer to this folder later on as **'DOCS-SEED-PATH'**.
     ```bash
     git clone git@github.com:telerik/docs-seed.git
