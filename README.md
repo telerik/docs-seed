@@ -18,10 +18,10 @@ Contains the documentation site implementation.
 This section describes how to run the documentation locally.
 
 ### Prerequisites
-- Install Docker (Community Edition(CE) is sufficient): 
-  - Use the [official Docker installation guide](https://docs.docker.com/install/). Accept the default installation instructions (use Linux containers, and so on).     
+- Install Docker (Community Edition(CE) is sufficient):
+  - Use the [official Docker installation guide](https://docs.docker.com/install/). Accept the default installation instructions (use Linux containers, and so on).
 - Install [Node.js](https://nodejs.org/en/) and restart the machine.
-- Choose a repo you want to contribute to (for example, [https://github.com/telerik/xaml-docs.git](https://github.com/telerik/xaml-docs.git). We will refer to that repo later on as **'MY-REPO'**.
+- Choose a repo you want to contribute to (for example, [https://github.com/telerik/xaml-docs.git](https://github.com/telerik/xaml-docs.git)). We will refer to that repo later on as **'MY-REPO'**.
 - Pull the documentation repo onto your hard drive (for example, `"D:\Work\xaml-docs"`). We will refer to the local path, where the documentation repo is cloned, as **'DOCS-PATH'**.
 
 > * For products such as Kendo UI for jQuery, UI for ASP.NET MVC, and UI for ASP.NET Core, the documentation is part of source code repo. For these products, **'DOCS-PATH' is a nested folder** in the cloned repo, for example, `"D:\Work\kendo-ui-core\docs"`.
@@ -154,7 +154,7 @@ When you try to build the documentation site, you may see an error including the
   * Usually happens when a new article does not have `position` property in the front-matter. To solve this issue, add a number to the `position` property. If you want some articles to sort alphabetically, they need to have the same `position` value.
   * It might also happen if a folder or a file is magically added to the docs repo folder. To solve this issue, clean the folder and make a fresh clone of the docs repo.
 
-* `jekyll 3.3.1 | Error: 404 Not Found`&mdash;This is often observed when you create a new documentations and when no entry for the product in the Top Navigation list exists. To solve this issue, add an entry for your documentation as in the [feat: add MAUI to top navigation](https://github.com/telerik/docs-seed/commit/454d3178dbe65caa1e84b248206a514e4227d995#diff-96a33d63722834501d92ed56323571da7dd726397623401a2a25f4ac6610a553) commit for the `/_plugins/top_navigation.rb` file. If the Telerik Web Team do not have the Top Navigation ready yet, you can temporarily reuse the top navigation value property from another product to make the build successful. 
+* `jekyll 3.3.1 | Error: 404 Not Found`&mdash;This is often observed when you create a new documentations and when no entry for the product in the Top Navigation list exists. To solve this issue, add an entry for your documentation as in the [feat: add MAUI to top navigation](https://github.com/telerik/docs-seed/commit/454d3178dbe65caa1e84b248206a514e4227d995#diff-96a33d63722834501d92ed56323571da7dd726397623401a2a25f4ac6610a553) commit for the `/_plugins/top_navigation.rb` file. If the Telerik Web Team do not have the Top Navigation ready yet, you can temporarily reuse the top navigation value property from another product to make the build successful.
 
 ## Extra Features
 
@@ -193,7 +193,7 @@ This can be useful if you want to (or already have) set up a local IIS to point 
 
 ### Build Site Partially
 
-To speed up the building time of the web site, you can pass **only** specific parts of it&mdash;the folders you want to include in the site. 
+To speed up the building time of the web site, you can pass **only** specific parts of it&mdash;the folders you want to include in the site.
 
 To achieve this, execute the `sh modify-config.sh` script with passing the corresponding arguments which are:
 
@@ -222,7 +222,7 @@ A [DocFX](https://dotnet.github.io/docfx/)-based infrastructure generates the AP
 
 * The docs-seed repo on your build machine.
 
-* An API ref link in your table of contents on the left. To enable it, add the following line in your `_config.yml` file: 
+* An API ref link in your table of contents on the left. To enable it, add the following line in your `_config.yml` file:
 
     `_config.yml`
     
@@ -268,10 +268,10 @@ A [DocFX](https://dotnet.github.io/docfx/)-based infrastructure generates the AP
 
 ## Documentation Best Practices
 
-If you need to create new documentation (for example, for a new product), use [`docs-content-seed`](https://github.com/telerik/docs-content-seed) repository as an auxiliary part to this one. 
+If you need to create new documentation (for example, for a new product), use [`docs-content-seed`](https://github.com/telerik/docs-content-seed) repository as an auxiliary part to this one.
 
-For best practices and industry standards on creating and maintaining documentation, go to the public [Progress DevTools Style Guide](https://docs.telerik.com/style-guide/introduction).   
+For best practices and industry standards on creating and maintaining documentation, go to the public [Progress DevTools Style Guide](https://docs.telerik.com/style-guide/introduction).
 
-## docs-seed Syntax Guidelines  
+## docs-seed Syntax Guidelines
 
-To ensure the syntax you use when you add or edit the documentation will properly render the content, read the [syntax guidelines in the docs-seed Wiki](https://github.com/telerik/docs-seed/wiki/Handling-Redirects). 
+To ensure the syntax you use when you add or edit the documentation will properly render the content, read the [syntax guidelines in the docs-seed Wiki](https://github.com/telerik/docs-seed/wiki/Handling-Redirects).
