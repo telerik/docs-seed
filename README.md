@@ -65,6 +65,7 @@ ENV BUNDLER_VERSION=2.1.4
 1. To stop the web site and the container in which it has been served, navigate to the terminal in which you've executed the previous command, and press `CTRL+C`. On passing an additional `config` file for the WPF and Silverlight documentation, refer to [this section](#additional-config-file).
 
 ### Instructions (without Docker)
+
 1. Install ruby 2.3.3 ([64-bit](https://github.com/oneclick/rubyinstaller/releases/download/ruby-2.3.3/rubyinstaller-2.3.3-x64.exe) or [32-bit](https://github.com/oneclick/rubyinstaller/releases/download/ruby-2.3.3/rubyinstaller-2.3.3.exe)).
 1. Install Ruby DevKit 4.7.2 ([64-bit](https://github.com/oneclick/rubyinstaller/releases/download/devkit-4.7.2/DevKit-mingw64-64-4.7.2-20130224-1432-sfx.exe) or [32-bit](https://github.com/oneclick/rubyinstaller/releases/download/devkit-4.7.2/DevKit-mingw64-32-4.7.2-20130224-1151-sfx.exe)). For more information, see the [Development Kit - Installation instructions](https://github.com/oneclick/rubyinstaller/wiki/Development-Kit#installation-instructions).
 1. Ensure that everything is installed correctly. This is a required step if you have previous versions installed on the machine (for example, check whether the `config.yml` file in the DevKit root folder contains the correct path to the ruby folder and check whether the system environment variables are correctly set). For more information, refer to [this article](http://jekyll-windows.juthilo.com/1-ruby-and-devkit/).
@@ -103,7 +104,6 @@ ENV BUNDLER_VERSION=2.1.4
 ### Get More Detailed Error Message
 
 To get more information and a full stack trace of the error, add `--trace` after your `jekyll` command. For example, `bundle exec jekyll build --trace`.
-
 
 ### Does Not Serve
 
@@ -148,7 +148,6 @@ When you try to build the documentation site, you may see an error including the
   * `LANG: en_GB.UTF-8`
 1. Modify the `runtimes.rb` file in the `execJs` gem by changing the `UTF-16LE` with the `UTF-8` value. For details, [see the instructions here](https://stackoverflow.com/questions/25830561/incomplete-n-on-utf-16le-error) or [here](https://stackoverflow.com/questions/12520456/execjsruntimeerror-on-windows-trying-to-follow-rubytutorial). The `runtimes.rb` file is located in `[Ruby Installation folder]\lib\ruby\gems\2.3.0\gems\execjs-2.7.0\lib\execjs`.
 
-
 ### Known Error Messages
 
 * `jekyll 3.3.1 | Error:  [prev_next plugin] Comparing the pages notes.md and sitemap.xml failed`
@@ -192,7 +191,6 @@ sh build-docs.sh
 
 This can be useful if you want to (or already have) set up a local IIS to point to the `_site` folder in your documentation repo. This allows you to also test redirects that `jekyll serve` does not support.
 
-
 ### Build Site Partially
 
 To speed up the building time of the web site, you can pass **only** specific parts of it&mdash;the folders you want to include in the site. 
@@ -204,11 +202,9 @@ To achieve this, execute the `sh modify-config.sh` script with passing the corre
 - `-s,--serve`&mdash;Accepts `true`/`false`. Indicates whether the Jekyll will only build or build and serve.
 - `-d,--docker`&mdash;Accepts `true`/`false`. Indicates whether the site will run in Docker (set `--docker=true` if you're using Docker).
 
-
 For example, if you want to build only the documentation for two controls, the Barcode and the Chart, you are using Docker, and you have an extra config YAML file. Then you have to open a terminal and execute the following command:
 
 `sh modify-config.sh --include=controls/barcode,controls/Chart --docker=true --config=_extra.yml`
-
 
 ### Exclude Articles from Navigation Tree
 
@@ -219,7 +215,6 @@ For example, from `https://github.com/telerik/ajax-docs/blob/master/_config.yml#
 ### Webinar Banner
 
 Moved in wiki under the [Announcements banner](https://github.com/telerik/docs-seed/wiki/Yellow-ribbon-banner-for-announcements#announcements-banner) article.
-
 
 ## Build API Reference
 
@@ -270,7 +265,6 @@ A [DocFX](https://dotnet.github.io/docfx/)-based infrastructure generates the AP
           private string privateTest;
           internal string internalTest;
           private protected string privateProtectedTest;
-
 
 ## Documentation Best Practices
 
