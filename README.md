@@ -1,4 +1,5 @@
 # docs-seed repo
+
 Contains the documentation site implementation.
 
 - [Local Setup :computer:](#local-setup)
@@ -15,9 +16,11 @@ Contains the documentation site implementation.
 - [docs-seed Syntax Guidelines](#docs-seed-syntax-guidelines)
 
 ## Local Setup
+
 This section describes how to run the documentation locally.
 
 ### Prerequisites
+
 - Install Docker (Community Edition(CE) is sufficient):
   - Use the [official Docker installation guide](https://docs.docker.com/install/). Accept the default installation instructions (use Linux containers, and so on).
 - Install [Node.js](https://nodejs.org/en/) and restart the machine.
@@ -28,6 +31,7 @@ This section describes how to run the documentation locally.
 > * If you are not able to install and use Docker, go to [Instructions (without Docker)](#instructions-without-docker). Otherwise, continue to the next section.
 
 ### Instructions (with Docker)
+
 1. Clone the current (seed) repo.
   ```bash
   git clone git@github.com:telerik/docs-seed.git
