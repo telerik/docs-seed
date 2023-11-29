@@ -33,75 +33,82 @@ This section describes how to run the documentation locally.
 ### Instructions (with Docker)
 
 1. Clone the current (seed) repo.
+  
   ```bash
   git clone git@github.com:telerik/docs-seed.git
   ```
 
-1. Go to the directory in which you've pulled it (for example, `D:\Work\docs-seed`).
-1. Open a terminal of your choice (for example, `gitBash`).
-1. Run the following command by passing the **DOCS-PATH** path (the **quotes** are mandatory):
+2. Go to the directory in which you've pulled it (for example, `D:\Work\docs-seed`).
+3. Open a terminal of your choice (for example, `gitBash`).
+4. Run the following command by passing the **DOCS-PATH** path (the **quotes** are mandatory):
+  
   ```bash
   sh copy_local.sh "D:\Work\xaml-docs"
   ```
 
   > If you are running the documentation on a macOS or another OS where the `robocopy` command is unavailable, pass a second parameter to the `copy_local.sh` script: `sh copy_local.sh "D:\Work\xaml-docs" true`.
 
-1. Go to the **DOCS-PATH** directory.
-2. Open the `Dockerfile` with an editor
-3. Delete the following two rows:
-```
-ADD Gemfile ${APP_ROOT}/
-ADD Gemfile.lock ${APP_ROOT}/
-```
-4. Add the following row:
-```
-ENV BUNDLER_VERSION=2.1.4
-```
-5. Delete the `GemFile.lock` file
-6. Open a terminal of your choice (for example, `gitBash`).
-7. Execute the following bash command in the root folder (where the `Dockerfile` is located).
+5. Go to the **DOCS-PATH** directory.
+6. Open the `Dockerfile` with an editor
+7. Delete the following two rows:
+
+  ```
+  ADD Gemfile ${APP_ROOT}/
+  ADD Gemfile.lock ${APP_ROOT}/
+  ```
+
+8. Add the following row:
+
+  ```
+  ENV BUNDLER_VERSION=2.1.4
+  ```
+9. Delete the `GemFile.lock` file
+10. Open a terminal of your choice (for example, `gitBash`).
+11. Execute the following bash command in the root folder (where the `Dockerfile` is located).
+  
   ```bash
   sh start-docs.sh
   ```
 
-1. Open the documentation site on the server address shown in the terminal: `http://0.0.0.0:4000/`. If you can't open the URL, replace the `0.0.0.0` with `localhost`: `http://localhost:4000`. For example, for the WPF documentation, this will be `http://0.0.0.0:4000/devtools/wpf/`.
-
-1. To stop the web site and the container in which it has been served, navigate to the terminal in which you've executed the previous command, and press `CTRL+C`. On passing an additional `config` file for the WPF and Silverlight documentation, refer to [this section](#additional-config-file).
+12. Open the documentation site on the server address shown in the terminal: `http://0.0.0.0:4000/`. If you can't open the URL, replace the `0.0.0.0` with `localhost`: `http://localhost:4000`. For example, for the WPF documentation, this will be `http://0.0.0.0:4000/devtools/wpf/`.
+13. To stop the web site and the container in which it has been served, navigate to the terminal in which you've executed the previous command, and press `CTRL+C`. On passing an additional `config` file for the WPF and Silverlight documentation, refer to [this section](#additional-config-file).
 
 ### Instructions (without Docker)
 
 1. Install ruby 2.3.3 ([64-bit](https://github.com/oneclick/rubyinstaller/releases/download/ruby-2.3.3/rubyinstaller-2.3.3-x64.exe) or [32-bit](https://github.com/oneclick/rubyinstaller/releases/download/ruby-2.3.3/rubyinstaller-2.3.3.exe)).
-1. Install Ruby DevKit 4.7.2 ([64-bit](https://github.com/oneclick/rubyinstaller/releases/download/devkit-4.7.2/DevKit-mingw64-64-4.7.2-20130224-1432-sfx.exe) or [32-bit](https://github.com/oneclick/rubyinstaller/releases/download/devkit-4.7.2/DevKit-mingw64-32-4.7.2-20130224-1151-sfx.exe)). For more information, see the [Development Kit - Installation instructions](https://github.com/oneclick/rubyinstaller/wiki/Development-Kit#installation-instructions).
-1. Ensure that everything is installed correctly. This is a required step if you have previous versions installed on the machine (for example, check whether the `config.yml` file in the DevKit root folder contains the correct path to the ruby folder and check whether the system environment variables are correctly set). For more information, refer to [this article](http://jekyll-windows.juthilo.com/1-ruby-and-devkit/).
-1. Install bundler (if you have already installed, continue to the next step) by executing `gem install bundler`.
+2. Install Ruby DevKit 4.7.2 ([64-bit](https://github.com/oneclick/rubyinstaller/releases/download/devkit-4.7.2/DevKit-mingw64-64-4.7.2-20130224-1432-sfx.exe) or [32-bit](https://github.com/oneclick/rubyinstaller/releases/download/devkit-4.7.2/DevKit-mingw64-32-4.7.2-20130224-1151-sfx.exe)). For more information, see the [Development Kit - Installation instructions](https://github.com/oneclick/rubyinstaller/wiki/Development-Kit#installation-instructions).
+3. Ensure that everything is installed correctly. This is a required step if you have previous versions installed on the machine (for example, check whether the `config.yml` file in the DevKit root folder contains the correct path to the ruby folder and check whether the system environment variables are correctly set). For more information, refer to [this article](http://jekyll-windows.juthilo.com/1-ruby-and-devkit/).
+4. Install bundler (if you have already installed, continue to the next step) by executing `gem install bundler`.
 
   > If you experience SSL errors with Bundler, similar to the one described in [RubyGems SSL Certificate Update](https://guides.rubygems.org/ssl-certificate-update/), then follow the solution steps shared in [Bundler.io - Installing new RubyGems certificates](https://bundler.io/v2.0/guides/rubygems_tls_ssl_troubleshooting_guide.html#installing-new-rubygems-certificates).
 
-1. Clone the current (seed) repo.
+5. Clone the current (seed) repo.
+
   ```bash
   git clone git@github.com:telerik/docs-seed.git
   ```
 
-1. Go to the directory in which you've pulled the current (seed) repo (for example, `D:\Work\docs-seed`).
-1. Open a terminal of your choice (for example, `gitBash`).
-1. Run the following command by passing the **DOCS-PATH** path (the **quotes** are mandatory):
+6. Go to the directory in which you've pulled the current (seed) repo (for example, `D:\Work\docs-seed`).
+7. Open a terminal of your choice (for example, `gitBash`).
+8. Run the following command by passing the **DOCS-PATH** path (the **quotes** are mandatory):
+
   ```bash
   sh copy_local.sh "D:\Work\xaml-docs"
   ```
 
   > If you are running the documentation on a macOS or another OS where the `robocopy` command is unavailable, pass a second parameter to the `copy_local.sh script`: `sh copy_local.sh "D:\Work\xaml-docs" true`.
 
-1. Go to the **DOCS-PATH** directory.
-1. Open a terminal of your choice (for example, `gitBash`).
-1. Install gems by executing `bundle install`.
-1. Execute the following bash command in the root folder:
+9. Go to the **DOCS-PATH** directory.
+10. Open a terminal of your choice (for example, `gitBash`).
+11. Install gems by executing `bundle install`.
+12. Execute the following bash command in the root folder:
+  
   ```bash
   bundle exec jekyll serve
   ```
 
-1. Open the documentation site on the server address which is written in the terminal: `http://127.0.0.1:4000/`. If you can't open the URL, replace the `127.0.0.1` with `localhost`: `http://localhost:4000`. For example, for the WPF documentation, this will be `http://127.0.0.1:4000/devtools/wpf/`.
-
-1. To change the host or port, pass the `--host` or `--port` arguments to the command above as an addition (for example, `bundle exec jekyll serve --host=0.0.0.0 --port=1234`).
+13. Open the documentation site on the server address which is written in the terminal: `http://127.0.0.1:4000/`. If you can't open the URL, replace the `127.0.0.1` with `localhost`: `http://localhost:4000`. For example, for the WPF documentation, this will be `http://127.0.0.1:4000/devtools/wpf/`.
+14. To change the host or port, pass the `--host` or `--port` arguments to the command above as an addition (for example, `bundle exec jekyll serve --host=0.0.0.0 --port=1234`).
 
 ## Troubleshooting
 
