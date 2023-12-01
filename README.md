@@ -106,7 +106,7 @@ This section describes how to run the documentation locally.
 
   > You can use Docker Community Edition (CE).
 
-2. Clone the current (seed) repo.
+2. Clone the **docs-seed** repo.
   
   ```bash
   git clone git@github.com:telerik/docs-seed.git
