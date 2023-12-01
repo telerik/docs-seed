@@ -22,7 +22,7 @@ This section describes how to run the documentation locally.
 ### Prerequisites
 
 - Install [Node.js](https://nodejs.org/en/) and restart the machine.
-- Choose a documentation repo to which you want to contribute. For example, [https://github.com/telerik/xaml-docs.git](https://github.com/telerik/xaml-docs.git).<br/>**MY-REPO** below.
+- Choose a documentation repo to which you want to contribute. For example, [https://github.com/telerik/xaml-docs.git](https://github.com/telerik/xaml-docs.git).<br/>Referred to as **MY-REPO** below.
 - Pull the documentation repo locally. For example, `"D:\Work\xaml-docs"`.<br/>Referred to as **DOCS-PATH** below.
 
 > * For products such as Kendo UI for jQuery, UI for ASP.NET MVC, and UI for ASP.NET Core, the documentation is part of the source code repo. For these products, **'DOCS-PATH' is a nested folder** in the cloned repo, for example, `"D:\Work\kendo-ui-core\docs"`.
