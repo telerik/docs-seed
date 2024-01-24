@@ -35,9 +35,9 @@ This section describes the best practices about what and how needs to be done to
     ```bash
     git clone git@github.com:telerik/docs-seed.git
     ```
-1. Install or update bundler. You need 2.4.22 or newer for the `.bundle/config` file to work when installing the build dependencies:
+1. Install or update bundler. Use 2.4.22, which is compatible with Ruby 2.7.8 and also supports a `.bundle/config` file that is required to install some of the build dependencies:
     ```bash
-    gem install bundler
+    gem install bundler:2.4.22
     ```
     > If you encounter SSL errors with Bundler, similar to the one described in [RubyGems SSL Certificate Update](https://guides.rubygems.org/ssl-certificate-update/), then follow the solution steps shared in [Bundler.io - Installing new RubyGems certificates](https://bundler.io/v2.0/guides/rubygems_tls_ssl_troubleshooting_guide.html#installing-new-rubygems-certificates).
 
