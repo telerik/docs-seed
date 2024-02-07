@@ -35,6 +35,10 @@ This section describes the best practices about what and how needs to be done to
     ```bash
     git clone git@github.com:telerik/docs-seed.git
     ```
+1. Go to **'DOCS-SEED-PATH'** and checkout the `ruby278` branch of the `docs-seed` repo.
+    ```bash
+    git checkout ruby278
+    ```
 1. Install or update bundler. Use 2.4.22, which is compatible with Ruby 2.7.8 and also supports a `.bundle/config` file that is required to install some of the build dependencies:
     ```bash
     gem install bundler:2.4.22
@@ -67,11 +71,11 @@ This section describes the best practices about what and how needs to be done to
 
 1. Open a terminal of your choice (for example, `Git Bash`).
 1. Go to the **DOCS-PATH** directory.
-1. Execute the following bash command in the root folder:
+1. Execute the following bash command in the root folder. The `--incremental` parameter is optional, but it allows faster rebuilds when you make a change while the docs site is running.
     ```bash
-    bundle exec jekyll serve
+    bundle exec jekyll serve --incremental
     ```
-1. Open the documentation site on the server address which is written in the terminal: `http://0.0.0.0:4000/`. If you can't open the URL, replace the `0.0.0.0` with `localhost`: `http://localhost:4000`. For example, for the WPF documentation, this will be `http://0.0.0.0:4000/devtools/wpf/`.
+1. Open the documentation site on the server address which is written in the terminal: `http://0.0.0.0:4000/`. If you can't open the URL, replace the `0.0.0.0` with `127.0.0.1` or `localhost`: `http://localhost:4000`. For example, for the WPF documentation, this will be `http://0.0.0.0:4000/devtools/wpf/`.
 1. To change the host or port, pass the `--host` or `--port` arguments to the command above as an addition, for example:
     ```bash
     bundle exec jekyll serve --host=0.0.0.0 --port=1234
