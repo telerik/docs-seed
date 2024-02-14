@@ -32,7 +32,8 @@ Jekyll::Hooks.register :site, :after_init do |site|
     "themebuilder" => "themebuilder",
     "winui" => "win-ui",
     "unite-ux" => "unite-ux",    
-    "unity-xr" => "vr-lab"
+    "unity-xr" => "vr-lab",
+    "main" => "main"
   }
 
   platform = site.config['platform']  
