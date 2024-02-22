@@ -31,7 +31,7 @@ var dojoApi = (function($) {
         },
         wrapInHtml: function(snippet) {
             var angular = '    <script src="https://kendo.cdn.telerik.com/kendo-version/js/angular.min.js"></script>\n';
-            var jszip = '    <script src="https://kendo.cdn.telerik.com/kendo-version/js/jszip.min.js"></script>\n';
+            var jszip = '    <script src="https://unpkg.com/jszip/dist/jszip.min.js"></script>\n';
 
             if (!(/ng-app/i).test(snippet)) {
                 angular = '';
@@ -158,7 +158,7 @@ var dojoApi = (function($) {
             '}' +
             '</style>' +
             '<link rel="stylesheet" href="https://kendo.cdn.telerik.com/themes/${themesVersion}/default/default-ocean-blue.css">' +
-            '<script src="https://kendo.cdn.telerik.com/${version}/js/jszip.min.js"></script>' +
+            '<script src="https://unpkg.com/jszip/dist/jszip.min.js"></script>' +
             '# if ((/ng-app/i).test(snippet)) { # <script src="https://kendo.cdn.telerik.com/${version}/js/angular.min.js"></script> # } #' +
             '<script src="https://kendo.cdn.telerik.com/${version}/js/kendo.all.min.js"></script>' +
             '<script src="https://kendo.cdn.telerik.com/${version}/js/kendo.timezones.min.js"></script>' +
