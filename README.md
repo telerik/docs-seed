@@ -93,6 +93,10 @@ This section describes the best practices about what and how needs to be done to
 
 Update bundler. See [Prerequisites](#prerequisites)
 
+### Missing images or fonts
+
+Delete the `.asset-cache` hidden folder in **DOCS-PATH** and [run the docs site](#run-the-documentation-site) again.
+
 ### Get More Detailed Error Message
 
 To get more information and a full stacktrace of the error, add `--trace` after your jekyll command. For example:
