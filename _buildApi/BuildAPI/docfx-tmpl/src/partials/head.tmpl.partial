@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono|Roboto:300,400,500,700" />
   <link rel="stylesheet" href="{{_rel}}styles/common.min.css">
   <link rel="stylesheet" href="{{_rel}}styles/main.css">
-  <link rel="stylesheet" href="{{_rel}}styles/feedback.css">
+  <link rel="stylesheet" type="text/css" href="https://progressdevsupport.blob.core.windows.net/support-ops/feedback-form/pro/style.css" />
   <link rel="stylesheet" href="{{_rel}}styles/footer.css">
  
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -51,6 +51,7 @@
       e.className = e.className.replace(/(^|\s)no-js(\s|$)/i, "$2");	
   </script>
   <script src="//kendo.cdn.telerik.com/2017.3.1026/js/kendo.web.min.js"></script>
+  <script src="https://progressdevsupport.blob.core.windows.net/support-ops/feedback-form/pro/index.min.js" defer></script>
   <meta property="docfx:navrel" content="{{_navRel}}">
   <meta property="docfx:tocrel" content="{{_tocRel}}">
   {{#_noindex}}<meta name="searchOption" content="noindex">{{/_noindex}}
