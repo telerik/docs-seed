@@ -17,4 +17,3 @@
 //= require search-base
 
 //= require handlers
-//= require feedback
