@@ -37,7 +37,7 @@ Jekyll::Hooks.register :site, :after_init do |site|
   }
 
   platform = site.config['platform']  
-  html = open("http://cdn.telerik-web-assets.com/telerik-navigation/stable/nav-%s-csa-abs-component.html" % [navigations_map[platform]]).read
+  html = open("https://cdn.telerik-web-assets.com/telerik-navigation/stable/nav-%s-csa-abs-component.html" % [navigations_map[platform]], {ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE}).read
   File.write('./_includes/top-nav.html', html)
 
   if site.config['other_platforms']
