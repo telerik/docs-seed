@@ -11,8 +11,8 @@
 //= require theme-mode
 //= require related-articles
 //= require toc
-//= require code-snippet
 //= require side-nav
+//= require code-snippet
 //= require additional-content
 //= require search-base
 

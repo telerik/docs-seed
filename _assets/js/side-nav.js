@@ -112,26 +112,26 @@ function setSideNavPosition() {
     sideNavigation.css('bottom', bottom);
 }
 
+var navDataSource = new kendo.data.HierarchicalDataSource({
+    data: [],
+    schema: {
+        model: {
+            id: "path",
+            children: "items",
+            hasChildren: "items"
+        }
+    }
+});
+
 var isNavigationLoadRequested = false;
 function ensureNavigationLoaded() {
     if (!isNavigationLoadRequested) {
         isNavigationLoadRequested = true;
+
+        $.getJSON(navigationPath, function(d) { navDataSource.data(d); });
+
         $("#page-tree").kendoTreeView({
-            dataSource: new kendo.data.HierarchicalDataSource({
-                transport: {
-                    read: {
-                        url: navigationPath,
-                        dataType: "json"
-                    }
-                },
-                schema: {
-                    model: {
-                        id: "path",
-                        children: "items",
-                        hasChildren: "items"
-                    }
-                }
-            }),
+            dataSource: navDataSource,
             messages: {
                 loading: " "
             },
