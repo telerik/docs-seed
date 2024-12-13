@@ -22,9 +22,11 @@
   var isKbPage = {% if page.res_type == 'kb' %} true {% else %} false {% endif %};
   var siteHasKbPortal = {% if site.has_kb_portal == true %} true {% else %} false {% endif %};
   var hasApiReference = {% if site.has_api_reference != false %} true {% else %} false {% endif %};
+  var requiresPdfJs = {% if page.include_pdfjs == true %} true {% else %} false {% endif %};
   var prd = '{{ site.product }}';
   var dojoEnabled = '{{ site.enable_dojo }}';
   var blazorReplEnabled = '{{ site.enable_blazorRepl }}';
-  var kendoCdnVersion = "{{ site.cdnVersion | default: '2020.2.617' }}";
-  var themesCdnVersion = "{{ site.themesCdnVersion | default: '6.2.0' }}";
+  var kendoCdnVersion = "{{ site.cdnVersion | default: '2024.4.1112' }}";
+  var themesCdnVersion = "{{ site.themesCdnVersion | default: '10.0.1' }}";
+  var pdfjsCdnVersion = "{{ site.pdfjsVersion | default: '4.3.136' }}";
 </script>

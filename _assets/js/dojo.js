@@ -6,7 +6,8 @@ var dojoApi = (function($) {
         configuration: {
             url: "https://dojo.telerik.com/",
             currentKendoVersion: kendoCdnVersion,
-            currentThemesVersion: themesCdnVersion
+            currentThemesVersion: themesCdnVersion,
+            currentPdfjsVersion: pdfjsCdnVersion
         },
         post: function (snippet) {
             if (!snippet.match(/<html>/i)) {
@@ -32,6 +33,8 @@ var dojoApi = (function($) {
         wrapInHtml: function(snippet) {
             var angular = '    <script src="https://kendo.cdn.telerik.com/kendo-version/js/angular.min.js"></script>\n';
             var jszip = '    <script src="https://unpkg.com/jszip/dist/jszip.min.js"></script>\n';
+            var pdfjs = '';
+            var pdfjsWorker = '';
 
             if (!(/ng-app/i).test(snippet)) {
                 angular = '';
@@ -41,6 +44,11 @@ var dojoApi = (function($) {
                 jszip  = '';
             }
 
+            if (requiresPdfJs) {
+                pdfjs = '    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/pdfjs-version/pdf.mjs" type="module"></script>\n';
+                pdfjsWorker = '    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/pdfjs-version/pdf.worker.mjs" type="module"></script>\n';
+            }
+
             var result = ('<!DOCTYPE html>\n'+
                 '<html>\n'+
                 '<head>\n'+
@@ -48,13 +56,13 @@ var dojoApi = (function($) {
                 '    <title>Kendo UI Snippet</title>\n\n'+
                 '    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/themes/themes-version/default/default-ocean-blue.css"/>\n\n'+
                 '    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>\n'+
-                angular + jszip +
-                '    <script src="https://kendo.cdn.telerik.com/kendo-version/js/kendo.all.min.js"></script>\n'+
+                angular + jszip + pdfjs + pdfjsWorker +
+                '    <script src="https://kendo.cdn.telerik.com/kendo-version/js/kendo.all.min.js"' + (requiresPdfJs ? ' type="module"' : '') + '></script>\n'+
                 '</head>\n'+
                 '<body>\n  \n'+
                 snippet+ '\n' +
                 '</body>\n'+
-            '</html>').replace(/kendo-version/g, kendoCdnVersion).replace(/themes-version/g, themesCdnVersion);
+            '</html>').replace(/kendo-version/g, kendoCdnVersion).replace(/themes-version/g, themesCdnVersion).replace(/pdfjs-version/g, pdfjsCdnVersion);
         return result;
         },
 
@@ -114,7 +122,14 @@ var dojoApi = (function($) {
 
             snippet = snippet.replace(/<script>(.*?)<\/script>/, "<script>try { $1 } catch(e) { document.write(e.toString()); }</script>");
 
-            var html = template({ version: kendoCdnVersion, themesVersion: themesCdnVersion, snippet: snippet, html: /<html>/i.test(snippet) });
+            var html = template({
+                version: kendoCdnVersion,
+                themesVersion: themesCdnVersion,
+                requiresPdfJs: requiresPdfJs,
+                pdfjsCdnVersion: pdfjsCdnVersion,
+                snippet: snippet,
+                html: /<html>/i.test(snippet)
+            });
 
             var contents = iframe.contents();
 
@@ -160,8 +175,15 @@ var dojoApi = (function($) {
             '<link rel="stylesheet" href="https://kendo.cdn.telerik.com/themes/${themesVersion}/default/default-ocean-blue.css">' +
             '<script src="https://unpkg.com/jszip/dist/jszip.min.js"></script>' +
             '# if ((/ng-app/i).test(snippet)) { # <script src="https://kendo.cdn.telerik.com/${version}/js/angular.min.js"></script> # } #' +
+            '# if (requiresPdfJs) { # ' +
+            '<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsCdnVersion}/pdf.mjs" type="module"></script>' +
+            '<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsCdnVersion}/pdf.worker.mjs" type="module"></script>' +
+            '<script src="https://kendo.cdn.telerik.com/${version}/js/kendo.all.min.js" type="module"></script>' +
+            '<script src="https://kendo.cdn.telerik.com/${version}/js/kendo.timezones.min.js" type="module"></script>' +
+            '# } else { #' +
             '<script src="https://kendo.cdn.telerik.com/${version}/js/kendo.all.min.js"></script>' +
             '<script src="https://kendo.cdn.telerik.com/${version}/js/kendo.timezones.min.js"></script>' +
+            '# } #' +
             '# } #<script>' +
             'if (typeof kendo !== "undefined") kendo.mobile.Application.prototype.options.browserHistory = false;' +
             'window.onerror = function(message, url, line) {' +
