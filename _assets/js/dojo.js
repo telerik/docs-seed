@@ -13,14 +13,10 @@ var dojoApi = (function($) {
             if (!snippet.match(/<html>/i)) {
                 snippet = dojoApi.wrapInHtml(snippet);
             }
-            snippet = dojoApi.fixLineEndings(snippet);
             var form = $('<form method="post" style="display: none;" target="_blank" action="' + dojoApi.configuration.url + '" />').appendTo(document.body);
             $("<input name='snippet'>").val(window.btoa(encodeURIComponent(snippet))).appendTo(form);
 
             form.submit();
-        },
-        fixLineEndings: function (code) {
-            return code.replace(/\n/g, "&#10;");
         },
         showHintButton: function (element, text) {
             element = $(element);
