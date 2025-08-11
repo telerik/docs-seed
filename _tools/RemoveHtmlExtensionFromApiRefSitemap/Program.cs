@@ -8,7 +8,7 @@ namespace RemoveHtmlExtensionFromApiRefSitemap
     {
         static void Main(string[] args)
         {
-            if(args.Length < 1)
+            if(args.Length < 2)
             {
                 throw new ArgumentNullException("You must provide a path to the drop folder of the API reference so we can alter the sitemap.xml file in it.");
             }
