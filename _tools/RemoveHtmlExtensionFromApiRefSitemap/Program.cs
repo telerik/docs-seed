@@ -15,6 +15,8 @@ namespace RemoveHtmlExtensionFromApiRefSitemap
             string pathToApiRefSitemap = Path.Combine(args[0], "sitemap.xml");
             if (!File.Exists(pathToApiRefSitemap))
             {
+                Console.WriteLine($"Checking: {pathToApiRefSitemap}");
+                Console.WriteLine($"Current Directory: {Directory.GetCurrentDirectory()}");
                 throw new FileNotFoundException("API Ref sitemap file not found in the target folder");
             }
             string sitemapText = File.ReadAllText(pathToApiRefSitemap);
