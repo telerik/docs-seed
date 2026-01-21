@@ -39,6 +39,8 @@ module Reading
 				indexes.push(first_index)
 				block = encode_liquid(content[first_index..last_index + @tabbed_code_marker_length])
 				block = @converter.convert(block) 
+				# remove empty space when generating tabbed snippet in a list
+				block.gsub!(/\/pre>\n\n<pre/,"/pre>\n<pre")
 				content[first_index..last_index + @tabbed_code_marker_length] = "<div class='tabbedCode'>" + block + "</div>"
 
 				first_index = content.index(tab_start, last_index)
